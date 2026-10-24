@@ -58,6 +58,13 @@ def G(ch, name):
     return g
 def gest(role, t, name, **kw):
     L, R = G(role.ch, name); role.key(t, hL=L, hR=R, **kw); return role
+def glide(role, side, t0, t1, p0, p1, n=None):
+    """Płynny ruch dłoni (np. odłożenie rekwizytu pod krawędź podestu): klucze co ~0,12 s po smoothstep - bez lalkarskiego 'skoku'."""
+    n = n or max(3, int((t1 - t0)/0.12))
+    for k in range(n + 1):
+        u = smoothstep(k/n); p = (p0[0] + (p1[0] - p0[0])*u, p0[1] + (p1[1] - p0[1])*u)
+        role.key(t0 + (t1 - t0)*k/n, **{'h' + side: p})
+def stow(ch, side): w1 = ch.torso_w[1]; return ((-(w1 + 40) if side == 'L' else w1 + 40), 380.0)     # dłoń schowana pod frontem podestu/stołu
 def gest_hold(role, t0, t1, name, **kw):
     gest(role, t0, name, **kw); gest(role, t1, name, **kw); return role
 
@@ -81,7 +88,7 @@ H.costume(wt(BR, 0, 2) + 0.1, tie=None)                                         
 H.on(3.0, le(INTRO, 0) + 0.05, 'rise', 'sink', 0.6, 0.45)
 H.key(0, x=0.0, y=0.0, depth=D_APRON_ACT)
 gest(H, 3.3, 'phone', gaze=(0.0, 0.1), brow=0.3, lid=0.3)
-H.hold(3.0, le(INTRO, 0) + 0.5, 'R', lambda cv, t: P.phone(cv))
+H.hold(3.0, le(INTRO, 0) + 0.5, 'R', lambda cv, t: P.phone(cv, t=t, scroll=max(0.0, t - 3.0)*14 + 120*smoothstep((t - wt(INTRO, 0, 11) + 0.2)/0.8)))     # 'Zobaczmy...' - przesuwa feed
 gest(H, wt(INTRO, 0, 7), 'phone', gaze=(-0.3, 0.6))             # 'dzisiaj' - zerka w telefon
 gest(H, wt(INTRO, 0, 8), 'present_L', gaze=(0.0, 0.0), brow=0.6)  # 'kochani' - do widzów
 gest(H, wt(INTRO, 0, 9), 'shrug', brow=0.9, lid=0.15)             # 'Kolejny sukces?'
@@ -160,7 +167,7 @@ gest(H, wt(V2, 2, 7), 'shrug', gaze=(0.6, 0.0), brow=0.9)                       
 # droga: Henio czyta (bez tchu)
 H.key(lt(V2, 3) - 0.01, x=-830.0); H.key(lt(V2, 3), x=-600.0)
 gest(H, lt(V2, 3), 'hold_L', gaze=(0.0, 0.6), lid=0.35, turn=0.2)
-H.hold(lt(V2, 3), le(V2, 4), 'L', lambda cv, t: P.phone(cv))
+H.hold(lt(V2, 3), le(V2, 4), 'L', lambda cv, t: P.phone(cv, t=t, scroll=(t - lt(V2, 3))*40))
 gest(H, wt(V2, 3, 5), 'chest', gaze=(0.0, 0.6), brow=0.6, lid=0.1)              # 'czytam bez tchu'
 gest(H, lt(V2, 4), 'hold_L', gaze=(0.9, 0.0), brow=-0.2)
 gest(H, wt(V2, 4, 5) - 0.1, 'present_R', gaze=(0.9, 0.2), brow=0.9, lid=0.0)       # 'wywalili cię na bruk!'
@@ -334,14 +341,22 @@ for i, r in enumerate(CHOIR):
     start = lt(PRE1, 0) if i in MEN else lt(CH1, 0) - 0.7
     gest(r, start, 'rest', gaze=(0.0, 0.0))
     if i in MEN:
-        gest(r, lt(PRE1, 1), 'rest', smile=1.0, brow=0.8, lid=0.0)
-        r.hold(lt(PRE1, 1) - 0.2, le(PRE1, 1) + 0.2, 'L', lambda cv, t: P.smile_mask(cv, 0.0), grip=True)
-        gest(r, lt(PRE1, 1), 'hold_L', smile=1.0)
+        # v6: maska wyjmowana spod podestu i płynnie odkładana z powrotem (nie znika z ręki)
+        RL, RR = G(r.ch, 'rest'); HL = G(r.ch, 'hold_L')[0]
+        glide(r, 'L', lt(PRE1, 1) - 1.3, lt(PRE1, 1) - 1.0, RL, stow(r.ch, 'L'))
+        r.hold(lt(PRE1, 1) - 0.95, lt(PRE1, 2) + 0.75, 'L', lambda cv, t: P.smile_mask(cv, 0.0), grip=True)
+        glide(r, 'L', lt(PRE1, 1) - 0.9, lt(PRE1, 1) - 0.12, stow(r.ch, 'L'), HL)
+        r.key(lt(PRE1, 1) - 0.12, smile=1.0, brow=0.8, lid=0.0, hR=RR)
         gest(r, wt(PRE1, 1, 2) - 0.1, 'forehead', smile=1.0)                     # 'rzut na czoło' - wszyscy naraz
-        gest(r, lt(PRE1, 2), 'rest', smile=0.0, gaze=(-1.0 if CHOIR_X[i] > 0 else 1.0, 0.3), brow=-0.4)   # patrzą na Henia
+        r.key(lt(PRE1, 2), smile=0.0, gaze=(-1.0 if CHOIR_X[i] > 0 else 1.0, 0.3), brow=-0.4, hR=RR)   # patrzą na Henia
+        glide(r, 'L', lt(PRE1, 2), lt(PRE1, 2) + 0.7, RL, stow(r.ch, 'L'))
+        glide(r, 'L', lt(PRE1, 2) + 0.8, lt(PRE1, 2) + 1.3, stow(r.ch, 'L'), RL)
         gest(r, lt(PRE1, 3), 'rest', gaze=(0.0, 0.0), brow=0.3)
+        # reakcja wyjmowana spod podestu przed refrenem
+        glide(r, 'R', lt(CH1, 0) - 1.5, lt(CH1, 0) - 1.15, RR, stow(r.ch, 'R'))
+        glide(r, 'R', lt(CH1, 0) - 1.05, lt(CH1, 0) - 0.42, stow(r.ch, 'R'), G(r.ch, 'hold_R')[1])
     # refren 1: reakcje na patykach w górę na mocnych bitach
-    r.hold(lt(CH1, 0) - 0.5, le(CH1, 5) + 1.1, 'R', lambda cv, t, kind=REACT[i]: P.reaction_paddle(cv, kind, 0.85), grip=True)
+    r.hold(lt(CH1, 0) - (1.1 if i in MEN else 1.3), lt(V2, 0) + 0.85, 'R', lambda cv, t, kind=REACT[i]: P.reaction_paddle(cv, kind, 0.85), grip=True)
     gest(r, lt(CH1, 0) - 0.4, 'hold_R', brow=0.6, lid=0.1)
     for b in hit_bars(lt(CH1, 0) - 0.1, lt(CH1, 3) - 0.1):
         r.key(b - 0.06, hR=(110.0, -150.0)); r.key(b + 0.2, hR=(120.0, -330.0)); r.key(b + 0.65, hR=(110.0, -170.0))
@@ -361,22 +376,28 @@ for i, r in enumerate(CHOIR):
         r.key(lt(PRE2, 0) - 0.01, x=px_, y=0.0, depth=8.0, scale=1.12)
         r.key(lt(CH2, 0) - 0.62, x=px_, y=0.0, depth=8.0, scale=1.12)
         r.key(lt(CH2, 0) - 0.6, x=float(CHOIR_X[i]), y=CHOIR_Y, depth=CHOIR_D, scale=0.8)
-        r.on(lt(CH2, 0) - 0.25, lt(BR, 0), 'rise', 'none', 0.3)
+        r.on(lt(CH2, 0) + 0.45, lt(BR, 0), 'rise', 'none', 0.4)          # v6: dekoracja zmienia się na cięciu - wynurzają się już w nowej
         gest(r, lt(PRE2, 0), 'rest', gaze=(0.0, 0.0), brow=0.0, smile=0.0, turn=tg)
     if i in MEN:
         if i in (0, 1):
-            r.on(lt(CH2, 0) - 0.7 + 0.1*i, lt(BR, 0), 'rise', 'none', 0.45)
+            r.on(lt(CH2, 0) + 0.45 + 0.08*i, lt(BR, 0), 'rise', 'none', 0.4)
             r.key(lt(CH2, 0) - 1.4, x=float(CHOIR_X[i]), y=CHOIR_Y, depth=CHOIR_D, scale=0.8)
-        r.hold(lt(PRE2, 1) - 0.2, le(CH2, 1), 'L', lambda cv, t: P.smile_mask(cv, smoothstep((t - wt(CH2, 1, 5) + 0.05)/0.3)), grip=True)
-        gest(r, lt(PRE2, 1), 'hold_L', smile=1.0, brow=0.8, lid=0.0)
+        RL, RR = G(r.ch, 'rest'); HL = G(r.ch, 'hold_L')[0]
+        glide(r, 'L', lt(PRE2, 1) - 1.25, lt(PRE2, 1) - 0.95, RL, stow(r.ch, 'L'))
+        r.hold(lt(PRE2, 1) - 0.9, le(CH2, 1) + 0.75, 'L', lambda cv, t: P.smile_mask(cv, smoothstep((t - wt(CH2, 1, 5) + 0.05)/0.3)), grip=True)
+        glide(r, 'L', lt(PRE2, 1) - 0.85, lt(PRE2, 1) - 0.1, stow(r.ch, 'L'), HL)
+        r.key(lt(PRE2, 1), smile=1.0, brow=0.8, lid=0.0)
+        glide(r, 'L', le(CH2, 1) + 0.05, le(CH2, 1) + 0.7, HL, stow(r.ch, 'L'))       # pęknięta maska odkładana pod podest
         gest(r, wt(PRE2, 1, 2) - 0.1, 'hold_L', smile=1.0, gaze=(-0.8, 0.0))
         gest(r, lt(PRE2, 2), 'hold_L', smile=0.0, gaze=((1.0 if i == 2 else -1.0) if i in (2, 3) else (-1.0 if CHOIR_X[i] > 0 else 1.0), 0.3), brow=-0.4)   # patrzą na Henia
         gest(r, lt(PRE2, 3), 'hold_L', gaze=(0.0, 0.0), brow=0.3)
     else:
-        r.on(lt(CH2, 0) - 0.7 + 0.1*WOMEN.index(i), lt(BR, 0), 'rise', 'none', 0.45)
+        r.on(lt(CH2, 0) + 0.5 + 0.08*WOMEN.index(i), lt(BR, 0), 'rise', 'none', 0.4)
         r.key(lt(CH2, 0) - 1.4, x=float(CHOIR_X[i]), y=CHOIR_Y, depth=CHOIR_D, scale=0.8)
-    r.hold(lt(CH2, 0) - 0.4, lt(BR, 0) - 1.0, 'R', lambda cv, t, kind=REACT[i]: P.reaction_paddle(cv, kind, 0.85), grip=True)
+    r.hold(lt(CH2, 0) - 1.0, lt(BR, 0) + 0.1, 'R', lambda cv, t, kind=REACT[i]: P.reaction_paddle(cv, kind, 0.85), grip=True)
     gest(r, lt(CH2, 0) - 0.3, 'hold_R', brow=0.6, lid=0.1, turn=turn_in)
+    for k, b in enumerate(hit_bars(lt(CH2, 0) - 0.05, lt(CH2, 1))):         # fałsz: grymas na 'raz', potem udawany uśmiech
+        r.key(b, brow=-0.8, lid=0.55); r.key(b + 0.5, brow=0.5, lid=0.1)
     for b in hit_bars(lt(CH2, 0) - 0.1, lt(CH2, 3)):
         r.key(b - 0.06, hR=(110.0, -150.0)); r.key(b + 0.2, hR=(120.0, -330.0)); r.key(b + 0.65, hR=(110.0, -170.0))
     gest(r, lt(CH2, 3), 'rest', brow=-0.2, lid=0.4)
@@ -385,7 +406,7 @@ for i, r in enumerate(CHOIR):
     # refren 3 + finał: wszyscy
     r.on(lt(CH3, 0) - 0.77 + 0.06*i, FIN_HEJ + 1.0, 'rise', 'sink', 0.5, 0.5)
     r.key(lt(CH3, 0) - 1.3, x=float(CHOIR_X[i]), y=CHOIR_Y, depth=CHOIR_D, scale=0.8)
-    r.hold(lt(CH3, 0) - 0.77, FIN_HEJ + 1.0, 'R', lambda cv, t, kind=REACT[i]: P.reaction_paddle(cv, kind, 0.85), grip=True)
+    r.hold(lt(CH3, 0) - 1.4, FIN_HEJ + 1.0, 'R', lambda cv, t, kind=REACT[i]: P.reaction_paddle(cv, kind, 0.85), grip=True)
     gest(r, lt(CH3, 0) - 0.57, 'hold_R', brow=0.7, lid=0.1)
     for b in hit_bars(lt(CH3, 0) - 0.3, lt(CH3, 3) - 0.4):
         r.key(b - 0.06, hR=(110.0, -150.0)); r.key(b + 0.2, hR=(120.0, -330.0)); r.key(b + 0.65, hR=(110.0, -170.0))
@@ -400,7 +421,7 @@ for r in ROLES: r.build()
 # ================================================================== DEKORACJE, KURTYNA
 SETS = [(0.0, 'kitchen', False), (29.9, 'office', True), (lt(V1B, 2), 'conf', False), (lt(PRE1, 0), 'show', False),
         (lt(V2, 0) + 0.1, 'studio_g', True), (lt(V2, 3), 'road', False), (lt(V2B, 0) - 0.02, 'heaven', False), (lt(PRE2, 0), 'podcast', False),
-        (lt(CH2, 0) - 0.85, 'show', True)]
+        (lt(CH2, 0), 'show', False)]      # v6: cięcie zamiast przelotu (przelot odsłaniał spody dekoracji)
 FLY = 0.9
 def sets_at(t):
     cur = None; prev = None; tsw = None; fly = False
@@ -410,7 +431,7 @@ def sets_at(t):
         a = smoothstep((t - tsw)/FLY)
         return [(prev, -1700*a), (cur, -1700*(1 - a))]
     return [(cur, 0.0)]
-CURTAIN = Track([(0, 0.0), (10.85, 0.0), (13.2, 1.0), (lt(BR, 0) - 1.45, 1.0), (lt(BR, 0) - 0.05, 0.0), (lt(CH3, 0) - 1.5, 0.0), (lt(CH3, 0) + 0.05, 1.0), (300, 1.0)])
+CURTAIN = Track([(0, 0.0), (10.85, 0.0), (13.2, 1.0), (lt(BR, 0) - 1.45, 1.0), (lt(BR, 0) - 0.05, 0.0), (lt(CH3, 0) - 1.5, 0.0), (lt(CH3, 0) + 0.05, 1.0), (FINAL_HEJ + 0.45, 1.0), (FINAL_HEJ + 2.4, 0.0), (400, 0.0)])     # v6: po ostatnim 'HEJ!' kurtyna się zasuwa - na niej napisy końcowe
 
 # ================================================================== REKWIZYTY SCENICZNE (poza dłońmi)
 def stage_props(t):
@@ -464,7 +485,7 @@ def stage_props(t):
     # refren 1: balon-serce u chórzystki (pęka na 'pęka'), iskry na 'błyszczy'
     if lt(CH1, 0) - 0.5 <= t <= wt(CH1, 1, 5) + 1.0:
         pp = smoothstep((t - wt(CH1, 1, 5))/0.7) if t > wt(CH1, 1, 5) else 0.0
-        pr.append((CHOIR_D - 5, lambda cv, t, pp=pp: (cv.translate(-620, CHOIR_Y - 120), P.balloon_heart(cv, pp, t))))
+        pass                     # v6: balon-serce usunięty
     for (a_, b_) in [(wt(CH1, 1, 2), wt(CH1, 1, 2) + 1.4), (wt(CH2, 1, 2), wt(CH2, 1, 2) + 1.4), (wt(CH3, 1, 2), wt(CH3, 1, 2) + 1.4)]:
         if a_ - 0.1 <= t <= b_: pr.append((-6.0, lambda cv, t, a_=a_: sparkles(cv, t, a_)))
     # studio Grażyny: ring light, kadry 'scenek', zwój 'wywodu'
@@ -493,6 +514,13 @@ def stage_props(t):
     if wt(V2B, 3, 2) - 0.6 <= t <= lt(PRE2, 0):
         y = -1500 + (1500 - 520)*smoothstep((t - (wt(V2B, 3, 2) - 0.6))/0.9)
         pr.append((-4.0, lambda cv, t, y=y: (cv.translate(600, y + 30*math.sin(t*2)), P.halo(cv, 1.0))))
+    # fałszujący fragment refrenu 2 (v6): z chóru i od Henia wylatują krzywe, kwaśne nuty
+    if lt(CH2, 0) <= t < lt(CH2, 1):
+        def sour(cv, t):
+            import under as U
+            for k, x in enumerate((-820, -420, 0, 420, 820)):
+                U.notes_from(cv, x, CHOIR_Y - 200, t, lt(CH2, 0) + 0.15*k, 40 + k, 3, None, ['#9bd16a', '#c58cf0', '#f2c14e', '#7fd1c7', '#f28c8c'][k])
+        pr.append((80.0, sour))
     # studio podcastowe: stół z mikrofonami na ramionach (prowadzący + dwóch gości)
     for name, dy in sets_at(t):
         if name == 'podcast':
@@ -551,9 +579,21 @@ def sparkles(cv, t, t0):
 def ringlight(cv, t):
     import skia
     from gfx import light_pool
-    cv.drawLine(RING_X, -320, RING_X, 60, skia.Paint(AntiAlias=True, StrokeWidth=10, Color4f=P.col('#333333')))
-    cv.drawCircle(RING_X, -420, 120, skia.Paint(AntiAlias=True, Style=skia.Paint.kStroke_Style, StrokeWidth=26, Color4f=P.col('#f3eee4')))
-    light_pool(cv, RING_X, -420, 170, 170, (1, 0.97, 0.9), 0.14)
+    # v6: lampa pierścieniowa do selfie - świecąca obręcz LED, uchwyt z telefonem w środku (nagrywa Grażynę), statyw
+    lp = skia.Paint(AntiAlias=True, StrokeWidth=10, Color4f=P.col('#2b2b2f'), StrokeCap=skia.Paint.kRound_Cap)
+    cv.drawLine(RING_X, -300, RING_X, 40, lp)
+    for dx in (-90, 0, 90): cv.drawLine(RING_X, 30, RING_X + dx, 70, lp)
+    light_pool(cv, RING_X, -420, 260, 260, (1, 0.96, 0.88), 0.30)
+    cv.drawCircle(RING_X, -420, 122, skia.Paint(AntiAlias=True, Style=skia.Paint.kStroke_Style, StrokeWidth=34, Color4f=P.col('#3a3a40')))
+    g = skia.Paint(AntiAlias=True, Style=skia.Paint.kStroke_Style, StrokeWidth=24, Color4f=P.col('#fffaf0'))
+    cv.drawCircle(RING_X, -420, 122, g)
+    for k in range(36):                                   # diody
+        a = k*math.pi/18
+        cv.drawCircle(RING_X + 122*math.cos(a), -420 + 122*math.sin(a), 4, skia.Paint(AntiAlias=True, Color4f=P.col('#ffe9b8')))
+    cv.drawLine(RING_X, -300, RING_X, -420, skia.Paint(AntiAlias=True, StrokeWidth=8, Color4f=P.col('#2b2b2f')))
+    cv.drawRRect(skia.RRect.MakeRectXY(skia.Rect(RING_X - 34, -488, RING_X + 34, -352), 12, 12), skia.Paint(AntiAlias=True, Color4f=P.col('#1c1c1e')))   # telefon tyłem
+    for (dx, dy) in ((-14, -466), (6, -466), (-14, -446)): cv.drawCircle(RING_X + dx, dy, 7, skia.Paint(AntiAlias=True, Color4f=P.col('#3d4450')))
+    cv.drawCircle(RING_X + 14, -444, 5, skia.Paint(AntiAlias=True, Color4f=P.col('#ff3b30')))      # nagrywa
 def haze(cv, t, a):
     import skia
     g = skia.GradientShader.MakeLinear([skia.Point(0, -700), skia.Point(0, 400)], [skia.Color4f(1, 1, 1, 0).toColor(), skia.Color4f(0.9, 0.92, 1, 0.55*a).toColor()])
@@ -799,7 +839,7 @@ SHOTS = [
     (lt(PRE2, 3), lt(CH2, 0), 'stage', [(0, F('MS', 'H')), (1, F('MLS', 'H'))]),
     # refren 2
     (lt(CH2, 0), lt(CH2, 1), 'stage', [(0, C_(0, -820, 2500)), (1, C_(0, -460, 2650))]),
-    (lt(CH2, 1), lt(CH2, 2), 'stage', [(0, F('MLS', ['c4', 'c0', 'c5', 'c1'], w=1.2)), (1, F('MLS', ['c0', 'c5', 'c1'], w=1.2))]),
+    (lt(CH2, 1), lt(CH2, 2), 'under', [(0, C_(-260, -120, 1750)), (1, C_(160, -70, 1480))]),      # v6: fałsz - 'orkiestra' pod sceną
     (lt(CH2, 2), lt(CH2, 4), 'feed', dict(kind='analytics')),
     (lt(CH2, 4), lt(CH2, 5), 'stage', [(0, F('WS', ['H', 'C'], w=1.06)), (1, F('LS', ['H', 'C'], w=1.03))]),
     (lt(CH2, 5), lt(BR, 0), 'stage', [(0, F('MS', 'H')), (0.4, F('MLS', 'H')), (1, C_(0, -430, 2750))]),     # odjazd: kurtyna się zamyka
@@ -871,7 +911,7 @@ def lights_at(t, actors):
     for tb in [wt(CH1, 1, 5), wt(CH2, 1, 5), wt(V2, 4, 8)] + HEJ + [FIN_HEJ, FINAL_HEJ]:
         if 0 <= t - tb < 0.6: L['flash'] = max(L['flash'], 0.5*math.exp(-(t - tb)/0.1))
     if hen is not None: L['key_x'] = hen.x - 500
-    if t > 210.6: L['dim'] = 0.92*smoothstep((t - 210.6)/1.4)          # wyciemnienie przed napisami
+    if t > FINAL_HEJ + 0.6: L['dim'] = 0.35*smoothstep((t - FINAL_HEJ - 0.6)/2.0)     # lekkie przygaszenie pod napisy (bez wyciemnienia do czerni)
     return L
 
 def portal_at(t):
@@ -883,7 +923,7 @@ def portal_at(t):
 
 # ================================================================== NAPISY (stałe miejsce wersu przy postaci; kamera je obejmuje)
 FEED_LINES = {(V1, 4): 'chat', (V2, 0): 'chat', (V2, 3): 'chat', (V2B, 1): 'chat', (CH2, 2): 'comment', (CH2, 3): 'comment', (OUT, 0): 'comment'}
-UNDER_LINES = {(CH1, 3)}
+UNDER_LINES = {(CH1, 3), (CH2, 1)}
 def actors_at(t):
     return [a for r in ROLES if (a := r.actor(t)) is not None]
 def actor_rects(a):
@@ -1269,5 +1309,7 @@ def scene_at(t):
     s = shot_at(t)
     if s[2] == 'credits': return dict(mode='credits', t0=s[0])
     if s[2] == 'feed': return dict(mode='feed', kind=s[3]['kind'], t0=s[0], t1=s[1])
-    if s[2] == 'under': return dict(mode='under', cam=cam_at(t, s), t0=s[0], t1=s[1])
+    if s[2] == 'under':
+        v, line = ('band', (CH2, 1)) if abs(s[0] - lt(CH2, 1)) < 0.01 else ('quiet', (CH1, 3))
+        return dict(mode='under', cam=cam_at(t, s), t0=s[0], t1=s[1], variant=v, line=line)
     return stage_scene(t, cam_at(t, s))

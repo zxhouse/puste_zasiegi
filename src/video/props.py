@@ -34,14 +34,33 @@ def hanger_jacket(cv, color='#6f7480'):
         L = [(sg*40, -8), (sg*80, 6), (sg*30, 110), (sg*5, 70)]
         fill(cv, poly_path(L, True, False), Material(shade(col(color), 0.8), 'felt', 0.7, seed=203))
 
+def apple_logo(r):
+    """Ścieżka logo z nadgryzionym jabłkiem (wysokość ~2r, środek w 0,0)."""
+    U = lambda p, q: skia.Op(p, q, skia.PathOp.kUnion_PathOp); D = lambda p, q: skia.Op(p, q, skia.PathOp.kDifference_PathOp)
+    body = U(skia.Path().addOval(skia.Rect(-r*0.95, -r*0.58, r*0.12, r*0.98)), skia.Path().addOval(skia.Rect(-r*0.12, -r*0.58, r*0.95, r*0.98)))
+    body = U(body, skia.Path().addOval(skia.Rect(-r*0.62, -r*0.66, r*0.62, r*0.9)))
+    body = D(body, skia.Path().addCircle(0, -r*0.68, r*0.14))
+    body = D(body, skia.Path().addCircle(0, r*1.04, r*0.13))
+    body = D(body, skia.Path().addCircle(r*1.05, -r*0.02, r*0.33))
+    leaf = skia.Path().addOval(skia.Rect(-r*0.13, -r*0.26, r*0.13, r*0.26)); leaf.transform(skia.Matrix.RotateDeg(38)); leaf.offset(r*0.16, -r*0.98)
+    return U(body, leaf)
 def laptop(cv, glow=0.6, t=0.0):
-    card(cv, (-150, -150, 150, 20), '#3d3d45', 10, 'card', 205, 0.5)
-    card(cv, (-130, -132, 130, 2), '#cfe8ff', 6, 'card', 206, 0.6)
-    for k in range(5):
-        w = 180 - (k*37) % 90
-        cv.drawRect(skia.Rect(-110, -112 + k*22, -110 + w, -102 + k*22), skia.Paint(Color4f=col('#0a66c2' if k == 0 else '#7a8794')))
-    card(cv, (-190, 20, 190, 46), '#55555f', 8, 'card', 207, 0.5)
-    light_pool(cv, 0, -60, 220, 160, (0.6, 0.8, 1.0), 0.12*glow)
+    """MacBook widziany od tyłu (v6): ekran zwrócony do piszącego Henia, do kamery tył aluminiowej klapy z podświetlonym
+    logo jabłka; od spodu klapy cienka krawędź korpusu; niebieskawy blask ekranu na twarzy Henia (za klapą)."""
+    light_pool(cv, 0, -250, 260, 170, (0.62, 0.78, 1.0), 0.22*glow)
+    lid = skia.Path(); lid.addRRect(skia.RRect.MakeRectXY(skia.Rect(-170, -200, 170, 14), 14, 14))
+    g = skia.GradientShader.MakeLinear([skia.Point(-170, -200), skia.Point(170, 14)], [col('#e6e8eb').toColor(), col('#b9bec5').toColor(), col('#d4d7db').toColor()], [0, 0.6, 1])
+    p = skia.Paint(AntiAlias=True); p.setShader(g); cv.drawPath(lid, p)
+    cv.drawPath(lid, skia.Paint(AntiAlias=True, Style=skia.Paint.kStroke_Style, StrokeWidth=3, Color4f=col('#8f949b')))
+    cv.save(); cv.translate(0, -96)
+    lg = apple_logo(30)
+    gp = skia.Paint(AntiAlias=True, Color4f=skia.Color4f(1, 1, 1, 0.55*glow)); gp.setMaskFilter(skia.MaskFilter.MakeBlur(skia.kNormal_BlurStyle, 8))
+    cv.drawPath(lg, gp); cv.drawPath(lg, skia.Paint(AntiAlias=True, Color4f=col('#fbfcff')))
+    cv.restore()
+    base = skia.Path(); base.addRRect(skia.RRect.MakeRectXY(skia.Rect(-182, 12, 182, 30), 8, 8))
+    gb = skia.GradientShader.MakeLinear([skia.Point(0, 12), skia.Point(0, 30)], [col('#cfd3d8').toColor(), col('#8a9097').toColor()])
+    pb = skia.Paint(AntiAlias=True); pb.setShader(gb); cv.drawPath(base, pb)
+    cv.drawRRect(skia.RRect.MakeRectXY(skia.Rect(-40, 12, 40, 16), 2, 2), skia.Paint(AntiAlias=True, Color4f=col('#7b8087')))
 
 def linkedin_card(cv, text, w=520, h=230, author='Henio Kawka', smile=True, color='#ffffff', reveal=1.0, side=1):
     """Plansza 'post' z tektury: wygląda jak karta wpisu (awatar-kółko, nazwisko, tekst, pasek reakcji).
@@ -291,11 +310,44 @@ def confetti(cv, t, t0, n=160, area=(-1100, 1100), seed=4):
         cv.drawRect(skia.Rect(-10, -6, 10, 6), skia.Paint(AntiAlias=True, Color4f=col(c)))
         cv.restore()
 
-def phone(cv, screen='#0a66c2'):
-    card(cv, (-60, -120, 60, 120), '#222222', 18, 'card', 310, 0.5)
-    card(cv, (-50, -104, 50, 104), '#f3f2ef', 8, 'card', 311, 0.6)
-    cv.drawRect(skia.Rect(-50, -104, 50, -80), skia.Paint(Color4f=col(screen)))
-    for k in range(5): cv.drawRect(skia.Rect(-40, -66 + k*34, 40 - (k*13) % 30, -50 + k*34), skia.Paint(Color4f=col('#c8c8c8')))
+def phone(cv, screen='#0a66c2', t=0.0, scroll=0.0):
+    """Smartfon z mobilnym feedem serwisu (v6): pasek stanu, nagłówek z awatarem i wyszukiwarką, karty wpisów (awatar, nazwisko,
+    tekst, zdjęcie, reakcje - te same ikony co w klonie, przyciski), dolna nawigacja; feed przewija się (scroll w px ekranu)."""
+    import reactions as RX
+    card(cv, (-62, -124, 62, 124), '#1c1c1e', 20, 'card', 310, 0.5)
+    scr = skia.Rect(-53, -112, 53, 112)
+    cv.save(); cv.clipRRect(skia.RRect.MakeRectXY(scr, 9, 9), doAntiAlias=True)
+    cv.drawRect(scr, skia.Paint(Color4f=col('#f4f2ee')))
+    W = skia.Paint(AntiAlias=True, Color4f=col('#ffffff')); G = skia.Paint(AntiAlias=True, Color4f=col('#d5d3cf'))
+    G2 = skia.Paint(AntiAlias=True, Color4f=col('#9b9894')); B = skia.Paint(AntiAlias=True, Color4f=col('#0a66c2'))
+    pics = ['#7a3db8', '#e9c46a', '#5aa9e6', '#e07a5f', '#73b7a6']; avs = ['#d6b48c', '#f2a1c0', '#8e3f4a', '#a4c3f0', '#ffd166']
+    y = -84 - (scroll % 150)
+    k0 = int(scroll // 150)
+    for k in range(k0, k0 + 3):
+        cv.drawRect(skia.Rect(-53, y, 53, y + 144), W)
+        cv.drawCircle(-41, y + 11, 7, skia.Paint(AntiAlias=True, Color4f=col(avs[k % 5])))
+        cv.drawRRect(skia.RRect.MakeRectXY(skia.Rect(-30, y + 6, 8 + (k*13) % 20, y + 10), 2, 2), G2)
+        cv.drawRRect(skia.RRect.MakeRectXY(skia.Rect(-30, y + 13, -2, y + 16), 1.5, 1.5), G)
+        for j in range(2): cv.drawRRect(skia.RRect.MakeRectXY(skia.Rect(-48, y + 23 + j*7, 46 - j*30 - (k*9) % 14, y + 27 + j*7), 2, 2), G)
+        cv.drawRect(skia.Rect(-53, y + 40, 53, y + 108), skia.Paint(Color4f=col(pics[k % 5])))
+        cv.drawCircle(-14 + (k*17) % 30, y + 72, 14, skia.Paint(AntiAlias=True, Color4f=skia.Color4f(1, 1, 1, 0.35)))
+        for i, rk in enumerate(['like', 'heart', 'clap'][:2 + k % 2]): RX.draw(cv, rk, -45 + i*6, y + 116, 3.6)
+        cv.drawRRect(skia.RRect.MakeRectXY(skia.Rect(-30, y + 114, -14, y + 118), 2, 2), G)
+        cv.drawLine(-48, y + 124, 48, y + 124, skia.Paint(StrokeWidth=0.8, Color4f=col('#e3e1dd')))
+        for i in range(4): cv.drawRRect(skia.RRect.MakeRectXY(skia.Rect(-46 + i*25, y + 130, -34 + i*25, y + 136), 2, 2), G)
+        y += 150
+    cv.drawRect(skia.Rect(-53, -112, 53, -78), W)                                         # nagłówek
+    cv.drawRRect(skia.RRect.MakeRectXY(skia.Rect(-26, -100, 30, -86), 7, 7), skia.Paint(AntiAlias=True, Color4f=col('#edf3f8')))
+    cv.drawCircle(-41, -93, 7, skia.Paint(AntiAlias=True, Color4f=col('#d6b48c')))
+    cv.drawRRect(skia.RRect.MakeRectXY(skia.Rect(36, -99, 48, -88), 2, 2), G2)
+    cv.drawRRect(skia.RRect.MakeRectXY(skia.Rect(-14, -110, 14, -106), 2, 2), skia.Paint(AntiAlias=True, Color4f=col('#1c1c1e')))   # wycięcie aparatu
+    cv.drawRect(skia.Rect(-53, 92, 53, 112), W)                                           # dolna nawigacja
+    for i in range(5):
+        cv.drawRRect(skia.RRect.MakeRectXY(skia.Rect(-47 + i*20, 96, -39 + i*20, 104), 2, 2), B if i == 0 else G2)
+    cv.restore()
+    gl = skia.Paint(AntiAlias=True); gl.setShader(skia.GradientShader.MakeLinear([skia.Point(-60, -120), skia.Point(60, 40)],
+                                       [skia.Color4f(1, 1, 1, 0.18).toColor(), skia.Color4f(1, 1, 1, 0).toColor()]))
+    cv.drawRRect(skia.RRect.MakeRectXY(scr, 9, 9), gl)                                     # odblask szyby
 
 def desk_mic(cv):
     """Mikrofon podcastowy na krótkim statywie stojący na krawędzi sceny."""

@@ -22,7 +22,7 @@ ITEMS = [
     ('role', ('Kamera, montaż, klon serwisu, weryfikacja', 'Claude Opus 5.5 (Anthropic)')),
     ('p', 'Claude Opus 5.5 pracował w Claude Code: sesja w chmurze (zdalny kontener),'),
     ('p', 'tryb automatyczny (samodzielne uruchamianie poleceń i programów), rozszerzone rozumowanie;'),
-    ('p', 'cały obraz powstał z kodu, bez gotowych grafik i nagrań; 5 wersji, każda poprawiana według uwag autora'), ('gap', 60),
+    ('p', 'cały obraz powstał z kodu, bez gotowych grafik i nagrań; 6 wersji, każda poprawiana według uwag autora'), ('gap', 60),
     ('h', 'NARZĘDZIA I CO ROBIŁY'),
     ('tool', ('Omnilingual ASR CTC 1B (Meta) · onnxruntime', 'rozpoznanie i dopasowanie tekstu do wokalu, słowo po słowie')),
     ('tool', ('Montreal Forced Aligner · polish_mfa', 'granice głosek i sylab - jedno otwarcie ust na sylabę')),
@@ -45,8 +45,8 @@ ITEMS = [
     ('end', 'Puste zasięgi'), ('endsub', 'Paweł Kuraś · 2026'),
 ]
 LH = {'title': 170, 'h': 92, 'role': 66, 'tool': 92, 'p': 46, 'end': 150, 'endsub': 70}
-SPEED = 92.0                       # px/s przewijania
-LEAD_IN = 1.2                      # wyciemnienie z ostatniego ujęcia
+SPEED = 184.0                      # px/s przewijania (v6: 2x szybciej)
+LEAD_IN = 0.6                      # napisy wjeżdżają od razu na zasuniętą kurtynę
 @functools.lru_cache(None)
 def layout():
     y = 0.0; out = []
@@ -59,12 +59,17 @@ def duration():
     items, total = layout()
     y_end = [y for y, k, v in items if k == 'end'][0]
     return LEAD_IN + (E.H + y_end - E.H/2 + 40)/SPEED + 3.0
+_CAM = []
 def render_credits(cv, t, sc):
-    cv.clear(skia.Color4f(0.03, 0.02, 0.04, 1))
+    """v6: tło napisów = scena z zasuniętą kurtyną (ciągłość z ostatnim ujęciem), przygaszona; pod koniec wyciemnienie do czerni."""
+    import timeline as T, compose as CP
+    if not _CAM: _CAM.append(T.cam_at(E.SONG_DUR - 0.01))
     u = t - E.SONG_DUR
-    a = smoothstep(u/0.8)*(1 - smoothstep((u - (E.TAIL - 1.0))/0.9))
+    CP.render_stage(cv, T.stage_scene(t, _CAM[0], signs=False), t)
+    dim = 0.35 + 0.42*smoothstep(u/1.2) + 0.23*smoothstep((u - (E.TAIL - 1.6))/1.4)
+    cv.drawRect(skia.Rect(0, 0, E.W, E.H), skia.Paint(Color4f=skia.Color4f(0.02, 0.01, 0.03, min(dim, 1.0))))
+    a = smoothstep(u/0.5)*(1 - smoothstep((u - (E.TAIL - 1.0))/0.9))
     if a <= 0.001: return
-    light_pool(cv, E.W/2, E.H/2 - 40, 900, 420, (0.7, 0.35, 0.5), 0.10*a)
     items, total = layout()
     y_end = [y for y, k, v in items if k == 'end'][0]
     off = E.H - max(u - LEAD_IN, 0.0)*SPEED                    # pozycja góry listy na ekranie

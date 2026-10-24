@@ -1,6 +1,6 @@
 # Raport: teledysk „Puste zasięgi” (Paweł Kuraś)
 
-> Stan: **wersja v5** (`final/music-video.mp4`). Poprzednie wersje: `archive/v1/` … `archive/v4/`. Wyniki sprawdzeń poniżej dotyczą v5.
+> Stan: **wersja v6** (`final/music-video.mp4`). Poprzednie wersje: `archive/v1/` … `archive/v5/`. Wyniki sprawdzeń poniżej dotyczą v6.
 > Nie słuchałem ani nie oglądałem filmu – wszystko niżej to pomiary liczbowe i obejrzane pojedyncze klatki / arkusze klatek.
 
 ## 1. Co powstało
@@ -14,7 +14,7 @@
 | `src/` | cały kod: analiza (`a01…a12`; v3: `a20…a25` – modele mowy, dopasowanie, fuzja), renderer (`src/video/`), render równoległy, montaż, weryfikacja |
 | `checks/` | arkusze klatek, stopklatki, wyniki weryfikacji (`verify_file.json`, `verify_sync.json`, `exposure.json`) |
 | `fonts/` | czcionki OFL użyte w obrazie i w klonie + pełny tekst licencji |
-| `archive/` | poprzednie wersje filmu: `v1/` … `v4/` (nic nie jest kasowane; w każdej `NOTES.md` z uwagami do tej wersji) |
+| `archive/` | poprzednie wersje filmu: `v1/` … `v5/` (nic nie jest kasowane; w każdej `NOTES.md` z uwagami do tej wersji) |
 | `analysis/asr/` | surowe wyniki modeli mowy: transkrypcje Omnilingual (stem prowadzący i chórki), Whisper, Parakeet, Silero VAD, dopasowania CTC i MFA |
 
 Wymagane narzędzia (wszystkie darmowe, z menedżerów pakietów): `ffmpeg`, Python (`numpy`, `scipy`, `librosa`, `soundfile`, `skia-python`, `pocketsphinx`, `matplotlib`, `onnxruntime`, `sherpa-onnx`, `faster-whisper`, `silero-vad`), Montreal Forced Aligner (conda-forge, przez micromamba), `espeak-ng` + `mbrola-pl1` (apt), Node + Playwright/Chromium (preinstalowane). Modele mowy (pobierane do `tools/models/`, poza repozytorium): Omnilingual ASR CTC 1B i Parakeet TDT v3 (wydania sherpa-onnx), `polish_mfa` (wydania mfa-models, CC BY 4.0), Whisper small CT2 (npm). Żadnych gotowych nagrań ani grafik z internetu – cały obraz jest generowany kodem.
@@ -229,14 +229,16 @@ Wyniki: `checks/verify_file.json`, `checks/verify_sync.json`, `checks/sheets/` (
   to za naturalne dla ujęcia tłumu.
 * **Napis przy postaci**: w 67,8 s dłoń Henia w szerokim geście wchodzi pod tablicę „Puste zasięgi, wielkie zasięgi” (19% pola
   tablicy w teście prostokątów) – na klatce wygląda to jak wskazanie napisu, więc zostawiłem.
-* **Kompresja**: v5 trwa 256 s (dłuższe napisy końcowe), więc obraz ma średnio 2800 kb/s (dwa przebiegi; proste napisy zużywają mało, scena dostaje tyle co w v4), żeby zmieścić się w 100 MB na GitHubie. Głębia ostrości lepiej wyglądałaby w wyższej
-  przepływności – kawałki CRF 14 są w `build/v5/chunks` (`python3 src/assemble.py build/v5/chunks <plik> --crf 16`).
+* **Kompresja**: v6 trwa 236 s (napisy końcowe), obraz ma średnio 3000 kb/s (dwa przebiegi; proste napisy zużywają mało, scena dostaje tyle co w v4), żeby zmieścić się w 100 MB na GitHubie. Głębia ostrości lepiej wyglądałaby w wyższej
+  przepływności – kawałki CRF 14 są w `build/v6/chunks` (`python3 src/assemble.py build/v6/chunks <plik> --crf 16`).
 * **Rekomendacje i komentarze w serwisie** (v4) są wymyślone dla żartu (np. rekomendacja od własnego „konta firmowego”); postaci
   fikcyjne, jak cała reszta.
 * **Klon LinkedIna**: zgodnie z prośbą odtwarza wygląd serwisu 1:1, w stopce jest linijka „LinkedIn Corporation © 2026” jak
   w oryginale (obok dopisek, że to klon; w napisach końcowych „serwis w kadrze jest fikcyjny”). Przed publikacją warto zdecydować,
   czy zostawić nazwę i stopkę.
 * **Interpretacje**: finał (wszyscy wracają na scenę) i scena „pod spodem” (widok od strony lalkarzy) to moje odczytanie tekstu.
+* **Fałsz 2:07–2:15**: zakres fragmentu przyjąłem z uwagi autora (127–135 s), bez pomiaru wysokości dźwięku; obraz „rozstraja się” od 127,6 s do cięcia pod scenę (131,5 s), dalej „orkiestra” pod sceną do 134,8 s.
+* **Logo jabłka na laptopie**: zgodnie z prośbą tekturowy MacBook ma podświetlone logo – to znak towarowy; przed publikacją warto zdecydować, czy zostaje.
 
 ## 7. Historia wersji
 
@@ -493,3 +495,43 @@ Przejrzałem jej arkusze i stopklatki i na tej podstawie zrobiłem poprawki v2 p
   artystyczne, decyzje i uwagi – Paweł Kuraś; realizacja (scenariusz, lalki, scenografia, animacja, kamera, montaż, klon serwisu,
   weryfikacja) – Claude Opus 5.5 w Claude Code (sesja w chmurze, tryb automatyczny, rozszerzone rozumowanie); lista narzędzi
   z opisem, co robiło; fonty OFL; informacja, że postaci i serwis są fikcyjne.
+
+### 7.6 v6 – poprawki po uwagach autora do v5
+
+#### 7.6.1 Telefon z mobilnym feedem (0:08)
+* Poprawka (`props.py`): ekran telefonu to mobilny feed serwisu – pasek z awatarem i wyszukiwarką, karty wpisów (awatar, nazwisko,
+  tekst, zdjęcie, reakcje tymi samymi ikonami co w klonie, przyciski), dolna nawigacja, odblask szyby; feed przewija się, a na
+  „Zobaczmy…” Henio przesuwa go palcem. Ten sam telefon w zwrotce 2 (czyta wpis Tadka).
+
+#### 7.6.2 Laptop tyłem, MacBook (0:22)
+* Poprawka: od strony kamery aluminiowa klapa z podświetlonym logo jabłka i krawędź korpusu; ekran zwrócony do Henia, jego niebieskawy
+  blask na twarzy.
+
+#### 7.6.3 Maski i reakcje nie znikają z rąk (0:54)
+* Przyczyna: rekwizyt kończył się w chwili końca trzymania – znikał z ręki w kadrze; reakcje pojawiały się w dłoni nagle.
+* Poprawka (`timeline.py`, `glide`): maski wyjmowane spod frontu podestu i płynnie (0,7 s) odkładane z powrotem; przed refrenem
+  reakcje wyjmowane spod podestu i unoszone; chórzystki wynurzają się już z reakcjami; reakcje odkładane dopiero, gdy lalki się chowają.
+
+#### 7.6.4 Bez balonu-serca (1:02)
+
+#### 7.6.5 Ożywiona scena „pod spodem” (1:10)
+* Poprawka (`under.py`): ręce lalkarzy w lalkach podbijają je na stopie, pręty idą na werblu, głowy zerkają na monitor, za nimi
+  przechodzi inspicjent z latarką i słuchawkami, kable się kołyszą.
+
+#### 7.6.6 Biały okrąg (1:21)
+* Przyczyna: „ring light” w studiu Grażyny był samą białą obręczą – nieczytelny, zwłaszcza w małym obrazku w poście.
+* Poprawka: lampa pierścieniowa ze świecącymi diodami, blaskiem, uchwytem i telefonem (tyłem, z czerwoną kropką nagrywania), statyw z nóżkami.
+
+#### 7.6.7 Przejście na 2:07 i fałszujący fragment 2:07–2:15
+* Przejście: dekoracja show przelatywała z góry przez ostatnie 0,85 s ujęcia w studiu podcastowym i odsłaniała spody dekoracji –
+  teraz zmiana na cięciu, a chór wynurza się już w nowej dekoracji.
+* Fałsz (pomysł): skoro wszyscy grają „trochę fałszywie”, obraz też fałszuje i pokazuje, kto naprawdę gra.
+  (1) 127,6–131,5 s: obraz „rozstraja się” jak dźwięk – kanały barw lekko się rozjeżdżają i falują (narasta i opada płynnie), z chóru
+  wylatują krzywe, „kwaśne” nuty, chórzyści krzywią się na każdym „raz” i zaraz wracają do wyuczonego uśmiechu.
+  (2) 131,5–134,8 s: cięcie pod scenę – „orkiestra” to lalkarze, którzy jedną ręką prowadzą lalki, drugą grają (tuba, trąbka, tamburyn
+  trochę obok rytmu), inspicjent dyryguje nie w takt z grymasem; z instrumentów lecą krzywe nuty, a na „pęka” nuty z trąbki pękają na pół;
+  wers kredą na ścianie.
+
+#### 7.6.8 Przejście do napisów końcowych
+* Poprawka: po ostatnim „HEJ!” kurtyna się zasuwa, obraz tylko lekko przygasa, napisy przewijają się na zasuniętej kurtynie (ten sam kadr)
+  2× szybciej (ok. 23 s zamiast 43 s); pod koniec wyciemnienie do czerni.

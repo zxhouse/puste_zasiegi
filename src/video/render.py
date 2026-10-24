@@ -17,7 +17,7 @@ def render_frame(i, surf=None):
     if sc['mode'] == 'stage':
         CP.render_stage(cv, sc, t)
     elif sc['mode'] == 'under':
-        U.render_under(cv, t, sc['cam'])
+        U.render_under(cv, t, sc['cam'], sc.get('variant', 'quiet'), sc.get('line', (4, 3)), sc.get('t0'))
     elif sc['mode'] == 'feed':
         LI.render_feed(cv, t, sc)
     else:
@@ -28,7 +28,23 @@ def render_frame(i, surf=None):
         post.apply(surf, i, halation=0.3, grain=0.7)
     else:
         post.apply(surf, i)
+        if sc['mode'] == 'stage': detune(surf, t)
     return surf
+
+def detune(surf, t):
+    """Fałszujący fragment (refren 2, 2:07-2:11): obraz 'rozstraja się' jak dźwięk - kanały R i B lekko się rozjeżdżają
+    i falują (jak rozstrojony odbiornik), narasta i opada płynnie."""
+    a0, a1 = T.lt(T.PRE2, 3) + 1.8, T.lt(T.CH2, 1)
+    k = E.smoothstep((t - a0)/0.8)*(1 - E.smoothstep((t - (a1 - 0.25))/0.25))
+    if k <= 0.01: return
+    img = surf.makeImageSnapshot(); cv = surf.getCanvas(); cv.save(); cv.resetMatrix()
+    d = k*(5 + 4*np.sin(t*2*np.pi*1.7)); wy = k*2*np.sin(t*2*np.pi*0.9)
+    cv.clear(skia.Color4f(0, 0, 0, 1))
+    for m, dx, dy in (([1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0], d, wy), ([0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0], 0, 0),
+                      ([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0], -d, -wy)):
+        p = skia.Paint(); p.setColorFilter(skia.ColorFilters.Matrix(m)); p.setBlendMode(skia.BlendMode.kPlus)
+        cv.drawImage(img, float(dx), float(dy), skia.SamplingOptions(skia.FilterMode.kLinear), p)
+    cv.restore()
 
 def main():
     ap = argparse.ArgumentParser(); ap.add_argument('a', type=int); ap.add_argument('b', type=int); ap.add_argument('out')
