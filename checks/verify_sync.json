@@ -322,8 +322,8 @@
   "pct_within_2_frames": 100.0
  },
  "cuts": {
-  "n": 59,
-  "on_line_or_downbeat": 59,
+  "n": 60,
+  "on_line_or_downbeat": 60,
   "list": [
    {
     "t": 3.25,
@@ -384,7 +384,7 @@
    {
     "t": 29.913,
     "to": "stage",
-    "dist_line_ms": 2933,
+    "dist_line_ms": 2073,
     "dist_downbeat_ms": 0,
     "ok": true
    },
@@ -411,9 +411,16 @@
    },
    {
     "t": 42.62,
-    "to": "stage",
+    "to": "feed",
     "dist_line_ms": 0,
     "dist_downbeat_ms": 214,
+    "ok": true
+   },
+   {
+    "t": 45.09,
+    "to": "stage",
+    "dist_line_ms": 0,
+    "dist_downbeat_ms": 639,
     "ok": true
    },
    {
@@ -509,7 +516,7 @@
    },
    {
     "t": 90.08,
-    "to": "stage",
+    "to": "feed",
     "dist_line_ms": 0,
     "dist_downbeat_ms": 50,
     "ok": true
@@ -544,7 +551,7 @@
    },
    {
     "t": 102.86,
-    "to": "stage",
+    "to": "feed",
     "dist_line_ms": 0,
     "dist_downbeat_ms": 343,
     "ok": true
@@ -664,7 +671,7 @@
    {
     "t": 163.92,
     "to": "feed",
-    "dist_line_ms": 3130,
+    "dist_line_ms": 1750,
     "dist_downbeat_ms": 594,
     "ok": true
    },
@@ -742,24 +749,31 @@
  },
  "camera_static_shots": [],
  "signs": {
-  "sign_frames_checked": 2185,
-  "max_overlap_fraction_with_character": 0.0695,
+  "sign_frames_checked": 1914,
+  "max_overlap_fraction_with_character": 0.1941,
   "at": [
-   50.4,
+   67.8,
    [
-    3,
-    1
+    4,
+    2
    ],
-   "Chór 2"
+   "Henio Kawka"
   ],
-  "min_visible_fraction": 0.437,
+  "min_visible_fraction": 0.978,
   "min_visible_at": [
-   96.6,
+   163.87,
    [
-    5,
+    10,
     4
    ]
   ],
+  "text_fits_box": {
+   "signs": 29,
+   "all_fit": true,
+   "min_margin_x_px": 16.8,
+   "min_margin_y_px": 13.7
+  },
+  "boxed_sign_frames_inside_stage_opening_pct": 100.0,
   "placement": [
    {
     "line": [
@@ -767,7 +781,7 @@
      0
     ],
     "kind": "bubble",
-    "visibility": 0.96,
+    "visibility": 1.0,
     "overlap": 0.0
    },
    {
@@ -777,7 +791,7 @@
     ],
     "kind": "board",
     "visibility": 1.0,
-    "overlap": 0.0
+    "overlap": 0.009
    },
    {
     "line": [
@@ -795,7 +809,7 @@
     ],
     "kind": "board",
     "visibility": 1.0,
-    "overlap": 0.0
+    "overlap": 0.003
    },
    {
     "line": [
@@ -804,7 +818,7 @@
     ],
     "kind": "board",
     "visibility": 1.0,
-    "overlap": 0.0
+    "overlap": 0.004
    },
    {
     "line": [
@@ -813,7 +827,7 @@
     ],
     "kind": "board",
     "visibility": 1.0,
-    "overlap": 0.0
+    "overlap": 0.025
    },
    {
     "line": [
@@ -822,7 +836,7 @@
     ],
     "kind": "board",
     "visibility": 1.0,
-    "overlap": 0.0
+    "overlap": 0.057
    },
    {
     "line": [
@@ -856,9 +870,9 @@
      3,
      1
     ],
-    "kind": "board",
+    "kind": "playboard",
     "visibility": 1.0,
-    "overlap": 0.021
+    "overlap": 0.0
    },
    {
     "line": [
@@ -876,14 +890,14 @@
     ],
     "kind": "board",
     "visibility": 1.0,
-    "overlap": 0.0
+    "overlap": 0.007
    },
    {
     "line": [
      4,
      0
     ],
-    "kind": "playboard",
+    "kind": "marquee",
     "visibility": 1.0,
     "overlap": 0.0
    },
@@ -910,7 +924,7 @@
      4,
      4
     ],
-    "kind": "board",
+    "kind": "playboard",
     "visibility": 1.0,
     "overlap": 0.0
    },
@@ -929,8 +943,8 @@
      1
     ],
     "kind": "board",
-    "visibility": 0.95,
-    "overlap": 0.041
+    "visibility": 1.0,
+    "overlap": 0.0
    },
    {
     "line": [
@@ -944,19 +958,10 @@
    {
     "line": [
      5,
-     3
-    ],
-    "kind": "board",
-    "visibility": 0.99,
-    "overlap": 0.008
-   },
-   {
-    "line": [
-     5,
      4
     ],
-    "kind": "playboard",
-    "visibility": 0.87,
+    "kind": "board",
+    "visibility": 1.0,
     "overlap": 0.0
    },
    {
@@ -980,20 +985,11 @@
    {
     "line": [
      7,
-     1
-    ],
-    "kind": "board",
-    "visibility": 1.0,
-    "overlap": 0.0
-   },
-   {
-    "line": [
-     7,
      2
     ],
     "kind": "board",
     "visibility": 1.0,
-    "overlap": 0.0
+    "overlap": 0.056
    },
    {
     "line": [
@@ -1002,7 +998,7 @@
     ],
     "kind": "board",
     "visibility": 1.0,
-    "overlap": 0.0
+    "overlap": 0.151
    },
    {
     "line": [
@@ -1027,8 +1023,8 @@
      8,
      2
     ],
-    "kind": "riser",
-    "visibility": 0.93,
+    "kind": "board",
+    "visibility": 1.0,
     "overlap": 0.0
    },
    {
@@ -1045,9 +1041,9 @@
      9,
      0
     ],
-    "kind": "riser",
+    "kind": "marquee",
     "visibility": 1.0,
-    "overlap": 0.038
+    "overlap": 0.0
    },
    {
     "line": [
@@ -1055,7 +1051,7 @@
      1
     ],
     "kind": "riser",
-    "visibility": 0.96,
+    "visibility": 1.0,
     "overlap": 0.0
    },
    {
@@ -1063,7 +1059,7 @@
      9,
      4
     ],
-    "kind": "board",
+    "kind": "playboard",
     "visibility": 1.0,
     "overlap": 0.0
    },
@@ -1126,7 +1122,7 @@
      11,
      0
     ],
-    "kind": "playboard",
+    "kind": "marquee",
     "visibility": 1.0,
     "overlap": 0.0
    },
@@ -1153,7 +1149,7 @@
      11,
      3
     ],
-    "kind": "board",
+    "kind": "playboard",
     "visibility": 1.0,
     "overlap": 0.0
    },
@@ -1184,6 +1180,167 @@
     "visibility": 1.0,
     "overlap": 0.0
    }
+  ]
+ },
+ "framing": {
+  "stage_frames_checked": 1705,
+  "frames_with_head_cut_by_edge": 39,
+  "head_cut_at": [
+   171.7,
+   171.8,
+   171.9,
+   172.0,
+   172.1,
+   172.2,
+   172.3,
+   172.4,
+   172.5,
+   172.6,
+   172.7,
+   172.8,
+   172.9,
+   173.0,
+   173.1,
+   173.2,
+   173.3,
+   173.4,
+   176.8,
+   176.9,
+   183.7,
+   183.8,
+   184.2,
+   184.3,
+   184.4,
+   184.5,
+   184.6,
+   184.7,
+   184.8,
+   184.9
+  ],
+  "frames_with_framed_subject_not_visible": 4,
+  "subject_missing_at": [
+   97.1,
+   99.7,
+   113.3,
+   147.9
+  ],
+  "poi_samples": 359,
+  "poi_samples_less_than_90pct_visible": 0,
+  "poi_out_at": [],
+  "heads_adjustments": [
+   [
+    45.09,
+    "include",
+    [
+     "Grażyna Gratka"
+    ]
+   ],
+   [
+    45.09,
+    "include",
+    [
+     "Grażyna Gratka"
+    ]
+   ],
+   [
+    63.18,
+    "include",
+    [
+     "Chór 3"
+    ]
+   ],
+   [
+    76.08,
+    "include",
+    [
+     "Chór 5"
+    ]
+   ],
+   [
+    99.72,
+    "include",
+    [
+     "Chór 3"
+    ]
+   ],
+   [
+    99.72,
+    "include",
+    [
+     "Henio Kawka",
+     "Chór 3"
+    ]
+   ],
+   [
+    116.07,
+    "include",
+    [
+     "Chór 4"
+    ]
+   ],
+   [
+    116.07,
+    "include",
+    [
+     "Chór 4"
+    ]
+   ],
+   [
+    122.55,
+    "include",
+    [
+     "Chór 4",
+     "Chór 3"
+    ]
+   ],
+   [
+    131.48,
+    "include",
+    [
+     "Chór 5"
+    ]
+   ],
+   [
+    170.91,
+    "shift",
+    -0.069
+   ],
+   [
+    170.91,
+    "include",
+    [
+     "Kasia Kejs"
+    ]
+   ],
+   [
+    177.38,
+    "include",
+    [
+     "Kasia Kejs"
+    ]
+   ],
+   [
+    177.38,
+    "include",
+    [
+     "Kasia Kejs"
+    ]
+   ],
+   [
+    183.81,
+    "include",
+    [
+     "Grażyna Gratka",
+     "Prezes Bogumił Łaskawiec"
+    ]
+   ],
+   [
+    183.81,
+    "include",
+    [
+     "Kasia Kejs"
+    ]
+   ]
   ]
  },
  "choir": {
@@ -1462,275 +1619,275 @@
    ],
    [
     115.0,
-    3
+    0
    ],
    [
     115.5,
-    3
+    0
    ],
    [
     116.0,
-    3
+    0
    ],
    [
     116.5,
-    3
+    0
    ],
    [
     117.0,
-    3
+    0
    ],
    [
     117.5,
-    3
+    0
    ],
    [
     118.0,
-    3
+    0
    ],
    [
     118.5,
-    3
+    0
    ],
    [
     119.0,
-    3
+    0
    ],
    [
     119.5,
-    3
+    0
    ],
    [
     120.0,
-    3
+    0
    ],
    [
     120.5,
-    3
+    0
    ],
    [
     121.0,
-    3
+    0
    ],
    [
     121.5,
-    3
+    0
    ],
    [
     122.0,
-    3
+    0
    ],
    [
     122.5,
-    3
+    0
    ],
    [
     123.0,
-    3
+    0
    ],
    [
     123.5,
-    3
+    0
    ],
    [
     124.0,
-    3
+    0
    ],
    [
     124.5,
-    3
+    0
    ],
    [
     125.0,
-    3
+    0
    ],
    [
     125.5,
-    3
+    0
    ],
    [
     126.0,
-    3
+    0
    ],
    [
     126.5,
-    3
+    0
    ],
    [
     127.0,
-    3
+    0
    ],
    [
     127.5,
-    3
+    0
    ],
    [
     128.0,
-    7
+    6
    ],
    [
     128.5,
-    7
+    8
    ],
    [
     129.0,
-    7
+    8
    ],
    [
     129.5,
-    7
+    8
    ],
    [
     130.0,
-    7
+    8
    ],
    [
     130.5,
-    7
+    8
    ],
    [
     131.0,
-    7
+    8
    ],
    [
     131.5,
-    7
+    8
    ],
    [
     132.0,
-    7
+    8
    ],
    [
     132.5,
-    7
+    8
    ],
    [
     133.0,
-    7
+    8
    ],
    [
     133.5,
-    7
+    8
    ],
    [
     134.0,
-    7
+    8
    ],
    [
     134.5,
-    7
+    8
    ],
    [
     135.0,
-    7
+    8
    ],
    [
     135.5,
-    7
+    8
    ],
    [
     136.0,
-    7
+    8
    ],
    [
     136.5,
-    7
+    8
    ],
    [
     137.0,
-    7
+    8
    ],
    [
     137.5,
-    7
+    8
    ],
    [
     138.0,
-    7
+    8
    ],
    [
     138.5,
-    7
+    8
    ],
    [
     139.0,
-    7
+    8
    ],
    [
     139.5,
-    7
+    8
    ],
    [
     140.0,
-    7
+    8
    ],
    [
     140.5,
-    7
+    8
    ],
    [
     141.0,
-    7
+    8
    ],
    [
     141.5,
-    7
+    8
    ],
    [
     142.0,
-    7
+    8
    ],
    [
     142.5,
-    7
+    8
    ],
    [
     143.0,
-    7
+    8
    ],
    [
     143.5,
-    7
+    8
    ],
    [
     144.0,
-    7
+    8
    ],
    [
     144.5,
-    7
+    8
    ],
    [
     145.0,
-    7
+    8
    ],
    [
     145.5,
-    7
+    8
    ],
    [
     146.0,
-    7
+    8
    ],
    [
     146.5,
-    7
+    8
    ],
    [
     147.0,
-    7
+    8
    ],
    [
     147.5,
-    7
+    8
    ],
    [
     148.0,
-    7
+    8
    ],
    [
     148.5,
-    7
+    8
    ],
    [
     167.0,

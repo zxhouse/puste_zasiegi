@@ -350,7 +350,7 @@ Przejrzałem jej arkusze i stopklatki i na tej podstawie zrobiłem poprawki v2 p
   dokładana już po krzywej tonalnej; jasna ściana dekoracji + plama + halacja = obcięcie do 255.
 * Poprawka (`post.py`, `gfx.py`, `compose.py`, `timeline.py`): światła w trybie „screen”, halacja tylko od naprawdę jasnych partii
   i liczona przed krzywą tonalną, krzywa z miękkim ramieniem w światłach, słabsze plamy, ciemniejsze tło dekoracji, łagodniejsze flesze.
-* Sprawdzenie: te same klatki przed / po: 52–59% → 0% przepaleń, 99. percentyl jasności ≤ 234; cały plik – sekcja 5.
+* Sprawdzenie: te same klatki przed / po: 52–59% → 0% przepaleń, 99. percentyl jasności ≤ 233; cały plik – sekcja 5.
 
 #### 7.4.2 Strona serwisu bez ziarna, mniejsze ziarno
 * Uwaga: prawdziwy LinkedIn bez ziarna i „analogowości”; ziarno za duże (kompresja serwisu).
@@ -384,7 +384,7 @@ Przejrzałem jej arkusze i stopklatki i na tej podstawie zrobiłem poprawki v2 p
 * Poprawka: kadr z postaci + trzymanych rekwizytów + rekwizytów sceny + napisu (rozdział 4); scenki w rzędzie nad Grażyną,
   zwój obok; zejścia na cięciach; głowy całe albo wcale; kadr w otworze sceny; nadmiar wysokości w planach grupowych po połowie
   nad i pod grupą; powolny najazd w ujęciach bez zmiany planu; trzy-ujęcie Henio–Tadek–prezes na drodze.
-* Sprawdzenie: arkusze 3 klatek dla wszystkich 61 ujęć (cztery rundy poprawek), test kadru w sekcji 5.
+* Sprawdzenie: arkusze 3 klatek (początek, środek, koniec) dla wszystkich 61 ujęć – 6 przeglądów z poprawkami między nimi; test kadru w sekcji 5.
 
 #### 7.4.7 Częściej „prawdziwy” serwis
 * Nowe przebitki: 42,6–45,1 s (komentarz „Ogromny szacun!” pod wpisem prezesa, zdjęcie = zatrzymany kadr konferencji bez napisów),
