@@ -309,3 +309,52 @@ def desk_mic(cv):
     cv.drawRRect(skia.RRect.MakeRectXY(skia.Rect(-34, -300, 34, -150), 30, 30), skia.Paint(AntiAlias=True, Color4f=col('#1d1d1d')))
     for k in range(5): cv.drawLine(-30, -280 + k*24, 30, -280 + k*24, skia.Paint(AntiAlias=True, StrokeWidth=2, Color4f=col('#555555')))
     cv.drawCircle(0, -225, 60, skia.Paint(AntiAlias=True, Style=skia.Paint.kStroke_Style, StrokeWidth=6, Color4f=col('#3a3a3a')))
+
+def podcast_desk(cv, seats):
+    """Stół podcastowy z jasnego drewna (zasłania lalki do pasa) + mikrofony na ramionach przy każdym miejscu.
+    seats: lista (x, y_ust, strona_mikrofonu, skala) - mikrofon z boku ust, nie zasłania ruchu szczęki."""
+    top = -105
+    body = skia.Path(); body.addRRect(skia.RRect.MakeRectXY(skia.Rect(-1080, top + 14, 1080, 120), 18, 18))
+    fill(cv, body, Material('#9b6a3f', 'card', 0.8, light=1.12, dark=0.78, seed=410))
+    for k in range(7):     # słoje
+        y = top + 34 + k*14
+        cv.drawLine(-1060, y, 1060, y + 4*math.sin(k), skia.Paint(AntiAlias=True, StrokeWidth=2, Color4f=skia.Color4f(0.3, 0.17, 0.07, 0.22)))
+    blat = skia.Path(); blat.addRRect(skia.RRect.MakeRectXY(skia.Rect(-1100, top - 10, 1100, top + 16), 10, 10))
+    fill(cv, blat, Material('#c38f5c', 'card', 0.8, light=1.15, dark=0.85, seed=411))
+    arm = skia.Paint(AntiAlias=True, StrokeWidth=11, Color4f=col('#1c1c1e'), StrokeCap=skia.Paint.kRound_Cap)
+    for (x, my, side, k) in seats:
+        bx = x + side*250*k; mx = x + side*158*k; mcy = my + 62*k
+        jx, jy = (bx + mx)/2 + side*30*k, top - 170*k
+        cv.drawRect(skia.Rect(bx - 16, top - 22, bx + 16, top + 8), skia.Paint(Color4f=col('#2a2a2c')))
+        cv.drawLine(bx, top - 12, jx, jy, arm); cv.drawLine(jx, jy, mx + side*30*k, mcy - 40*k, arm)
+        cv.save(); cv.translate(mx, mcy); cv.scale(k, k); cv.rotate(-side*14)
+        cv.drawCircle(0, 0, 50, skia.Paint(AntiAlias=True, Style=skia.Paint.kStroke_Style, StrokeWidth=5, Color4f=col('#3a3a3c')))
+        cap = skia.Path(); cap.addRRect(skia.RRect.MakeRectXY(skia.Rect(-26, -62, 26, 54), 24, 24))
+        fill(cv, cap, Material('#2c2c31', 'felt', 0.6, light=1.3, dark=0.7, seed=412))
+        for j in range(5): cv.drawLine(-22, -44 + j*16, 22, -44 + j*16, skia.Paint(AntiAlias=True, StrokeWidth=2, Color4f=col('#55555c')))
+        cv.restore()
+    # kubki na stole
+    for x in (-250, 300):
+        cv.save(); cv.translate(x, top + 4); cv.scale(0.8, 0.8); mug(cv, '#e9e3d5'); cv.restore()
+
+def rec_card(cv, k=0):
+    """Rekomendacja z serwisu na patyku: awatar, imię, cytat - 'trzy opinie'."""
+    _stick(cv, 8); cv.translate(0, -GRIP)
+    card(cv, (-120, -150, 120, 0), '#ffffff', 14, 'card', 280 + k, 0.55, light=1.04, dark=0.95)
+    av = ['#f2c14e', '#6cbf84', '#e07a5f'][k % 3]
+    cv.drawCircle(-82, -112, 24, skia.Paint(AntiAlias=True, Color4f=col(av)))
+    for ex in (-90, -74): cv.drawCircle(ex, -116, 5, skia.Paint(AntiAlias=True, Color4f=col('#ffffff')))
+    cv.drawRRect(skia.RRect.MakeRectXY(skia.Rect(-50, -126, 70, -112), 6, 6), skia.Paint(AntiAlias=True, Color4f=col('#3c3c3c')))
+    cv.drawRRect(skia.RRect.MakeRectXY(skia.Rect(-50, -104, 30, -94), 5, 5), skia.Paint(AntiAlias=True, Color4f=col('#b8b8b8')))
+    draw_text(cv, '„', -96, -38, 'ui_b', 64, '#0a66c2')
+    draw_text(cv, ['Wizjoner!', 'Szacun!', 'Polecam!'][k % 3], 8, -36, 'ui_b', 30, '#222222')
+
+def rec_tag(cv):
+    """Metka 'na sprzedaż': cena = 3 rekomendacje (z ikonką serwisu)."""
+    _stick(cv, 8); cv.translate(0, -GRIP*0.8)
+    pth = poly_path([(-120, -86), (90, -86), (126, -43), (90, 0), (-120, 0)], True, False)
+    fill(cv, pth, Material('#ffe066', 'card', 0.8, light=1.08, dark=0.9, seed=285))
+    cv.drawPath(pth, skia.Paint(AntiAlias=True, Style=skia.Paint.kStroke_Style, StrokeWidth=3.5, Color4f=col('#b8901c')))
+    cv.drawCircle(96, -43, 9, skia.Paint(AntiAlias=True, Color4f=col('#7a5c12')))
+    draw_text(cv, 'CENA:', -14, -54, 'block2', 22, '#3a3a3a')
+    draw_text(cv, '3 rekomendacje', -14, -18, 'ui_b', 26, '#0a66c2')

@@ -287,7 +287,7 @@ class Character:
                 cv.drawPath(path, p2)
             # mankiet + dłoń (rękawiczka z kciukiem)
             ang = math.degrees(math.atan2(hy - ey, hx - ex))
-            plist = [(pr if isinstance(pr, tuple) else (pr, False)) for pr in pose.get('props', {}).get(side, [])]
+            plist = [((pr[0], pr[1]) if isinstance(pr, tuple) else (pr, False)) for pr in pose.get('props', {}).get(side, [])]
             gripping = any(g for _, g in plist)
             hm = Material(self.hand_c, 'felt', 0.55, seed=self.seed + 41)
             cv.save(); cv.translate(hx, hy)

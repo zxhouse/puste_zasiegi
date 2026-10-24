@@ -86,7 +86,8 @@ class Role:
         v = tr(t); return v
     def span_at(self, t):
         for s in self.spans:
-            if s[0] - (s[4] if s[2] == 'rise' else 0) <= t <= s[1] + s[5]: return s
+            # wejście/wyjście 'none' = pojawia się/znika na cięciu (bez doliczania czasu animacji)
+            if s[0] - (s[4] if s[2] == 'rise' else 0) <= t <= s[1] + (s[5] if s[3] != 'none' else 0): return s
         return None
 
     def actor(self, t):
@@ -156,9 +157,9 @@ class Role:
         hR = hR + np.array([4*math.sin(t*2.3 + ph*3), 6*en*k_hit + 3*math.sin(t*1.9 + ph*2)])
         props = {'L': [], 'R': []}
         grips = {'L': False, 'R': False}
-        for (a, b, side, fn, grip) in self.holds:
+        for hi, (a, b, side, fn, grip) in enumerate(self.holds):
             if a <= t <= b:
-                props[side].append((lambda cv, fn=fn, t=t: fn(cv, t), grip)); grips[side] = grips[side] or grip
+                props[side].append((lambda cv, fn=fn, t=t: fn(cv, t), grip, (self, hi))); grips[side] = grips[side] or grip
         rnd = E.lead_round(t) if self.mouth == 'lead' else (E.choir_round(t) if self.mouth == 'choir' else 0.0)
         pose = dict(mouth=mo, round=rnd, smile=self.g('smile', t), turn=turn, tilt=tilt, nod=nod, lean=lean, bob=bob, gaze=(gx, gy), blink=blink,
                     lid=min(self.g('lid', t) + lid_add, 0.85), brow=self.g('brow', t) + brow_add, hands={'L': tuple(hL), 'R': tuple(hR)}, props=props, grip=grips)

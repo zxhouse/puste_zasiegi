@@ -247,8 +247,7 @@ def set_studio_g_back(c):
 
 def set_studio_g_mid(c):
     # ring light na statywie
-    lp = skia.Paint(AntiAlias=True, StrokeWidth=10, Color4f=col('#333333'))
-    c.drawLine(-760, -300, -760, 60, lp)
+    pass
 
 def set_road_back(c):
     g = skia.GradientShader.MakeLinear([skia.Point(0, -1300), skia.Point(0, -300)], [col('#ff9a62').toColor(), col('#ffd9a0').toColor()])
@@ -298,6 +297,84 @@ def set_wood_back(c):
             c.drawLine(x + 14, yy, x + 52, yy + rng.uniform(-30, 30), skia.Paint(AntiAlias=True, StrokeWidth=2, Color4f=skia.Color4f(0.3, 0.18, 0.08, 0.35)))
     card(c, (-1250, -980, -900, -880), '#3a0d0d', 14, 'card', 130, 0.5)
 
+# ------------------------------------------------------------------ studio podcastowe ('studio w drewnie'): beżowe zasłony w fałdy,
+# panel z drewnianych listew za prowadzącym, regały z roślinami / świecami / lampką / LED, lampy podłogowe z białym abażurem
+def _drapes(c, x0, x1, y0, y1, base='#cdb48c', period=118):
+    b = col(base)
+    g = skia.GradientShader.MakeLinear([skia.Point(x0, 0), skia.Point(x0 + period, 0)],
+                                       [shade(b, 0.62).toColor(), shade(b, 1.12).toColor(), shade(b, 1.0).toColor(), shade(b, 0.78).toColor(), shade(b, 0.62).toColor()],
+                                       [0, 0.3, 0.55, 0.8, 1], skia.TileMode.kRepeat)
+    p = skia.Paint(AntiAlias=True); p.setShader(g); c.drawRect(skia.Rect(x0, y0, x1, y1), p)
+    tp = skia.Paint(Material(b, 'velvet', 1.6, seed=150).tex_paint()); tp.setAlphaf(0.35); c.drawRect(skia.Rect(x0, y0, x1, y1), tp)
+    c.drawRect(skia.Rect(x0, y0, x1, y0 + 40), skia.Paint(Color4f=col('#2b2b2b')))               # szyna
+def _shelf(c, x, w=260, y_top=-980, y_bot=-80):
+    fp = skia.Paint(AntiAlias=True, StrokeWidth=9, Color4f=col('#1d1d1f'))
+    c.drawLine(x - w/2, y_top, x - w/2, y_bot, fp); c.drawLine(x + w/2, y_top, x + w/2, y_bot, fp)
+    ys = np.linspace(y_top + 60, y_bot - 20, 5)
+    for k, y in enumerate(ys):
+        card(c, (x - w/2 - 6, y, x + w/2 + 6, y + 22), '#b7834e', 4, 'card', 160 + k, 0.6)
+    # półki od góry: książki + figurka, lampka (świeci), świece, aparat + LED, roślina w doniczce
+    y = ys[0]
+    for i, (bw, bh, cc) in enumerate([(150, 26, '#2f3e46'), (130, 22, '#b23a48'), (160, 24, '#e9e3d5')]):
+        card(c, (x - bw/2, y - 26*(i + 1) + 2, x + bw/2, y - 26*i), cc, 3, 'card', 170 + i, 0.6)
+    c.drawCircle(x + 20, y - 100, 18, skia.Paint(AntiAlias=True, Color4f=col('#f2c14e')))
+    y = ys[1]
+    c.drawRect(skia.Rect(x - 22, y - 22, x + 22, y), skia.Paint(Color4f=col('#c9a227')))
+    gl = skia.Paint(AntiAlias=True, Color4f=col('#ffd38a')); c.drawOval(skia.Rect(x - 40, y - 120, x + 40, y - 20), gl)
+    light_pool(c, x, y - 70, 170, 150, (1.0, 0.75, 0.4), 0.55)
+    y = ys[2]
+    for dx, hh in ((-60, 70), (-10, 50), (45, 85)):
+        card(c, (x + dx - 18, y - hh, x + dx + 18, y), '#f4efe4', 6, 'card', 175, 0.5)
+        c.drawOval(skia.Rect(x + dx - 4, y - hh - 16, x + dx + 4, y - hh - 2), skia.Paint(AntiAlias=True, Color4f=col('#ffb347')))
+        light_pool(c, x + dx, y - hh - 10, 40, 40, (1.0, 0.7, 0.35), 0.5)
+    y = ys[3]
+    card(c, (x - 95, y - 50, x - 15, y), '#2a2a2a', 6, 'card', 178, 0.5)
+    c.drawCircle(x - 40, y - 26, 20, skia.Paint(AntiAlias=True, Color4f=col('#111111')))
+    c.drawCircle(x - 40, y - 26, 11, skia.Paint(AntiAlias=True, Color4f=col('#3d5a80')))
+    c.drawRRect(skia.RRect.MakeRectXY(skia.Rect(x + 50, y - 150, x + 66, y), 8, 8), skia.Paint(AntiAlias=True, Color4f=col('#ff9b3d')))
+    light_pool(c, x + 58, y - 75, 60, 120, (1.0, 0.55, 0.2), 0.6)
+    y = ys[4]
+    card(c, (x - 40, y - 60, x + 40, y), '#d9d4cc', 10, 'card', 179, 0.5)
+    leaf = skia.Paint(AntiAlias=True, Color4f=col('#3f7d3a'))
+    for k in range(9):
+        a = -math.pi/2 + (k - 4)*0.32; L_ = 70 + 20*(k % 3)
+        c.save(); c.translate(x + math.cos(a)*L_*0.6, y - 60 + math.sin(a)*L_*0.6); c.rotate(math.degrees(a) + 90)
+        c.drawOval(skia.Rect(-12, -34, 12, 0), leaf); c.restore()
+    # zwisające pnącze z górnej półki
+    vp = skia.Paint(AntiAlias=True, Color4f=col('#4f8a3d'))
+    for k in range(14):
+        c.drawOval(skia.Rect(x - w/2 + 18 + 6*math.sin(k), ys[0] + 10 + k*30, x - w/2 + 40 + 6*math.sin(k), ys[0] + 34 + k*30), vp)
+def set_podcast_back(c):
+    c.drawRect(skia.Rect(-1800, -1400, 1800, 600), skia.Paint(Color4f=col('#2b211b')))
+    _drapes(c, -1800, 1800, -1300, 600)
+    # panel z drewnianych listew za prowadzącym ('studio w drewnie')
+    card(c, (-330, -1060, 330, -60), '#2a1a10', 8, 'card', 151, 0.5)
+    rng = np.random.default_rng(9)
+    for i, x in enumerate(np.arange(-310, 300, 44)):
+        k = 0.88 + rng.uniform(0, 0.24)
+        r = skia.Path(); r.addRRect(skia.RRect.MakeRectXY(skia.Rect(x, -1040, x + 28, -80), 5, 5))
+        fill(c, r, Material(shade(col('#b07a45'), k), 'card', 0.6, light=1.18, dark=0.72, seed=152 + i % 5))
+    # neon 'podcast'
+    draw_text(c, 'podcast', -175, -650, 'script', 58, '#ffe3ef', stroke=('#ff5fa2', 5))
+    light_pool(c, -175, -668, 220, 90, (1.0, 0.45, 0.7), 0.35)
+    for sx in (-1, 1): _shelf(c, sx*560)
+def set_podcast_mid(c):
+    # lampy podłogowe z białym abażurem (świecą na zasłony) + duże rośliny w donicach
+    for sx in (-1, 1):
+        x = sx*980
+        c.drawLine(x, -540, x, 60, skia.Paint(AntiAlias=True, StrokeWidth=10, Color4f=col('#3a3a3a')))
+        light_pool(c, x, -620, 420, 380, (1.0, 0.82, 0.55), 0.55)
+        sh = poly_path([(x - 120, -720), (x + 120, -720), (x + 140, -545), (x - 140, -545)], True, False)
+        g = skia.GradientShader.MakeLinear([skia.Point(0, -720), skia.Point(0, -545)], [col('#fff8ea').toColor(), col('#ffe2b0').toColor()])
+        p = skia.Paint(AntiAlias=True); p.setShader(g); c.drawPath(sh, p)
+        x2 = sx*1230
+        card(c, (x2 - 80, -170, x2 + 80, 60), '#cfcac2', 14, 'card', 181, 0.5)
+        leaf = skia.Paint(AntiAlias=True, Color4f=col('#2f6b34'))
+        for k in range(11):
+            a = -math.pi/2 + (k - 5)*0.27; L_ = 230 + 60*((k*7) % 3)
+            c.save(); c.translate(x2 + math.cos(a)*L_*0.55, -170 + math.sin(a)*L_*0.55); c.rotate(math.degrees(a) + 90)
+            c.drawOval(skia.Rect(-30, -L_*0.5, 30, 0), leaf); c.restore()
+
 def set_under_back(c):
     c.drawRect(skia.Rect(-1800, -1400, 1800, 1600), skia.Paint(Color4f=col('#07070b')))
     # tył playboardu: surowa sklejka z zastrzałami
@@ -308,7 +385,7 @@ def set_under_back(c):
 SETS = {
     'kitchen': (set_kitchen_back, set_kitchen_mid), 'office': (set_office_back, set_office_mid), 'conf': (set_conf_back, set_conf_mid),
     'show': (set_show_back, set_show_riser), 'studio_g': (set_studio_g_back, set_studio_g_mid), 'road': (set_road_back, None),
-    'heaven': (set_heaven_back, None), 'wood': (set_wood_back, None), 'under': (set_under_back, None), 'curtain': (None, None)}
+    'heaven': (set_heaven_back, None), 'wood': (set_wood_back, None), 'podcast': (set_podcast_back, set_podcast_mid), 'under': (set_under_back, None), 'curtain': (None, None)}
 
 def draw_set_layer(cv, name, layer):
     fns = SETS.get(name, (None, None))

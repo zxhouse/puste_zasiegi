@@ -23,11 +23,9 @@ def render_frame(i, surf=None):
     else:
         CR.render_credits(cv, t, sc)
     if sc['mode'] == 'feed':
-        # przebitka: im bliżej pełnego kadru filmu, tym bardziej 'filmowa' obróbka (płynne przejście do sceny)
-        k = LI.film_amount(t, sc)
-        post.apply(surf, i, halation=0.12 + 0.48*k, grain=0.45 + 0.55*k, soft=0.2 + 0.2*k, vignette=0.35 + 0.65*k, grade=k)
+        pass        # strona serwisu jest czysta (bez ziarna, blasku, winiety); 'filmowa' obróbka siedzi tylko w obrazie filmu w poście
     elif sc['mode'] == 'credits':
-        post.apply(surf, i, halation=0.5, grain=0.7)
+        post.apply(surf, i, halation=0.3, grain=0.7)
     else:
         post.apply(surf, i)
     return surf

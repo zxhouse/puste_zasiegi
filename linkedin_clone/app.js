@@ -17,6 +17,19 @@
     $('#no-comments').hidden = !on('empty');
   }
   if (on('analytics')) $('#analytics').hidden = false;
+  // komentarz Mirka pod wpisem prezesa
+  if (q.get('prezes') !== null) { $('#prezes-comments').hidden = false; $('#c-szacun').hidden = !on('prezes'); }
+  // strona profilu z rekomendacjami (zamiast feedu); recs = ile rekomendacji już widać
+  if (on('profile')) {
+    document.querySelector('.layout').classList.add('profile-mode');
+    $('#profile').hidden = false;
+    const nr = num('recs', '3');
+    document.querySelectorAll('#recs .rec').forEach((r) => { r.hidden = parseInt(r.dataset.r, 10) > nr; });
+    $('#no-recs').hidden = nr > 0;
+    $('.recs-n').textContent = '(' + nr + ')';
+  }
+  // przewinięcie strony do elementu (np. wpisu Tadka) - zrzut i tak jest pełną stroną; tu tylko podświetlenie
+  if (q.get('focus')) { const e = document.getElementById(q.get('focus')); if (e) e.classList.add('focus'); }
   if (on('simple')) { $('#post-simple').hidden = false; $('#c-tadek').hidden = !on('tadek'); }
   if (on('chat')) $('#chat').hidden = false;
   if (on('sent')) $('#sent').hidden = false;
@@ -32,7 +45,7 @@
     const out = {};
     const add = (name, el) => { const r = el.getBoundingClientRect(); out[name] = [r.left + scrollX, r.top + scrollY, r.width, r.height]; };
     document.querySelectorAll('[data-rect]').forEach((e) => { if (e.offsetParent !== null || e.closest('.msg-dock')) add(e.dataset.rect, e); });
-    ['post-video', 'post-grazyna', 'post-simple', 'post-prezes', 'post-kasia', 'post-tadek', 'video-comments', 'no-comments', 'c-tadek', 'nav', 'dock', 'chat', 'analytics'].forEach((id) => {
+    ['post-video', 'post-grazyna', 'post-simple', 'post-prezes', 'post-kasia', 'post-tadek', 'video-comments', 'no-comments', 'c-tadek', 'nav', 'dock', 'chat', 'analytics', 'profile', 'recs', 'prezes-comments'].forEach((id) => {
       const e = document.getElementById(id); if (e && !e.hidden && e.offsetParent !== null || (e && (id === 'nav' || id === 'dock'))) add(id, e);
     });
     document.querySelectorAll('[data-bind]').forEach((e) => {

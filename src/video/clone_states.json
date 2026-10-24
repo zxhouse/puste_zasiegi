@@ -11,5 +11,12 @@
  {"id": "simple1", "params": {"blankcounts": "1", "noplay": "1", "simple": "1", "tadek": "1", "typing": "1"}},
  {"id": "outro", "params": {"blankcounts": "1", "noplay": "1", "comments": "0", "typing": "1"}},
  {"id": "stats0", "params": {"blankcounts": "1", "noplay": "1", "analytics": "1", "comments": "0", "empty": "1"}},
- {"id": "stats1", "params": {"blankcounts": "1", "noplay": "1", "analytics": "1", "comments": "3", "who": "3"}}
+ {"id": "stats1", "params": {"blankcounts": "1", "noplay": "1", "analytics": "1", "comments": "3", "who": "3"}},
+ {"id": "szacun0", "params": {"blankcounts": "1", "noplay": "1", "prezes": "0", "typing": "1"}},
+ {"id": "szacun1", "params": {"blankcounts": "1", "noplay": "1", "prezes": "1", "typing": "1"}},
+ {"id": "tadek", "params": {"blankcounts": "1", "noplay": "1", "chat": "1", "typing": "1"}},
+ {"id": "recs0", "params": {"profile": "1", "recs": "0", "chat": "1", "typing": "1"}},
+ {"id": "recs1", "params": {"profile": "1", "recs": "1", "chat": "1", "typing": "1"}},
+ {"id": "recs2", "params": {"profile": "1", "recs": "2", "chat": "1", "typing": "1"}},
+ {"id": "recs3", "params": {"profile": "1", "recs": "3", "chat": "1", "typing": "1"}}
 ]

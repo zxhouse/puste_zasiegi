@@ -8,9 +8,26 @@ offs = F['audio_offset']; corr = [o['corr'] for o in offs]
 lm, cm, ws = R['lead_mouth'], R['choir_mouth'], R['word_starts_in_vocal']
 sg, cuts, acc, fl = R['signs'], R['cuts'], R['accents'], R['flashes']
 weak = [p for p in sg['placement'] if p['visibility'] < 0.95 or p['overlap'] > 0.02]
+fr = R.get('framing'); tf = sg.get('text_fits_box')
+XP = json.load(open(os.path.join(ROOT, 'checks/exposure.json'))) if os.path.exists(os.path.join(ROOT, 'checks/exposure.json')) else None
+n_stills = len(os.listdir(os.path.join(ROOT, 'checks/stills'))) if os.path.exists(os.path.join(ROOT, 'checks/stills')) else 0
+extra = ''
+if tf: extra += f"""* Tekst w polu tablic i dymków ({tf['signs']} napisów): **{'wszystkie mieszczą się' if tf['all_fit'] else 'NIE wszystkie mieszczą się'}** razem z powiększeniem
+  słowa w chwili zaśpiewania; najmniejszy zapas {tf['min_margin_x_px']} px w poziomie i {tf['min_margin_y_px']} px w pionie (obrys glifów z polskimi znakami).
+* Tablice i dymki w otworze sceny (nie za portalem): {sg['boxed_sign_frames_inside_stage_opening_pct']}% sprawdzonych klatek.
+"""
+if fr: extra += f"""* Kadr (co 3. klatka ujęć sceny, {fr['stage_frames_checked']} klatek): głowa lalki pierwszego planu ucięta krawędzią w **{fr['frames_with_head_cut_by_edge']} klatkach**
+  ({fr['frames_with_head_cut_by_edge']/fr['stage_frames_checked']*100:.1f}%; prawie wyłącznie tłum w refrenie 3, {fr['head_cut_at'][0] if fr['head_cut_at'] else '–'}–{fr['head_cut_at'][-1] if fr['head_cut_at'] else '–'} s; lalki w trakcie
+  wynurzania/wejścia nie są liczone); kadrowana postać niewidoczna: {fr['frames_with_framed_subject_not_visible']} klatek ({', '.join(f'{x:g}' for x in fr['subject_missing_at'])} s – wynurzanie na cięciu);
+  ważne rekwizyty ujęcia (scenki z życia, zwój, baner, flipchart, „Robię swoje.”…) widoczne w ≥ 90%: {fr['poi_samples'] - fr['poi_samples_less_than_90pct_visible']}/{fr['poi_samples']} próbek.
+"""
+if XP: extra += f"""* Ekspozycja (`src/verify_exposure.py`, `checks/exposure.json`; ujęcia sceny, 10 kl./s): przepalone piksele (kanał ≥ 250) średnio
+  **{XP['v4']['clip_pct_mean']}%** (v3: {XP['v3_same_measure']['clip_pct_mean']}%), 95. percentyl {XP['v4']['clip_pct_p95']}% (v3: {XP['v3_same_measure']['clip_pct_p95']}%), najgorsza klatka {XP['v4']['clip_pct_max']}%
+  (v3: {XP['v3_same_measure']['clip_pct_max']}%); klatek z > 5% przepaleń: {XP['v4']['frames_clip_over_5pct']} z {XP['v4']['stage_frames']} (v3: {XP['v3_same_measure']['frames_clip_over_5pct']} z {XP['v3_same_measure']['stage_frames']}).
+"""
 txt = f"""## 5. Jak sprawdziłem wersję {ver}
 Skrypty: `src/verify.py` (plik) i `src/verify_sync.py` (synchronizacja liczona z tych samych funkcji, z których renderowane są klatki).
-Wyniki: `checks/verify_file.json`, `checks/verify_sync.json`, `checks/sheets/` (arkusze co 4 s), `checks/stills/` (42 stopklatki).
+Wyniki: `checks/verify_file.json`, `checks/verify_sync.json`, `checks/sheets/` (arkusze co 4 s), `checks/stills/` ({n_stills} stopklatek).
 
 **Plik** (`final/music-video.mp4`)
 * Pełne dekodowanie `ffmpeg -f null`: **{len(F['decode_errors'])} błędów**.
@@ -31,9 +48,9 @@ Wyniki: `checks/verify_file.json`, `checks/verify_sync.json`, `checks/sheets/` (
   błyski: {fl['flash_peaks']}, {fl['pct_within_2_frames']}% w ±2 klatkach od werbla lub „hej”.
 * Cięcia: **{cuts['on_line_or_downbeat']}/{cuts['n']} na początku wersu (lub zdania w kwestii mówionej) albo na „raz” taktu**. Ujęcia bez ruchu kamery: {len(R['camera_static_shots'])}.
 * Napisy (co 2. klatka ujęć sceny, {sg['sign_frames_checked']} sprawdzeń): największe nachodzenie napisu na postać **{sg['max_overlap_fraction_with_character']*100:.1f}%**
-  powierzchni napisu ({sg['at']}; prostokąty postaci są zgrubne), najmniejsza widoczność napisu w kadrze {sg['min_visible_fraction']*100:.0f}% ({sg['min_visible_at']});
+  powierzchni napisu ({sg['at']}; prostokąty: głowa, korpus, dłoń z rzeczywistym obrysem trzymanego rekwizytu), najmniejsza widoczność napisu w kadrze {sg['min_visible_fraction']*100:.0f}% ({sg['min_visible_at']});
   {len(sg['placement']) - len(weak)} z {len(sg['placement'])} napisów w pełni widocznych i bez kolizji przez cały czas trwania.
-* Chór: liczebność w refrenach nie spada; w układzie grupowym {R['choir']['overlapping_pairs']} par nachodzących na siebie.
+{extra}* Chór: liczebność w refrenach nie spada; w układzie grupowym {R['choir']['overlapping_pairs']} par nachodzących na siebie.
 
 """
 p = os.path.join(ROOT, 'report.md'); s = open(p).read()

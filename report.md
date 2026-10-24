@@ -1,6 +1,6 @@
 # Raport: teledysk „Puste zasięgi” (Paweł Kuraś)
 
-> Stan: **wersja v3** (`final/music-video.mp4`). Poprzednie wersje: `archive/v1/`, `archive/v2/`. Wyniki sprawdzeń poniżej dotyczą v3.
+> Stan: **wersja v4** (`final/music-video.mp4`). Poprzednie wersje: `archive/v1/`, `archive/v2/`, `archive/v3/`. Wyniki sprawdzeń poniżej dotyczą v4.
 > Nie słuchałem ani nie oglądałem filmu – wszystko niżej to pomiary liczbowe i obejrzane pojedyncze klatki / arkusze klatek.
 
 ## 1. Co powstało
@@ -12,9 +12,9 @@
 | `linkedin_clone/` | samodzielny klon feedu (HTML/CSS/JS, własne ikony SVG); po otwarciu `index.html` w poście Henia odtwarza się `final/music-video.mp4` |
 | `analysis/` | wyniki analizy muzyki (tekst, bity, części, dopasowanie słów) + wykresy kontrolne |
 | `src/` | cały kod: analiza (`a01…a12`; v3: `a20…a25` – modele mowy, dopasowanie, fuzja), renderer (`src/video/`), render równoległy, montaż, weryfikacja |
-| `checks/` | arkusze klatek, stopklatki, wyniki weryfikacji (`verify_file.json`, `verify_sync.json`) |
+| `checks/` | arkusze klatek, stopklatki, wyniki weryfikacji (`verify_file.json`, `verify_sync.json`, `exposure.json`) |
 | `fonts/` | czcionki OFL użyte w obrazie i w klonie + pełny tekst licencji |
-| `archive/` | poprzednie wersje filmu: `v1/`, `v2/` (nic nie jest kasowane) |
+| `archive/` | poprzednie wersje filmu: `v1/`, `v2/`, `v3/` (nic nie jest kasowane; w każdej `NOTES.md` z uwagami do tej wersji) |
 | `analysis/asr/` | surowe wyniki modeli mowy: transkrypcje Omnilingual (stem prowadzący i chórki), Whisper, Parakeet, Silero VAD, dopasowania CTC i MFA |
 
 Wymagane narzędzia (wszystkie darmowe, z menedżerów pakietów): `ffmpeg`, Python (`numpy`, `scipy`, `librosa`, `soundfile`, `skia-python`, `pocketsphinx`, `matplotlib`, `onnxruntime`, `sherpa-onnx`, `faster-whisper`, `silero-vad`), Montreal Forced Aligner (conda-forge, przez micromamba), `espeak-ng` + `mbrola-pl1` (apt), Node + Playwright/Chromium (preinstalowane). Modele mowy (pobierane do `tools/models/`, poza repozytorium): Omnilingual ASR CTC 1B i Parakeet TDT v3 (wydania sherpa-onnx), `polish_mfa` (wydania mfa-models, CC BY 4.0), Whisper small CT2 (npm). Żadnych gotowych nagrań ani grafik z internetu – cały obraz jest generowany kodem.
@@ -105,6 +105,10 @@ w poście na (odtworzonym) LinkedInie**, a lalkowe show to treść tego posta. P
 serwisie: „Tak, tak, wszyscy się strasznie cieszą” (rosną reakcje, sypią się „Gratulacje!”), „Czekaj, ten wpis jest najlepszy” (przewinięcie
 do wpisu Grażyny i wjazd w jej zdjęcie), refren 2 „wielkie zasięgi” (licznik wyświetleń do 1 254 302) i „A pod spodem cisza” (pusta sekcja
 komentarzy), po bridge'u prosty wpis „Robię swoje.”, outro „miłego scrollowania” (przewijanie feedu) i statystyki na koniec.
+v4 dokłada trzy powroty do serwisu: „A w komentarzu: „Ogromny szacun”” (zdjęcie z konferencji we wpisie prezesa = zatrzymany kadr
+sceny, pod nim pojawia się komentarz Mirka, „Ogromny szacun!” wpisuje się razem ze śpiewem), „„Cieszę się z nowej drogi” — czytam
+bez tchu” (wpis Tadka z ramką #OpenToWork, Henio pisze to do Tadka na czacie) i „Ktoś sprzedaje się za trzy opinie” (profil
+z sekcją „Rekomendacje”: trzy rekomendacje pojawiają się na słowa, licznik 0 → 3). „Studio w drewnie” to typowe studio podcastowe.
 Obsada (oryginalne lalki): Henio Kawka (narrator, cały wokal prowadzący), Grażyna Gratka, Prezes Bogumił Łaskawiec, Tadek Nowadroga,
 Mirek Szacun, Kasia Kejs, Chór Zasięgów (8 lalek: 4 panów w przedrefrenach, panie dochodzą w refrenach – liczebność tylko rośnie).
 Chór śpiewa to, co w nagraniu jest w stemie chórków (dublowania, „trochę jak męka”, wtrącenie, wokalizy) – lista w `scenariusz.md`.
@@ -129,21 +133,41 @@ podrygi pojawiają się w refrenach (reakcje na patykach w górę na „raz” t
 * **Kamera** (v3, `timeline.py`): kadrowanie **względem postaci** – plan wybierany jak w studiu TV (CU zbliżenie twarzy, MCU do piersi,
   MS do pasa, MLS/LS grupowe, WS teatralny), kamera śledzi postaci i płynnie zmienia plan między kluczami (najazd, odjazd, jazda);
   w planach CU/MCU/MS dół kadru nie schodzi poniżej pasa lalki, więc nie widać krawędzi sceny pod nią. Skład grupy w kadrze ustalany dla
-  całego ujęcia (kadr nie skacze, gdy ktoś się wynurza). Cięcia na początkach wersów lub na „raz” taktu, każdy refren ma inne ujęcia.
+  całego ujęcia (kadr nie skacze, gdy ktoś się wynurza). Cięcia na początkach wersów lub fraz albo na „raz” taktu, każdy refren ma inne ujęcia.
+  **v4**: kadr obejmuje wszystko, co w danej chwili opowiada historię – postaci, **trzymane tablice i karty** (obrys rekwizytu liczony
+  z rastra), **rekwizyty sceny** (scenki z życia, zwój, baner AWANS, chmurka, flipchart, rekomendacje, aureola, „Robię swoje.”, trąbka,
+  sztaluga, laptop, marynarka) i **napis wersu** (tablica wisi obok postaci, a kamera kadruje je razem). Kadr dopasowuje się do tych
+  prostokątów (każdy na swojej głębokości), nie wychodzi poza otwór sceny, jeśli treść się mieści, a głowy innych lalek z pierwszego
+  planu są w kadrze całe albo wcale (automatyczne objęcie albo przesunięcie kadru). Ujęcia, w których kadry kluczowe wyszły
+  identyczne, mają powolny najazd (5%).
 * **Przestrzeń i światło** (v3, `compose.py`, `post.py`): **głębia ostrości** liczona z odległości kamery (tło i dekoracje rozmyte
   w zbliżeniach, portal na pierwszym planie lekko nieostry), **cienie sylwetek** lalek (głowa z oczami, korpus, ręce, rekwizyty) rzucone
   na dekorację – przesunięte od reflektora i rozmyte zależnie od odległości od ściany, cień warstwy środkowej dekoracji na ścianie,
   gradacja (krzywa S, +8% nasycenia), słabsza halacja i zmiękczenie niż w v2, ziarno, winieta.
+  **v4**: plamy reflektorów, snopy i błyski w trybie „screen” (rozjaśniają, ale nie przepalają), halacja tylko od naprawdę jasnych
+  partii i dodana **przed** krzywą tonalną, krzywa z miękkim „ramieniem” w światłach (biel → ok. 0,93, z fakturą), ciemniejsze tło
+  dekoracji; ziarno drobne (1 piksel tekstury = 1 piksel obrazu) i słabe (2× mniejsze niż w v3), zmienia się co 2 klatki.
+  **Strona serwisu jest czysta** – bez ziarna, blasku, winiety i gradacji; obróbka „show” jest tylko w obrazie filmu w poście
+  (i w pełnych ujęciach sceny), więc przejście kamery z posta do sceny jest ciągłe.
 * **Napisy jako scenografia** (`signs.py`, `timeline.py`): tablice z tektury na sznurkach, litery na froncie sceny, **podświetlone
   litery na froncie podestu chóru** (v3), neon portalu, dymki do kwestii mówionych, karton pisany markerem (bridge). Każdy wers ma jedno
-  stałe miejsce w świecie, wybierane automatycznie z ~1000 kandydatów (także zakotwiczonych w kadrze ujęcia), tak by napis był w kadrze
-  przez cały czas trwania (także po cięciu) i nie nachodził na postacie, ważne rekwizyty ani inne napisy; słowa pojawiają się
-  w chwili zaśpiewania (czasy z nowego dopasowania). Fonty świata lalek (v3, OFL, Google Fonts, polskie znaki sprawdzone):
+  stałe miejsce w świecie; słowa pojawiają się w chwili zaśpiewania (czasy z dopasowania). **v4**: tablica/dymek stoi **obok postaci**
+  (z boku na wysokości głowy, wyżej albo nad głową – kandydaci wokół śpiewającego i wokół całej grupy w kadrze), wybór bez kolizji
+  z postaciami, trzymanymi rekwizytami, rekwizytami sceny i innymi napisami, tylko w otworze sceny; kamera obejmuje napis. Wielkość
+  pola z rzeczywistego obrysu glifów (polskie ogonki i kreski) + zapas na „wyskok” słowa (10%); tekst łamany na 1–3 wyważone linijki,
+  w razie potrzeby mniejszy krój – nigdy poza pole. Tablica: gładka tektura z delikatną fakturą, ciemniejszy rant, oczka na sznurki,
+  miękki cień, kolory zależne od dekoracji, bez obwódki. Dymek: jeden kontur (prostokąt i ogonek złączone operacją na ścieżkach),
+  ogonek wskazuje usta mówiącego, dymek rośnie od ogonka. Napis kończący się na cięciu znika razem z ujęciem (bez wygaszania). Fonty świata lalek (v3, OFL, Google Fonts, polskie znaki sprawdzone):
   Titan One (tablice), Cherry Bomb One (front sceny i podestu), Rammetto One (portal), Sigmar One (duże napisy), Kalam (dymki),
   Caveat Brush (marker), Shrikhand (tytuł); w świecie serwisu bez zmian (Inter).
 * **Klon LinkedIna** (`linkedin_clone/`): HTML/CSS/JS od zera (Inter OFL, własne ikony SVG, awatary = portrety lalek). Stany strony
   przechwytywane Playwrightem, w teledysku składane z przewijaniem, „kamerą” na ekranie, filmem ze sceny na żywo w ramce posta,
-  licznikami rosnącymi klatka po klatce i pisaniem słowo po słowie.
+  licznikami rosnącymi klatka po klatce i pisaniem słowo po słowie (pole wiadomości zawija tekst jak przeglądarka). v4: komentarze pod
+  wpisem prezesa (`?prezes=1`) i strona profilu z sekcją „Rekomendacje” (`?profile=1&recs=0…3`).
+* **Studio podcastowe** (v4, `stage.py`, `props.py`): beżowe zasłony w fałdy, panel z drewnianych listew za prowadzącym, neon
+  „podcast”, dwa regały (książki, świecąca lampka, świece, aparat, pomarańczowa tuba LED, rośliny, pnącze), lampy podłogowe z białym
+  abażurem, duże rośliny w donicach, stół z jasnego drewna z kubkami i mikrofony na ramionach – z boku ust, żeby nie zasłaniały ruchu
+  szczęki. Henio prowadzi, dwóch panów z chóru to goście z maskami uśmiechu.
 * **Render** (`src/render_all.py`, `src/assemble.py`): kawałki po 300 klatek, 4 procesy równolegle (x264 CRF 14), sklejenie bez
   rekompresji, końcowe kodowanie H.264 yuv420p (dwa przebiegi, ≤ 100 MB dla GitHuba) + AAC 320 kb/s z całego MP3 (bez filtrów i cięć).
   Każda wersja renderowana z zamrożonej kopii kodu (`build/vN/src`).
@@ -192,10 +216,15 @@ wystają oczy Henia stojącego przed chórem, a napis wersu jest mały.
 * **Modele mowy pobrane z mniej oczywistych źródeł**: Whisper small z rejestru npm (paczka osoby trzeciej; suma SHA-256 zgodna z jej
   własną deklaracją, transkrypcja sensowna) – użyty tylko do kontroli, nie do czasów w filmie. Omnilingual, Parakeet i MFA pochodzą
   z oficjalnych wydań projektów.
-* **Napisy**: w kilku ciasnych kadrach napis jest mały albo ma ~80–90% widoczności na brzegu kadru w ostatnich chwilach wersu
-  (lista w `checks/verify_sync.json`, pole `signs.placement`).
-* **Kompresja**: 3200 kb/s, żeby zmieścić się w 100 MB na GitHubie. Głębia ostrości i ziarno lepiej wyglądałyby w wyższej
-  przepływności – kawałki CRF 14 są w `build/v3/chunks` (`python3 src/assemble.py build/v3/chunks <plik> --crf 16`).
+* **Kadry w tłumie (refren 3)**: lalki stoją ramię w ramię, więc w planach grupowych sąsiad bywa ucięty krawędzią kadru (liczby
+  w sekcji 5); objąłem go albo przesunąłem kadr tam, gdzie wystarczało ≤ 30% oddalenia lub ≤ 15% przesunięcia – dalej uznałem
+  to za naturalne dla ujęcia tłumu.
+* **Napis przy postaci**: w 67,8 s dłoń Henia w szerokim geście wchodzi pod tablicę „Puste zasięgi, wielkie zasięgi” (19% pola
+  tablicy w teście prostokątów) – na klatce wygląda to jak wskazanie napisu, więc zostawiłem.
+* **Kompresja**: 3200 kb/s, żeby zmieścić się w 100 MB na GitHubie. Głębia ostrości lepiej wyglądałaby w wyższej
+  przepływności – kawałki CRF 14 są w `build/v4/chunks` (`python3 src/assemble.py build/v4/chunks <plik> --crf 16`).
+* **Rekomendacje i komentarze w serwisie** (v4) są wymyślone dla żartu (np. rekomendacja od własnego „konta firmowego”); postaci
+  fikcyjne, jak cała reszta.
 * **Klon LinkedIna**: zgodnie z prośbą odtwarza wygląd serwisu 1:1, w stopce jest linijka „LinkedIn Corporation © 2026” jak
   w oryginale (obok dopisek, że to klon; w napisach końcowych „serwis w kadrze jest fikcyjny”). Przed publikacją warto zdecydować,
   czy zostawić nazwę i stopkę.
@@ -310,3 +339,65 @@ Przejrzałem jej arkusze i stopklatki i na tej podstawie zrobiłem poprawki v2 p
   następny wers; gęste próbkowanie (co 0,2 s) – pierwsza wersja v3 przegapiła ruch ręki Henia i napis „Poranna kawa…” nachodził na nią
   w 37,6% (17,27 s), po poprawce i przerenderowaniu 13 z 22 kawałków: 42 z 47 napisów w pełni widocznych i bez kolizji, największe
   nachodzenie 7,0% (zgrubne prostokąty), najmniejsza chwilowa widoczność 44% na końcu wersu (sekcja 5).
+
+### 7.4 v4 – poprawki po uwagach autora do v3
+
+#### 7.4.1 Prześwietlenia
+* Uwaga: „jest prześwietlone w niektórych momentach”.
+* Pomiar v3 (cały plik, 10 kl./s): w ujęciach sceny średnio 14% pikseli przepalonych do bieli (kanał ≥ 250), w kuchni (17–23 s)
+  i u Grażyny (84–86 s) ponad 50% kadru.
+* Przyczyna: trzy rzeczy dodawane do obrazu (plama reflektora na postaci, halacja, błysk flesza) w trybie „plus” w 8 bitach, halacja
+  dokładana już po krzywej tonalnej; jasna ściana dekoracji + plama + halacja = obcięcie do 255.
+* Poprawka (`post.py`, `gfx.py`, `compose.py`, `timeline.py`): światła w trybie „screen”, halacja tylko od naprawdę jasnych partii
+  i liczona przed krzywą tonalną, krzywa z miękkim ramieniem w światłach, słabsze plamy, ciemniejsze tło dekoracji, łagodniejsze flesze.
+* Sprawdzenie: te same klatki przed / po: 52–59% → 0% przepaleń, 99. percentyl jasności ≤ 234; cały plik – sekcja 5.
+
+#### 7.4.2 Strona serwisu bez ziarna, mniejsze ziarno
+* Uwaga: prawdziwy LinkedIn bez ziarna i „analogowości”; ziarno za duże (kompresja serwisu).
+* Przyczyna: na przebitkach obróbka „filmowa” szła na całą klatkę (strona też), ziarno miało 2× powiększone piksele i siłę 0,12.
+* Poprawka (`render.py`, `linkedin.py`, `post.py`): strona serwisu bez żadnej obróbki; wygląd show tylko w obrazie filmu w poście
+  i w ujęciach sceny; ziarno 1:1 piksel, siła 0,055.
+* Sprawdzenie: klatki 44,3 / 92,6 / 104,9 s (serwis – czysty), 16,2 / 114,6 s (scena).
+
+#### 7.4.3 Tablice: czerwona obwódka, tekst poza polem
+* Przyczyna: stała wewnętrzna obwódka w kolorze `#b5452b`; wielkość tablicy liczona z wielkości czcionki, a nie z obrysu liter,
+  przy „wyskoku” słowa o 22% (zapas był mniejszy) słowo przy brzegu wychodziło poza pole; samotny myślnik mógł zacząć nową linijkę.
+* Poprawka (`signs.py`): bez obwódki (gładka tektura, ciemniejszy rant, oczka, miękki cień); pole z obrysu glifów + zapas na
+  „wyskok” (teraz 10%); 1–3 wyważone linijki, w razie potrzeby mniejszy krój; znaki interpunkcyjne doklejone do słowa.
+* Sprawdzenie: test tekstu w polu (sekcja 5) – wszystkie tablice i dymki z zapasem; klatki 16,2 i 45,8 s.
+
+#### 7.4.4 Dymki „poskładane z elementów”
+* Przyczyna: prostokąt i trójkątny ogonek rysowane jako osobne kształty, każdy z własnym obrysem.
+* Poprawka: jeden kontur (suma ścieżek), wklęsłe boki ogonka, ogonek wskazuje usta mówiącego, delikatny gradient, jeden obrys.
+* Sprawdzenie: klatki 5,5 i 149,5 s.
+
+#### 7.4.5 Napisy w złych miejscach i poza kadrem
+* Przyczyna: w v3 miejsce napisu wybierane w kadrze z połowy wersu, a kamera w trakcie wersu robiła najazd – napis uciekał na brzeg
+  albo poza kadr (np. „Poranna kawa” w rogu, „Z pokorą informuję” daleko w prawym górnym rogu); część kandydatów leżała za portalem.
+* Poprawka: napis kotwiczony przy postaci (rozdział 4) i **kamera kadruje postać razem z napisem**; tylko w otworze sceny.
+* Sprawdzenie: widoczność napisów w kadrze i nachodzenie – sekcja 5; arkusze 3 klatek na każde ujęcie (początek, środek, koniec).
+
+#### 7.4.6 Praca kamery, „A potem pięć scenek z życia”
+* Problem: kamera kadrowała tylko lalki; scenki wisiały daleko w tle na całej szerokości sceny (±940), więc w planie Grażyny było
+  widać ich rogi; ucięte karty trzymane w rękach (wpis Henia, wpis Grażyny), puste kadry na końcu ujęć (postaci chowały się przed
+  cięciem, a błąd w zejściu „bez animacji” zostawiał je jeszcze 0,45 s w następnej dekoracji), głowy ucięte dolną krawędzią.
+* Poprawka: kadr z postaci + trzymanych rekwizytów + rekwizytów sceny + napisu (rozdział 4); scenki w rzędzie nad Grażyną,
+  zwój obok; zejścia na cięciach; głowy całe albo wcale; kadr w otworze sceny; nadmiar wysokości w planach grupowych po połowie
+  nad i pod grupą; powolny najazd w ujęciach bez zmiany planu; trzy-ujęcie Henio–Tadek–prezes na drodze.
+* Sprawdzenie: arkusze 3 klatek dla wszystkich 61 ujęć (cztery rundy poprawek), test kadru w sekcji 5.
+
+#### 7.4.7 Częściej „prawdziwy” serwis
+* Nowe przebitki: 42,6–45,1 s (komentarz „Ogromny szacun!” pod wpisem prezesa, zdjęcie = zatrzymany kadr konferencji bez napisów),
+  90,1–93,1 s (wpis Tadka, Henio pisze wers do Tadka na czacie), 102,9–105,8 s (profil z rekomendacjami). Razem z dotychczasowymi:
+  10 przebitek, 38,3 s serwisu (v3: 7 przebitek, 29,9 s).
+* Sprawdzenie: klatki 44,3 / 92,6 / 104,9 s.
+
+#### 7.4.8 „Studio w drewnie” jak typowe studio podcastowe
+* Poprawka: nowa dekoracja i stół z mikrofonami (rozdział 4); przedrefren 2 nagrywany „jak podcast” – na słowach „studio w drewnie”
+  odjazd na całą dekorację.
+* Sprawdzenie: klatki 114,6 i 118,7 s.
+
+#### 7.4.9 „Trzy opinie” = rekomendacje w serwisie
+* Poprawka: w serwisie profil z sekcją „Rekomendacje” (trzy rekomendacje na słowa „sprzedaje / się / trzy”); na scenie metka
+  „CENA: 3 rekomendacje” i trzy kartki-rekomendacje na patykach („Wizjoner!”, „Szacun!”, „Polecam!”) zamiast metki „3 OPINIE” i gwiazdek.
+* Sprawdzenie: klatki 104,9 i 107,5 s.

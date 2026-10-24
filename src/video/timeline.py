@@ -107,7 +107,7 @@ gest(H, lt(V1, 2) - 0.1, 'type', gaze=(0.0, 0.9), lid=0.45, brow=0.0)
 gest(H, wt(V1, 2, 6) - 0.15, 'jaw', gaze=(0.3, 0.3), brow=-0.8, lid=0.5)   # 'szczęka'
 # 'Z przyjemnością dzielę się' - plansza-post + wyuczony uśmiech, potem 'skręca'
 gest(H, lt(V1, 3), 'holdup_R', smile=1.0, gaze=(0.0, 0.0), brow=0.8, lid=0.1)
-H.hold(lt(V1, 3) - 0.1, wt(V1, 3, 4) + 0.3, 'R', lambda cv, t: P.linkedin_card(cv, 'Z przyjemnością dzielę się…', 470, 210, side=1), grip=True)
+H.hold(lt(V1, 3), wt(V1, 3, 4) + 0.3, 'R', lambda cv, t: P.linkedin_card(cv, 'Z przyjemnością dzielę się…', 470, 210, side=1), grip=True)
 gest(H, wt(V1, 3, 4), 'facepalm', smile=0.0, brow=-0.6, lid=0.6, lean=-10.0, turn=-0.5)
 H.key(wt(V1, 3, 6), lean=12.0, turn=0.5); H.key(wt(V1, 3, 7) + 0.3, lean=-8.0, turn=-0.3)
 gest(H, le(V1, 3) + 0.2, 'hips', lean=0.0, turn=0.0, brow=0.0, lid=0.35)
@@ -142,7 +142,7 @@ gest(H, lt(CH1, 1), 'up', brow=0.8)                                             
 gest(H, wt(CH1, 1, 5), 'shrug', brow=-0.5, lid=0.4)                                  # 'pęka'
 gest(H, lt(CH1, 2), 'present_L', brow=0.4, lid=0.2); gest(H, wt(CH1, 2, 2), 'wide')
 gest(H, lt(CH1, 3), 'rest', brow=-0.3, lid=0.5, gaze=(0.0, 0.8))                   # 'pod spodem cisza'
-H.on(lt(CH1, 4) - 0.05, lt(V2, 0), 'rise', 'none', 0.5)
+H.on(lt(CH1, 4) - 0.05, lt(V2, 0) + 0.35, 'rise', 'sink', 0.5, 0.45)
 gest(H, lt(CH1, 4), 'up', brow=1.0, lid=0.0, gaze=(0.0, -0.2))
 gest(H, lt(CH1, 5), 'wide', brow=0.8); gest(H, le(CH1, 5) + 0.15, 'up')
 # studio Grażyny: zagląda z boku
@@ -154,7 +154,7 @@ H.key(wt(V2, 1, 5), lean=10.0, turn=-0.4); H.key(le(V2, 1), lean=0.0, turn=0.5)
 gest(H, lt(V2, 2), 'present_R', gaze=(1.0, -0.3), lid=0.3, brow=0.4)                # 'pięć scenek'
 gest(H, wt(V2, 2, 7), 'shrug', gaze=(0.6, 0.0), brow=0.9)                          # 'długi wywód'
 # droga: Henio czyta (bez tchu)
-H.key(lt(V2, 3) - 0.01, x=-830.0); H.key(lt(V2, 3), x=-760.0)
+H.key(lt(V2, 3) - 0.01, x=-830.0); H.key(lt(V2, 3), x=-600.0)
 gest(H, lt(V2, 3), 'hold_L', gaze=(0.0, 0.6), lid=0.35, turn=0.2)
 H.hold(lt(V2, 3), le(V2, 4), 'L', lambda cv, t: P.phone(cv))
 gest(H, wt(V2, 3, 5), 'chest', gaze=(0.0, 0.6), brow=0.6, lid=0.1)              # 'czytam bez tchu'
@@ -163,7 +163,7 @@ gest(H, wt(V2, 4, 5) - 0.1, 'present_R', gaze=(0.9, 0.2), brow=0.9, lid=0.0)    
 gest(H, le(V2, 4) + 0.3, 'rest', brow=0.0)
 # raj korporacyjny: na chmurce z boku
 H.on(lt(V2B, 0) + 0.43, lt(PRE2, 0), 'rise', 'none', 0.43)
-H.key(lt(V2B, 0) - 0.01, x=-760.0); H.key(lt(V2B, 0), x=-880.0, y=-40.0)
+H.key(lt(V2B, 0) - 0.01, x=-600.0); H.key(lt(V2B, 0), x=-880.0, y=-40.0)
 gest(H, lt(V2B, 0), 'present_R', gaze=(0.9, 0.0), turn=0.4, lid=0.4)
 gest(H, lt(V2B, 1), 'shrug', gaze=(0.9, -0.1), brow=0.5)
 gest(H, lt(V2B, 2), 'chin', gaze=(1.0, 0.0), lid=0.55)
@@ -220,7 +220,7 @@ gest(H, REPRISE, 'wide', smile=0.6, brow=0.9); gest(H, FINAL_HEJ - 0.08, 'up', b
 
 # ------------------------------------------------------------------ GRAŻYNA
 g = GRAZ
-g.on(lt(V1B, 2) + 0.4, lt(PRE1, 0) - 0.45, 'rise', 'sink', 0.4, 0.45)            # konferencja: pozuje do zdjęcia
+g.on(lt(V1B, 2), lt(PRE1, 0), 'none', 'none')            # konferencja: pozuje do zdjęcia
 g.key(0, x=-170.0, y=0.0, depth=0.0)
 gest(g, lt(V1B, 2), 'holdup_L', smile=1.0, gaze=(0.0, 0.0), brow=0.9, lid=0.0, turn=0.25)
 gest(g, wt(V1B, 2, 3), 'hips', smile=1.0, turn=0.3)
@@ -231,9 +231,9 @@ g.hold(lt(V2, 1) - 0.4, le(V2, 1) + 0.2, 'L', lambda cv, t: P.linkedin_card(cv, 
 gest(g, lt(V2, 1) - 0.4, 'holdup_L', smile=1.0, brow=0.7, lid=0.2, gaze=(-0.2, -0.2))
 gest(g, wt(V2, 1, 3), 'holdup_L', smile=1.0, lid=0.5, gaze=(0.3, -0.6))          # 'z pokorą' - przymknięte oczy
 gest(g, lt(V2, 2), 'present_L', smile=1.0, gaze=(-0.4, -0.6), brow=0.6)          # pokazuje kadry 'scenek'
-for i in range(5): g.key(wt(V2, 2, 2) + i*0.41, hL=(-300.0 + i*30, -360.0 - 30*(i % 2)))
+for i in range(5): g.key(wt(V2, 2, 2) + i*0.41, hL=(-250.0 + i*55, -440.0 - 25*(i % 2)))      # wskazuje kolejne kadry nad głową
 gest(g, wt(V2, 2, 7), 'wide', smile=1.0, brow=0.9)                               # 'długi wywód'
-g.on(lt(V2B, 2) - 0.5, lt(PRE2, 0) - 0.2, 'rise', 'sink', 0.5, 0.5)               # raj: wdzięczność, aureola
+g.on(lt(V2B, 2) - 0.5, lt(PRE2, 0), 'rise', 'none', 0.5)               # raj: wdzięczność, aureola
 g.key(lt(V2B, 2) - 1.0, x=600.0, y=-30.0)
 g.hold(lt(V2B, 2) - 0.5, le(V2B, 3), 'R', lambda cv, t: P.scroll(cv, min(520, max(60, (t - lt(V2B, 2) + 0.3)*260))))
 gest(g, lt(V2B, 2) - 0.5, 'hold_R', smile=0.8, gaze=(0.2, 0.6), brow=0.6)
@@ -247,12 +247,12 @@ g.on(bar_at_or_before(REPRISE) + 0.4, 212.5, 'rise', 'none', 0.35); gest(g, REPR
 
 # ------------------------------------------------------------------ PREZES
 p = PREZ
-p.on(lt(V1B, 2) + 0.55, lt(PRE1, 0) - 0.45, 'rise', 'sink', 0.5, 0.45)
+p.on(lt(V1B, 2), lt(PRE1, 0), 'none', 'none')
 p.key(0, x=240.0, y=0.0, depth=0.0)
 gest(p, lt(V1B, 2) + 0.2, 'holdup_R', smile=1.0, brow=0.6, lid=0.25, turn=-0.25)
 gest(p, wt(V1B, 2, 3), 'hips', smile=1.0, turn=-0.3)
 gest(p, lt(V1B, 3), 'hips', smile=0.5, gaze=(0.7, 0.0), turn=0.2, lid=0.4)
-gest(p, wt(V1B, 3, 4), 'chest', smile=0.9, lid=0.55, gaze=(0.9, 0.1))            # przyjmuje 'szacun' z łaskawością
+gest(p, wt(V1B, 3, 5) + 0.05, 'chest', smile=0.9, lid=0.55, gaze=(0.9, 0.1))       # przyjmuje 'szacun' z łaskawością (po powrocie z serwisu)
 p.key(wt(V1B, 3, 7), tilt=-12.0); p.key(wt(V1B, 3, 7) + 0.5, tilt=0.0)
 p.on(lt(V2, 4) - 0.3, lt(V2B, 0) - 0.5, 'right', 'sink', 0.6, 0.45)               # stempel 'restrukturyzacja'
 p.key(lt(V2, 4) - 1.0, x=640.0)
@@ -284,12 +284,12 @@ td.on(bar_at_or_before(REPRISE) + 0.4, 212.5, 'rise', 'none', 0.35); gest(td, RE
 
 # ------------------------------------------------------------------ MIREK ('Ogromny szacun!')
 m = MIREK
-m.on(wt(V1B, 3, 3) - 0.35, lt(PRE1, 0) - 0.35, 'rise', 'sink', 0.3, 0.35)
+m.on(wt(V1B, 3, 5) - 0.5, lt(PRE1, 0), 'rise', 'none', 0.3)
 m.key(0, x=640.0, y=0.0, depth=-10.0)
-m.hold(wt(V1B, 3, 3) - 0.35, lt(PRE1, 0) - 0.35, 'R', lambda cv, t: P.placard(cv, 'Ogromny szacun!', size=40, color='#ffffff', ink='#0a66c2', side=-1), grip=True)
-gest(m, wt(V1B, 3, 3) - 0.35, 'holdup_R', smile=1.0, brow=1.0, gaze=(-0.9, 0.0), turn=-0.6, lid=0.0)
-m.key(wt(V1B, 3, 3) - 0.35, mouth_extra=0.0)
-for k, tk in enumerate(snares_between(wt(V1B, 3, 3), lt(PRE1, 0) - 0.6)):
+m.hold(wt(V1B, 3, 5) - 0.5, lt(PRE1, 0), 'R', lambda cv, t: P.placard(cv, 'Ogromny szacun!', size=40, color='#ffffff', ink='#0a66c2', side=-1), grip=True)
+gest(m, wt(V1B, 3, 5) - 0.5, 'holdup_R', smile=1.0, brow=1.0, gaze=(-0.9, 0.0), turn=-0.6, lid=0.0)
+m.key(wt(V1B, 3, 5) - 0.5, mouth_extra=0.0)
+for k, tk in enumerate(snares_between(wt(V1B, 3, 5), lt(PRE1, 0) - 0.2)):
     m.key(tk - 0.05, hR=(150.0, -260.0)); m.key(tk + 0.12, hR=(150.0, -300.0))
 m.on(lt(CH3, 0) - 0.87, FIN_HEJ + 1.0, 'rise', 'sink', 0.6, 0.5)
 m.key(lt(CH3, 0) - 1.8, x=325.0, depth=-8.0)
@@ -298,7 +298,7 @@ m.on(bar_at_or_before(REPRISE) + 0.4, 212.5, 'rise', 'none', 0.35); gest(m, FINA
 
 # ------------------------------------------------------------------ KASIA ('case study')
 k_ = KASIA
-k_.on(lt(V2B, 0) + 0.3, lt(PRE2, 0) - 0.2, 'rise', 'sink', 0.45, 0.5)
+k_.on(lt(V2B, 0) + 0.3, lt(PRE2, 0), 'rise', 'none', 0.45)
 k_.key(0, x=-400.0, depth=0.0, y=-30.0)
 gest(k_, lt(V2B, 0) - 0.4, 'present_L', smile=1.0, brow=0.8, gaze=(-0.7, -0.2), turn=-0.3, lid=0.1)
 gest(k_, wt(V2B, 0, 4), 'present_L', gaze=(0.0, 0.0), turn=0.0)
@@ -323,10 +323,10 @@ for i, r in enumerate(CHOIR):
         gest(r, wt(V1B, 1, 3) - 0.2, 'chin', gaze=(0.6 if ox < 0 else -0.6, -0.2), brow=0.6, lid=0.3)   # 'strategiczny gest'
         gest(r, le(V1B, 1) + 0.3, 'rest', brow=0.0, lid=0.2)
         # przedrefren 1 -> refren 1
-        r.on(lt(PRE1, 0) + 0.5 + 0.15*MEN.index(i), lt(V2, 0), 'rise', 'none', 0.5)
+        r.on(lt(PRE1, 0) + 0.5 + 0.15*MEN.index(i), lt(V2, 0) + 0.35, 'rise', 'sink', 0.5, 0.45)
         r.key(lt(PRE1, 0), x=float(CHOIR_X[i]), y=CHOIR_Y, depth=CHOIR_D, scale=0.8)
     else:
-        r.on(lt(CH1, 0) - 0.66 + 0.1*WOMEN.index(i), lt(V2, 0), 'rise', 'none', 0.45)
+        r.on(lt(CH1, 0) - 0.66 + 0.1*WOMEN.index(i), lt(V2, 0) + 0.35, 'rise', 'sink', 0.45, 0.45)
     start = lt(PRE1, 0) if i in MEN else lt(CH1, 0) - 0.7
     gest(r, start, 'rest', gaze=(0.0, 0.0))
     if i in MEN:
@@ -345,29 +345,37 @@ for i, r in enumerate(CHOIR):
     for hj in [h for h in HEJ if 72 < h < 80]:
         gest(r, hj - 0.12, 'up', brow=1.0, lid=0.0); gest(r, hj + 0.5, 'hold_R')
     # wtrącenie 'Wywalili na bruk!' (cały chór na drodze, z kostkami bruku)
-    r.on(lt(CHOIRI, 0) - 0.35, lt(V2B, 0) - 0.47, 'rise', 'sink', 0.3, 0.45)
+    r.on(lt(CHOIRI, 0) + 0.22, lt(V2B, 0) - 0.28, 'rise', 'sink', 0.24, 0.45)      # wyskakują na cięciu, z okrzykiem
     r.key(lt(CHOIRI, 0) - 0.4, x=float(CHOIR_X[i])*1.05, y=-40.0, depth=40.0, scale=0.95)
     r.hold(lt(CHOIRI, 0) - 0.4, le(CHOIRI, 0) + 0.8, 'R', lambda cv, t, k=i: P.cobble(cv, k), grip=True)
     gest(r, lt(CHOIRI, 0) - 0.35, 'holdup_R', brow=-0.9, lid=0.0, gaze=(0.0, 0.0), turn=0.0)
     r.key(le(CHOIRI, 0) + 0.31, x=float(CHOIR_X[i])*1.05, y=-40.0, depth=40.0, scale=0.95)
     if i == 2:
-        r.on(lt(V2B, 1) - 0.45, lt(PRE2, 0) - 0.2, 'rise', 'sink', 0.45, 0.5)
+        r.on(lt(V2B, 1) - 0.45, lt(PRE2, 0), 'rise', 'none', 0.45)
         r.key(lt(V2B, 1) - 0.5, x=150.0, y=-30.0, depth=0.0, scale=1.05)
-        r.key(lt(PRE2, 0) - 0.75, x=150.0, y=-30.0, depth=0.0, scale=1.05)
-        r.hold(lt(V2B, 1) - 0.45, lt(PRE2, 0) - 0.2, 'L', lambda cv, t: P.price_tag(cv), grip=True)
+        r.key(lt(PRE2, 0) - 0.03, x=150.0, y=-30.0, depth=0.0, scale=1.05)
+        r.hold(lt(V2B, 1) - 0.45, lt(PRE2, 0), 'L', lambda cv, t: P.rec_tag(cv), grip=True)
         gest(r, lt(V2B, 1) - 0.45, 'hold_L', smile=1.0, brow=0.8, lid=0.0, gaze=(0.0, 0.0), turn=0.0)
         gest(r, wt(V2B, 1, 3), 'holdup_R', smile=1.0, gaze=(0.3, -0.7))
         gest(r, lt(V2B, 2), 'hold_L', smile=0.6, gaze=(0.8, 0.0))
         gest(r, lt(V2B, 3), 'up', smile=1.0, gaze=(0.5, -0.8))
     # przedrefren 2 (panowie) + refren 2 (wszyscy) w studiu w drewnie -> show
+    if i in (2, 3):
+        px_ = -480.0 if i == 2 else 480.0; tg = 0.3 if i == 2 else -0.3
+        r.on(lt(PRE2, 0) + 0.45 + 0.12*(i - 2), lt(CH2, 0) - 1.05, 'rise', 'sink', 0.45, 0.3)
+        r.key(lt(PRE2, 0) - 0.01, x=px_, y=0.0, depth=8.0, scale=1.12)
+        r.key(lt(CH2, 0) - 0.62, x=px_, y=0.0, depth=8.0, scale=1.12)
+        r.key(lt(CH2, 0) - 0.6, x=float(CHOIR_X[i]), y=CHOIR_Y, depth=CHOIR_D, scale=0.8)
+        r.on(lt(CH2, 0) - 0.25, lt(BR, 0), 'rise', 'none', 0.3)
+        gest(r, lt(PRE2, 0), 'rest', gaze=(0.0, 0.0), brow=0.0, smile=0.0, turn=tg)
     if i in MEN:
-        r.on(lt(PRE2, 0) + 0.5 + 0.15*MEN.index(i), lt(BR, 0), 'rise', 'none', 0.5)
-        r.key(lt(PRE2, 0) - 0.5, x=float(CHOIR_X[i]), y=CHOIR_Y, depth=CHOIR_D, scale=0.8)
-        gest(r, lt(PRE2, 0), 'rest', gaze=(0.0, 0.0), brow=0.0, smile=0.0, turn=turn_in)
+        if i in (0, 1):
+            r.on(lt(CH2, 0) - 0.7 + 0.1*i, lt(BR, 0), 'rise', 'none', 0.45)
+            r.key(lt(CH2, 0) - 1.4, x=float(CHOIR_X[i]), y=CHOIR_Y, depth=CHOIR_D, scale=0.8)
         r.hold(lt(PRE2, 1) - 0.2, le(CH2, 1), 'L', lambda cv, t: P.smile_mask(cv, smoothstep((t - wt(CH2, 1, 5) + 0.05)/0.3)), grip=True)
         gest(r, lt(PRE2, 1), 'hold_L', smile=1.0, brow=0.8, lid=0.0)
         gest(r, wt(PRE2, 1, 2) - 0.1, 'hold_L', smile=1.0, gaze=(-0.8, 0.0))
-        gest(r, lt(PRE2, 2), 'hold_L', smile=0.0, gaze=(-1.0 if CHOIR_X[i] > 0 else 1.0, 0.3), brow=-0.4)
+        gest(r, lt(PRE2, 2), 'hold_L', smile=0.0, gaze=((1.0 if i == 2 else -1.0) if i in (2, 3) else (-1.0 if CHOIR_X[i] > 0 else 1.0), 0.3), brow=-0.4)   # patrzą na Henia
         gest(r, lt(PRE2, 3), 'hold_L', gaze=(0.0, 0.0), brow=0.3)
     else:
         r.on(lt(CH2, 0) - 0.7 + 0.1*WOMEN.index(i), lt(BR, 0), 'rise', 'none', 0.45)
@@ -396,7 +404,7 @@ for r in ROLES: r.build()
 
 # ================================================================== DEKORACJE, KURTYNA
 SETS = [(0.0, 'kitchen', False), (29.9, 'office', True), (lt(V1B, 2), 'conf', False), (lt(PRE1, 0), 'show', False),
-        (lt(V2, 0) + 0.1, 'studio_g', True), (lt(V2, 3), 'road', False), (lt(V2B, 0) - 0.02, 'heaven', False), (lt(PRE2, 0), 'wood', False),
+        (lt(V2, 0) + 0.1, 'studio_g', True), (lt(V2, 3), 'road', False), (lt(V2B, 0) - 0.02, 'heaven', False), (lt(PRE2, 0), 'podcast', False),
         (lt(CH2, 0) - 0.85, 'show', True)]
 FLY = 0.9
 def sets_at(t):
@@ -438,7 +446,7 @@ def stage_props(t):
         pr.append((-8.0, lambda cv, t, a=a, lg=lg: (cv.translate(150, -560 - 300*(1 - a)), P.cloud(cv, 0.9, 0.7, lg))))
     # przedrefreny/refreny: podest chóru (front ukrywa nogi... tzn. pręty chóru)
     for name, dy in sets_at(t):
-        if name == 'show' or name == 'wood':
+        if name == 'show':
             pr.append((125.0, lambda cv, t, dy=dy: (cv.translate(0, dy*0.6), riser(cv, t))))
     # refren 1: balon-serce u chórzystki (pęka na 'pęka'), iskry na 'błyszczy'
     if lt(CH1, 0) - 0.5 <= t <= wt(CH1, 1, 5) + 1.0:
@@ -455,13 +463,13 @@ def stage_props(t):
                 t0 = wt(V2, 2, 2) + i*0.41
                 if t < t0: continue
                 a = smoothstep((t - t0)/0.18)
-                px = [-940, -660, -380, 560, 840][i]
-                cv.save(); cv.translate(px, -520 + 120*(1 - a)); s = 0.6 + 0.4*a; cv.scale(s, s); cv.rotate((i - 2)*3)
+                px, py = PANEL_POS[i]
+                cv.save(); cv.translate(px, py + 120*(1 - a)); s = 0.6 + 0.4*a; cv.scale(s, s); cv.rotate((i - 2)*3)
                 P.comic_panel(cv, i); cv.restore()
-        pr.append((200.0, panels))
+        pr.append((60.0, panels))
     if wt(V2, 2, 8) - 0.2 <= t <= lt(V2, 3):
         L_ = 700*smoothstep((t - (wt(V2, 2, 8) - 0.2))/1.0)
-        pr.append((100.0, lambda cv, t, L_=L_: (cv.translate(820, -980), P.scroll(cv, L_, 'i dlatego…'))))
+        pr.append((100.0, lambda cv, t, L_=L_: (cv.translate(SCROLL_X, SCROLL_Y), P.scroll(cv, L_, 'i dlatego…'))))
     # droga: pieczątka RESTRUKTURYZACJA na tle po 'bruk'
     if wt(V2, 4, 8) - 0.05 <= t <= lt(V2B, 0) - 0.02:
         a = smoothstep((t - wt(V2, 4, 8))/0.08)
@@ -475,18 +483,21 @@ def stage_props(t):
                 t0 = wt(V2B, 1, 3) + i*0.2
                 if t < t0: continue
                 a = smoothstep((t - t0)/0.15)
-                cv.save(); cv.translate(-20 + i*170, -470 - 40*a); cv.scale(0.8*a, 0.8*a); P.star_card(cv); cv.restore()
+                cv.save(); cv.translate(-60 + i*170, -470 - 40*a); cv.scale(0.8*a, 0.8*a); P.rec_card(cv, i); cv.restore()
         pr.append((-5.0, stars))
     if wt(V2B, 3, 2) - 0.6 <= t <= lt(PRE2, 0):
         y = -1500 + (1500 - 520)*smoothstep((t - (wt(V2B, 3, 2) - 0.6))/0.9)
         pr.append((-4.0, lambda cv, t, y=y: (cv.translate(600, y + 30*math.sin(t*2)), P.halo(cv, 1.0))))
-    # studio w drewnie: mikrofon podcastowy, ON AIR
-    if lt(PRE2, 0) - 0.02 <= t <= lt(CH2, 0) - 0.4:
-        pr.append((-20.0, lambda cv, t: (cv.translate(300, 0), P.desk_mic(cv))))
+    # studio podcastowe: stół z mikrofonami na ramionach (prowadzący + dwóch gości)
+    for name, dy in sets_at(t):
+        if name == 'podcast':
+            seats = [(0.0, -253.0, 1, 1.0), (-480.0, -178.0, -1, 0.85), (480.0, -178.0, 1, 0.85)]
+            pr.append((-14.0, lambda cv, t, dy=dy, seats=seats: (cv.translate(0, dy*0.6), P.podcast_desk(cv, seats))))
     # bridge: tabliczka 'Robię swoje.', ozdoby, mgła, trąbka, łza
     if lt(BR, 0) - 0.5 <= t <= le(BR, 4) + 0.6:
         rev = smoothstep((t - wt(BR, 1, 4))/(wt(BR, 1, 6) + 0.4 - wt(BR, 1, 4)))
-        front.append((-110.0, lambda cv, t, rev=rev: (cv.translate(470, -170 + 18*math.sin(t*0.8)), P.marker_sign(cv, 'Robię swoje.', rev, 440, 200))))
+        drop = 1 - smoothstep((t - (lt(BR, 1) - 0.4))/0.5)
+        if drop < 0.999: front.append((-110.0, lambda cv, t, rev=rev, drop=drop: (cv.translate(470, -170 + 18*math.sin(t*0.8) - 900*drop**1.5), P.marker_sign(cv, 'Robię swoje.', rev, 440, 200))))
         fall = smoothstep((t - wt(BR, 2, 2))/1.3)
         def ornaments(cv, t, fall=fall):
             for k in range(9):
@@ -535,9 +546,9 @@ def sparkles(cv, t, t0):
 def ringlight(cv, t):
     import skia
     from gfx import light_pool
-    cv.drawLine(-430, -320, -430, 60, skia.Paint(AntiAlias=True, StrokeWidth=10, Color4f=P.col('#333333')))
-    cv.drawCircle(-430, -420, 120, skia.Paint(AntiAlias=True, Style=skia.Paint.kStroke_Style, StrokeWidth=26, Color4f=P.col('#f3eee4')))
-    light_pool(cv, -430, -420, 170, 170, (1, 0.97, 0.9), 0.14)
+    cv.drawLine(RING_X, -320, RING_X, 60, skia.Paint(AntiAlias=True, StrokeWidth=10, Color4f=P.col('#333333')))
+    cv.drawCircle(RING_X, -420, 120, skia.Paint(AntiAlias=True, Style=skia.Paint.kStroke_Style, StrokeWidth=26, Color4f=P.col('#f3eee4')))
+    light_pool(cv, RING_X, -420, 170, 170, (1, 0.97, 0.9), 0.14)
 def haze(cv, t, a):
     import skia
     g = skia.GradientShader.MakeLinear([skia.Point(0, -700), skia.Point(0, 400)], [skia.Color4f(1, 1, 1, 0).toColor(), skia.Color4f(0.9, 0.92, 1, 0.55*a).toColor()])
@@ -560,14 +571,16 @@ def apron(cv, t):
 def C_(x, y, d, roll=0.0): return Cam(float(x), float(y), float(d), 1700.0, roll)
 # Kadrowanie względem postaci (jak operator w studiu TV): klucz ujęcia = wielkość planu + kto w kadrze + przesunięcia.
 # Kamera liczy się z położenia postaci w danej chwili (śledzi je), a między kluczami płynnie zmienia plan.
-# Zasada: w planach CU/MCU/MS dół kadru nie schodzi poniżej linii pasa lalki (nie widać krawędzi sceny pod nią).
+# v4: kadr obejmuje nie tylko postaci, ale wszystko, co w danej chwili opowiada historię - trzymane tablice i karty,
+# rekwizyty sceny (POI: scenki z życia, zwój, baner, flipchart...) oraz napis wersu (tablica/dymek stoi obok postaci
+# i kamera kadruje postać razem z nim). Głowy innych lalek nie są ucinane krawędzią kadru: albo cała, albo wcale.
 ROLE_BY = {'H': HENIO, 'G': GRAZ, 'P': PREZ, 'T': TADEK, 'M': MIREK, 'K': KASIA}
 for _i, _r in enumerate(CHOIR): ROLE_BY['c%d' % _i] = _r
 SIZE = {  # (udział głowy w wysokości kadru lub None, dół kadru względem linii pasa [x wysokość korpusu], górny margines)
     'CU': (0.50, None, 0.06), 'MCU': (None, -0.30, 0.10), 'MS': (None, 0.05, 0.12), 'MLS': (None, 0.55, 0.14),
     'LS': (None, 1.25, 0.16), 'WS': (None, 2.4, 0.18)}
-def F(size, subj, dx=0.0, dy=0.0, roll=0.0, w=1.25):
-    return dict(size=size, subj=subj, dx=dx, dy=dy, roll=roll, w=w)
+def F(size, subj, dx=0.0, dy=0.0, roll=0.0, w=1.25, poi=(), props=True, heads=True):
+    return dict(size=size, subj=subj, dx=dx, dy=dy, roll=roll, w=w, poi=list(poi), props=props, heads=heads, _boxes=[], _shift=0.0)
 def _subj_list(subj, t, win=None):
     """Postaci w kadrze. Skład grupy (chór) ustalany dla całego ujęcia (win), żeby kadr nie skakał, gdy ktoś się wynurza."""
     out = []
@@ -582,7 +595,93 @@ def _subj_geom(r, t):
     ch = r.ch; s = r.g('scale', t)*ch.scale; x = r.g('x', t); y = r.g('y', t); d = r.g('depth', t)
     top = y + (ch.head_y + min(-ch.head_h, ch.eye_y - ch.eye_r) - (34 if ch.hair is not None else 14))*s
     return x, top, y, d, 2*ch.head_h*s, ch.head_w*1.15*s, ch.torso_h*s
-def frame_cam(spec, t, win=None):
+
+# ------------------------------------------------------------------ rekwizyty sceny ważne dla kadru (POI): okno czasu, prostokąt w świecie, głębokość
+JON = wt(V1, 1, 1) + 0.85
+PANEL_POS = [(-400, -548), (-140, -560), (120, -548), (380, -560), (640, -548)]   # 'pięć scenek z życia': rząd jak storyboard nad Grażyną
+SCROLL_X, SCROLL_Y = 900.0, -930.0
+RING_X = -800.0
+POI = {
+    'easel': ((12.4, 29.9), (-1030, -630, -570, -280), S.D_MID),
+    'jacket': ((lt(V1, 1) - 0.4, JON + 0.95), (-240, -300, 80, 20), -5.0),
+    'laptop': ((lt(V1, 2) - 0.6, lt(V1, 3) + 0.3), (-272, -170, 110, 0), -15.0),
+    'banner': ((wt(V1B, 0, 2) - 0.5, lt(V1B, 2)), (-505, -860, 505, -590), 260.0),
+    'cloud': ((wt(V1B, 0, 4) - 0.3, lt(V1B, 2)), (0, -670, 290, -480), -8.0),
+    'panels': ((wt(V2, 2, 2) - 0.1, lt(V2, 3)), (min(p[0] for p in PANEL_POS) - 115, min(p[1] for p in PANEL_POS) - 180,
+                                                 max(p[0] for p in PANEL_POS) + 115, max(p[1] for p in PANEL_POS) + 10), 60.0),
+    'scroll': ((wt(V2, 2, 8) - 0.2, lt(V2, 3)), (SCROLL_X - 155, S.OPEN_T, SCROLL_X + 155, SCROLL_Y + 560), 100.0),
+    'stamp_mark': ((wt(V2, 4, 8) - 0.05, lt(V2B, 0)), (-230, -755, 580, -520), 300.0),
+    'flipchart': ((lt(V2B, 0) - 0.02, lt(PRE2, 0)), (-335, -590, 75, 40), 40.0),
+    'recs_cards': ((wt(V2B, 1, 3) - 0.2, lt(PRE2, 0)), (-160, -715, 380, -560), -5.0),
+    'ringlight': ((lt(V2, 0) + 0.1, lt(V2, 3)), (RING_X - 150, -560, RING_X + 150, -280), 60.0),
+    'halo': ((wt(V2B, 3, 2) - 0.6, lt(PRE2, 0)), (390, -630, 810, -410), -4.0),
+    'robie': ((lt(BR, 1) - 0.4, le(BR, 4) + 0.6), (235, -375, 705, -160), -110.0),
+    'trumpet': ((wt(BR, 4, 3) - 0.85, wt(BR, 4, 5) + 0.45), (255, -490, 405, -60), -108.0),
+}
+def poi_box(name, win):
+    (a, b), rect, d = POI[name]
+    if b < win[0] or a > win[1]: return None
+    return (*rect, d)
+
+# ------------------------------------------------------------------ obrys rekwizytów trzymanych w dłoniach (raster, raz na rekwizyt)
+_PB = {}
+def _prop_bounds(fn, t, key):
+    if key in _PB: return _PB[key]
+    import skia
+    k = 0.25; Wp = 700
+    s_ = skia.Surface(Wp, Wp); c = s_.getCanvas(); c.clear(skia.Color4f(0, 0, 0, 0)); c.translate(Wp/2, Wp*0.62); c.scale(k, k)
+    try: fn(c, t)
+    except Exception: pass
+    a = s_.makeImageSnapshot().toarray()[..., 3]
+    ys, xs = np.nonzero(a > 10)
+    if len(xs) == 0: _PB[key] = None; return None
+    b = ((xs.min() - Wp/2)/k, (ys.min() - Wp*0.62)/k, (xs.max() - Wp/2)/k, (ys.max() - Wp*0.62)/k)
+    b = (max(b[0], -900), max(b[1], -900), min(b[2], 900), min(b[3], 300))
+    _PB[key] = b; return b
+_ENV = {}
+def prop_env(r, win):
+    """Obwiednia trzymanych rekwizytów względem (x, y) lalki w oknie ujęcia: lista prostokątów (lokalnie, już w skali)."""
+    key = (id(r), round(win[0], 3), round(win[1], 3))
+    if key in _ENV: return _ENV[key]
+    out = []
+    for hi, (a, b, side, fn, grip) in enumerate(r.holds):
+        lo, hi_t = max(a, win[0]), min(b, win[1])
+        if hi_t - lo < 0.15: continue
+        pb = None
+        for tt in (lo + 0.1, (lo + hi_t)/2, hi_t - 0.05):
+            bb = _prop_bounds(fn, tt, (id(r), hi, round(tt, 1)))
+            if bb: pb = bb if pb is None else (min(pb[0], bb[0]), min(pb[1], bb[1]), max(pb[2], bb[2]), max(pb[3], bb[3]))
+        if pb is None or (pb[2] - pb[0])*(pb[3] - pb[1]) < 60*60: continue          # drobiazgi (telefon, kubek) nie zmieniają kadru
+        env = None
+        for tt in np.linspace(lo + 0.05, hi_t - 0.05, 7):
+            a_ = r.actor(tt)
+            if a_ is None: continue
+            gx, gy = r.g('x', tt), r.g('y', tt)
+            if abs(a_.y - gy) > 5 or abs(a_.x - gx) > 40: continue     # wynurzanie/chowanie, wejście z boku - nie poszerza kadru
+            s_ = a_.scale*a_.ch.scale; hx, hy = a_.pose['hands'][side]
+            ox, oy = a_.x - gx, a_.y - gy
+            bx = (ox + (hx + pb[0])*s_*1.04, oy + (hy + pb[1])*s_*1.04, ox + (hx + pb[2])*s_*1.04, min(oy + (hy + pb[3])*s_, -gy))   # nie niżej niż krawędź sceny
+            env = bx if env is None else (min(env[0], bx[0]), min(env[1], bx[1]), max(env[2], bx[2]), max(env[3], bx[3]))
+        if env and env[3] > env[1]: out.append(env)
+    _ENV[key] = out
+    return out
+
+def _fit(cx, cy, Hw, D, boxes, m=0.035):
+    """Powiększa kadr (proporcje 16:9) tak, by objął wszystkie prostokąty (każdy na swojej głębokości) z marginesem.
+    Kadr postaci jest minimum; górna krawędź zostaje (zapas nad głowami), dodatkowe miejsce idzie w dół i na boki."""
+    R0 = (cx - Hw*E.W/E.H/2, cy - Hw/2, cx + Hw*E.W/E.H/2, cy + Hw/2)
+    c = (cx, cy, Hw)
+    for _ in range(4):
+        cxx, cyy, H_ = c
+        dcam = 1700.0*H_/E.H - D
+        R = list(R0); mm = m*H_
+        for (x0, y0, x1, y1, dp) in boxes:
+            k = (dcam + D)/max(dcam + dp, 60.0)
+            R = [min(R[0], cxx + (x0 - cxx)*k - mm), min(R[1], cyy + (y0 - cyy)*k - mm), max(R[2], cxx + (x1 - cxx)*k + mm), max(R[3], cyy + (y1 - cyy)*k + mm)]
+        Hn = max(R[3] - R[1], (R[2] - R[0])*E.H/E.W)
+        c = ((R[0] + R[2])/2, R[1] + Hn/2, Hn)
+    return c
+def frame_cam(spec, t, win=None, extras=True):
     rs = _subj_list(spec['subj'], t, win)
     if not rs: return None
     G_ = [_subj_geom(r, t) for r in rs]
@@ -590,96 +689,127 @@ def frame_cam(spec, t, win=None):
     top = min(g[1] for g in G_); base = max(g[2] for g in G_); D = float(np.mean([g[3] for g in G_]))
     hh = max(g[4] for g in G_); th = max(g[6] for g in G_)
     fh, bot_k, ft = SIZE[spec['size']]
-    if fh: Hw = hh/fh
-    else: Hw = (base + bot_k*th - top)/(1 - ft)
-    Hw_w = (xr - xl)*spec.get('w', 1.25)*E.H/E.W                # szerokość grupy
-    if Hw_w > Hw:                                              # grupa szersza niż plan: dół zostaje, rośnie zapas nad głowami
-        bottom = top - ft*Hw + Hw; Hw = Hw_w; cy = bottom - Hw/2
-    else:
-        cy = top - (ft - 0.5)*Hw
-    cy += spec.get('dy', 0.0)*Hw
-    d = 1700.0*Hw/E.H - D
+    Hh = hh/fh if fh else (base + bot_k*th - top)/(1 - ft)
+    Hw = max(Hh, (xr - xl)*spec.get('w', 1.25)*E.H/E.W)
+    # grupa szersza niż plan: nadmiar wysokości po połowie nad i pod grupą (nad nią zwykle chór/dekoracja, pod nią pusty
+    # front sceny), ale górna krawędź kadru nie wyżej niż górna krawędź otworu sceny
+    y_top = max(top - ft*Hh - 0.5*(Hw - Hh), min(top - ft*Hh, S.OPEN_T + 20.0))
     cx = (xl + xr)/2 - spec.get('dx', 0.0)*Hw*E.W/E.H
+    cy = y_top + Hw/2 + spec.get('dy', 0.0)*Hw
+    if extras:
+        boxes = [((*b.rect(), b.depth) if hasattr(b, 'rect') else b) for b in spec.get('_boxes', [])]
+        win_ = win or (t, t)
+        for n in spec.get('poi', []):
+            b = poi_box(n, win_)
+            if b: boxes.append(b)
+        if spec.get('props', True):
+            for r in rs:
+                x_, y_ = r.g('x', t), r.g('y', t); d_ = r.g('depth', t)
+                for e in prop_env(r, win_): boxes.append((x_ + e[0], y_ + e[1], x_ + e[2], y_ + e[3], d_))
+        cl, cr = xl, xr
+        if boxes:
+            cx, cy, Hw = _fit(cx, cy, Hw, D, boxes)
+            dcam = 1700.0*Hw/E.H - D
+            for (x0, y0, x1, y1, dp) in boxes:
+                k = (dcam + D)/max(dcam + dp, 60.0); cl = min(cl, cx + (x0 - cx)*k); cr = max(cr, cx + (x1 - cx)*k)
+        dcam = 1700.0*Hw/E.H - D; k = (dcam + D)/max(dcam + S.D_PORTAL, 60.0)
+        oL, oR = cx + (S.OPEN_L - cx)*k, cx + (S.OPEN_R - cx)*k
+        fw = Hw*E.W/E.H; fL, fR = cx - fw/2, cx + fw/2; mg = 0.03*fw
+        if fR > oR and fL > oL: cx -= max(0.0, min(fR - oR, fL - oL, cl - mg - fL))
+        elif fL < oL and fR < oR: cx += max(0.0, min(oL - fL, oR - fR, fR - mg - cr))
+        cx += spec.get('_shift', 0.0)*Hw*E.W/E.H
+    d = 1700.0*Hw/E.H - D
     return Cam(cx, cy, max(d, 380.0), 1700.0, spec.get('roll', 0.0))
-def _shot_cam(t, s):
+_STATIC = {}
+def _is_static(s):
+    """Ujęcie, w którym kadry kluczowe (z napisem i rekwizytami) wyszły prawie takie same - dostaje powolny najazd."""
+    if s[0] in _STATIC: return _STATIC[s[0]]
+    if not all(isinstance(k[1], dict) for k in s[3]): _STATIC[s[0]] = False; return False
+    tm = (s[0] + s[1])/2; cs = [frame_cam(k[1], tm, (s[0], s[1])) for k in s[3]]
+    st = all(c is not None for c in cs) and max(abs(a.x - b.x) + abs(a.y - b.y) + abs(a.d - b.d) for a in cs for b in cs) < 60
+    _STATIC[s[0]] = st; return st
+def _shot_cam(t, s, extras=True):
     keys = s[3]
     if not any(isinstance(k[1], dict) for k in keys): return E.shot_cam(t, s[0], s[1], keys, 0.3)
     tau = E.ease((t - s[0])/max(s[1] - s[0], 1e-6), 0.45)
     cams = []
     for u, spec in keys:
         if not isinstance(spec, dict): cams.append((u, spec)); continue
-        c = frame_cam(spec, t, (s[0], s[1])) or frame_cam(spec, s[0] + 0.5*(s[1] - s[0]), (s[0], s[1]))
+        c = frame_cam(spec, t, (s[0], s[1]), extras) or frame_cam(spec, s[0] + 0.5*(s[1] - s[0]), (s[0], s[1]), extras)
         cams.append((u, c))
+    cam = cams[-1][1]
     for (a, ca), (b, cb) in zip(cams[:-1], cams[1:]):
-        if tau <= b: return ca.lerp(cb, (tau - a)/max(b - a, 1e-6))
-    return cams[-1][1]
+        if tau <= b: cam = ca.lerp(cb, (tau - a)/max(b - a, 1e-6)); break
+    if extras and _is_static(s): cam = Cam(cam.x, cam.y, cam.d*(1 - 0.05*tau), cam.f, cam.roll)     # powolny najazd (5%)
+    return cam
 
 SHOTS = [
     (0.0, lt(INTRO, 0), 'feed', dict(kind='open')),
-    # intro: Henio przed kurtyną, z telefonem
-    (lt(INTRO, 0), wt(INTRO, 0, 9), 'stage', [(0, F('MS', 'H', dx=0.05)), (1, F('MCU', 'H', dx=0.0))]),
-    (wt(INTRO, 0, 9), wt(INTRO, 0, 11), 'stage', [(0, F('CU', 'H', dx=-0.10, roll=-1.2)), (1, F('CU', 'H', dx=-0.06, roll=0.0))]),
+    # intro: Henio przed kurtyną, z telefonem (dymek obok - kamera kadruje oba)
+    (lt(INTRO, 0), wt(INTRO, 0, 9), 'stage', [(0, F('MS', 'H')), (1, F('MCU', 'H'))]),
+    (wt(INTRO, 0, 9), wt(INTRO, 0, 11), 'stage', [(0, F('MCU', 'H', roll=-1.2)), (1, F('MCU', 'H', dx=0.02))]),
     (wt(INTRO, 0, 11), lt(V1, 0), 'stage', [(0, C_(0, -380, 1500)), (0.35, C_(0, -400, 2200)), (1, C_(-40, -430, 2700))]),
-    # zwrotka 1: kuchnia
-    (lt(V1, 0), lt(V1, 1), 'stage', [(0, F('MS', 'H', dx=0.12)), (1, F('MCU', 'H', dx=0.05))]),
-    (lt(V1, 1), lt(V1, 2), 'stage', [(0, F('MLS', 'H', dy=-0.18)), (1, F('MS', 'H', dx=-0.08))]),
-    (lt(V1, 2), lt(V1, 3), 'stage', [(0, F('MCU', 'H', dx=0.14)), (0.7, F('MCU', 'H', dx=0.08)), (1, F('CU', 'H', dx=0.04))]),
-    (lt(V1, 3), lt(V1, 4), 'stage', [(0, F('MS', 'H', dx=-0.22, roll=0.8)), (1, F('MS', 'H', dx=-0.16, roll=0.0))]),
+    # zwrotka 1: kuchnia ('wielki plan' - sztaluga w kadrze; marynarka zjeżdża; laptop; karta-post)
+    (lt(V1, 0), lt(V1, 1), 'stage', [(0, F('MS', 'H')), (0.35, F('MS', 'H', poi=['easel'])), (1, F('MS', 'H', poi=['easel']))]),
+    (lt(V1, 1), lt(V1, 2), 'stage', [(0, F('MS', 'H', poi=['jacket'])), (1, F('MS', 'H', dx=-0.04))]),
+    (lt(V1, 2), lt(V1, 3), 'stage', [(0, F('MS', 'H', poi=['laptop'])), (1, F('MCU', 'H', poi=['laptop']))]),
+    (lt(V1, 3), lt(V1, 4), 'stage', [(0, F('MS', 'H')), (1, F('MS', 'H', dx=-0.04))]),
     (lt(V1, 4), bar_at_or_before(30.41), 'feed', dict(kind='henio_post')),
-    # biuro
+    # biuro: baner AWANS i chmurka w kadrze
     (bar_at_or_before(30.41), lt(V1B, 0), 'stage', [(0, C_(-300, -400, 2300)), (1, C_(150, -390, 1900))]),
-    (lt(V1B, 0), lt(V1B, 1), 'stage', [(0, F('MLS', 'H', dy=-0.16, dx=0.06)), (1, F('MS', 'H', dy=-0.12, dx=-0.04))]),
-    (lt(V1B, 1), lt(V1B, 2), 'stage', [(0, F('LS', ['Cm', 'H'], w=1.1, dx=0.04)), (1, F('MLS', ['Cm', 'H'], w=1.05, dx=-0.04))]),
-    # konferencja: ścianka, flesze
-    (lt(V1B, 2), lt(V1B, 3), 'stage', [(0, F('MLS', ['G', 'P'], w=1.5)), (1, F('MS', ['G', 'P'], w=1.3))]),
-    (lt(V1B, 3), lt(PRE1, 0), 'stage', [(0, F('MS', ['P', 'M'], dx=0.05, w=1.3)), (1, F('MS', ['P', 'M'], dx=-0.03, w=1.2))]),
+    (lt(V1B, 0), lt(V1B, 1), 'stage', [(0, F('MS', 'H', poi=['cloud'])), (1, F('MS', 'H', poi=['banner', 'cloud']))]),
+    (lt(V1B, 1), lt(V1B, 2), 'stage', [(0, F('LS', ['Cm', 'H'], w=1.08, poi=['banner'])), (1, F('MLS', ['Cm', 'H'], w=1.04, poi=['banner']))]),
+    # konferencja: ścianka, flesze -> wpis prezesa z komentarzem Mirka -> z powrotem: prezes przyjmuje 'szacun'
+    (lt(V1B, 2), lt(V1B, 3), 'stage', [(0, F('MLS', ['G', 'P'], w=1.4)), (1, F('MS', ['G', 'P'], w=1.3))]),
+    (lt(V1B, 3), wt(V1B, 3, 5), 'feed', dict(kind='szacun')),
+    (wt(V1B, 3, 5), lt(PRE1, 0), 'stage', [(0, F('MS', ['P', 'M'], w=1.2)), (1, F('MS', ['P', 'M'], w=1.15, dx=-0.02))]),
     # przedrefren 1: wielkie show
     (lt(PRE1, 0), lt(PRE1, 1), 'stage', [(0, C_(0, -700, 2500)), (1, C_(0, -450, 2700))]),
-    (lt(PRE1, 1), lt(PRE1, 2), 'stage', [(0, F('MLS', ['c0', 'c1'], w=1.5, dy=0.08)), (1, F('MLS', ['c1', 'c2'], w=1.5, dy=0.08))]),
-    (lt(PRE1, 2), lt(PRE1, 3), 'stage', [(0, F('MCU', 'H')), (1, F('CU', 'H'))]),
-    (lt(PRE1, 3), lt(CH1, 0), 'stage', [(0, F('MS', 'H', dy=-0.18)), (1, F('MLS', 'H', dy=-0.16))]),
-    # refren 1: ogólny z żurawiem, chór, Henio z lewej, pod sceną, ogólny, chór
+    (lt(PRE1, 1), lt(PRE1, 2), 'stage', [(0, F('LS', ['Cm', 'H'], w=1.06)), (1, F('MLS', ['Cm', 'H'], w=1.03))]),
+    (lt(PRE1, 2), lt(PRE1, 3), 'stage', [(0, F('MCU', 'H')), (1, F('MCU', 'H', dx=0.02))]),
+    (lt(PRE1, 3), lt(CH1, 0), 'stage', [(0, F('MS', 'H', dy=-0.12)), (1, F('MLS', 'H', dy=-0.12))]),
+    # refren 1
     (lt(CH1, 0), lt(CH1, 1), 'stage', [(0, C_(0, -380, 2600)), (1, C_(0, -500, 2850))]),
-    (lt(CH1, 1), lt(CH1, 2), 'stage', [(0, F('MLS', ['c2', 'c6', 'c3', 'c7'], w=1.3, dy=0.08)), (1, F('MLS', ['c6', 'c3', 'c7'], w=1.3, dy=0.08))]),
-    (lt(CH1, 2), lt(CH1, 3), 'stage', [(0, F('MS', 'H', dx=0.10, dy=-0.18, roll=-0.6)), (1, F('MS', 'H', dx=0.05, dy=-0.15))]),
+    (lt(CH1, 1), lt(CH1, 2), 'stage', [(0, F('MLS', ['c2', 'c6', 'c3', 'c7'], w=1.2)), (1, F('MLS', ['c6', 'c3', 'c7'], w=1.2))]),
+    (lt(CH1, 2), lt(CH1, 3), 'stage', [(0, F('MS', 'H', dx=0.05)), (1, F('MS', 'H'))]),
     (lt(CH1, 3), lt(CH1, 4), 'under', [(0, C_(-350, -170, 1800)), (1, C_(120, -90, 1500))]),
-    (lt(CH1, 4), lt(CH1, 5), 'stage', [(0, F('WS', ['H', 'C'], w=1.1)), (1, F('LS', ['H', 'C'], w=1.05))]),
-    (lt(CH1, 5), lt(V2, 0), 'stage', [(0, F('MLS', ['c4', 'c5', 'c0', 'c1'], w=1.3, dy=0.08)), (1, F('MLS', ['c0', 'c1', 'c2', 'c3'], w=1.3, dy=0.08))]),
+    (lt(CH1, 4), lt(CH1, 5), 'stage', [(0, F('WS', ['H', 'C'], w=1.06)), (1, F('LS', ['H', 'C'], w=1.03))]),
+    (lt(CH1, 5), lt(V2, 0), 'stage', [(0, F('MLS', ['c4', 'c0', 'c5', 'c1'], w=1.2)), (1, F('MLS', ['c0', 'c5', 'c1'], w=1.2))]),
     (lt(V2, 0), lt(V2, 1), 'feed', dict(kind='to_grazyna')),
-    # zwrotka 2: studio Grażyny, droga, bruk
-    (lt(V2, 1), lt(V2, 2), 'stage', [(0, F('MS', ['H', 'G'], w=1.25)), (0.7, F('MS', 'G', dx=-0.05)), (1, F('MCU', 'G', dx=-0.08))]),
-    (lt(V2, 2), lt(V2, 3), 'stage', [(0, F('LS', 'G', w=2.4)), (1, F('MLS', 'G', w=2.0))]),
-    (lt(V2, 3), lt(V2, 4), 'stage', [(0, F('MS', 'T', dx=-0.06)), (1, F('MS', ['H', 'T'], w=1.2))]),
-    (lt(V2, 4), snap_bar(wt(V2, 4, 8)), 'stage', [(0, F('LS', ['T', 'P'], w=1.3)), (1, F('MLS', ['T', 'P'], w=1.25))]),
-    (snap_bar(wt(V2, 4, 8)), lt(CHOIRI, 0), 'stage', [(0, F('MLS', ['T', 'P'], w=1.3)), (1, F('LS', ['T', 'P'], w=1.4))]),
-    (lt(CHOIRI, 0), lt(V2B, 0), 'stage', [(0, F('LS', 'C', w=1.08)), (1, F('MLS', 'C', w=1.02))]),
-    # zwrotka 2b: korporacyjny raj
-    (lt(V2B, 0), lt(V2B, 1), 'stage', [(0, F('MS', 'K', dx=-0.12)), (1, F('MS', ['K'], dx=-0.20))]),
-    (lt(V2B, 1), lt(V2B, 2), 'stage', [(0, F('MS', 'c2', dx=0.0)), (1, F('MCU', 'c2', dx=0.04))]),
-    (lt(V2B, 2), lt(V2B, 3), 'stage', [(0, F('MS', 'G', dx=0.10)), (1, F('MCU', 'G', dx=0.08))]),
-    (lt(V2B, 3), lt(PRE2, 0), 'stage', [(0, F('MLS', ['H', 'G'], w=1.2, dy=-0.10)), (1, C_(150, -520, 2500))]),
-    # przedrefren 2: studio w drewnie
-    (lt(PRE2, 0), lt(PRE2, 1), 'stage', [(0, F('LS', ['H', 'Cm'], w=1.12)), (1, F('MLS', ['H', 'Cm'], w=1.08))]),
-    (lt(PRE2, 1), lt(PRE2, 2), 'stage', [(0, F('MS', 'H', dx=-0.15, dy=-0.16)), (1, F('MS', 'H', dx=0.12, dy=-0.16))]),
-    (lt(PRE2, 2), lt(PRE2, 3), 'stage', [(0, F('MLS', ['c3', 'c2'], w=1.6, dy=0.08)), (1, F('MLS', ['c2', 'c1'], w=1.6, dy=0.08))]),
-    (lt(PRE2, 3), lt(CH2, 0), 'stage', [(0, F('MS', 'H', dy=-0.18)), (1, F('MLS', 'H', dy=-0.16))]),
-    # refren 2: z góry, chór z lewej, przebitki (analityka, puste komentarze), ogólny
+    # zwrotka 2: studio Grażyny ('pięć scenek z życia' + zwój w kadrze) -> wpis Tadka -> droga, bruk
+    (lt(V2, 1), lt(V2, 2), 'stage', [(0, F('MS', 'G')), (1, F('MS', 'G', dx=0.03))]),
+    (lt(V2, 2), lt(V2, 3), 'stage', [(0, F('MS', 'G', poi=['panels'])), (1, F('MS', 'G', poi=['panels', 'scroll']))]),
+    (lt(V2, 3), lt(V2, 4), 'feed', dict(kind='tadek')),
+    (lt(V2, 4), snap_bar(wt(V2, 4, 8)), 'stage', [(0, F('MLS', ['H', 'T', 'P'], w=1.1)), (1, F('MS', ['H', 'T', 'P'], w=1.08))]),
+    (snap_bar(wt(V2, 4, 8)), lt(CHOIRI, 0), 'stage', [(0, F('MS', ['T', 'P'], w=1.15, poi=['stamp_mark'])), (1, F('MLS', ['T', 'P'], w=1.25, poi=['stamp_mark']))]),
+    (lt(CHOIRI, 0), lt(V2B, 0), 'stage', [(0, F('LS', 'C', w=1.06, poi=['stamp_mark'])), (1, F('MLS', 'C', w=1.02, poi=['stamp_mark']))]),
+    # zwrotka 2b: korporacyjny raj (flipchart 'case study', rekomendacje w serwisie, aureola)
+    (lt(V2B, 0), lt(V2B, 1), 'stage', [(0, F('MS', 'K', poi=['flipchart'])), (1, F('MS', 'K', poi=['flipchart'], dx=0.03))]),
+    (lt(V2B, 1), lt(V2B, 2), 'feed', dict(kind='recs')),
+    (lt(V2B, 2), lt(V2B, 3), 'stage', [(0, F('MS', 'G', poi=['recs_cards'])), (1, F('MS', 'G', poi=['recs_cards'], dx=0.03))]),
+    (lt(V2B, 3), lt(PRE2, 0), 'stage', [(0, F('MLS', ['H', 'G'], w=1.15, poi=['halo'])), (1, C_(150, -520, 2500))]),
+    # przedrefren 2: studio podcastowe ('studio w drewnie') - na słowach 'studio w drewnie' odjazd na całą dekorację
+    (lt(PRE2, 0), lt(PRE2, 1), 'stage', [(0, F('LS', ['c2', 'H', 'c3'], w=1.08)), (1, F('MLS', ['c2', 'H', 'c3'], w=1.04))]),
+    (lt(PRE2, 1), lt(PRE2, 2), 'stage', [(0, F('MS', 'H')), (0.42, F('MS', 'H')), (1, C_(0, -470, 2650))]),
+    (lt(PRE2, 2), lt(PRE2, 3), 'stage', [(0, F('MLS', ['H', 'c3'], w=1.12)), (1, F('MS', ['H', 'c3'], w=1.1))]),
+    (lt(PRE2, 3), lt(CH2, 0), 'stage', [(0, F('MS', 'H')), (1, F('MLS', 'H'))]),
+    # refren 2
     (lt(CH2, 0), lt(CH2, 1), 'stage', [(0, C_(0, -820, 2500)), (1, C_(0, -460, 2650))]),
-    (lt(CH2, 1), lt(CH2, 2), 'stage', [(0, F('MLS', ['c4', 'c0', 'c5', 'c1'], w=1.3, dy=0.08)), (1, F('MLS', ['c0', 'c5', 'c1'], w=1.25, dy=0.08))]),
+    (lt(CH2, 1), lt(CH2, 2), 'stage', [(0, F('MLS', ['c4', 'c0', 'c5', 'c1'], w=1.2)), (1, F('MLS', ['c0', 'c5', 'c1'], w=1.2))]),
     (lt(CH2, 2), lt(CH2, 4), 'feed', dict(kind='analytics')),
-    (lt(CH2, 4), lt(CH2, 5), 'stage', [(0, F('WS', ['H', 'C'], w=1.1)), (1, F('LS', ['H', 'C'], w=1.06))]),
-    (lt(CH2, 5), lt(BR, 0), 'stage', [(0, F('MS', 'H', dx=-0.12)), (1, F('MLS', 'H', dy=-0.05))]),
-    # bridge: wyciszenie, przed kurtyną, jeden reflektor
-    (lt(BR, 0), lt(BR, 1), 'stage', [(0, F('MCU', 'H')), (1, F('CU', 'H'))]),
-    (lt(BR, 1), lt(BR, 2), 'stage', [(0, F('MLS', 'H', dx=-0.26)), (1, F('MS', 'H', dx=-0.34))]),
-    (lt(BR, 2), lt(BR, 3), 'stage', [(0, F('MLS', 'H', dy=-0.25)), (1, F('MLS', 'H', dy=-0.10))]),
-    (lt(BR, 3), lt(BR, 4), 'stage', [(0, F('MLS', 'H', dx=-0.24, dy=-0.12)), (1, F('MLS', 'H', dx=-0.26, dy=-0.10))]),
-    (lt(BR, 4), le(BR, 4) + 0.05, 'stage', [(0, F('MS', 'H', dx=-0.22)), (1, F('MS', 'H', dx=-0.18))]),
+    (lt(CH2, 4), lt(CH2, 5), 'stage', [(0, F('WS', ['H', 'C'], w=1.06)), (1, F('LS', ['H', 'C'], w=1.03))]),
+    (lt(CH2, 5), lt(BR, 0), 'stage', [(0, F('MS', 'H')), (0.4, F('MLS', 'H')), (1, C_(0, -430, 2750))]),     # odjazd: kurtyna się zamyka
+    # bridge: przed kurtyną, jeden reflektor; karta 'Robię swoje.' zawsze w kadrze
+    (lt(BR, 0), lt(BR, 1), 'stage', [(0, F('MCU', 'H')), (1, F('MCU', 'H', dx=0.02))]),
+    (lt(BR, 1), lt(BR, 2), 'stage', [(0, F('MS', 'H', poi=['robie'])), (1, F('MS', 'H', poi=['robie'], dx=0.02))]),
+    (lt(BR, 2), lt(BR, 3), 'stage', [(0, F('MLS', 'H', poi=['robie'])), (1, F('MS', 'H', poi=['robie']))]),
+    (lt(BR, 3), lt(BR, 4), 'stage', [(0, F('MS', 'H', poi=['robie'])), (1, F('MS', 'H', poi=['robie'], dx=-0.02))]),
+    (lt(BR, 4), le(BR, 4) + 0.05, 'stage', [(0, F('MS', 'H', poi=['robie', 'trumpet'])), (1, F('MS', 'H', poi=['robie', 'trumpet']))]),
     (le(BR, 4) + 0.05, lt(CH3, 0), 'feed', dict(kind='simple_post')),
     # refren 3: majestatyczny
     (lt(CH3, 0), lt(CH3, 1), 'stage', [(0, C_(0, -580, 3800)), (1, C_(0, -470, 2900))]),
-    (lt(CH3, 1), lt(CH3, 2), 'stage', [(0, F('LS', ['K', 'G', 'T', 'H'], w=1.12)), (1, F('LS', ['H', 'M', 'P'], w=1.2))]),
-    (lt(CH3, 2), lt(CH3, 3), 'stage', [(0, F('LS', ['T', 'H'], w=1.3, dx=0.06)), (1, F('LS', ['T', 'H'], w=1.22, dx=-0.06))]),
+    (lt(CH3, 1), lt(CH3, 2), 'stage', [(0, F('LS', ['K', 'G', 'T', 'H', 'M', 'P'], w=1.04)), (1, F('LS', ['G', 'T', 'H', 'M'], w=1.06))]),
+    (lt(CH3, 2), lt(CH3, 3), 'stage', [(0, F('MLS', ['G', 'T', 'H', 'M'], w=1.04)), (1, F('MS', ['G', 'T', 'H', 'M'], w=1.03))]),
     (lt(CH3, 3), lt(CH3, 4), 'stage', [(0, F('LS', ['H', 'C'], w=1.06)), (1, F('LS', ['H', 'C'], w=1.02))]),
     (lt(CH3, 4), lt(CH3, 5), 'stage', [(0, F('WS', ['H', 'C', 'G', 'P', 'K', 'M', 'T'], w=1.05)), (1, F('LS', ['H', 'C', 'G', 'P', 'K', 'M', 'T'], w=1.02))]),
     (lt(CH3, 5), lt(OUT, 0), 'stage', [(0, F('LS', ['H', 'T', 'M'], w=1.3)), (0.5, F('LS', ['H', 'T', 'M', 'G', 'P'], w=1.15)), (1, C_(0, -660, 3050))]),
@@ -693,10 +823,10 @@ def shot_at(t):
     for s in SHOTS:
         if s[0] <= t < s[1]: return s
     return SHOTS[-1]
-def cam_at(t, s=None):
+def cam_at(t, s=None, extras=True):
     s = s or shot_at(t)
     if s[2] not in ('stage', 'under'): return None
-    cam = _shot_cam(t, s)
+    cam = _shot_cam(t, s, extras)
     # drobny 'oddech' operatora + mikro-akcent na mocnych uderzeniach
     cam.x += 3*math.sin(t*0.9) ; cam.y += 2*math.sin(t*1.3)
     cam.d *= 1 - 0.006*E.kick(t, decay=0.1)*ENERGY_CAM(t)
@@ -705,20 +835,22 @@ from roles import ENERGY as ENERGY_CAM
 
 # ================================================================== ŚWIATŁA
 def lights_at(t, actors):
-    L = dict(ambient=1.0, wash_col=(1.0, 0.96, 0.9), edge_col=(0.42, 0.38, 0.5), wash_r=1500, spots=[], beams=[], flash=0.0, key_x=-400.0)
+    L = dict(ambient=1.0, wash_col=(0.86, 0.82, 0.78), edge_col=(0.36, 0.32, 0.43), wash_r=1500, spots=[], beams=[], flash=0.0, key_x=-400.0)
     hen = next((a for a in actors if a.name == C.HENIO.name), None)
     sets = [n for n, _ in sets_at(t)]
-    show = 'show' in sets or 'wood' in sets
+    show = 'show' in sets
+    if 'podcast' in sets:     # studio podcastowe: ciepłe lampy, ciemniejsze brzegi
+        L.update(wash_col=(0.92, 0.82, 0.68), edge_col=(0.34, 0.27, 0.24), wash_r=1800)
     chorus = any(lt(s, 0) - 0.3 <= t <= le(s, 5) + 0.6 for s in (CH1, CH2, CH3))
     if t < 10.9:
         L.update(ambient=0.55, wash_col=(0.8, 0.55, 0.6), dim=0.0)
     if 147.6 <= t <= 166.8:
         k = smoothstep((t - 147.6)/1.2)*(1 - smoothstep((t - 166.0)/0.8))
-        L.update(ambient=1 - 0.55*k, wash_col=(1.0, 0.85, 0.7))
+        L.update(ambient=1 - 0.55*k, wash_col=(0.88, 0.74, 0.62))
     for a in actors:
         if a.depth <= 10 and abs(a.y) < 200:
             r = 330*a.scale*a.ch.scale
-            L['spots'].append((a.x, -300*a.scale + a.y, r, (1.0, 0.92, 0.78), 0.22 if a.name != C.HENIO.name else 0.30))
+            L['spots'].append((a.x, -300*a.scale + a.y, r, (1.0, 0.92, 0.78), 0.16 if a.name != C.HENIO.name else 0.2))
     if chorus or (show and t > lt(PRE1, 3)):
         e = 1.0
         for i, x0 in enumerate((-900, -300, 300, 900)):
@@ -743,8 +875,8 @@ def portal_at(t):
     if t < 10.9: on = 0.5
     return dict(chase=chase, bulbs=on)
 
-# ================================================================== NAPISY (stałe miejsce wersu, dobór bez kolizji)
-FEED_LINES = {(V1, 4): 'chat', (V2, 0): 'chat', (CH2, 2): 'comment', (CH2, 3): 'comment', (OUT, 0): 'comment'}
+# ================================================================== NAPISY (stałe miejsce wersu przy postaci; kamera je obejmuje)
+FEED_LINES = {(V1, 4): 'chat', (V2, 0): 'chat', (V2, 3): 'chat', (V2B, 1): 'chat', (CH2, 2): 'comment', (CH2, 3): 'comment', (OUT, 0): 'comment'}
 UNDER_LINES = {(CH1, 3)}
 def actors_at(t):
     return [a for r in ROLES if (a := r.actor(t)) is not None]
@@ -761,7 +893,9 @@ def actor_rects(a):
         out.append((hx - 45, hy_ - 45, hx + 45, hy_ + 45))
         for pr in P_['props'][side]:
             grip = pr[1] if isinstance(pr, tuple) else False
-            if grip: out.append((hx - 150, hy_ - P.GRIP - 230, hx + 150, hy_))
+            hb = hold_bounds(*pr[2]) if isinstance(pr, tuple) and len(pr) > 2 else None
+            if hb: out.append((hx + hb[0], hy_ + hb[1], hx + hb[2], hy_ + hb[3]))
+            elif grip: out.append((hx - 150, hy_ - P.GRIP - 230, hx + 150, hy_))
             else: out.append((hx - 90, hy_ - 150, hx + 90, hy_ + 60))
     res = []
     for (x0, y0, x1, y1) in out:
@@ -769,6 +903,26 @@ def actor_rects(a):
         if Y1 <= Y0: continue
         res.append((a.x + x0*s, Y0, a.x + x1*s, Y1))
     return res
+_HB = {}
+def hold_bounds(r, hi):
+    """Rzeczywisty obrys rekwizytu trzymanego w dłoni (z rastra, kilka chwil okna trzymania), względem dłoni."""
+    if (id(r), hi) in _HB: return _HB[(id(r), hi)]
+    a, b, side, fn, grip = r.holds[hi]
+    pb = None
+    for tt in (a + 0.1, (a + b)/2, b - 0.05):
+        bb = _prop_bounds(fn, tt, (id(r), hi, round(tt, 1)))
+        if bb: pb = bb if pb is None else (min(pb[0], bb[0]), min(pb[1], bb[1]), max(pb[2], bb[2]), max(pb[3], bb[3]))
+    _HB[(id(r), hi)] = pb
+    return pb
+def head_rect(a):
+    """Głowa lalki w świecie (z włosami i opadniętą szczęką), None gdy schowana pod krawędzią sceny."""
+    ch = a.ch; s = a.scale*ch.scale; P_ = a.pose
+    hy = ch.head_y + P_.get('nod', 0.0)
+    top = hy + min(-ch.head_h, ch.eye_y - ch.eye_r) - 40
+    bot = hy + ch.head_h*ch.jaw_squash + P_.get('mouth', 0.0)*ch.jaw_drop + 10
+    Y0, Y1 = a.y + top*s, min(a.y + bot*s, 0.0)
+    if Y1 <= Y0 + 20: return None
+    return (a.x - ch.head_w*1.15*s, Y0, a.x + ch.head_w*1.15*s, Y1)
 def actor_rect(a):
     """Prostokąt obejmujący (do zgrubnej kontroli)."""
     rs = actor_rects(a)
@@ -789,88 +943,12 @@ def _extra_tokens(key):
         hs = [h['t_on'] for h in E.AL['choir']['hej'] if tuple(h['after_line']) == key]
         if hs: return [('(hej!)', hs[0])]
     return []
-
-def _cam_xs(key):
-    L = LINES[key]; out = []
-    for t in (L['t0'] + 0.05, (L['t0'] + L['t1'])/2, L['t1'] - 0.05):
-        c = cam_at(t)
-        if c is not None: out.append(c.x)
-    xs = sorted(set(round(x) for x in out))
-    return xs + ([float(np.mean(out))] if len(out) > 1 else [])
 def obstacles_at(t):
     """Rekwizyty sceniczne, których napis nie może zasłonić: (prostokąt w świecie, głębokość)."""
     ob = []
-    if lt(BR, 0) - 0.5 <= t <= le(BR, 4) + 0.6: ob.append(((470 - 240, -170 - 230, 470 + 240, -170 + 30), -110.0))   # 'Robię swoje.'
-    if lt(V2B, 0) - 0.02 <= t <= lt(PRE2, 0): ob.append(((-130 - 210, 40 - 630, -130 + 210, 40 - 190), 40.0))     # flipchart Kasi
+    for n, ((a, b), rect, d) in POI.items():
+        if a <= t <= b and n not in ('jacket',): ob.append((rect, d))
     return ob
-def _candidates(key, t_mid):
-    sec, li = key
-    L = LINES[key]
-    cam = cam_at(t_mid)
-    cx = cam.x if cam else 0.0
-    def sz(depth, px=58, lo=34, hi=150):
-        return float(np.clip(px/cam.scale(depth), lo, hi)) if cam else 60.0
-    def mw(depth): return 0.78*E.W/cam.scale(depth) if cam else 1500
-    spoken = L['spoken']
-    sets = [n for n, _ in sets_at(t_mid)]
-    cands = []
-    GRID = [(0.17, 0.12, 0.30), (0.83, 0.12, 0.30), (0.16, 0.24, 0.30), (0.84, 0.24, 0.30), (0.18, 0.38, 0.32), (0.82, 0.38, 0.32),
-            (0.27, 0.12, 0.44), (0.73, 0.12, 0.44), (0.5, 0.09, 0.6), (0.22, 0.52, 0.34), (0.78, 0.52, 0.34)]
-    if spoken:
-        hen = HENIO.actor(t_mid)
-        hx = hen.x if hen else 0.0; hd = hen.depth if hen else 0.0
-        for dx, y in [(560, -640), (-560, -640), (600, -470), (-600, -470), (0, -760), (520, -560), (-520, -560), (430, -560), (-430, -560), (400, -660), (-400, -660)]:
-            for k in (1.0, 0.8):
-                cands.append(('bubble', hx + dx, y, hd - 20, sz(hd - 20, 46*k), dict(tail=(-1 if dx > 0 else 1, 1), maxw=0.55*mw(hd - 20))))
-        if cam:
-            for (u, v, mwf) in GRID:
-                for px in (46, 38, 32):
-                    s_ = cam.scale(hd - 20); wx = cam.x + (u*E.W - E.W/2)/s_; wy = cam.y + (v*E.H - E.H/2)/s_
-                    cands.append(('bubble', wx, wy, hd - 20, px/s_, dict(tail=(-1 if wx > hx else 1, 1), maxw=mwf*E.W/s_)))
-        return cands
-    if sec == BR:
-        for dx, y in [(-520, -560), (-560, -330), (560, -600), (-480, -700), (-600, -450)]:
-            for k in (1.0, 0.8):
-                cands.append(('marker', dx, y, -118.0, sz(-118, 50*k), dict(maxw=0.45*mw(-118))))
-        if cam:
-            for (u, v, mwf) in GRID:
-                for px in (48, 40, 34):
-                    s_ = cam.scale(-118.0); wx = cam.x + (u*E.W - E.W/2)/s_; wy = cam.y + (v*E.H - E.H/2)/s_
-                    cands.append(('marker', wx, wy, -118.0, px/s_, dict(maxw=mwf*E.W/s_)))
-        if cam:
-            for px in (50, 42):
-                s_ = cam.scale(-100.5); ytxt = min(110.0, cam.y + (0.93*E.H - E.H/2)/s_)
-                cands.append(('playboard', cam.x, max(ytxt, 45.0), -100.5, px/s_, dict(maxw=0.86*E.W/s_)))
-        return cands
-    if 'show' in sets or 'wood' in sets:
-        cands.append(('marquee', 0.0, -935.0, S.D_PORTAL, 74, {}))
-        if cam:      # front podestu chóru: pas pod rzędem chórzystów (x wg kamery na początku, w środku i na końcu wersu)
-            for cxx in _cam_xs(key):
-                for px in (52, 44, 38):
-                    s_ = cam.scale(124.0)
-                    for yy in (CHOIR_Y + 62, CHOIR_Y + 90, CHOIR_Y + 130):
-                        for wf in (0.86, 0.5):
-                            cands.append(('riser', cxx, yy, 124.0, px/s_, dict(maxw=min(wf*E.W/s_, 2000))))
-    # front krawędzi sceny (albo przedscenia, gdy lalka stoi przed kurtyną)
-    if cam:
-        apr = (2.5 <= t_mid <= 11.0) or (147.9 <= t_mid <= 165.0)
-        dp = -100.5 if apr else S.D_PLAY - 0.5
-        for cxx in _cam_xs(key):
-            for px in (52, 44, 38):
-                s_ = cam.scale(dp)
-                ytxt = min(110.0, cam.y + (0.93*E.H - E.H/2)/s_)
-                for wf in (0.86, 0.5):
-                    cands.append(('playboard', cxx, max(ytxt, 45.0), dp, px/s_, dict(maxw=wf*E.W/s_)))
-    # kandydaci zakotwiczeni w kadrze ujęcia (w połowie wersu), przeliczeni na stałe położenie w świecie
-    D = 60.0
-    grid = [(u, v, mwf) for u in np.arange(0.12, 0.89, 0.076) for v in np.arange(0.06, 0.62, 0.06) for mwf in (0.30, 0.45, 0.62)
-            if mwf/2 <= min(u, 1 - u) + 0.02]
-    for (u, v, mwf) in grid:
-        for px in (50, 40, 32):
-            s_ = cam.scale(D)
-            wx = cam.x + (u*E.W - E.W/2)/s_; wy = cam.y + (v*E.H - E.H/2)/s_
-            cands.append(('board', wx, wy, D, px/s_, dict(maxw=mwf*E.W/s_ - 1.4*px/s_)))
-    return cands
 
 _SAMPLE_CACHE = {}
 _OTHER = [[]]
@@ -888,7 +966,8 @@ def _sample(t):
     for rr, dd in obstacles_at(t): obs.append((project_rect(cam, rr, dd), -1e9))
     _SAMPLE_CACHE[t] = (cam, fr_in, obs)
     return _SAMPLE_CACHE[t]
-def _score(sg, ts):
+def _score(sg, ts, vis_w=6.0):
+    """Widoczność w kadrze (średnia i najgorsza chwila) i największe zasłonięcie postaci / rekwizytu / innego napisu."""
     vis, ov = [], []
     for t in ts:
         smp = _sample(t)
@@ -908,63 +987,267 @@ def _score(sg, ts):
                 o = max(o, inter(r, project_rect(cam, og.rect(), og.depth))/ar_)
         ov.append(o)
     if not vis: return -1e9, 0, 0
-    return np.mean(vis) - 1.5*(1 - min(vis)) - 20*max(ov), np.mean(vis), max(ov)
+    return np.mean(vis) - vis_w*(1 - min(vis)) - 20*max(ov), np.mean(vis), max(ov)
+
+def _set_candidates(key, t_mid):
+    """Ujęcia o stałej kamerze (plany ogólne show): napis jako element dekoracji - neon portalu, front podestu chóru, front sceny."""
+    cam = cam_at(t_mid)
+    sets = [n for n, _ in sets_at(t_mid)]
+    cands = []
+    if 'show' in sets:
+        cands.append(('marquee', 0.0, -935.0, S.D_PORTAL, 74, {}))
+        for px in (56, 48, 42):
+            s_ = cam.scale(124.0)
+            for yy in (CHOIR_Y + 70, CHOIR_Y + 100, CHOIR_Y + 130):
+                for wf in (0.8, 0.5):
+                    cands.append(('riser', cam.x, yy, 124.0, px/s_, dict(maxw=min(wf*E.W/s_, 2000))))
+    apr = (2.5 <= t_mid <= 11.0) or (lt(BR, 0) - 1.0 <= t_mid <= le(BR, 4) + 1.0)
+    dp = -100.5 if apr else S.D_PLAY - 0.5
+    for px in (56, 48, 42):
+        s_ = cam.scale(dp)
+        ytxt = min(110.0, cam.y + (0.92*E.H - E.H/2)/s_)
+        for wf in (0.8, 0.5):
+            cands.append(('playboard', cam.x, max(ytxt, 45.0), dp, px/s_, dict(maxw=wf*E.W/s_)))
+    return cands
+
+SIGN_PX = {'CU': 62, 'MCU': 62, 'MS': 60, 'MLS': 56, 'LS': 52, 'WS': 50}
+BOARD_LOOK = {'kitchen': ('#f3e5c2', '#2b1d14'), 'office': ('#e8eef4', '#1d2a44'), 'conf': ('#ffffff', '#14213d'), 'show': ('#f6e7c8', '#3a1450'),
+              'studio_g': ('#fff3f7', '#7a1f4c'), 'road': ('#f3e5c2', '#3b2414'), 'heaven': ('#ffffff', '#6b5212'), 'podcast': ('#efe2cc', '#3b2a1e')}
+def _line_window(key, L):
+    """Od kiedy do kiedy napis wersu wisi: znika najpóźniej na cięciu po końcu wersu / przy następnym wersie,
+    nie wjeżdża w ujęciu przed cięciem, nie przechodzi do przebitek (serwis, pod sceną)."""
+    cut = min([s[0] for s in SHOTS if s[0] >= L['t1'] - 0.05] + [L['t1'] + 0.55])
+    t_out = min(L['t1'] + 0.55, cut)
+    nxt0 = min([M['t0'] for kk, M in LINES.items() if M['t0'] > L['t0'] + 0.3 and kk not in FEED_LINES and kk not in UNDER_LINES] + [1e9])
+    t_out = min(t_out, max(nxt0 + 0.1, L['words'][-1]['t0'] + 0.6))
+    bnd = [s_[0] for s_ in SHOTS if L['t0'] + 0.3 < s_[0] <= t_out and s_[0] >= nxt0 - 0.05]
+    if bnd: t_out = min(bnd)
+    cin = [s[0] for s in SHOTS if L['t0'] - 0.75 < s[0] <= L['t0'] + 0.05]
+    cut_in = max(cin) if cin else None
+    s0 = shot_at(L['t0'] + 0.01)
+    if s0[2] != 'stage':                     # wers zaczyna się w przebitce, kończy na scenie: napis dopiero od cięcia
+        cut_in = s0[1]
+    t_first = cut_in + 0.02 if cut_in is not None else L['t0'] - 0.3
+    t_out = min([t_out] + [s[0] for s in SHOTS if s[2] != 'stage' and t_first < s[0] < t_out])
+    return t_first, t_out, cut_in
+
+def _hosts(a, b): return [s for s in SHOTS if s[2] == 'stage' and min(s[1], b) - max(s[0], a) > 0.05]
+def _frame_world(cam, depth):
+    s = cam.scale(depth); return (cam.x - E.W/2/s, cam.y - E.H/2/s, cam.x + E.W/2/s, cam.y + E.H/2/s)
+def _expansion(cam, rect, depth):
+    """Ile razy kadr musiałby urosnąć, żeby objąć prostokąt (z marginesem)."""
+    fr = _frame_world(cam, depth); m = 0.04*(fr[3] - fr[1])
+    R = (min(fr[0], rect[0] - m), min(fr[1], rect[1] - m), max(fr[2], rect[2] + m), max(fr[3], rect[3] + m))
+    return max((R[3] - R[1])/(fr[3] - fr[1]), (R[2] - R[0])/(fr[2] - fr[0]))
+def _attach(sg, s):
+    for u, spec in s[3]:
+        if isinstance(spec, dict) and sg not in spec['_boxes']: spec['_boxes'].append(sg)
 
 SIGNS = []
 SIGN_REPORT = []
+COMPOSED = []          # (napis, ujęcie główne, docelowa wielkość tekstu w px)
+def _composed(key, L, prim, t_first, t_out, cut_in, ts):
+    sec = key[0]
+    win = (prim[0], prim[1])
+    specs = [spec for u, spec in prim[3] if isinstance(spec, dict)]
+    tmid = min(max((max(L['t0'], t_first) + min(L['t1'], t_out))/2, prim[0] + 0.05), prim[1] - 0.05)
+    subj = []
+    for spec in specs:
+        for r in _subj_list(spec['subj'], tmid, win):
+            if r not in subj: subj.append(r)
+    sets = [n for n, _ in sets_at(tmid)]
+    lead = any('lead' in w['singers'] for w in L['words'])
+    choir_only = all(r in CHOIR for r in subj)
+    if L['spoken']: kind = 'bubble'
+    elif sec == BR: kind = 'marker'
+    elif 'show' in sets and choir_only: kind = 'riser'
+    elif 'show' in sets and len(subj) >= 2: kind = 'playboard'
+    else: kind = 'board'
+    anchor = [HENIO] if (HENIO in subj and lead and kind in ('bubble', 'board', 'marker')) else subj
+    G_ = [(r, _subj_geom(r, tmid)) for r in anchor]
+    xl = min(g[0] - g[5] for r, g in G_); xr = max(g[0] + g[5] for r, g in G_); top = min(g[1] for r, g in G_)
+    D = float(np.mean([g[3] for r, g in G_])); hh = float(np.mean([g[4] for r, g in G_]))
+    hc = float(np.mean([g[2] + r.ch.head_y*r.g('scale', tmid)*r.ch.scale for r, g in G_]))
+    cam1 = _shot_cam(tmid, prim)
+    tight = max(specs, key=lambda sp: list(SIZE).index(sp['size']) * -1)
+    px = SIGN_PX[tight['size']]
+    sd = {'board': D - 25, 'bubble': D - 25, 'marker': D - 25, 'riser': 124.0, 'playboard': S.D_PLAY - 0.5}[kind]
+    s_ = cam1.scale(sd)
+    maxw = {'board': 0.40, 'bubble': 0.46, 'marker': 0.40, 'riser': 0.8, 'playboard': 0.8}[kind]*E.W/s_
+    look = BOARD_LOOK.get(sets[-1], ('#f3e5c2', '#2b1d14'))
+    kw = dict(color=look[0], ink=look[1]) if kind == 'board' else {}
+    if kind == 'bubble':
+        r0, g0 = G_[0]
+        kw['tail_to'] = (g0[0], g0[2] + (r0.ch.head_y + 0.5*r0.ch.head_h)*r0.g('scale', tmid)*r0.ch.scale)
+    toks = None
+    cands = []
+    def mk(x, y, size=px/s_):
+        sg = Sign(key, kind, x, y, sd, size, maxw=maxw, t_out=t_out, cut_in=cut_in, **kw)
+        sg.layout(sg.size, tokens=sg.tokens + _extra_tokens(key))
+        return sg
+    proto = mk(0.0, 0.0); w, h = proto.w, proto.h
+    groups = [(xl, xr, top, hc, hh)]
+    if kind in ('board', 'marker') and len(anchor) < len(subj):       # napis przy całej grupie (np. wpis Grażyny, o którym śpiewa Henio)
+        Gs = [(r, _subj_geom(r, tmid)) for r in subj]
+        groups.append((min(g[0] - g[5] for r, g in Gs), max(g[0] + g[5] for r, g in Gs), min(g[1] for r, g in Gs),
+                       float(np.mean([g[2] + r.ch.head_y*r.g('scale', tmid)*r.ch.scale for r, g in Gs])), float(np.mean([g[4] for r, g in Gs]))))
+    if kind in ('board', 'bubble', 'marker'):
+        for (gl, gr, gt, gc, gh) in groups:
+            for side in (-1, 1):
+                for g in (0.18, 0.5, 0.9):
+                    x = (gl - g*gh - w/2) if side < 0 else (gr + g*gh + w/2)
+                    for vy in (-0.75, -0.3, 0.15, 0.6):
+                        cands.append(mk(x, gc + vy*gh))
+            for fx in (-0.6, -0.3, 0.0, 0.3, 0.6):
+                cands.append(mk((gl + gr)/2 + fx*w, gt - 0.12*gh - h/2))
+    elif kind == 'riser':
+        for yy in (CHOIR_Y + 72, CHOIR_Y + 100):
+            cands.append(mk((xl + xr)/2, yy))
+    else:
+        for yy in (50.0, 70.0):
+            cands.append(mk((xl + xr)/2, yy))
+    if kind == 'bubble':
+        for c in cands: c.kw['tail_to'] = kw['tail_to']
+    best = None
+    for sg in cands:
+        sc, v, o = _score(sg, ts, vis_w=0.0)
+        ex = max(_expansion(cam1, sg.rect(), sg.depth), 1.0)
+        sc -= 1.6*(ex - 1.0)
+        r_ = sg.rect()
+        if kind in ('board', 'bubble', 'marker') and (r_[0] < S.OPEN_L + 50 or r_[2] > S.OPEN_R - 50 or r_[1] < S.OPEN_T + 25): sc -= 5.0
+        if kind in ('board', 'marker') and sg.y + sg.h/2 < top: sc -= 0.03           # nad głową: tylko gdy z boku ciasno
+        if best is None or sc > best[0]: best = (sc, sg, v, o)
+    sg = best[1]
+    return sg, px, best[3]
+
 def _layout_signs():
+    global SIGNS
     for key, L in sorted(LINES.items(), key=lambda kv: kv[1]['t0']):
         if key in FEED_LINES or key in UNDER_LINES: continue
         if key == (OUT, 1):      # finał: neon na portalu (+ powtórka na końcu)
             sg = Sign(key, 'marquee', 0.0, -935.0, S.D_PORTAL, 90, t_out=202.3)
             SIGNS.append(sg); SIGN_REPORT.append((key, 'marquee', 1.0, 0.0)); continue
-        # napis znika najpóźniej przy najbliższym cięciu po końcu wersu (nie przechodzi do innego ujęcia)
-        cut = min([s[0] for s in SHOTS if s[0] >= L['t1'] - 0.05] + [L['t1'] + 0.55])
-        t_out = min(L['t1'] + 0.55, cut)
-        # ...i znika, gdy zaczyna się następny wers (zachodzące wersy refrenu), ale nie wcześniej niż 0,6 s po ostatnim słowie
-        nxt0 = min([M['t0'] for kk, M in LINES.items() if M['t0'] > L['t0'] + 0.3 and kk not in FEED_LINES and kk not in UNDER_LINES] + [1e9])
-        t_out = min(t_out, max(nxt0 + 0.1, L['words'][-1]['t0'] + 0.6))
-        # cięcie na początku następnego wersu kończy napis (nie przechodzi do nowego ujęcia)
-        bnd = [s_[0] for s_ in SHOTS if L['t0'] + 0.3 < s_[0] <= t_out and s_[0] >= nxt0 - 0.05]
-        if bnd: t_out = min(bnd)
-        # ...i nie pojawia się w ujęciu przed cięciem, jeśli pierwsze słowo pada dopiero po cięciu
-        cin = [s[0] for s in SHOTS if L['t0'] - 0.75 < s[0] <= L['t0'] + 0.05]
-        cut_in = max(cin) if cin else None
-        t_first = cut_in + 0.02 if cut_in is not None else L['t0'] - 0.3
+        t_first, t_out, cut_in = _line_window(key, L)
+        hosts = _hosts(t_first, t_out)
+        if not hosts: continue
+        a_, b_ = max(L['t0'], t_first), min(L['t1'], t_out)
+        prim = max(hosts, key=lambda s: min(s[1], b_) - max(s[0], a_))
         ts = np.unique(np.r_[np.arange(t_first, t_out - 0.02, 0.2), [t_out - 0.03], [s[0] + 0.02 for s in SHOTS if t_first < s[0] < t_out - 0.05]])
         _OTHER[0] = [sg for sg in SIGNS if sg.t1 > L['t0'] - 0.4 and sg.kind != 'marquee']
-        best = None
-        for kind, x, y, d, size, kw in _candidates(key, (L['t0'] + L['t1'])/2):
-            kw = dict(kw); maxw = kw.pop('maxw', 1500)
-            sg = Sign(key, kind, x, y, d, size, maxw=maxw, t_out=t_out, cut_in=cut_in, **kw)
-            sg.tokens += _extra_tokens(key); sg.rows = __import__('signs')._fit_lines(sg.tokens, sg.fname, sg.size, sg.maxw)
-            if kind == 'board' and cam_at((L['t0'] + L['t1'])/2) is not None:
-                cm = cam_at((L['t0'] + L['t1'])/2); top_world = cm.y + (0.035*E.H - E.H/2)/cm.scale(d)
-                if sg.y - sg.h/2 < top_world: sg.y = top_world + sg.h/2
-            sc, v, o = _score(sg, ts)
-            if kind == 'marquee': sc += 0.03
-            if kind == 'playboard': sc -= 0.03
-            sc += 0.004*size*(cam_at((L['t0'] + L['t1'])/2) or Cam()).scale(d)/50
-            if best is None or sc > best[0]: best = (sc, sg, v, o)
-        SIGNS.append(best[1]); SIGN_REPORT.append((key, best[1].kind, round(best[2], 2), round(best[3], 3)))
+        if any(isinstance(k[1], dict) for k in prim[3]):
+            sg, px, ov = _composed(key, L, prim, t_first, t_out, cut_in, ts)
+            # ujęcia poboczne (wers przechodzi przez cięcie w środku): napis zostaje tylko, jeśli jest blisko ich kadru
+            for s in hosts:
+                if s is prim: continue
+                if any(isinstance(k[1], dict) for k in s[3]):
+                    tm = (max(s[0], t_first) + min(s[1], t_out))/2
+                    if _expansion(_shot_cam(tm, s), sg.rect(), sg.depth) > 1.3:
+                        if s[0] > prim[0]: sg.t1 = min(sg.t1, s[0])
+                        else: sg.cut_in = max(sg.cut_in or 0, s[1])
+                        continue
+                    _attach(sg, s)
+            _attach(sg, prim)
+            sg.hard_out = any(abs(s[0] - sg.t1) < 0.03 for s in SHOTS)
+            COMPOSED.append((sg, prim, px))
+            SIGNS.append(sg); SIGN_REPORT.append((key, sg.kind, 1.0, round(ov, 3)))
+            _SAMPLE_CACHE.clear()
+        else:
+            best = None
+            for kind, x, y, d, size, kw in _set_candidates(key, (L['t0'] + L['t1'])/2):
+                kw = dict(kw); maxw = kw.pop('maxw', 1500)
+                sg = Sign(key, kind, x, y, d, size, maxw=maxw, t_out=t_out, cut_in=cut_in, **kw)
+                sg.layout(sg.size, tokens=sg.tokens + _extra_tokens(key))
+                sc, v, o = _score(sg, ts)
+                if kind == 'marquee': sc += 0.03
+                if best is None or sc > best[0]: best = (sc, sg, v, o)
+            best[1].hard_out = any(abs(s[0] - best[1].t1) < 0.03 for s in SHOTS)
+            SIGNS.append(best[1]); SIGN_REPORT.append((key, best[1].kind, round(best[2], 2), round(best[3], 3)))
     # powtórka 'Pus-te za-się-gi! HEJ!' na końcu
     rep = Sign((OUT, 1), 'marquee', 0.0, -935.0, S.D_PORTAL, 90, t_in=REPRISE - 0.3, t_out=E.SONG_DUR + 1)
     rep.tokens = [('Puste', REPRISE), ('zasięgi!', REPRISE + 0.46), ('HEJ!', FINAL_HEJ)]
     rep.rows = [rep.tokens]; SIGNS.append(rep)
+    _resize_signs()
+def _resize_signs():
+    """Wielkość tekstu po kadrowaniu z napisem: jeśli kamera musiała się oddalić, napis rośnie (od postaci w bok)."""
+    for _ in range(2):
+        for sg, prim, px in COMPOSED:
+            tm = min(max((sg.t0 + sg.t1)/2, prim[0] + 0.05), prim[1] - 0.05)
+            eff = sg.size*_shot_cam(tm, prim).scale(sg.depth)
+            if eff < 0.85*px:
+                k = min(px/eff, 1.3); w0, h0 = sg.w, sg.h
+                sg.layout(sg.size*k, sg.maxw*k)
+                subj = [r for u, sp in prim[3] if isinstance(sp, dict) for r in _subj_list(sp['subj'], tm, (prim[0], prim[1]))]
+                if subj:
+                    gx = float(np.mean([r.g('x', tm) for r in subj]))
+                    sg.x += math.copysign((sg.w - w0)/2, sg.x - gx)
 _layout_signs()
 
+def _fix_heads():
+    """Głowy lalek spoza kadrowanej grupy nie mogą być ucięte krawędzią (z boku/u dołu): kadr obejmuje głowę w całości
+    (gdy wystarczy niewielkie oddalenie) albo przesuwa się tak, by była całkiem poza kadrem."""
+    report = []
+    for s in SHOTS:
+        if s[2] != 'stage': continue
+        win = (s[0], s[1])
+        for u, spec in s[3]:
+            if not isinstance(spec, dict) or not spec.get('heads', True): continue
+            subj = _subj_list(spec['subj'], (s[0] + s[1])/2, win)
+            D = float(np.mean([r.g('depth', (s[0] + s[1])/2) for r in subj]))
+            def offenders():
+                bad = {}
+                for tt in np.linspace(s[0] + 0.05, s[1] - 0.05, 7):
+                    cam = frame_cam(spec, tt, win)
+                    if cam is None: continue
+                    for r in ROLES:
+                        if r in subj: continue
+                        a = r.actor(tt)
+                        if a is None: continue
+                        hr = head_rect(a)
+                        if hr is None: continue
+                        pr = project_rect(cam, hr, a.depth)
+                        f = inter(pr, FRAME)/max(area(pr), 1)
+                        if 0.04 < f < 0.93:
+                            if a.depth > D + 60: continue          # tło (statyści za kadrowaną grupą) - ucięcie krawędzią naturalne
+                            bad.setdefault(r, []).append((hr, a.depth, pr, cam))
+                return bad
+            for it in range(3):
+                bad = offenders()
+                if not bad: break
+                tm = (s[0] + s[1])/2
+                H0 = frame_cam(spec, tm, win).d
+                # 1) objąć całe głowy, jeśli kadr urośnie niewiele
+                add = [(min(b[0][0] for b in v), min(b[0][1] for b in v), max(b[0][2] for b in v), max(b[0][3] for b in v), v[0][1]) for v in bad.values()]
+                spec['_boxes'] += add
+                H1 = frame_cam(spec, tm, win).d
+                if (H1 + D)/(H0 + D) <= 1.3: report.append((round(s[0], 2), 'include', [r.ch.name for r in bad])); continue
+                for b in add: spec['_boxes'].remove(b)
+                # 2) wypchnąć głowy za boczną krawędź (przesunięcie kadru <= 15% szerokości)
+                need = 0.0
+                for r, v in bad.items():
+                    for hr, dp, pr, cam in v:
+                        k = cam.scale(D)/cam.scale(dp)
+                        if (pr[0] + pr[2])/2 < E.W/2: need = max(need, (pr[2] + 8)/E.W*k) if need >= 0 else need
+                        else: need = min(need, -(E.W - pr[0] + 8)/E.W*k) if need <= 0 else need
+                if 0 < abs(need) <= 0.15:
+                    spec['_shift'] += need; report.append((round(s[0], 2), 'shift', round(need, 3))); continue
+                report.append((round(s[0], 2), 'left', [r.ch.name for r in bad])); break
+    return report
+HEADS_REPORT = _fix_heads()
+_resize_signs()
+_STATIC.clear(); _SAMPLE_CACHE.clear()
+
 # ================================================================== SCENA W CHWILI t
-def stage_scene(t, cam=None):
+def stage_scene(t, cam=None, signs=True):
     actors = actors_at(t)
     pr, front, cprops = stage_props(t)
-    for sg in SIGNS:
+    for sg in (SIGNS if signs else []):
         if sg.active(t) and sg.kind in ('playboard', 'riser'):
             front.append((sg.depth, lambda cv, t, sg=sg: sg.draw(cv, t)))
         elif sg.active(t) and sg.kind in ('board',):
             pr.append((sg.depth, lambda cv, t, sg=sg: sg.draw(cv, t)))
         elif sg.active(t) and sg.kind in ('bubble', 'marker'):
             front.append((sg.depth, lambda cv, t, sg=sg: sg.draw(cv, t)))
-    marq = [sg for sg in SIGNS if sg.kind == 'marquee' and sg.active(t)]
+    marq = [sg for sg in SIGNS if signs and sg.kind == 'marquee' and sg.active(t) and t >= sg.tokens[0][1] - 0.05]   # do pierwszego słowa - tytuł show
     def marquee(cv, marq=marq):
         from gfx import draw_text
         if marq:

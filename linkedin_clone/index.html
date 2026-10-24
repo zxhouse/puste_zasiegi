@@ -160,9 +160,14 @@
         <a class="follow" href="#">+ Obserwuj</a>
       </header>
       <div class="post-text">Dziękuję całemu zespołowi za wspaniały rok. Restrukturyzacja to nie koniec – to nowy początek dla nas wszystkich. <span class="blue">#leadership #wdzięczność</span></div>
-      <div class="media img"><img src="assets/img_konferencja.jpg" alt=""></div>
+      <div class="media img" data-rect="prezesImg"><img src="assets/img_konferencja.jpg" alt=""></div>
       <div class="social"><span class="reacts"><i class="r like"></i><i class="r clap"></i></span><span class="count">4 870</span><span class="right">402 komentarze</span></div>
       <div class="actions"><button><svg><use href="#i-like"/></svg>Lubię to</button><button><svg><use href="#i-comment"/></svg>Skomentuj</button><button><svg><use href="#i-repost"/></svg>Udostępnij</button><button><svg><use href="#i-send"/></svg>Wyślij</button></div>
+      <div class="comments" id="prezes-comments" hidden>
+        <div class="sortc muted small">Najtrafniejsze <svg class="caret"><use href="#i-caret"/></svg></div>
+        <div class="comment" id="c-szacun" data-rect="szacunComment" hidden><img class="avatar sm" src="assets/av_mirek.png" alt=""><div class="bubble"><a class="name small" href="#">Mirek Szacun</a><span class="muted xs"> • 1.</span><p class="muted xs">Komentator | Wspieram ludzi | Ogromny szacun dla liderów</p><p class="big-c" data-bind="szacunText">Ogromny szacun!</p></div></div>
+        <div class="comment"><img class="avatar sm" src="assets/av_chor1.png" alt=""><div class="bubble"><a class="name small" href="#">Zenek Zasięg</a><span class="muted xs"> • 2.</span><p class="muted xs">Ewangelista Synergii</p><p>Inspirujące słowa, Panie Prezesie!</p></div></div>
+      </div>
     </article>
 
     <article class="card post" id="post-kasia">
@@ -190,6 +195,30 @@
       <div class="social"><span class="reacts"><i class="r support"></i><i class="r like"></i></span><span class="count">318</span><span class="right">41 komentarzy</span></div>
       <div class="actions"><button><svg><use href="#i-like"/></svg>Lubię to</button><button><svg><use href="#i-comment"/></svg>Skomentuj</button><button><svg><use href="#i-repost"/></svg>Udostępnij</button><button><svg><use href="#i-send"/></svg>Wyślij</button></div>
     </article>
+  </section>
+
+  <section class="profile-page" id="profile" hidden>
+    <section class="card pp-top">
+      <div class="pp-cover"></div>
+      <img class="pp-avatar" src="assets/av_chor2.png" alt="">
+      <div class="pp-info">
+        <h1>Bartek Benchmark <span class="pp-pron">On/Jego</span></h1>
+        <p class="pp-head">Growth Hacker | Personal Branding | Pomagam markom osobistym rosnąć | Otwarty na rekomendacje</p>
+        <p class="muted small">Warszawa, mazowieckie · <a class="blue strong" href="#">Informacje kontaktowe</a></p>
+        <p class="blue small strong pp-conn">500+ kontaktów</p>
+        <div class="pp-btns"><button class="btn-blue">Wiadomość</button><button class="btn-outline2">+ Obserwuj</button><button class="btn-outline2 grey">Więcej</button></div>
+        <div class="pp-otw"><b>Otwarty na rekomendacje</b><br><span class="small">Rekomendacja za rekomendację · odpowiadam w 5 minut</span></div>
+      </div>
+    </section>
+    <section class="card pp-sec"><h2>Informacje</h2><p>Wierzę w synergię, autentyczność i siłę opinii. Każdego dnia buduję markę osobistą – z pasją, pokorą i wdzięcznością. 3x Top Voice (nominacja).</p></section>
+    <section class="card pp-sec" id="recs" data-rect="recsCard">
+      <h2>Rekomendacje <span class="recs-n" data-bind="recsCount">(3)</span></h2>
+      <div class="tabs"><span class="tab active">Otrzymane</span><span class="tab">Udzielone</span></div>
+      <p class="empty muted" id="no-recs">Bartek nie otrzymał jeszcze rekomendacji.</p>
+      <div class="rec" data-r="1" data-rect="rec1" hidden><img class="avatar" src="assets/av_chor0.png" alt=""><div><a class="name" href="#">Waldek Wizja</a><p class="muted small">Head of Vision<br>15 października 2026 r. · Waldek nie pracował z Bartkiem</p><p class="rec-t">Bartek to wizjoner. Nie pracowaliśmy razem, ale czuję, że jest świetny. Polecam z całego serca!</p></div></div>
+      <div class="rec" data-r="2" data-rect="rec2" hidden><img class="avatar" src="assets/av_mirek.png" alt=""><div><a class="name" href="#">Mirek Szacun</a><p class="muted small">Komentator | Wspieram ludzi<br>15 października 2026 r. · Mirek i Bartek wymienili się rekomendacjami</p><p class="rec-t">Ogromny szacun! Rewanżuję się z nawiązką za rekomendację, którą mi napisał.</p></div></div>
+      <div class="rec" data-r="3" data-rect="rec3" hidden><img class="avatar" src="assets/av_chor2.png" alt=""><div><a class="name" href="#">Bartek Benchmark (konto firmowe)</a><p class="muted small">Growth Hacker | Personal Branding<br>16 października 2026 r. · Bartek był przełożonym Bartka</p><p class="rec-t">Najlepszy specjalista, jakiego znam. Serio. Zatrudniłbym go jeszcze raz.</p></div></div>
+    </section>
   </section>
 
   <aside class="right">

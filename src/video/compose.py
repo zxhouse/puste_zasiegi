@@ -133,4 +133,4 @@ def render_stage(cv, sc, t):
     if bl: cv.restore()
     for d, f in sc.get('fg', []): _layer(cv, cam, d, lambda f=f: f(cv, t))
     if L.get('flash', 0) > 0.003:
-        cv.drawRect(skia.Rect(0, 0, E.W, E.H), skia.Paint(Color4f=skia.Color4f(1, 0.98, 0.92, min(L['flash'], 0.85)), BlendMode=skia.BlendMode.kPlus))
+        cv.drawRect(skia.Rect(0, 0, E.W, E.H), skia.Paint(Color4f=skia.Color4f(1, 0.97, 0.9, 0.55*min(L['flash'], 0.85)), BlendMode=skia.BlendMode.kScreen))

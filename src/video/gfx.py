@@ -55,10 +55,10 @@ def drop_shadow(cv, path, dx=10, dy=14, blur=14, alpha=0.35):
     cv.save(); cv.translate(dx, dy); cv.drawPath(path, p); cv.restore()
 
 def light_pool(cv, x, y, rx, ry, color=(1.0, 0.92, 0.75), alpha=0.5):
-    """Plama światła reflektora (addytywnie)."""
+    """Plama światła reflektora (tryb 'screen': rozjaśnia, ale nigdy nie przepala do bieli)."""
     cv.save(); cv.translate(x, y); cv.scale(1, ry/rx)
     g = skia.GradientShader.MakeRadial(skia.Point(0, 0), rx, [skia.Color4f(*color, alpha).toColor(), skia.Color4f(*color, alpha*0.5).toColor(), skia.Color4f(*color, 0).toColor()], [0, 0.55, 1])
-    p = skia.Paint(AntiAlias=True); p.setShader(g); p.setBlendMode(skia.BlendMode.kPlus)
+    p = skia.Paint(AntiAlias=True); p.setShader(g); p.setBlendMode(skia.BlendMode.kScreen)
     cv.drawCircle(0, 0, rx, p); cv.restore()
 
 def beam(cv, x0, y0, x1, y1, w0, w1, color=(1.0, 0.95, 0.8), alpha=0.18):
@@ -66,7 +66,7 @@ def beam(cv, x0, y0, x1, y1, w0, w1, color=(1.0, 0.95, 0.8), alpha=0.18):
     dx, dy = x1 - x0, y1 - y0; L = math.hypot(dx, dy); nx, ny = -dy/L, dx/L
     pts = [(x0 + nx*w0, y0 + ny*w0), (x1 + nx*w1, y1 + ny*w1), (x1 - nx*w1, y1 - ny*w1), (x0 - nx*w0, y0 - ny*w0)]
     g = skia.GradientShader.MakeLinear([skia.Point(x0, y0), skia.Point(x1, y1)], [skia.Color4f(*color, alpha).toColor(), skia.Color4f(*color, 0).toColor()])
-    p = skia.Paint(AntiAlias=True); p.setShader(g); p.setBlendMode(skia.BlendMode.kPlus)
+    p = skia.Paint(AntiAlias=True); p.setShader(g); p.setBlendMode(skia.BlendMode.kScreen)
     p.setMaskFilter(skia.MaskFilter.MakeBlur(skia.kNormal_BlurStyle, 18))
     cv.drawPath(poly_path(pts, True, False), p)
 

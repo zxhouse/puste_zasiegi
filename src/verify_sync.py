@@ -3,7 +3,7 @@ Wynik: checks/verify_sync.json"""
 import os, sys, json, math, subprocess
 import numpy as np
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), 'video'))
-import engine as E, timeline as T
+import engine as E, timeline as T, stage as S
 ROOT = E.ROOT; OUT = os.path.join(ROOT, 'checks'); os.makedirs(OUT, exist_ok=True)
 FPS = E.FPS; N = int(E.SONG_DUR*FPS)
 ts = np.arange(N)/FPS
@@ -83,10 +83,12 @@ R['flashes'] = dict(flash_peaks=len(fp), median_dist_to_snare_or_cue_ms=round(fl
 line_starts = sorted([L['t0'] for L in E.AL['lines']])
 # początki zdań wewnątrz wersu mówionego (po '?', '.', '!' i pauzie) też są początkami fraz
 for L in E.AL['lines']:
-    toks = L['text'].split()
-    if L['spoken']:
-        for w, prev in zip(L['words'][1:], L['words'][:-1]):
-            if w['t0'] - prev['t1'] > 0.25: line_starts.append(w['t0'])
+    import signs as SG
+    toks = [tk for tk, _ in SG._tokens((L['sec'], L['line']))]
+    for k, (w, prev) in enumerate(zip(L['words'][1:], L['words'][:-1])):
+        # początek frazy w środku wersu: po pauzie oddechowej albo po znaku interpunkcyjnym w tekście (np. '„Ogromny szacun” | do tego łaskawca')
+        punct = k < len(toks) and toks[k][-1:] in ',.:;!?”"—'
+        if w['t0'] - prev['t1'] > (0.25 if L['spoken'] else 0.2) or punct: line_starts.append(w['t0'])
 line_starts = np.array(sorted(line_starts))
 cuts = []
 for s in T.SHOTS[1:]:
@@ -119,9 +121,72 @@ for i in range(0, N, 2):
             for rr in T.actor_rects(a):
                 o = T.inter(r, T.project_rect(cam, rr, a.depth))/max(T.area(r), 1)
                 if o > worst: worst, worst_at = o, (round(t, 2), sg.key, a.name)
+# tekst w polu tablicy/dymka: najszerszy wiersz po 'wyskoku' słowa (+10%) i wysokość bloku z ogonkami/kreskami liter vs wnętrze pola
+import signs as SG
+fit = []
+for sg in T.SIGNS:
+    if sg.kind not in SG.BOXED: continue
+    f = SG.font(sg.fname, sg.size); wmax = 0.0; top = 1e9; bot = -1e9
+    for r, row in enumerate(sg.rows):
+        b = __import__('skia').Rect(); f.measureText(' '.join(tk for tk, _ in row), __import__('skia').TextEncoding.kUTF8, b)
+        wpop = max(f.measureText(tk) for tk, _ in row)*SG.POP
+        wmax = max(wmax, b.width() + wpop); top = min(top, sg.base[r] + b.top()); bot = max(bot, sg.base[r] + b.bottom())
+    fit.append(dict(line=list(sg.key), kind=sg.kind, margin_x_px=round((sg.w - wmax)/2, 1), margin_y_px=round(min(sg.h/2 + top, sg.h/2 - bot), 1)))
+# napis w otworze sceny (poza nim zasłania go portal)
+op_bad = 0; op_n = 0
+for i in range(0, N, 3):
+    t = i/FPS; s = T.shot_at(t)
+    if s[2] != 'stage': continue
+    cam = T.cam_at(t, s)
+    opr = T.project_rect(cam, (S.OPEN_L, S.OPEN_T, S.OPEN_R, 0), S.D_PORTAL)
+    for sg in T.SIGNS:
+        if not sg.active(t) or sg.kind not in SG.BOXED or t < (sg.cut_in if sg.cut_in is not None else sg.t0 - 0.05): continue
+        r = T.project_rect(cam, sg.rect(), sg.depth); op_n += 1
+        if T.inter(r, opr)/max(T.area(r), 1) < 0.98: op_bad += 1
 R['signs'] = dict(sign_frames_checked=checked, max_overlap_fraction_with_character=round(worst, 4), at=worst_at,
                   min_visible_fraction=round(vis_min, 3), min_visible_at=vis_at,
+                  text_fits_box=dict(signs=len(fit), all_fit=all(f_['margin_x_px'] > 0 and f_['margin_y_px'] > 0 for f_ in fit),
+                                     min_margin_x_px=min(f_['margin_x_px'] for f_ in fit), min_margin_y_px=min(f_['margin_y_px'] for f_ in fit)),
+                  boxed_sign_frames_inside_stage_opening_pct=round(100*(1 - op_bad/max(op_n, 1)), 2),
                   placement=[dict(line=list(k), kind=kd, visibility=float(v), overlap=float(o)) for k, kd, v, o in T.SIGN_REPORT])
+# ---------------------------------------------------------------- kadr: ucięte głowy, postaci kadru widoczne, POI w kadrze
+part = 0; nfr = 0; part_at = []; subj_missing = 0; subj_missing_at = []; poi_n = 0; poi_out = 0; poi_out_at = []
+for i in range(0, N, 3):
+    t = i/FPS; s = T.shot_at(t)
+    if s[2] != 'stage': continue
+    cam = T.cam_at(t, s); nfr += 1
+    specs = [k[1] for k in s[3] if isinstance(k[1], dict)]
+    subj = set()
+    for sp in specs: subj |= set(id(r) for r in T._subj_list(sp['subj'], t, (s[0], s[1])))
+    D = np.mean([r.g('depth', t) for r in T.ROLES if id(r) in subj]) if subj else 0.0
+    bad = False; seen = False
+    for r in T.ROLES:
+        a = r.actor(t)
+        if a is None: continue
+        hr = T.head_rect(a)
+        if hr is None: continue
+        pr = T.project_rect(cam, hr, a.depth); f = T.inter(pr, T.FRAME)/max(T.area(pr), 1)
+        if id(r) in subj and f >= 0.5: seen = True
+        if a.depth > D + 60 and id(r) not in subj: continue          # tło za kadrowaną grupą
+        if 0.04 < f < 0.93 and not (r.span_at(t) and abs(a.y - r.g('y', t)) > 5 or abs(a.x - r.g('x', t)) > 40): bad = True
+    if bad: part += 1; part_at.append(round(t, 1))
+    if specs and not seen: subj_missing += 1; subj_missing_at.append(round(t, 1))
+    tau = E.ease((t - s[0])/max(s[1] - s[0], 1e-6), 0.45)
+    kk = s[3]; seg = [(kk[j], kk[j + 1]) for j in range(len(kk) - 1) if kk[j][0] <= tau <= kk[j + 1][0]] or [(kk[-1], kk[-1])]
+    (ua, sa), (ub, sb) = seg[0]
+    need = set(sa.get('poi', []) if isinstance(sa, dict) else []) & set(sb.get('poi', []) if isinstance(sb, dict) else [])
+    for sp in specs[:1]:
+        for n in sorted(need):
+            (a_, b_), rect, d = T.POI[n]
+            if a_ + 0.3 <= t <= b_ - 0.1:
+                r = T.project_rect(cam, rect, d); poi_n += 1
+                opr = T.project_rect(cam, (S.OPEN_L, S.OPEN_T, S.OPEN_R, 0), S.D_PORTAL)
+                vis = T.inter(r, (max(0, opr[0]), max(0, opr[1]), min(E.W, opr[2]), min(E.H, opr[3])))/max(T.area(r), 1)
+                if vis < 0.9: poi_out += 1; poi_out_at.append((round(t, 1), n, round(vis, 2)))
+R['framing'] = dict(stage_frames_checked=nfr, frames_with_head_cut_by_edge=part, head_cut_at=part_at[:30],
+                    frames_with_framed_subject_not_visible=subj_missing, subject_missing_at=subj_missing_at[:30],
+                    poi_samples=poi_n, poi_samples_less_than_90pct_visible=poi_out, poi_out_at=sorted(set(poi_out_at))[:30],
+                    heads_adjustments=[list(x) for x in T.HEADS_REPORT])
 # ---------------------------------------------------------------- chór: liczebność i brak nachodzenia w układzie grupowym
 counts = []; overl = 0
 for t in np.arange(46.0, 80.0, 0.5).tolist() + np.arange(115.0, 149.0, 0.5).tolist() + np.arange(167.0, 202.0, 0.5).tolist():
@@ -136,4 +201,4 @@ for t in np.arange(46.0, 80.0, 0.5).tolist() + np.arange(115.0, 149.0, 0.5).toli
         if hx > 0: overl += 1
 R['choir'] = dict(counts=counts, overlapping_pairs=overl)
 json.dump(R, open(os.path.join(OUT, 'verify_sync.json'), 'w'), ensure_ascii=False, indent=1)
-print(json.dumps({k: (v if k not in ('cuts', 'signs', 'choir') else {kk: vv for kk, vv in v.items() if kk not in ('list', 'placement', 'counts')}) for k, v in R.items()}, ensure_ascii=False, indent=1))
+print(json.dumps({k: (v if k not in ('cuts', 'signs', 'choir', 'framing') else {kk: vv for kk, vv in v.items() if kk not in ('list', 'placement', 'counts', 'heads_adjustments')}) for k, v in R.items()}, ensure_ascii=False, indent=1))

@@ -1,7 +1,7 @@
 """Przebitki do klonu serwisu: zrzuty strony (build/clone_caps, Playwright) + film ze sceny w ramce posta +
 liczniki/pisanie słowo po słowie (czasy z dopasowania) + kursor. Wszystko liczone z czasu t (bezstanowo)."""
 import json, os, math, numpy as np, skia
-import engine as E, timeline as T, compose as CP
+import engine as E, timeline as T, compose as CP, post
 from engine import smoothstep, Cam
 from signs import _tokens
 from gfx import font, text_width, light_pool
@@ -99,14 +99,34 @@ def _def():
                       view=[(a, full_on(vid, 0)), (a + 0.7, (0, 935, 600, 1460)), (b - 0.65, (0, 935, 610, 1380)), (b, full_on(vid, 0))],
                       reacts=lambda t, a=a, b=b, pc=locals().get('pc'), nc=locals().get('nc'), mcu=locals().get('mcu'): 4, views=lambda t, a=a, b=b, pc=locals().get('pc'), nc=locals().get('nc'), mcu=locals().get('mcu'): 1254302 + 40*(t - a), ncomments=lambda t, a=a, b=b, pc=locals().get('pc'), nc=locals().get('nc'), mcu=locals().get('mcu'): 1 if t >= 205.4 else 0,
                       video_cam=lambda t, a=a, b=b, pc=locals().get('pc'), nc=locals().get('nc'), mcu=locals().get('mcu'): pc if t < (a + b)/2 else nc)
+    # 'A w komentarzu: „Ogromny szacun"': zdjęcie z konferencji we wpisie prezesa = zatrzymany kadr poprzedniego ujęcia,
+    # odjazd do komentarzy - pojawia się komentarz Mirka, tekst 'Ogromny szacun!' wpisuje się razem ze śpiewem
+    a, b = shot_bounds('szacun'); pc, nc = neighbour_cams(a, b)
+    pim = R('szacun1', 'prezesImg'); SY = 1300
+    K['szacun'] = dict(states=[(a, 'szacun0'), (T.wt(T.V1B, 3, 2) - 0.05, 'szacun1')],
+                       view=[(a, full_on(pim, SY)), (a + 0.12, full_on(pim, SY)), (T.wt(T.V1B, 3, 2) + 0.1, (SY, 925, 470, 1180)), (b, (SY, 930, 540, 980))],
+                       imgs=[('prezesImg', a - 0.04, pc)],
+                       bind_words=[('szacunText', [('Ogromny', T.wt(T.V1B, 3, 3)), ('szacun!', T.wt(T.V1B, 3, 4))], T.wt(T.V1B, 3, 2) - 0.05)])
+    # '„Cieszę się z nowej drogi" — czytam bez tchu': wpis Tadka (#OpenToWork), Henio pisze do niego na czacie, szybkie przewijanie
+    a, b = shot_bounds('tadek')
+    tp = R('tadek', 'post-tadek'); SY = tp[1] - 560
+    K['tadek'] = dict(states=[(a, 'tadek')],
+                      view=[(a, (SY, 1125, 800, 1090)), (T.wt(T.V2, 3, 5) - 0.1, (SY, 1125, 806, 1050)), (b, (SY + 30, 1125, 812, 1020))],
+                      chat=(T.V2, 3))
+    # 'Ktoś sprzedaje się za trzy opinie': profil z rekomendacjami - trzy pojawiają się na słowa, licznik rośnie
+    a, b = shot_bounds('recs')
+    K['recs'] = dict(states=[(a, 'recs0'), (T.wt(T.V2B, 1, 1), 'recs1'), (T.wt(T.V2B, 1, 2), 'recs2'), (T.wt(T.V2B, 1, 4), 'recs3')],
+                     view=[(a, (145, 990, 690, 1440)), (b, (145, 1000, 735, 1250))],
+                     chat=(T.V2B, 1))
 _def()
 
 # ------------------------------------------------------------------ rysowanie
 _GIMG = {}
-def _stage_img(t, cam, key=None):
+def _stage_img(t, cam, key=None, signs=True):
     if key is not None and key in _GIMG: return _GIMG[key]
     surf = skia.Surface(E.W, E.H); cv = surf.getCanvas()
-    sc = T.stage_scene(t, cam); CP.render_stage(cv, sc, t)
+    sc = T.stage_scene(t, cam, signs=signs); CP.render_stage(cv, sc, t)
+    post.apply(surf, int(round(t*E.FPS)))          # obraz ze 'studia' ma wygląd show (jak pełne ujęcia sceny); strona wokół - nie
     im = surf.makeImageSnapshot()
     if key is not None: _GIMG[key] = im
     return im
@@ -145,7 +165,9 @@ def render_feed(cv, t, sc):
     cv.restore()
     # film w poście (scena na żywo)
     vr = R(D.get('video_rect', state), 'video') if D.get('video_rect') else R(state, 'video')
-    if vr and vr[2] > 0:
+    # widoczny fragment strony (bez liczenia sceny dla filmu poza kadrem)
+    vis_y0 = sy + cy - (E.H/2)/z; vis_y1 = sy + cy + (E.H/2)/z
+    if vr and vr[2] > 0 and vr[1] < vis_y1 and vr[1] + vr[3] > vis_y0:
         tv = min(t, D['freeze_until']) if 'freeze_until' in D else t
         im = _stage_img(tv, D['video_cam'](t))
         cv.drawImageRect(im, skia.Rect(vr[0], vr[1] - sy, vr[0] + vr[2], vr[1] - sy + vr[3]), skia.SamplingOptions(skia.FilterMode.kLinear, skia.MipmapMode.kLinear))
@@ -160,6 +182,16 @@ def render_feed(cv, t, sc):
         gi = R(state, 'grazynaImg')
         im = _stage_img(D['gimg_t'], D['gimg_cam'], key=('g', D['gimg_t']))
         cv.drawImageRect(im, skia.Rect(gi[0], gi[1] - sy, gi[0] + gi[2], gi[1] - sy + gi[3]), skia.SamplingOptions(skia.FilterMode.kLinear, skia.MipmapMode.kLinear))
+    for (rk, tf, icam) in D.get('imgs', []):
+        ir = R(state, rk)
+        if ir and ir[2] > 0:
+            im = _stage_img(tf, icam, key=('i', rk, tf), signs=False)      # 'zdjęcie' - bez napisów piosenki
+            cv.drawImageRect(im, skia.Rect(ir[0], ir[1] - sy, ir[0] + ir[2], ir[1] - sy + ir[3]), skia.SamplingOptions(skia.FilterMode.kLinear, skia.MipmapMode.kLinear))
+    for (bk, words, t_from) in D.get('bind_words', []):
+        br = R(state, 'bind_' + bk)
+        if br and br[2] > 0 and t >= t_from:
+            txt = ' '.join(w for w, tw in words if t >= tw - 0.02)
+            if txt: _text(cv, txt, br[0], br[1] - sy + (br[3] + 0.7*br[4])/2, br[4], (0, 0, 0, 0.9))
     # liczniki (rosną klatka po klatce)
     grey = (0, 0, 0, 0.6)
     rc = R(state, 'bind_reacts')
@@ -197,8 +229,15 @@ def render_feed(cv, t, sc):
             x0, y0 = ch[0] + 12, ch[1] + 10 + 14
             if not txt: _text(cv, 'Napisz wiadomość…', x0, y0, 14, (0, 0, 0, 0.6))
             else:
-                wdt = _text(cv, txt, x0, y0, 14, (0, 0, 0, 0.9))
-                if blink: cv.drawRect(skia.Rect(x0 + wdt + 1, y0 - 13, x0 + wdt + 2.5, y0 + 4), skia.Paint(Color4f=skia.Color4f(0, 0, 0, 0.85)))
+                # pole wiadomości zawija tekst (jak w przeglądarce), linijka 19 px
+                f = font('ui', 14); rows = ['']
+                for wd in txt.split():
+                    cand = (rows[-1] + ' ' + wd).strip()
+                    if f.measureText(cand) <= ch[2] - 26 or not rows[-1]: rows[-1] = cand
+                    else: rows.append(wd)
+                for k, rw in enumerate(rows): wdt = _text(cv, rw, x0, y0 + 19*k, 14, (0, 0, 0, 0.9))
+                yb = y0 + 19*(len(rows) - 1)
+                if blink: cv.drawRect(skia.Rect(x0 + wdt + 1, yb - 13, x0 + wdt + 2.5, yb + 4), skia.Paint(Color4f=skia.Color4f(0, 0, 0, 0.85)))
     # kursor
     if 'cursor' in D:
         ks = D['cursor']
