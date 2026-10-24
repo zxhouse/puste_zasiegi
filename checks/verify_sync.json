@@ -1,0 +1,1774 @@
+{
+ "lead_mouth": {
+  "total_syllables": 515,
+  "total_openings": 515,
+  "syllables_with_own_opening": 515,
+  "ratio_openings_per_syllable": 1.0,
+  "lines_exact": 52,
+  "lines_total": 52,
+  "worst_lines": [
+   {
+    "t0": 3.27,
+    "text": "\"No i co tam na tym LinkedInie dzisiaj, kochani? Kolejny suk",
+    "syllables": 23,
+    "openings": 23,
+    "syllables_with_opening": 23
+   },
+   {
+    "t0": 14.16,
+    "text": "Poranna kawa, wielki plan",
+    "syllables": 8,
+    "openings": 8,
+    "syllables_with_opening": 8
+   },
+   {
+    "t0": 17.53,
+    "text": "Wkładam garnitur, choć mam luźny stan",
+    "syllables": 10,
+    "openings": 10,
+    "syllables_with_opening": 10
+   },
+   {
+    "t0": 20.56,
+    "text": "Piszę o synergiach, choć boli mnie szczęka",
+    "syllables": 12,
+    "openings": 12,
+    "syllables_with_opening": 12
+   },
+   {
+    "t0": 22.99,
+    "text": "„Z przyjemnością dzielę się” — i już mnie skręca",
+    "syllables": 12,
+    "openings": 12,
+    "syllables_with_opening": 12
+   },
+   {
+    "t0": 27.01,
+    "text": "\"Tak, tak, wszyscy się strasznie cieszą!\"",
+    "syllables": 9,
+    "openings": 9,
+    "syllables_with_opening": 9
+   },
+   {
+    "t0": 33.23,
+    "text": "W tle awans, w głowie stres",
+    "syllables": 6,
+    "openings": 6,
+    "syllables_with_opening": 6
+   },
+   {
+    "t0": 36.28,
+    "text": "Wszyscy tu mają strategiczny gest",
+    "syllables": 10,
+    "openings": 10,
+    "syllables_with_opening": 10
+   }
+  ],
+  "corr_mouth_vs_vocal_envelope": 0.568,
+  "mouth_open_when_vocal_silent_pct": 3.58,
+  "vocal_active_frames_with_mouth_open_pct": 74.88
+ },
+ "choir_mouth": {
+  "openings": 266,
+  "backing_events": 250,
+  "median_dist_to_event_ms": 36.7,
+  "pct_within_100ms": 93.6
+ },
+ "accents": {
+  "accent_peaks": 183,
+  "median_dist_to_drum_hit_ms": 8.8,
+  "pct_within_1_frame": 100.0,
+  "pct_within_2_frames": 100.0
+ },
+ "flashes": {
+  "flash_peaks": 13,
+  "median_dist_to_snare_or_cue_ms": 13.3,
+  "pct_within_2_frames": 100.0
+ },
+ "cuts": {
+  "n": 59,
+  "on_line_or_downbeat": 59,
+  "list": [
+   {
+    "t": 3.27,
+    "to": "stage",
+    "dist_line_ms": 0,
+    "dist_downbeat_ms": 617,
+    "ok": true
+   },
+   {
+    "t": 6.77,
+    "to": "stage",
+    "dist_line_ms": 0,
+    "dist_downbeat_ms": 362,
+    "ok": true
+   },
+   {
+    "t": 9.82,
+    "to": "stage",
+    "dist_line_ms": 0,
+    "dist_downbeat_ms": 627,
+    "ok": true
+   },
+   {
+    "t": 14.16,
+    "to": "stage",
+    "dist_line_ms": 0,
+    "dist_downbeat_ms": 423,
+    "ok": true
+   },
+   {
+    "t": 17.53,
+    "to": "stage",
+    "dist_line_ms": 0,
+    "dist_downbeat_ms": 585,
+    "ok": true
+   },
+   {
+    "t": 20.56,
+    "to": "stage",
+    "dist_line_ms": 0,
+    "dist_downbeat_ms": 420,
+    "ok": true
+   },
+   {
+    "t": 22.99,
+    "to": "stage",
+    "dist_line_ms": 0,
+    "dist_downbeat_ms": 394,
+    "ok": true
+   },
+   {
+    "t": 27.01,
+    "to": "feed",
+    "dist_line_ms": 0,
+    "dist_downbeat_ms": 382,
+    "ok": true
+   },
+   {
+    "t": 29.913,
+    "to": "stage",
+    "dist_line_ms": 2903,
+    "dist_downbeat_ms": 0,
+    "ok": true
+   },
+   {
+    "t": 33.23,
+    "to": "stage",
+    "dist_line_ms": 0,
+    "dist_downbeat_ms": 66,
+    "ok": true
+   },
+   {
+    "t": 36.28,
+    "to": "stage",
+    "dist_line_ms": 0,
+    "dist_downbeat_ms": 96,
+    "ok": true
+   },
+   {
+    "t": 39.29,
+    "to": "stage",
+    "dist_line_ms": 0,
+    "dist_downbeat_ms": 310,
+    "ok": true
+   },
+   {
+    "t": 42.82,
+    "to": "stage",
+    "dist_line_ms": 0,
+    "dist_downbeat_ms": 14,
+    "ok": true
+   },
+   {
+    "t": 46.68,
+    "to": "stage",
+    "dist_line_ms": 0,
+    "dist_downbeat_ms": 574,
+    "ok": true
+   },
+   {
+    "t": 49.24,
+    "to": "stage",
+    "dist_line_ms": 0,
+    "dist_downbeat_ms": 185,
+    "ok": true
+   },
+   {
+    "t": 52.67,
+    "to": "stage",
+    "dist_line_ms": 0,
+    "dist_downbeat_ms": 75,
+    "ok": true
+   },
+   {
+    "t": 56.4,
+    "to": "stage",
+    "dist_line_ms": 0,
+    "dist_downbeat_ms": 337,
+    "ok": true
+   },
+   {
+    "t": 60.14,
+    "to": "stage",
+    "dist_line_ms": 0,
+    "dist_downbeat_ms": 793,
+    "ok": true
+   },
+   {
+    "t": 63.2,
+    "to": "stage",
+    "dist_line_ms": 0,
+    "dist_downbeat_ms": 602,
+    "ok": true
+   },
+   {
+    "t": 66.49,
+    "to": "stage",
+    "dist_line_ms": 0,
+    "dist_downbeat_ms": 662,
+    "ok": true
+   },
+   {
+    "t": 69.66,
+    "to": "under",
+    "dist_line_ms": 0,
+    "dist_downbeat_ms": 604,
+    "ok": true
+   },
+   {
+    "t": 73.78,
+    "to": "stage",
+    "dist_line_ms": 0,
+    "dist_downbeat_ms": 117,
+    "ok": true
+   },
+   {
+    "t": 76.41,
+    "to": "stage",
+    "dist_line_ms": 0,
+    "dist_downbeat_ms": 713,
+    "ok": true
+   },
+   {
+    "t": 79.41,
+    "to": "feed",
+    "dist_line_ms": 0,
+    "dist_downbeat_ms": 672,
+    "ok": true
+   },
+   {
+    "t": 83.1,
+    "to": "stage",
+    "dist_line_ms": 0,
+    "dist_downbeat_ms": 511,
+    "ok": true
+   },
+   {
+    "t": 86.49,
+    "to": "stage",
+    "dist_line_ms": 0,
+    "dist_downbeat_ms": 380,
+    "ok": true
+   },
+   {
+    "t": 90.16,
+    "to": "stage",
+    "dist_line_ms": 0,
+    "dist_downbeat_ms": 30,
+    "ok": true
+   },
+   {
+    "t": 93.12,
+    "to": "stage",
+    "dist_line_ms": 0,
+    "dist_downbeat_ms": 271,
+    "ok": true
+   },
+   {
+    "t": 96.65,
+    "to": "stage",
+    "dist_line_ms": 3250,
+    "dist_downbeat_ms": 0,
+    "ok": true
+   },
+   {
+    "t": 99.9,
+    "to": "stage",
+    "dist_line_ms": 0,
+    "dist_downbeat_ms": 6,
+    "ok": true
+   },
+   {
+    "t": 102.87,
+    "to": "stage",
+    "dist_line_ms": 0,
+    "dist_downbeat_ms": 333,
+    "ok": true
+   },
+   {
+    "t": 105.77,
+    "to": "stage",
+    "dist_line_ms": 0,
+    "dist_downbeat_ms": 670,
+    "ok": true
+   },
+   {
+    "t": 109.11,
+    "to": "stage",
+    "dist_line_ms": 0,
+    "dist_downbeat_ms": 604,
+    "ok": true
+   },
+   {
+    "t": 111.96,
+    "to": "stage",
+    "dist_line_ms": 0,
+    "dist_downbeat_ms": 587,
+    "ok": true
+   },
+   {
+    "t": 115.84,
+    "to": "stage",
+    "dist_line_ms": 0,
+    "dist_downbeat_ms": 445,
+    "ok": true
+   },
+   {
+    "t": 118.56,
+    "to": "stage",
+    "dist_line_ms": 0,
+    "dist_downbeat_ms": 627,
+    "ok": true
+   },
+   {
+    "t": 121.78,
+    "to": "stage",
+    "dist_line_ms": 0,
+    "dist_downbeat_ms": 603,
+    "ok": true
+   },
+   {
+    "t": 124.24,
+    "to": "stage",
+    "dist_line_ms": 0,
+    "dist_downbeat_ms": 193,
+    "ok": true
+   },
+   {
+    "t": 128.44,
+    "to": "stage",
+    "dist_line_ms": 0,
+    "dist_downbeat_ms": 789,
+    "ok": true
+   },
+   {
+    "t": 131.95,
+    "to": "stage",
+    "dist_line_ms": 0,
+    "dist_downbeat_ms": 570,
+    "ok": true
+   },
+   {
+    "t": 135.24,
+    "to": "feed",
+    "dist_line_ms": 0,
+    "dist_downbeat_ms": 531,
+    "ok": true
+   },
+   {
+    "t": 141.98,
+    "to": "stage",
+    "dist_line_ms": 0,
+    "dist_downbeat_ms": 282,
+    "ok": true
+   },
+   {
+    "t": 144.5,
+    "to": "stage",
+    "dist_line_ms": 0,
+    "dist_downbeat_ms": 612,
+    "ok": true
+   },
+   {
+    "t": 148.85,
+    "to": "stage",
+    "dist_line_ms": 0,
+    "dist_downbeat_ms": 91,
+    "ok": true
+   },
+   {
+    "t": 151.13,
+    "to": "stage",
+    "dist_line_ms": 0,
+    "dist_downbeat_ms": 714,
+    "ok": true
+   },
+   {
+    "t": 154.08,
+    "to": "stage",
+    "dist_line_ms": 0,
+    "dist_downbeat_ms": 352,
+    "ok": true
+   },
+   {
+    "t": 157.54,
+    "to": "stage",
+    "dist_line_ms": 0,
+    "dist_downbeat_ms": 617,
+    "ok": true
+   },
+   {
+    "t": 160.82,
+    "to": "stage",
+    "dist_line_ms": 0,
+    "dist_downbeat_ms": 688,
+    "ok": true
+   },
+   {
+    "t": 163.97,
+    "to": "feed",
+    "dist_line_ms": 3150,
+    "dist_downbeat_ms": 644,
+    "ok": true
+   },
+   {
+    "t": 167.8,
+    "to": "stage",
+    "dist_line_ms": 0,
+    "dist_downbeat_ms": 443,
+    "ok": true
+   },
+   {
+    "t": 170.93,
+    "to": "stage",
+    "dist_line_ms": 0,
+    "dist_downbeat_ms": 546,
+    "ok": true
+   },
+   {
+    "t": 174.15,
+    "to": "stage",
+    "dist_line_ms": 0,
+    "dist_downbeat_ms": 583,
+    "ok": true
+   },
+   {
+    "t": 177.4,
+    "to": "stage",
+    "dist_line_ms": 0,
+    "dist_downbeat_ms": 600,
+    "ok": true
+   },
+   {
+    "t": 181.13,
+    "to": "stage",
+    "dist_line_ms": 0,
+    "dist_downbeat_ms": 134,
+    "ok": true
+   },
+   {
+    "t": 183.86,
+    "to": "stage",
+    "dist_line_ms": 0,
+    "dist_downbeat_ms": 652,
+    "ok": true
+   },
+   {
+    "t": 188.7,
+    "to": "feed",
+    "dist_line_ms": 0,
+    "dist_downbeat_ms": 677,
+    "ok": true
+   },
+   {
+    "t": 194.32,
+    "to": "stage",
+    "dist_line_ms": 360,
+    "dist_downbeat_ms": 0,
+    "ok": true
+   },
+   {
+    "t": 202.467,
+    "to": "feed",
+    "dist_line_ms": 7787,
+    "dist_downbeat_ms": 0,
+    "ok": true
+   },
+   {
+    "t": 207.366,
+    "to": "stage",
+    "dist_line_ms": 12686,
+    "dist_downbeat_ms": 0,
+    "ok": true
+   }
+  ]
+ },
+ "camera_static_shots": [],
+ "signs": {
+  "sign_frames_checked": 2276,
+  "max_overlap_fraction_with_character_in_front": 0.2085,
+  "at": [
+   148.13,
+   [
+    10,
+    0
+   ],
+   "Chór 3"
+  ],
+  "placement": [
+   {
+    "line": [
+     0,
+     0
+    ],
+    "kind": "bubble",
+    "visibility": 0.91,
+    "overlap": 0.0
+   },
+   {
+    "line": [
+     1,
+     0
+    ],
+    "kind": "board",
+    "visibility": 1.0,
+    "overlap": 0.0
+   },
+   {
+    "line": [
+     1,
+     1
+    ],
+    "kind": "board",
+    "visibility": 1.0,
+    "overlap": 0.0
+   },
+   {
+    "line": [
+     1,
+     2
+    ],
+    "kind": "board",
+    "visibility": 1.0,
+    "overlap": 0.0
+   },
+   {
+    "line": [
+     1,
+     3
+    ],
+    "kind": "playboard",
+    "visibility": 1.0,
+    "overlap": 0.0
+   },
+   {
+    "line": [
+     2,
+     0
+    ],
+    "kind": "board",
+    "visibility": 1.0,
+    "overlap": 0.0
+   },
+   {
+    "line": [
+     2,
+     1
+    ],
+    "kind": "board",
+    "visibility": 1.0,
+    "overlap": 0.0
+   },
+   {
+    "line": [
+     2,
+     2
+    ],
+    "kind": "board",
+    "visibility": 1.0,
+    "overlap": 0.0
+   },
+   {
+    "line": [
+     2,
+     3
+    ],
+    "kind": "board",
+    "visibility": 1.0,
+    "overlap": 0.0
+   },
+   {
+    "line": [
+     3,
+     0
+    ],
+    "kind": "marquee",
+    "visibility": 1.0,
+    "overlap": 0.0
+   },
+   {
+    "line": [
+     3,
+     1
+    ],
+    "kind": "board",
+    "visibility": 0.84,
+    "overlap": 0.0
+   },
+   {
+    "line": [
+     3,
+     2
+    ],
+    "kind": "playboard",
+    "visibility": 0.98,
+    "overlap": 0.0
+   },
+   {
+    "line": [
+     3,
+     3
+    ],
+    "kind": "playboard",
+    "visibility": 0.84,
+    "overlap": 0.0
+   },
+   {
+    "line": [
+     4,
+     0
+    ],
+    "kind": "playboard",
+    "visibility": 1.0,
+    "overlap": 0.0
+   },
+   {
+    "line": [
+     4,
+     1
+    ],
+    "kind": "playboard",
+    "visibility": 1.0,
+    "overlap": 0.0
+   },
+   {
+    "line": [
+     4,
+     2
+    ],
+    "kind": "playboard",
+    "visibility": 0.86,
+    "overlap": 0.0
+   },
+   {
+    "line": [
+     4,
+     4
+    ],
+    "kind": "playboard",
+    "visibility": 1.0,
+    "overlap": 0.0
+   },
+   {
+    "line": [
+     4,
+     5
+    ],
+    "kind": "playboard",
+    "visibility": 0.97,
+    "overlap": 0.0
+   },
+   {
+    "line": [
+     5,
+     1
+    ],
+    "kind": "board",
+    "visibility": 1.0,
+    "overlap": 0.0
+   },
+   {
+    "line": [
+     5,
+     2
+    ],
+    "kind": "playboard",
+    "visibility": 1.0,
+    "overlap": 0.0
+   },
+   {
+    "line": [
+     5,
+     3
+    ],
+    "kind": "board",
+    "visibility": 1.0,
+    "overlap": 0.0
+   },
+   {
+    "line": [
+     5,
+     4
+    ],
+    "kind": "board",
+    "visibility": 1.0,
+    "overlap": 0.0
+   },
+   {
+    "line": [
+     6,
+     0
+    ],
+    "kind": "playboard",
+    "visibility": 1.0,
+    "overlap": 0.0
+   },
+   {
+    "line": [
+     7,
+     0
+    ],
+    "kind": "board",
+    "visibility": 1.0,
+    "overlap": 0.0
+   },
+   {
+    "line": [
+     7,
+     1
+    ],
+    "kind": "board",
+    "visibility": 1.0,
+    "overlap": 0.0
+   },
+   {
+    "line": [
+     7,
+     2
+    ],
+    "kind": "board",
+    "visibility": 0.92,
+    "overlap": 0.0
+   },
+   {
+    "line": [
+     7,
+     3
+    ],
+    "kind": "playboard",
+    "visibility": 1.0,
+    "overlap": 0.0
+   },
+   {
+    "line": [
+     8,
+     0
+    ],
+    "kind": "marquee",
+    "visibility": 1.0,
+    "overlap": 0.0
+   },
+   {
+    "line": [
+     8,
+     1
+    ],
+    "kind": "board",
+    "visibility": 0.98,
+    "overlap": 0.0
+   },
+   {
+    "line": [
+     8,
+     2
+    ],
+    "kind": "playboard",
+    "visibility": 0.97,
+    "overlap": 0.0
+   },
+   {
+    "line": [
+     8,
+     3
+    ],
+    "kind": "playboard",
+    "visibility": 0.78,
+    "overlap": 0.0
+   },
+   {
+    "line": [
+     9,
+     0
+    ],
+    "kind": "marquee",
+    "visibility": 1.0,
+    "overlap": 0.077
+   },
+   {
+    "line": [
+     9,
+     1
+    ],
+    "kind": "playboard",
+    "visibility": 1.0,
+    "overlap": 0.0
+   },
+   {
+    "line": [
+     9,
+     4
+    ],
+    "kind": "marquee",
+    "visibility": 1.0,
+    "overlap": 0.0
+   },
+   {
+    "line": [
+     9,
+     5
+    ],
+    "kind": "marquee",
+    "visibility": 1.0,
+    "overlap": 0.0
+   },
+   {
+    "line": [
+     10,
+     0
+    ],
+    "kind": "bubble",
+    "visibility": 0.79,
+    "overlap": 0.0
+   },
+   {
+    "line": [
+     10,
+     1
+    ],
+    "kind": "marker",
+    "visibility": 1.0,
+    "overlap": 0.0
+   },
+   {
+    "line": [
+     10,
+     2
+    ],
+    "kind": "marker",
+    "visibility": 1.0,
+    "overlap": 0.0
+   },
+   {
+    "line": [
+     10,
+     3
+    ],
+    "kind": "marker",
+    "visibility": 1.0,
+    "overlap": 0.0
+   },
+   {
+    "line": [
+     10,
+     4
+    ],
+    "kind": "playboard",
+    "visibility": 1.0,
+    "overlap": 0.0
+   },
+   {
+    "line": [
+     11,
+     0
+    ],
+    "kind": "marquee",
+    "visibility": 1.0,
+    "overlap": 0.0
+   },
+   {
+    "line": [
+     11,
+     1
+    ],
+    "kind": "marquee",
+    "visibility": 0.93,
+    "overlap": 0.0
+   },
+   {
+    "line": [
+     11,
+     2
+    ],
+    "kind": "playboard",
+    "visibility": 1.0,
+    "overlap": 0.0
+   },
+   {
+    "line": [
+     11,
+     3
+    ],
+    "kind": "playboard",
+    "visibility": 1.0,
+    "overlap": 0.0
+   },
+   {
+    "line": [
+     11,
+     4
+    ],
+    "kind": "marquee",
+    "visibility": 1.0,
+    "overlap": 0.0
+   },
+   {
+    "line": [
+     11,
+     5
+    ],
+    "kind": "marquee",
+    "visibility": 1.0,
+    "overlap": 0.0
+   },
+   {
+    "line": [
+     12,
+     1
+    ],
+    "kind": "marquee",
+    "visibility": 1.0,
+    "overlap": 0.0
+   }
+  ]
+ },
+ "choir": {
+  "counts": [
+   [
+    46.0,
+    0
+   ],
+   [
+    46.5,
+    0
+   ],
+   [
+    47.0,
+    0
+   ],
+   [
+    47.5,
+    3
+   ],
+   [
+    48.0,
+    4
+   ],
+   [
+    48.5,
+    4
+   ],
+   [
+    49.0,
+    4
+   ],
+   [
+    49.5,
+    4
+   ],
+   [
+    50.0,
+    4
+   ],
+   [
+    50.5,
+    4
+   ],
+   [
+    51.0,
+    4
+   ],
+   [
+    51.5,
+    4
+   ],
+   [
+    52.0,
+    4
+   ],
+   [
+    52.5,
+    4
+   ],
+   [
+    53.0,
+    4
+   ],
+   [
+    53.5,
+    4
+   ],
+   [
+    54.0,
+    4
+   ],
+   [
+    54.5,
+    4
+   ],
+   [
+    55.0,
+    4
+   ],
+   [
+    55.5,
+    4
+   ],
+   [
+    56.0,
+    4
+   ],
+   [
+    56.5,
+    4
+   ],
+   [
+    57.0,
+    4
+   ],
+   [
+    57.5,
+    4
+   ],
+   [
+    58.0,
+    4
+   ],
+   [
+    58.5,
+    4
+   ],
+   [
+    59.0,
+    4
+   ],
+   [
+    59.5,
+    5
+   ],
+   [
+    60.0,
+    8
+   ],
+   [
+    60.5,
+    8
+   ],
+   [
+    61.0,
+    8
+   ],
+   [
+    61.5,
+    8
+   ],
+   [
+    62.0,
+    8
+   ],
+   [
+    62.5,
+    8
+   ],
+   [
+    63.0,
+    8
+   ],
+   [
+    63.5,
+    8
+   ],
+   [
+    64.0,
+    8
+   ],
+   [
+    64.5,
+    8
+   ],
+   [
+    65.0,
+    8
+   ],
+   [
+    65.5,
+    8
+   ],
+   [
+    66.0,
+    8
+   ],
+   [
+    66.5,
+    8
+   ],
+   [
+    67.0,
+    8
+   ],
+   [
+    67.5,
+    8
+   ],
+   [
+    68.0,
+    8
+   ],
+   [
+    68.5,
+    8
+   ],
+   [
+    69.0,
+    8
+   ],
+   [
+    69.5,
+    8
+   ],
+   [
+    70.0,
+    8
+   ],
+   [
+    70.5,
+    8
+   ],
+   [
+    71.0,
+    8
+   ],
+   [
+    71.5,
+    8
+   ],
+   [
+    72.0,
+    8
+   ],
+   [
+    72.5,
+    8
+   ],
+   [
+    73.0,
+    8
+   ],
+   [
+    73.5,
+    8
+   ],
+   [
+    74.0,
+    8
+   ],
+   [
+    74.5,
+    8
+   ],
+   [
+    75.0,
+    8
+   ],
+   [
+    75.5,
+    8
+   ],
+   [
+    76.0,
+    8
+   ],
+   [
+    76.5,
+    8
+   ],
+   [
+    77.0,
+    8
+   ],
+   [
+    77.5,
+    8
+   ],
+   [
+    78.0,
+    8
+   ],
+   [
+    78.5,
+    8
+   ],
+   [
+    79.0,
+    8
+   ],
+   [
+    79.5,
+    8
+   ],
+   [
+    115.0,
+    0
+   ],
+   [
+    115.5,
+    0
+   ],
+   [
+    116.0,
+    0
+   ],
+   [
+    116.5,
+    2
+   ],
+   [
+    117.0,
+    3
+   ],
+   [
+    117.5,
+    3
+   ],
+   [
+    118.0,
+    3
+   ],
+   [
+    118.5,
+    3
+   ],
+   [
+    119.0,
+    3
+   ],
+   [
+    119.5,
+    3
+   ],
+   [
+    120.0,
+    3
+   ],
+   [
+    120.5,
+    3
+   ],
+   [
+    121.0,
+    3
+   ],
+   [
+    121.5,
+    3
+   ],
+   [
+    122.0,
+    3
+   ],
+   [
+    122.5,
+    3
+   ],
+   [
+    123.0,
+    3
+   ],
+   [
+    123.5,
+    3
+   ],
+   [
+    124.0,
+    3
+   ],
+   [
+    124.5,
+    3
+   ],
+   [
+    125.0,
+    3
+   ],
+   [
+    125.5,
+    3
+   ],
+   [
+    126.0,
+    3
+   ],
+   [
+    126.5,
+    3
+   ],
+   [
+    127.0,
+    3
+   ],
+   [
+    127.5,
+    3
+   ],
+   [
+    128.0,
+    7
+   ],
+   [
+    128.5,
+    7
+   ],
+   [
+    129.0,
+    7
+   ],
+   [
+    129.5,
+    7
+   ],
+   [
+    130.0,
+    7
+   ],
+   [
+    130.5,
+    7
+   ],
+   [
+    131.0,
+    7
+   ],
+   [
+    131.5,
+    7
+   ],
+   [
+    132.0,
+    7
+   ],
+   [
+    132.5,
+    7
+   ],
+   [
+    133.0,
+    7
+   ],
+   [
+    133.5,
+    7
+   ],
+   [
+    134.0,
+    7
+   ],
+   [
+    134.5,
+    7
+   ],
+   [
+    135.0,
+    7
+   ],
+   [
+    135.5,
+    7
+   ],
+   [
+    136.0,
+    7
+   ],
+   [
+    136.5,
+    7
+   ],
+   [
+    137.0,
+    7
+   ],
+   [
+    137.5,
+    7
+   ],
+   [
+    138.0,
+    7
+   ],
+   [
+    138.5,
+    7
+   ],
+   [
+    139.0,
+    7
+   ],
+   [
+    139.5,
+    7
+   ],
+   [
+    140.0,
+    7
+   ],
+   [
+    140.5,
+    7
+   ],
+   [
+    141.0,
+    7
+   ],
+   [
+    141.5,
+    7
+   ],
+   [
+    142.0,
+    7
+   ],
+   [
+    142.5,
+    7
+   ],
+   [
+    143.0,
+    7
+   ],
+   [
+    143.5,
+    7
+   ],
+   [
+    144.0,
+    7
+   ],
+   [
+    144.5,
+    7
+   ],
+   [
+    145.0,
+    7
+   ],
+   [
+    145.5,
+    7
+   ],
+   [
+    146.0,
+    7
+   ],
+   [
+    146.5,
+    7
+   ],
+   [
+    147.0,
+    7
+   ],
+   [
+    147.5,
+    7
+   ],
+   [
+    148.0,
+    7
+   ],
+   [
+    148.5,
+    7
+   ],
+   [
+    167.0,
+    1
+   ],
+   [
+    167.5,
+    8
+   ],
+   [
+    168.0,
+    8
+   ],
+   [
+    168.5,
+    8
+   ],
+   [
+    169.0,
+    8
+   ],
+   [
+    169.5,
+    8
+   ],
+   [
+    170.0,
+    8
+   ],
+   [
+    170.5,
+    8
+   ],
+   [
+    171.0,
+    8
+   ],
+   [
+    171.5,
+    8
+   ],
+   [
+    172.0,
+    8
+   ],
+   [
+    172.5,
+    8
+   ],
+   [
+    173.0,
+    8
+   ],
+   [
+    173.5,
+    8
+   ],
+   [
+    174.0,
+    8
+   ],
+   [
+    174.5,
+    8
+   ],
+   [
+    175.0,
+    8
+   ],
+   [
+    175.5,
+    8
+   ],
+   [
+    176.0,
+    8
+   ],
+   [
+    176.5,
+    8
+   ],
+   [
+    177.0,
+    8
+   ],
+   [
+    177.5,
+    8
+   ],
+   [
+    178.0,
+    8
+   ],
+   [
+    178.5,
+    8
+   ],
+   [
+    179.0,
+    8
+   ],
+   [
+    179.5,
+    8
+   ],
+   [
+    180.0,
+    8
+   ],
+   [
+    180.5,
+    8
+   ],
+   [
+    181.0,
+    8
+   ],
+   [
+    181.5,
+    8
+   ],
+   [
+    182.0,
+    8
+   ],
+   [
+    182.5,
+    8
+   ],
+   [
+    183.0,
+    8
+   ],
+   [
+    183.5,
+    8
+   ],
+   [
+    184.0,
+    8
+   ],
+   [
+    184.5,
+    8
+   ],
+   [
+    185.0,
+    8
+   ],
+   [
+    185.5,
+    8
+   ],
+   [
+    186.0,
+    8
+   ],
+   [
+    186.5,
+    8
+   ],
+   [
+    187.0,
+    8
+   ],
+   [
+    187.5,
+    8
+   ],
+   [
+    188.0,
+    8
+   ],
+   [
+    188.5,
+    8
+   ],
+   [
+    189.0,
+    8
+   ],
+   [
+    189.5,
+    8
+   ],
+   [
+    190.0,
+    8
+   ],
+   [
+    190.5,
+    8
+   ],
+   [
+    191.0,
+    8
+   ],
+   [
+    191.5,
+    8
+   ],
+   [
+    192.0,
+    8
+   ],
+   [
+    192.5,
+    8
+   ],
+   [
+    193.0,
+    8
+   ],
+   [
+    193.5,
+    8
+   ],
+   [
+    194.0,
+    8
+   ],
+   [
+    194.5,
+    8
+   ],
+   [
+    195.0,
+    8
+   ],
+   [
+    195.5,
+    8
+   ],
+   [
+    196.0,
+    8
+   ],
+   [
+    196.5,
+    8
+   ],
+   [
+    197.0,
+    8
+   ],
+   [
+    197.5,
+    8
+   ],
+   [
+    198.0,
+    8
+   ],
+   [
+    198.5,
+    8
+   ],
+   [
+    199.0,
+    8
+   ],
+   [
+    199.5,
+    8
+   ],
+   [
+    200.0,
+    8
+   ],
+   [
+    200.5,
+    8
+   ],
+   [
+    201.0,
+    8
+   ],
+   [
+    201.5,
+    8
+   ]
+  ],
+  "overlapping_pairs": 0
+ }
+}

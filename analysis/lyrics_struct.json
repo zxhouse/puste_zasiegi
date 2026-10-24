@@ -1,0 +1,2645 @@
+[
+ {
+  "name": "Intro",
+  "lines": [
+   {
+    "text": "\"No i co tam na tym LinkedInie dzisiaj, kochani? Kolejny sukces? Zobaczmy...\"",
+    "spoken": true,
+    "voice": "Spoken Dialogue - Male (deep, smooth baritone)",
+    "lead": "\"No i co tam na tym LinkedInie dzisiaj, kochani? Kolejny sukces? Zobaczmy...\"",
+    "choir": "",
+    "lead_words": [
+     {
+      "w": "No",
+      "syl": [
+       "No"
+      ]
+     },
+     {
+      "w": "i",
+      "syl": [
+       "i"
+      ]
+     },
+     {
+      "w": "co",
+      "syl": [
+       "co"
+      ]
+     },
+     {
+      "w": "tam",
+      "syl": [
+       "tam"
+      ]
+     },
+     {
+      "w": "na",
+      "syl": [
+       "na"
+      ]
+     },
+     {
+      "w": "tym",
+      "syl": [
+       "tym"
+      ]
+     },
+     {
+      "w": "LinkedInie",
+      "syl": [
+       "lin",
+       "ke",
+       "di",
+       "nie"
+      ]
+     },
+     {
+      "w": "dzisiaj",
+      "syl": [
+       "dzi",
+       "siaj"
+      ]
+     },
+     {
+      "w": "kochani",
+      "syl": [
+       "ko",
+       "cha",
+       "ni"
+      ]
+     },
+     {
+      "w": "Kolejny",
+      "syl": [
+       "Ko",
+       "lej",
+       "ny"
+      ]
+     },
+     {
+      "w": "sukces",
+      "syl": [
+       "suk",
+       "ces"
+      ]
+     },
+     {
+      "w": "Zobaczmy",
+      "syl": [
+       "Zo",
+       "bacz",
+       "my"
+      ]
+     }
+    ],
+    "choir_words": []
+   }
+  ]
+ },
+ {
+  "name": "Verse 1",
+  "lines": [
+   {
+    "text": "Poranna kawa, wielki plan",
+    "spoken": false,
+    "voice": "Male Lead - natural deep baritone",
+    "lead": "Poranna kawa, wielki plan",
+    "choir": "",
+    "lead_words": [
+     {
+      "w": "Poranna",
+      "syl": [
+       "Po",
+       "ran",
+       "na"
+      ]
+     },
+     {
+      "w": "kawa",
+      "syl": [
+       "ka",
+       "wa"
+      ]
+     },
+     {
+      "w": "wielki",
+      "syl": [
+       "wiel",
+       "ki"
+      ]
+     },
+     {
+      "w": "plan",
+      "syl": [
+       "plan"
+      ]
+     }
+    ],
+    "choir_words": []
+   },
+   {
+    "text": "Wkładam garnitur, choć mam luźny stan",
+    "spoken": false,
+    "voice": "Male Lead - natural deep baritone",
+    "lead": "Wkładam garnitur, choć mam luźny stan",
+    "choir": "",
+    "lead_words": [
+     {
+      "w": "Wkładam",
+      "syl": [
+       "Wkła",
+       "dam"
+      ]
+     },
+     {
+      "w": "garnitur",
+      "syl": [
+       "gar",
+       "ni",
+       "tur"
+      ]
+     },
+     {
+      "w": "choć",
+      "syl": [
+       "choć"
+      ]
+     },
+     {
+      "w": "mam",
+      "syl": [
+       "mam"
+      ]
+     },
+     {
+      "w": "luźny",
+      "syl": [
+       "luź",
+       "ny"
+      ]
+     },
+     {
+      "w": "stan",
+      "syl": [
+       "stan"
+      ]
+     }
+    ],
+    "choir_words": []
+   },
+   {
+    "text": "Piszę o synergiach, choć boli mnie szczęka",
+    "spoken": false,
+    "voice": "Male Lead - natural deep baritone",
+    "lead": "Piszę o synergiach, choć boli mnie szczęka",
+    "choir": "",
+    "lead_words": [
+     {
+      "w": "Piszę",
+      "syl": [
+       "Pi",
+       "szę"
+      ]
+     },
+     {
+      "w": "o",
+      "syl": [
+       "o"
+      ]
+     },
+     {
+      "w": "synergiach",
+      "syl": [
+       "sy",
+       "ner",
+       "giach"
+      ]
+     },
+     {
+      "w": "choć",
+      "syl": [
+       "choć"
+      ]
+     },
+     {
+      "w": "boli",
+      "syl": [
+       "bo",
+       "li"
+      ]
+     },
+     {
+      "w": "mnie",
+      "syl": [
+       "mnie"
+      ]
+     },
+     {
+      "w": "szczęka",
+      "syl": [
+       "szczę",
+       "ka"
+      ]
+     }
+    ],
+    "choir_words": []
+   },
+   {
+    "text": "„Z przyjemnością dzielę się” — i już mnie skręca",
+    "spoken": false,
+    "voice": "Male Lead - natural deep baritone",
+    "lead": "„Z przyjemnością dzielę się” — i już mnie skręca",
+    "choir": "",
+    "lead_words": [
+     {
+      "w": "Z",
+      "syl": []
+     },
+     {
+      "w": "przyjemnością",
+      "syl": [
+       "przy",
+       "jem",
+       "noś",
+       "cią"
+      ]
+     },
+     {
+      "w": "dzielę",
+      "syl": [
+       "dzie",
+       "lę"
+      ]
+     },
+     {
+      "w": "się",
+      "syl": [
+       "się"
+      ]
+     },
+     {
+      "w": "i",
+      "syl": [
+       "i"
+      ]
+     },
+     {
+      "w": "już",
+      "syl": [
+       "już"
+      ]
+     },
+     {
+      "w": "mnie",
+      "syl": [
+       "mnie"
+      ]
+     },
+     {
+      "w": "skręca",
+      "syl": [
+       "skrę",
+       "ca"
+      ]
+     }
+    ],
+    "choir_words": []
+   },
+   {
+    "text": "\"Tak, tak, wszyscy się strasznie cieszą!\"",
+    "spoken": true,
+    "voice": "Spoken Dialogue - Male",
+    "lead": "\"Tak, tak, wszyscy się strasznie cieszą!\"",
+    "choir": "",
+    "lead_words": [
+     {
+      "w": "Tak",
+      "syl": [
+       "Tak"
+      ]
+     },
+     {
+      "w": "tak",
+      "syl": [
+       "tak"
+      ]
+     },
+     {
+      "w": "wszyscy",
+      "syl": [
+       "wszys",
+       "cy"
+      ]
+     },
+     {
+      "w": "się",
+      "syl": [
+       "się"
+      ]
+     },
+     {
+      "w": "strasznie",
+      "syl": [
+       "strasz",
+       "nie"
+      ]
+     },
+     {
+      "w": "cieszą",
+      "syl": [
+       "cie",
+       "szą"
+      ]
+     }
+    ],
+    "choir_words": []
+   }
+  ]
+ },
+ {
+  "name": "Verse 1 - Continued",
+  "lines": [
+   {
+    "text": "W tle awans, w głowie stres",
+    "spoken": false,
+    "voice": "Male Lead - deep baritone",
+    "lead": "W tle awans, w głowie stres",
+    "choir": "",
+    "lead_words": [
+     {
+      "w": "W",
+      "syl": []
+     },
+     {
+      "w": "tle",
+      "syl": [
+       "tle"
+      ]
+     },
+     {
+      "w": "awans",
+      "syl": [
+       "a",
+       "wans"
+      ]
+     },
+     {
+      "w": "w",
+      "syl": []
+     },
+     {
+      "w": "głowie",
+      "syl": [
+       "gło",
+       "wie"
+      ]
+     },
+     {
+      "w": "stres",
+      "syl": [
+       "stres"
+      ]
+     }
+    ],
+    "choir_words": []
+   },
+   {
+    "text": "Wszyscy tu mają strategiczny gest",
+    "spoken": false,
+    "voice": "Male Lead - deep baritone",
+    "lead": "Wszyscy tu mają strategiczny gest",
+    "choir": "",
+    "lead_words": [
+     {
+      "w": "Wszyscy",
+      "syl": [
+       "Wszys",
+       "cy"
+      ]
+     },
+     {
+      "w": "tu",
+      "syl": [
+       "tu"
+      ]
+     },
+     {
+      "w": "mają",
+      "syl": [
+       "ma",
+       "ją"
+      ]
+     },
+     {
+      "w": "strategiczny",
+      "syl": [
+       "stra",
+       "te",
+       "gicz",
+       "ny"
+      ]
+     },
+     {
+      "w": "gest",
+      "syl": [
+       "gest"
+      ]
+     }
+    ],
+    "choir_words": []
+   },
+   {
+    "text": "Zdjęcie z konferencji, mina jak z plakatu",
+    "spoken": false,
+    "voice": "Male Lead - deep baritone",
+    "lead": "Zdjęcie z konferencji, mina jak z plakatu",
+    "choir": "",
+    "lead_words": [
+     {
+      "w": "Zdjęcie",
+      "syl": [
+       "Zdję",
+       "cie"
+      ]
+     },
+     {
+      "w": "z",
+      "syl": []
+     },
+     {
+      "w": "konferencji",
+      "syl": [
+       "kon",
+       "fe",
+       "renc",
+       "ji"
+      ]
+     },
+     {
+      "w": "mina",
+      "syl": [
+       "mi",
+       "na"
+      ]
+     },
+     {
+      "w": "jak",
+      "syl": [
+       "jak"
+      ]
+     },
+     {
+      "w": "z",
+      "syl": []
+     },
+     {
+      "w": "plakatu",
+      "syl": [
+       "pla",
+       "ka",
+       "tu"
+      ]
+     }
+    ],
+    "choir_words": []
+   },
+   {
+    "text": "A w komentarzu: „Ogromny szacun” do tego łaskawca",
+    "spoken": false,
+    "voice": "Male Lead - deep baritone",
+    "lead": "A w komentarzu: „Ogromny szacun” do tego łaskawca",
+    "choir": "",
+    "lead_words": [
+     {
+      "w": "A",
+      "syl": [
+       "A"
+      ]
+     },
+     {
+      "w": "w",
+      "syl": []
+     },
+     {
+      "w": "komentarzu",
+      "syl": [
+       "ko",
+       "men",
+       "ta",
+       "rzu"
+      ]
+     },
+     {
+      "w": "Ogromny",
+      "syl": [
+       "Og",
+       "rom",
+       "ny"
+      ]
+     },
+     {
+      "w": "szacun",
+      "syl": [
+       "sza",
+       "cun"
+      ]
+     },
+     {
+      "w": "do",
+      "syl": [
+       "do"
+      ]
+     },
+     {
+      "w": "tego",
+      "syl": [
+       "te",
+       "go"
+      ]
+     },
+     {
+      "w": "łaskawca",
+      "syl": [
+       "łas",
+       "kaw",
+       "ca"
+      ]
+     }
+    ],
+    "choir_words": []
+   }
+  ]
+ },
+ {
+  "name": "Pre-Chorus",
+  "lines": [
+   {
+    "text": "I każdy zna tu swoją rolę",
+    "spoken": false,
+    "voice": "Male Lead & Grand Male Choir",
+    "lead": "I każdy zna tu swoją rolę",
+    "choir": "",
+    "lead_words": [
+     {
+      "w": "I",
+      "syl": [
+       "I"
+      ]
+     },
+     {
+      "w": "każdy",
+      "syl": [
+       "każ",
+       "dy"
+      ]
+     },
+     {
+      "w": "zna",
+      "syl": [
+       "zna"
+      ]
+     },
+     {
+      "w": "tu",
+      "syl": [
+       "tu"
+      ]
+     },
+     {
+      "w": "swoją",
+      "syl": [
+       "swo",
+       "ją"
+      ]
+     },
+     {
+      "w": "rolę",
+      "syl": [
+       "ro",
+       "lę"
+      ]
+     }
+    ],
+    "choir_words": []
+   },
+   {
+    "text": "Uśmiech wyuczony, rzut na czoło",
+    "spoken": false,
+    "voice": "Male Lead & Grand Male Choir",
+    "lead": "Uśmiech wyuczony, rzut na czoło",
+    "choir": "",
+    "lead_words": [
+     {
+      "w": "Uśmiech",
+      "syl": [
+       "Uś",
+       "miech"
+      ]
+     },
+     {
+      "w": "wyuczony",
+      "syl": [
+       "wy",
+       "u",
+       "czo",
+       "ny"
+      ]
+     },
+     {
+      "w": "rzut",
+      "syl": [
+       "rzut"
+      ]
+     },
+     {
+      "w": "na",
+      "syl": [
+       "na"
+      ]
+     },
+     {
+      "w": "czoło",
+      "syl": [
+       "czo",
+       "ło"
+      ]
+     }
+    ],
+    "choir_words": []
+   },
+   {
+    "text": "Jedno słowo za dużo — i już wiesz",
+    "spoken": false,
+    "voice": "Male Lead & Grand Male Choir",
+    "lead": "Jedno słowo za dużo — i już wiesz",
+    "choir": "",
+    "lead_words": [
+     {
+      "w": "Jedno",
+      "syl": [
+       "Jed",
+       "no"
+      ]
+     },
+     {
+      "w": "słowo",
+      "syl": [
+       "sło",
+       "wo"
+      ]
+     },
+     {
+      "w": "za",
+      "syl": [
+       "za"
+      ]
+     },
+     {
+      "w": "dużo",
+      "syl": [
+       "du",
+       "żo"
+      ]
+     },
+     {
+      "w": "i",
+      "syl": [
+       "i"
+      ]
+     },
+     {
+      "w": "już",
+      "syl": [
+       "już"
+      ]
+     },
+     {
+      "w": "wiesz",
+      "syl": [
+       "wiesz"
+      ]
+     }
+    ],
+    "choir_words": []
+   },
+   {
+    "text": "Że dziś na siłę robisz wielki gest",
+    "spoken": false,
+    "voice": "Male Lead & Grand Male Choir",
+    "lead": "Że dziś na siłę robisz wielki gest",
+    "choir": "",
+    "lead_words": [
+     {
+      "w": "Że",
+      "syl": [
+       "Że"
+      ]
+     },
+     {
+      "w": "dziś",
+      "syl": [
+       "dziś"
+      ]
+     },
+     {
+      "w": "na",
+      "syl": [
+       "na"
+      ]
+     },
+     {
+      "w": "siłę",
+      "syl": [
+       "si",
+       "łę"
+      ]
+     },
+     {
+      "w": "robisz",
+      "syl": [
+       "ro",
+       "bisz"
+      ]
+     },
+     {
+      "w": "wielki",
+      "syl": [
+       "wiel",
+       "ki"
+      ]
+     },
+     {
+      "w": "gest",
+      "syl": [
+       "gest"
+      ]
+     }
+    ],
+    "choir_words": []
+   }
+  ]
+ },
+ {
+  "name": "Chorus",
+  "lines": [
+   {
+    "text": "Puste zasięgi, puste zasięgi",
+    "spoken": false,
+    "voice": "Male Lead with Full Mixed Choir & Ensemble",
+    "lead": "Puste zasięgi, puste zasięgi",
+    "choir": "",
+    "lead_words": [
+     {
+      "w": "Puste",
+      "syl": [
+       "Pus",
+       "te"
+      ]
+     },
+     {
+      "w": "zasięgi",
+      "syl": [
+       "za",
+       "się",
+       "gi"
+      ]
+     },
+     {
+      "w": "puste",
+      "syl": [
+       "pus",
+       "te"
+      ]
+     },
+     {
+      "w": "zasięgi",
+      "syl": [
+       "za",
+       "się",
+       "gi"
+      ]
+     }
+    ],
+    "choir_words": []
+   },
+   {
+    "text": "Każdy tu błyszczy, każdy tu pęka",
+    "spoken": false,
+    "voice": "Male Lead with Full Mixed Choir & Ensemble",
+    "lead": "Każdy tu błyszczy, każdy tu pęka",
+    "choir": "",
+    "lead_words": [
+     {
+      "w": "Każdy",
+      "syl": [
+       "Każ",
+       "dy"
+      ]
+     },
+     {
+      "w": "tu",
+      "syl": [
+       "tu"
+      ]
+     },
+     {
+      "w": "błyszczy",
+      "syl": [
+       "błysz",
+       "czy"
+      ]
+     },
+     {
+      "w": "każdy",
+      "syl": [
+       "każ",
+       "dy"
+      ]
+     },
+     {
+      "w": "tu",
+      "syl": [
+       "tu"
+      ]
+     },
+     {
+      "w": "pęka",
+      "syl": [
+       "pę",
+       "ka"
+      ]
+     }
+    ],
+    "choir_words": []
+   },
+   {
+    "text": "Puste zasięgi, wielkie zasięgi",
+    "spoken": false,
+    "voice": "Male Lead with Full Mixed Choir & Ensemble",
+    "lead": "Puste zasięgi, wielkie zasięgi",
+    "choir": "",
+    "lead_words": [
+     {
+      "w": "Puste",
+      "syl": [
+       "Pus",
+       "te"
+      ]
+     },
+     {
+      "w": "zasięgi",
+      "syl": [
+       "za",
+       "się",
+       "gi"
+      ]
+     },
+     {
+      "w": "wielkie",
+      "syl": [
+       "wiel",
+       "kie"
+      ]
+     },
+     {
+      "w": "zasięgi",
+      "syl": [
+       "za",
+       "się",
+       "gi"
+      ]
+     }
+    ],
+    "choir_words": []
+   },
+   {
+    "text": "A pod spodem cisza, trochę jak męka",
+    "spoken": false,
+    "voice": "Male Lead with Full Mixed Choir & Ensemble",
+    "lead": "A pod spodem cisza, trochę jak męka",
+    "choir": "",
+    "lead_words": [
+     {
+      "w": "A",
+      "syl": [
+       "A"
+      ]
+     },
+     {
+      "w": "pod",
+      "syl": [
+       "pod"
+      ]
+     },
+     {
+      "w": "spodem",
+      "syl": [
+       "spo",
+       "dem"
+      ]
+     },
+     {
+      "w": "cisza",
+      "syl": [
+       "ci",
+       "sza"
+      ]
+     },
+     {
+      "w": "trochę",
+      "syl": [
+       "tro",
+       "chę"
+      ]
+     },
+     {
+      "w": "jak",
+      "syl": [
+       "jak"
+      ]
+     },
+     {
+      "w": "męka",
+      "syl": [
+       "mę",
+       "ka"
+      ]
+     }
+    ],
+    "choir_words": []
+   },
+   {
+    "text": "Mocne zasięgi (hej)",
+    "spoken": false,
+    "voice": "Male Lead with Full Mixed Choir & Ensemble",
+    "lead": "Mocne zasięgi",
+    "choir": "hej",
+    "lead_words": [
+     {
+      "w": "Mocne",
+      "syl": [
+       "Moc",
+       "ne"
+      ]
+     },
+     {
+      "w": "zasięgi",
+      "syl": [
+       "za",
+       "się",
+       "gi"
+      ]
+     }
+    ],
+    "choir_words": [
+     {
+      "w": "hej",
+      "syl": [
+       "hej"
+      ]
+     }
+    ]
+   },
+   {
+    "text": "Wielkie zasięgi (hej)",
+    "spoken": false,
+    "voice": "Male Lead with Full Mixed Choir & Ensemble",
+    "lead": "Wielkie zasięgi",
+    "choir": "hej",
+    "lead_words": [
+     {
+      "w": "Wielkie",
+      "syl": [
+       "Wiel",
+       "kie"
+      ]
+     },
+     {
+      "w": "zasięgi",
+      "syl": [
+       "za",
+       "się",
+       "gi"
+      ]
+     }
+    ],
+    "choir_words": [
+     {
+      "w": "hej",
+      "syl": [
+       "hej"
+      ]
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "name": "Verse 2",
+  "lines": [
+   {
+    "text": "\"Czekaj, ten wpis jest najlepszy...\"",
+    "spoken": true,
+    "voice": "Spoken Dialogue - Male",
+    "lead": "\"Czekaj, ten wpis jest najlepszy...\"",
+    "choir": "",
+    "lead_words": [
+     {
+      "w": "Czekaj",
+      "syl": [
+       "Cze",
+       "kaj"
+      ]
+     },
+     {
+      "w": "ten",
+      "syl": [
+       "ten"
+      ]
+     },
+     {
+      "w": "wpis",
+      "syl": [
+       "wpis"
+      ]
+     },
+     {
+      "w": "jest",
+      "syl": [
+       "jest"
+      ]
+     },
+     {
+      "w": "najlepszy",
+      "syl": [
+       "naj",
+       "lep",
+       "szy"
+      ]
+     }
+    ],
+    "choir_words": []
+   },
+   {
+    "text": "„Z pokorą informuję” — brzmi jak cringe",
+    "spoken": false,
+    "voice": "Male Lead - deep baritone",
+    "lead": "„Z pokorą informuję” — brzmi jak cringe",
+    "choir": "",
+    "lead_words": [
+     {
+      "w": "Z",
+      "syl": []
+     },
+     {
+      "w": "pokorą",
+      "syl": [
+       "po",
+       "ko",
+       "rą"
+      ]
+     },
+     {
+      "w": "informuję",
+      "syl": [
+       "in",
+       "for",
+       "mu",
+       "ję"
+      ]
+     },
+     {
+      "w": "brzmi",
+      "syl": [
+       "brzmi"
+      ]
+     },
+     {
+      "w": "jak",
+      "syl": [
+       "jak"
+      ]
+     },
+     {
+      "w": "cringe",
+      "syl": [
+       "krindż"
+      ]
+     }
+    ],
+    "choir_words": []
+   },
+   {
+    "text": "A potem pięć scenek z życia i długi wywód o tym, że",
+    "spoken": false,
+    "voice": "Male Lead - deep baritone",
+    "lead": "A potem pięć scenek z życia i długi wywód o tym, że",
+    "choir": "",
+    "lead_words": [
+     {
+      "w": "A",
+      "syl": [
+       "A"
+      ]
+     },
+     {
+      "w": "potem",
+      "syl": [
+       "po",
+       "tem"
+      ]
+     },
+     {
+      "w": "pięć",
+      "syl": [
+       "pięć"
+      ]
+     },
+     {
+      "w": "scenek",
+      "syl": [
+       "sce",
+       "nek"
+      ]
+     },
+     {
+      "w": "z",
+      "syl": []
+     },
+     {
+      "w": "życia",
+      "syl": [
+       "ży",
+       "cia"
+      ]
+     },
+     {
+      "w": "i",
+      "syl": [
+       "i"
+      ]
+     },
+     {
+      "w": "długi",
+      "syl": [
+       "dłu",
+       "gi"
+      ]
+     },
+     {
+      "w": "wywód",
+      "syl": [
+       "wy",
+       "wód"
+      ]
+     },
+     {
+      "w": "o",
+      "syl": [
+       "o"
+      ]
+     },
+     {
+      "w": "tym",
+      "syl": [
+       "tym"
+      ]
+     },
+     {
+      "w": "że",
+      "syl": [
+       "że"
+      ]
+     }
+    ],
+    "choir_words": []
+   },
+   {
+    "text": "„Cieszę się z nowej drogi” — czytam bez tchu",
+    "spoken": false,
+    "voice": "Male Lead - deep baritone",
+    "lead": "„Cieszę się z nowej drogi” — czytam bez tchu",
+    "choir": "",
+    "lead_words": [
+     {
+      "w": "Cieszę",
+      "syl": [
+       "Cie",
+       "szę"
+      ]
+     },
+     {
+      "w": "się",
+      "syl": [
+       "się"
+      ]
+     },
+     {
+      "w": "z",
+      "syl": []
+     },
+     {
+      "w": "nowej",
+      "syl": [
+       "no",
+       "wej"
+      ]
+     },
+     {
+      "w": "drogi",
+      "syl": [
+       "dro",
+       "gi"
+      ]
+     },
+     {
+      "w": "czytam",
+      "syl": [
+       "czy",
+       "tam"
+      ]
+     },
+     {
+      "w": "bez",
+      "syl": [
+       "bez"
+      ]
+     },
+     {
+      "w": "tchu",
+      "syl": [
+       "tchu"
+      ]
+     }
+    ],
+    "choir_words": []
+   },
+   {
+    "text": "I wiem, że to znaczy: wywalili cię na bruk!",
+    "spoken": false,
+    "voice": "Male Lead - deep baritone",
+    "lead": "I wiem, że to znaczy: wywalili cię na bruk!",
+    "choir": "",
+    "lead_words": [
+     {
+      "w": "I",
+      "syl": [
+       "I"
+      ]
+     },
+     {
+      "w": "wiem",
+      "syl": [
+       "wiem"
+      ]
+     },
+     {
+      "w": "że",
+      "syl": [
+       "że"
+      ]
+     },
+     {
+      "w": "to",
+      "syl": [
+       "to"
+      ]
+     },
+     {
+      "w": "znaczy",
+      "syl": [
+       "zna",
+       "czy"
+      ]
+     },
+     {
+      "w": "wywalili",
+      "syl": [
+       "wy",
+       "wa",
+       "li",
+       "li"
+      ]
+     },
+     {
+      "w": "cię",
+      "syl": [
+       "cię"
+      ]
+     },
+     {
+      "w": "na",
+      "syl": [
+       "na"
+      ]
+     },
+     {
+      "w": "bruk",
+      "syl": [
+       "bruk"
+      ]
+     }
+    ],
+    "choir_words": []
+   }
+  ]
+ },
+ {
+  "name": "Choir Interjection",
+  "lines": [
+   {
+    "text": "(Wywalili na bruk!)",
+    "spoken": false,
+    "voice": "choir",
+    "lead": "",
+    "choir": "Wywalili na bruk!",
+    "lead_words": [],
+    "choir_words": [
+     {
+      "w": "Wywalili",
+      "syl": [
+       "Wy",
+       "wa",
+       "li",
+       "li"
+      ]
+     },
+     {
+      "w": "na",
+      "syl": [
+       "na"
+      ]
+     },
+     {
+      "w": "bruk",
+      "syl": [
+       "bruk"
+      ]
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "name": "Verse 2 - Continued",
+  "lines": [
+   {
+    "text": "Ktoś robi z życia case study",
+    "spoken": false,
+    "voice": "Male Lead - deep baritone",
+    "lead": "Ktoś robi z życia case study",
+    "choir": "",
+    "lead_words": [
+     {
+      "w": "Ktoś",
+      "syl": [
+       "Ktoś"
+      ]
+     },
+     {
+      "w": "robi",
+      "syl": [
+       "ro",
+       "bi"
+      ]
+     },
+     {
+      "w": "z",
+      "syl": []
+     },
+     {
+      "w": "życia",
+      "syl": [
+       "ży",
+       "cia"
+      ]
+     },
+     {
+      "w": "case",
+      "syl": [
+       "kejs"
+      ]
+     },
+     {
+      "w": "study",
+      "syl": [
+       "sta",
+       "di"
+      ]
+     }
+    ],
+    "choir_words": []
+   },
+   {
+    "text": "Ktoś sprzedaje się za trzy opinie",
+    "spoken": false,
+    "voice": "Male Lead - deep baritone",
+    "lead": "Ktoś sprzedaje się za trzy opinie",
+    "choir": "",
+    "lead_words": [
+     {
+      "w": "Ktoś",
+      "syl": [
+       "Ktoś"
+      ]
+     },
+     {
+      "w": "sprzedaje",
+      "syl": [
+       "sprze",
+       "da",
+       "je"
+      ]
+     },
+     {
+      "w": "się",
+      "syl": [
+       "się"
+      ]
+     },
+     {
+      "w": "za",
+      "syl": [
+       "za"
+      ]
+     },
+     {
+      "w": "trzy",
+      "syl": [
+       "trzy"
+      ]
+     },
+     {
+      "w": "opinie",
+      "syl": [
+       "o",
+       "pi",
+       "nie"
+      ]
+     }
+    ],
+    "choir_words": []
+   },
+   {
+    "text": "Ktoś pisze „wdzięczność” przy każdym zdaniu",
+    "spoken": false,
+    "voice": "Male Lead - deep baritone",
+    "lead": "Ktoś pisze „wdzięczność” przy każdym zdaniu",
+    "choir": "",
+    "lead_words": [
+     {
+      "w": "Ktoś",
+      "syl": [
+       "Ktoś"
+      ]
+     },
+     {
+      "w": "pisze",
+      "syl": [
+       "pi",
+       "sze"
+      ]
+     },
+     {
+      "w": "wdzięczność",
+      "syl": [
+       "wdzięcz",
+       "ność"
+      ]
+     },
+     {
+      "w": "przy",
+      "syl": [
+       "przy"
+      ]
+     },
+     {
+      "w": "każdym",
+      "syl": [
+       "każ",
+       "dym"
+      ]
+     },
+     {
+      "w": "zdaniu",
+      "syl": [
+       "zda",
+       "niu"
+      ]
+     }
+    ],
+    "choir_words": []
+   },
+   {
+    "text": "Jakby był świętym w korporacyjnym raju",
+    "spoken": false,
+    "voice": "Male Lead - deep baritone",
+    "lead": "Jakby był świętym w korporacyjnym raju",
+    "choir": "",
+    "lead_words": [
+     {
+      "w": "Jakby",
+      "syl": [
+       "Jak",
+       "by"
+      ]
+     },
+     {
+      "w": "był",
+      "syl": [
+       "był"
+      ]
+     },
+     {
+      "w": "świętym",
+      "syl": [
+       "świę",
+       "tym"
+      ]
+     },
+     {
+      "w": "w",
+      "syl": []
+     },
+     {
+      "w": "korporacyjnym",
+      "syl": [
+       "kor",
+       "po",
+       "ra",
+       "cyj",
+       "nym"
+      ]
+     },
+     {
+      "w": "raju",
+      "syl": [
+       "ra",
+       "ju"
+      ]
+     }
+    ],
+    "choir_words": []
+   }
+  ]
+ },
+ {
+  "name": "Pre-Chorus",
+  "lines": [
+   {
+    "text": "I każdy zna tu swoją rolę",
+    "spoken": false,
+    "voice": "Male Lead & Grand Male Choir",
+    "lead": "I każdy zna tu swoją rolę",
+    "choir": "",
+    "lead_words": [
+     {
+      "w": "I",
+      "syl": [
+       "I"
+      ]
+     },
+     {
+      "w": "każdy",
+      "syl": [
+       "każ",
+       "dy"
+      ]
+     },
+     {
+      "w": "zna",
+      "syl": [
+       "zna"
+      ]
+     },
+     {
+      "w": "tu",
+      "syl": [
+       "tu"
+      ]
+     },
+     {
+      "w": "swoją",
+      "syl": [
+       "swo",
+       "ją"
+      ]
+     },
+     {
+      "w": "rolę",
+      "syl": [
+       "ro",
+       "lę"
+      ]
+     }
+    ],
+    "choir_words": []
+   },
+   {
+    "text": "Uśmiech wyuczony, studio w drewnie",
+    "spoken": false,
+    "voice": "Male Lead & Grand Male Choir",
+    "lead": "Uśmiech wyuczony, studio w drewnie",
+    "choir": "",
+    "lead_words": [
+     {
+      "w": "Uśmiech",
+      "syl": [
+       "Uś",
+       "miech"
+      ]
+     },
+     {
+      "w": "wyuczony",
+      "syl": [
+       "wy",
+       "u",
+       "czo",
+       "ny"
+      ]
+     },
+     {
+      "w": "studio",
+      "syl": [
+       "stu",
+       "dio"
+      ]
+     },
+     {
+      "w": "w",
+      "syl": []
+     },
+     {
+      "w": "drewnie",
+      "syl": [
+       "drew",
+       "nie"
+      ]
+     }
+    ],
+    "choir_words": []
+   },
+   {
+    "text": "Jedno słowo za dużo — i już wiesz",
+    "spoken": false,
+    "voice": "Male Lead & Grand Male Choir",
+    "lead": "Jedno słowo za dużo — i już wiesz",
+    "choir": "",
+    "lead_words": [
+     {
+      "w": "Jedno",
+      "syl": [
+       "Jed",
+       "no"
+      ]
+     },
+     {
+      "w": "słowo",
+      "syl": [
+       "sło",
+       "wo"
+      ]
+     },
+     {
+      "w": "za",
+      "syl": [
+       "za"
+      ]
+     },
+     {
+      "w": "dużo",
+      "syl": [
+       "du",
+       "żo"
+      ]
+     },
+     {
+      "w": "i",
+      "syl": [
+       "i"
+      ]
+     },
+     {
+      "w": "już",
+      "syl": [
+       "już"
+      ]
+     },
+     {
+      "w": "wiesz",
+      "syl": [
+       "wiesz"
+      ]
+     }
+    ],
+    "choir_words": []
+   },
+   {
+    "text": "Że dziś na siłę robisz wielki gest",
+    "spoken": false,
+    "voice": "Male Lead & Grand Male Choir",
+    "lead": "Że dziś na siłę robisz wielki gest",
+    "choir": "",
+    "lead_words": [
+     {
+      "w": "Że",
+      "syl": [
+       "Że"
+      ]
+     },
+     {
+      "w": "dziś",
+      "syl": [
+       "dziś"
+      ]
+     },
+     {
+      "w": "na",
+      "syl": [
+       "na"
+      ]
+     },
+     {
+      "w": "siłę",
+      "syl": [
+       "si",
+       "łę"
+      ]
+     },
+     {
+      "w": "robisz",
+      "syl": [
+       "ro",
+       "bisz"
+      ]
+     },
+     {
+      "w": "wielki",
+      "syl": [
+       "wiel",
+       "ki"
+      ]
+     },
+     {
+      "w": "gest",
+      "syl": [
+       "gest"
+      ]
+     }
+    ],
+    "choir_words": []
+   }
+  ]
+ },
+ {
+  "name": "Chorus",
+  "lines": [
+   {
+    "text": "Puste zasięgi, puste zasięgi",
+    "spoken": false,
+    "voice": "Male Lead with Full Mixed Choir & Ensemble",
+    "lead": "Puste zasięgi, puste zasięgi",
+    "choir": "",
+    "lead_words": [
+     {
+      "w": "Puste",
+      "syl": [
+       "Pus",
+       "te"
+      ]
+     },
+     {
+      "w": "zasięgi",
+      "syl": [
+       "za",
+       "się",
+       "gi"
+      ]
+     },
+     {
+      "w": "puste",
+      "syl": [
+       "pus",
+       "te"
+      ]
+     },
+     {
+      "w": "zasięgi",
+      "syl": [
+       "za",
+       "się",
+       "gi"
+      ]
+     }
+    ],
+    "choir_words": []
+   },
+   {
+    "text": "Każdy tu błyszczy, każdy tu pęka",
+    "spoken": false,
+    "voice": "Male Lead with Full Mixed Choir & Ensemble",
+    "lead": "Każdy tu błyszczy, każdy tu pęka",
+    "choir": "",
+    "lead_words": [
+     {
+      "w": "Każdy",
+      "syl": [
+       "Każ",
+       "dy"
+      ]
+     },
+     {
+      "w": "tu",
+      "syl": [
+       "tu"
+      ]
+     },
+     {
+      "w": "błyszczy",
+      "syl": [
+       "błysz",
+       "czy"
+      ]
+     },
+     {
+      "w": "każdy",
+      "syl": [
+       "każ",
+       "dy"
+      ]
+     },
+     {
+      "w": "tu",
+      "syl": [
+       "tu"
+      ]
+     },
+     {
+      "w": "pęka",
+      "syl": [
+       "pę",
+       "ka"
+      ]
+     }
+    ],
+    "choir_words": []
+   },
+   {
+    "text": "Puste zasięgi, wielkie zasięgi",
+    "spoken": false,
+    "voice": "Male Lead with Full Mixed Choir & Ensemble",
+    "lead": "Puste zasięgi, wielkie zasięgi",
+    "choir": "",
+    "lead_words": [
+     {
+      "w": "Puste",
+      "syl": [
+       "Pus",
+       "te"
+      ]
+     },
+     {
+      "w": "zasięgi",
+      "syl": [
+       "za",
+       "się",
+       "gi"
+      ]
+     },
+     {
+      "w": "wielkie",
+      "syl": [
+       "wiel",
+       "kie"
+      ]
+     },
+     {
+      "w": "zasięgi",
+      "syl": [
+       "za",
+       "się",
+       "gi"
+      ]
+     }
+    ],
+    "choir_words": []
+   },
+   {
+    "text": "A pod spodem cisza, trochę jak męka",
+    "spoken": false,
+    "voice": "Male Lead with Full Mixed Choir & Ensemble",
+    "lead": "A pod spodem cisza, trochę jak męka",
+    "choir": "",
+    "lead_words": [
+     {
+      "w": "A",
+      "syl": [
+       "A"
+      ]
+     },
+     {
+      "w": "pod",
+      "syl": [
+       "pod"
+      ]
+     },
+     {
+      "w": "spodem",
+      "syl": [
+       "spo",
+       "dem"
+      ]
+     },
+     {
+      "w": "cisza",
+      "syl": [
+       "ci",
+       "sza"
+      ]
+     },
+     {
+      "w": "trochę",
+      "syl": [
+       "tro",
+       "chę"
+      ]
+     },
+     {
+      "w": "jak",
+      "syl": [
+       "jak"
+      ]
+     },
+     {
+      "w": "męka",
+      "syl": [
+       "mę",
+       "ka"
+      ]
+     }
+    ],
+    "choir_words": []
+   },
+   {
+    "text": "Mocne zasięgi (hej)",
+    "spoken": false,
+    "voice": "Male Lead with Full Mixed Choir & Ensemble",
+    "lead": "Mocne zasięgi",
+    "choir": "hej",
+    "lead_words": [
+     {
+      "w": "Mocne",
+      "syl": [
+       "Moc",
+       "ne"
+      ]
+     },
+     {
+      "w": "zasięgi",
+      "syl": [
+       "za",
+       "się",
+       "gi"
+      ]
+     }
+    ],
+    "choir_words": [
+     {
+      "w": "hej",
+      "syl": [
+       "hej"
+      ]
+     }
+    ]
+   },
+   {
+    "text": "Puste zasięgi (hej)",
+    "spoken": false,
+    "voice": "Male Lead with Full Mixed Choir & Ensemble",
+    "lead": "Puste zasięgi",
+    "choir": "hej",
+    "lead_words": [
+     {
+      "w": "Puste",
+      "syl": [
+       "Pus",
+       "te"
+      ]
+     },
+     {
+      "w": "zasięgi",
+      "syl": [
+       "za",
+       "się",
+       "gi"
+      ]
+     }
+    ],
+    "choir_words": [
+     {
+      "w": "hej",
+      "syl": [
+       "hej"
+      ]
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "name": "Bridge",
+  "lines": [
+   {
+    "text": "\"A tak szczerze mówiąc...\"",
+    "spoken": true,
+    "voice": "Spoken Dialogue - Male (warm baritone)",
+    "lead": "\"A tak szczerze mówiąc...\"",
+    "choir": "",
+    "lead_words": [
+     {
+      "w": "A",
+      "syl": [
+       "A"
+      ]
+     },
+     {
+      "w": "tak",
+      "syl": [
+       "tak"
+      ]
+     },
+     {
+      "w": "szczerze",
+      "syl": [
+       "szcze",
+       "rze"
+      ]
+     },
+     {
+      "w": "mówiąc",
+      "syl": [
+       "mó",
+       "wiąc"
+      ]
+     }
+    ],
+    "choir_words": []
+   },
+   {
+    "text": "A ja bym tylko chciał napisać prosto",
+    "spoken": false,
+    "voice": "Male Lead - resonant natural baritone",
+    "lead": "A ja bym tylko chciał napisać prosto",
+    "choir": "",
+    "lead_words": [
+     {
+      "w": "A",
+      "syl": [
+       "A"
+      ]
+     },
+     {
+      "w": "ja",
+      "syl": [
+       "ja"
+      ]
+     },
+     {
+      "w": "bym",
+      "syl": [
+       "bym"
+      ]
+     },
+     {
+      "w": "tylko",
+      "syl": [
+       "tyl",
+       "ko"
+      ]
+     },
+     {
+      "w": "chciał",
+      "syl": [
+       "chciał"
+      ]
+     },
+     {
+      "w": "napisać",
+      "syl": [
+       "na",
+       "pi",
+       "sać"
+      ]
+     },
+     {
+      "w": "prosto",
+      "syl": [
+       "pros",
+       "to"
+      ]
+     }
+    ],
+    "choir_words": []
+   },
+   {
+    "text": "Bez tych ozdobników, bez tej mgły",
+    "spoken": false,
+    "voice": "Male Lead - resonant natural baritone",
+    "lead": "Bez tych ozdobników, bez tej mgły",
+    "choir": "",
+    "lead_words": [
+     {
+      "w": "Bez",
+      "syl": [
+       "Bez"
+      ]
+     },
+     {
+      "w": "tych",
+      "syl": [
+       "tych"
+      ]
+     },
+     {
+      "w": "ozdobników",
+      "syl": [
+       "oz",
+       "dob",
+       "ni",
+       "ków"
+      ]
+     },
+     {
+      "w": "bez",
+      "syl": [
+       "bez"
+      ]
+     },
+     {
+      "w": "tej",
+      "syl": [
+       "tej"
+      ]
+     },
+     {
+      "w": "mgły",
+      "syl": [
+       "mgły"
+      ]
+     }
+    ],
+    "choir_words": []
+   },
+   {
+    "text": "Że czasem człowiek po prostu robi swoje",
+    "spoken": false,
+    "voice": "Male Lead - resonant natural baritone",
+    "lead": "Że czasem człowiek po prostu robi swoje",
+    "choir": "",
+    "lead_words": [
+     {
+      "w": "Że",
+      "syl": [
+       "Że"
+      ]
+     },
+     {
+      "w": "czasem",
+      "syl": [
+       "cza",
+       "sem"
+      ]
+     },
+     {
+      "w": "człowiek",
+      "syl": [
+       "czło",
+       "wiek"
+      ]
+     },
+     {
+      "w": "po",
+      "syl": [
+       "po"
+      ]
+     },
+     {
+      "w": "prostu",
+      "syl": [
+       "pros",
+       "tu"
+      ]
+     },
+     {
+      "w": "robi",
+      "syl": [
+       "ro",
+       "bi"
+      ]
+     },
+     {
+      "w": "swoje",
+      "syl": [
+       "swo",
+       "je"
+      ]
+     }
+    ],
+    "choir_words": []
+   },
+   {
+    "text": "I nie potrzebuje fanfar ani łez",
+    "spoken": false,
+    "voice": "Male Lead - resonant natural baritone",
+    "lead": "I nie potrzebuje fanfar ani łez",
+    "choir": "",
+    "lead_words": [
+     {
+      "w": "I",
+      "syl": [
+       "I"
+      ]
+     },
+     {
+      "w": "nie",
+      "syl": [
+       "nie"
+      ]
+     },
+     {
+      "w": "potrzebuje",
+      "syl": [
+       "pot",
+       "rze",
+       "bu",
+       "je"
+      ]
+     },
+     {
+      "w": "fanfar",
+      "syl": [
+       "fan",
+       "far"
+      ]
+     },
+     {
+      "w": "ani",
+      "syl": [
+       "a",
+       "ni"
+      ]
+     },
+     {
+      "w": "łez",
+      "syl": [
+       "łez"
+      ]
+     }
+    ],
+    "choir_words": []
+   }
+  ]
+ },
+ {
+  "name": "Chorus",
+  "lines": [
+   {
+    "text": "Puste zasięgi, wielkie zasięgi",
+    "spoken": false,
+    "voice": "Male Lead with Full Majestic Choir",
+    "lead": "Puste zasięgi, wielkie zasięgi",
+    "choir": "",
+    "lead_words": [
+     {
+      "w": "Puste",
+      "syl": [
+       "Pus",
+       "te"
+      ]
+     },
+     {
+      "w": "zasięgi",
+      "syl": [
+       "za",
+       "się",
+       "gi"
+      ]
+     },
+     {
+      "w": "wielkie",
+      "syl": [
+       "wiel",
+       "kie"
+      ]
+     },
+     {
+      "w": "zasięgi",
+      "syl": [
+       "za",
+       "się",
+       "gi"
+      ]
+     }
+    ],
+    "choir_words": []
+   },
+   {
+    "text": "Każdy tu błyszczy, każdy tu pęka",
+    "spoken": false,
+    "voice": "Male Lead with Full Majestic Choir",
+    "lead": "Każdy tu błyszczy, każdy tu pęka",
+    "choir": "",
+    "lead_words": [
+     {
+      "w": "Każdy",
+      "syl": [
+       "Każ",
+       "dy"
+      ]
+     },
+     {
+      "w": "tu",
+      "syl": [
+       "tu"
+      ]
+     },
+     {
+      "w": "błyszczy",
+      "syl": [
+       "błysz",
+       "czy"
+      ]
+     },
+     {
+      "w": "każdy",
+      "syl": [
+       "każ",
+       "dy"
+      ]
+     },
+     {
+      "w": "tu",
+      "syl": [
+       "tu"
+      ]
+     },
+     {
+      "w": "pęka",
+      "syl": [
+       "pę",
+       "ka"
+      ]
+     }
+    ],
+    "choir_words": []
+   },
+   {
+    "text": "Wielkie zasięgi, puste zasięgi",
+    "spoken": false,
+    "voice": "Male Lead with Full Majestic Choir",
+    "lead": "Wielkie zasięgi, puste zasięgi",
+    "choir": "",
+    "lead_words": [
+     {
+      "w": "Wielkie",
+      "syl": [
+       "Wiel",
+       "kie"
+      ]
+     },
+     {
+      "w": "zasięgi",
+      "syl": [
+       "za",
+       "się",
+       "gi"
+      ]
+     },
+     {
+      "w": "puste",
+      "syl": [
+       "pus",
+       "te"
+      ]
+     },
+     {
+      "w": "zasięgi",
+      "syl": [
+       "za",
+       "się",
+       "gi"
+      ]
+     }
+    ],
+    "choir_words": []
+   },
+   {
+    "text": "A pod spodem cisza, trochę jak męka",
+    "spoken": false,
+    "voice": "Male Lead with Full Majestic Choir",
+    "lead": "A pod spodem cisza, trochę jak męka",
+    "choir": "",
+    "lead_words": [
+     {
+      "w": "A",
+      "syl": [
+       "A"
+      ]
+     },
+     {
+      "w": "pod",
+      "syl": [
+       "pod"
+      ]
+     },
+     {
+      "w": "spodem",
+      "syl": [
+       "spo",
+       "dem"
+      ]
+     },
+     {
+      "w": "cisza",
+      "syl": [
+       "ci",
+       "sza"
+      ]
+     },
+     {
+      "w": "trochę",
+      "syl": [
+       "tro",
+       "chę"
+      ]
+     },
+     {
+      "w": "jak",
+      "syl": [
+       "jak"
+      ]
+     },
+     {
+      "w": "męka",
+      "syl": [
+       "mę",
+       "ka"
+      ]
+     }
+    ],
+    "choir_words": []
+   },
+   {
+    "text": "Puste zasięgi (hej)",
+    "spoken": false,
+    "voice": "Male Lead with Full Majestic Choir",
+    "lead": "Puste zasięgi",
+    "choir": "hej",
+    "lead_words": [
+     {
+      "w": "Puste",
+      "syl": [
+       "Pus",
+       "te"
+      ]
+     },
+     {
+      "w": "zasięgi",
+      "syl": [
+       "za",
+       "się",
+       "gi"
+      ]
+     }
+    ],
+    "choir_words": [
+     {
+      "w": "hej",
+      "syl": [
+       "hej"
+      ]
+     }
+    ]
+   },
+   {
+    "text": "Mocne zasięgi (hej)",
+    "spoken": false,
+    "voice": "Male Lead with Full Majestic Choir",
+    "lead": "Mocne zasięgi",
+    "choir": "hej",
+    "lead_words": [
+     {
+      "w": "Mocne",
+      "syl": [
+       "Moc",
+       "ne"
+      ]
+     },
+     {
+      "w": "zasięgi",
+      "syl": [
+       "za",
+       "się",
+       "gi"
+      ]
+     }
+    ],
+    "choir_words": [
+     {
+      "w": "hej",
+      "syl": [
+       "hej"
+      ]
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "name": "Outro",
+  "lines": [
+   {
+    "text": "\"Dziękuję za uwagę, miłego scrollowania.\"",
+    "spoken": true,
+    "voice": "Spoken Dialogue - Male",
+    "lead": "\"Dziękuję za uwagę, miłego scrollowania.\"",
+    "choir": "",
+    "lead_words": [
+     {
+      "w": "Dziękuję",
+      "syl": [
+       "Dzię",
+       "ku",
+       "ję"
+      ]
+     },
+     {
+      "w": "za",
+      "syl": [
+       "za"
+      ]
+     },
+     {
+      "w": "uwagę",
+      "syl": [
+       "u",
+       "wa",
+       "gę"
+      ]
+     },
+     {
+      "w": "miłego",
+      "syl": [
+       "mi",
+       "łe",
+       "go"
+      ]
+     },
+     {
+      "w": "scrollowania",
+      "syl": [
+       "skro",
+       "lo",
+       "wa",
+       "nia"
+      ]
+     }
+    ],
+    "choir_words": []
+   },
+   {
+    "text": "Puste zasięgi! (hej!)",
+    "spoken": false,
+    "voice": "Grand Choir Finale",
+    "lead": "Puste zasięgi!",
+    "choir": "hej!",
+    "lead_words": [
+     {
+      "w": "Puste",
+      "syl": [
+       "Pus",
+       "te"
+      ]
+     },
+     {
+      "w": "zasięgi",
+      "syl": [
+       "za",
+       "się",
+       "gi"
+      ]
+     }
+    ],
+    "choir_words": [
+     {
+      "w": "hej",
+      "syl": [
+       "hej"
+      ]
+     }
+    ]
+   }
+  ]
+ }
+]

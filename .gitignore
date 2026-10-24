@@ -1,0 +1,5 @@
+# pliki pośrednie (odtwarzalne skryptami z src/): dekodowane WAV, kawałki renderu, zrzuty klonu, cache
+build/
+__pycache__/
+*.pyc
+checks/_*.wav

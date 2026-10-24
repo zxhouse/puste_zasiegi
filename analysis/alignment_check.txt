@@ -1,0 +1,5 @@
+Słów z sylabami: 286; początek słowa w miejscu, gdzie wokal gra (max poziomu w [t, t+150 ms] > -20 dB): 99.7%
+  słowa bez wokalu na starcie: tu@134.39
+Niezależnie: DP bez priorów vs pocketsphinx, początki słów (n=146): mediana 220 ms, <100 ms: 28%, <200 ms: 46%
+Końcowe (z priorami) vs pocketsphinx: mediana 65 ms, <100 ms: 70%
+Sylab dopasowanych do zdarzenia wokalu: 497/516; scalonych (interpolowanych): 19

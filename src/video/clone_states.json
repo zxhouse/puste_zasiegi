@@ -1,0 +1,15 @@
+[
+ {"id": "main_play", "params": {"blankcounts": "1"}, "nav": true},
+ {"id": "main", "params": {"blankcounts": "1", "noplay": "1"}},
+ {"id": "hp_c0", "params": {"blankcounts": "1", "noplay": "1", "comments": "0", "chat": "1", "typing": "1"}},
+ {"id": "hp_c1", "params": {"blankcounts": "1", "noplay": "1", "comments": "1", "chat": "1", "typing": "1"}},
+ {"id": "hp_c2", "params": {"blankcounts": "1", "noplay": "1", "comments": "2", "chat": "1", "typing": "1"}},
+ {"id": "hp_c3", "params": {"blankcounts": "1", "noplay": "1", "comments": "3", "chat": "1", "typing": "1"}},
+ {"id": "grz", "params": {"blankcounts": "1", "noplay": "1", "chat": "1", "typing": "1"}},
+ {"id": "an_empty", "params": {"blankcounts": "1", "noplay": "1", "analytics": "1", "comments": "0", "empty": "1", "typing": "1"}},
+ {"id": "simple0", "params": {"blankcounts": "1", "noplay": "1", "simple": "1", "typing": "1"}},
+ {"id": "simple1", "params": {"blankcounts": "1", "noplay": "1", "simple": "1", "tadek": "1", "typing": "1"}},
+ {"id": "outro", "params": {"blankcounts": "1", "noplay": "1", "comments": "0", "typing": "1"}},
+ {"id": "stats0", "params": {"blankcounts": "1", "noplay": "1", "analytics": "1", "comments": "0", "empty": "1"}},
+ {"id": "stats1", "params": {"blankcounts": "1", "noplay": "1", "analytics": "1", "comments": "3", "who": "3"}}
+]

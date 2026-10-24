@@ -1,0 +1,445 @@
+{
+ "beat_period": 0.40689151093473286,
+ "bpm": 147.4594539025029,
+ "bar_count": 130,
+ "duration": 212.04,
+ "repetition_evidence": {
+  "ssm": "blok zwrotka1b→przedrefren1→refren1 powtórzony jako zwrotka2b→przedrefren2→refren2 (lag ~41-42 takty, z=2.27/2.17)",
+  "vocal_chroma": "przedrefren 1 (46.3 s) ~ 112.9 s (0.90); refren 1 (59.0 s) ~ 127.4 s (0.90-0.92)"
+ },
+ "sections": [
+  {
+   "label": "Intro (mowa)",
+   "type": "intro",
+   "lyric_section": 0,
+   "repeat_group": null,
+   "vocal_t0": 3.27,
+   "vocal_t1": 10.85,
+   "bar": 1,
+   "bar_t": 2.285,
+   "lines": [
+    [
+     3.27,
+     10.85,
+     "\"No i co tam na tym LinkedInie dzisiaj, kochani? Kolejny sukces? Zobaczmy...\""
+    ]
+   ]
+  },
+  {
+   "label": "Zwrotka 1a",
+   "type": "verse",
+   "lyric_section": 1,
+   "repeat_group": "V",
+   "vocal_t0": 14.16,
+   "vocal_t1": 30.41,
+   "bar": 8,
+   "bar_t": 13.737,
+   "lines": [
+    [
+     14.16,
+     17.53,
+     "Poranna kawa, wielki plan"
+    ],
+    [
+     17.53,
+     20.46,
+     "Wkładam garnitur, choć mam luźny stan"
+    ],
+    [
+     20.56,
+     23.025,
+     "Piszę o synergiach, choć boli mnie szczęka"
+    ],
+    [
+     22.99,
+     27.01,
+     "„Z przyjemnością dzielę się” — i już mnie skręca"
+    ],
+    [
+     27.01,
+     30.41,
+     "\"Tak, tak, wszyscy się strasznie cieszą!\""
+    ]
+   ]
+  },
+  {
+   "label": "Zwrotka 1b",
+   "type": "verse",
+   "lyric_section": 2,
+   "repeat_group": "V",
+   "vocal_t0": 33.23,
+   "vocal_t1": 46.68,
+   "bar": 20,
+   "bar_t": 33.164,
+   "lines": [
+    [
+     33.23,
+     36.28,
+     "W tle awans, w głowie stres"
+    ],
+    [
+     36.28,
+     39.29,
+     "Wszyscy tu mają strategiczny gest"
+    ],
+    [
+     39.29,
+     42.82,
+     "Zdjęcie z konferencji, mina jak z plakatu"
+    ],
+    [
+     42.82,
+     46.68,
+     "A w komentarzu: „Ogromny szacun” do tego łaskawca"
+    ]
+   ]
+  },
+  {
+   "label": "Przedrefren 1",
+   "type": "prechorus",
+   "lyric_section": 3,
+   "repeat_group": "P",
+   "vocal_t0": 46.68,
+   "vocal_t1": 59.46,
+   "bar": 28,
+   "bar_t": 46.106,
+   "lines": [
+    [
+     46.68,
+     48.96,
+     "I każdy zna tu swoją rolę"
+    ],
+    [
+     49.24,
+     52.67,
+     "Uśmiech wyuczony, rzut na czoło"
+    ],
+    [
+     52.67,
+     56.4,
+     "Jedno słowo za dużo — i już wiesz"
+    ],
+    [
+     56.4,
+     59.46,
+     "Że dziś na siłę robisz wielki gest"
+    ]
+   ]
+  },
+  {
+   "label": "Refren 1",
+   "type": "chorus",
+   "lyric_section": 4,
+   "repeat_group": "C",
+   "vocal_t0": 60.14,
+   "vocal_t1": 78.99,
+   "bar": 36,
+   "bar_t": 59.347,
+   "lines": [
+    [
+     60.14,
+     63.2,
+     "Puste zasięgi, puste zasięgi"
+    ],
+    [
+     63.2,
+     66.49,
+     "Każdy tu błyszczy, każdy tu pęka"
+    ],
+    [
+     66.49,
+     69.66,
+     "Puste zasięgi, wielkie zasięgi"
+    ],
+    [
+     69.66,
+     73.78,
+     "A pod spodem cisza, trochę jak męka"
+    ],
+    [
+     73.78,
+     76.41,
+     "Mocne zasięgi (hej)"
+    ],
+    [
+     76.41,
+     78.99,
+     "Wielkie zasięgi (hej)"
+    ]
+   ]
+  },
+  {
+   "label": "Zwrotka 2a",
+   "type": "verse",
+   "lyric_section": 5,
+   "repeat_group": "V",
+   "vocal_t0": 79.41,
+   "vocal_t1": 98.19,
+   "bar": 48,
+   "bar_t": 78.738,
+   "lines": [
+    [
+     79.41,
+     83.16,
+     "\"Czekaj, ten wpis jest najlepszy...\""
+    ],
+    [
+     83.1,
+     86.49,
+     "„Z pokorą informuję” — brzmi jak cringe"
+    ],
+    [
+     86.49,
+     90.16,
+     "A potem pięć scenek z życia i długi wywód o tym, że"
+    ],
+    [
+     90.16,
+     93.12,
+     "„Cieszę się z nowej drogi” — czytam bez tchu"
+    ],
+    [
+     93.12,
+     98.19,
+     "I wiem, że to znaczy: wywalili cię na bruk!"
+    ]
+   ]
+  },
+  {
+   "label": "Wtrącenie chóru",
+   "type": "choir",
+   "lyric_section": 6,
+   "repeat_group": null,
+   "vocal_t0": 99.9,
+   "vocal_t1": 102.38,
+   "bar": 61,
+   "bar_t": 99.894,
+   "lines": [
+    [
+     99.9,
+     102.38,
+     "(Wywalili na bruk!)"
+    ]
+   ]
+  },
+  {
+   "label": "Zwrotka 2b",
+   "type": "verse",
+   "lyric_section": 7,
+   "repeat_group": "V",
+   "vocal_t0": 102.87,
+   "vocal_t1": 115.84,
+   "bar": 62,
+   "bar_t": 101.552,
+   "lines": [
+    [
+     102.87,
+     105.77,
+     "Ktoś robi z życia case study"
+    ],
+    [
+     105.77,
+     109.11,
+     "Ktoś sprzedaje się za trzy opinie"
+    ],
+    [
+     109.11,
+     111.96,
+     "Ktoś pisze „wdzięczność” przy każdym zdaniu"
+    ],
+    [
+     111.96,
+     115.84,
+     "Jakby był świętym w korporacyjnym raju"
+    ]
+   ]
+  },
+  {
+   "label": "Przedrefren 2",
+   "type": "prechorus",
+   "lyric_section": 8,
+   "repeat_group": "P",
+   "vocal_t0": 115.84,
+   "vocal_t1": 128.08,
+   "bar": 70,
+   "bar_t": 114.658,
+   "lines": [
+    [
+     115.84,
+     118.56,
+     "I każdy zna tu swoją rolę"
+    ],
+    [
+     118.56,
+     121.78,
+     "Uśmiech wyuczony, studio w drewnie"
+    ],
+    [
+     121.78,
+     124.265,
+     "Jedno słowo za dużo — i już wiesz"
+    ],
+    [
+     124.24,
+     128.08,
+     "Że dziś na siłę robisz wielki gest"
+    ]
+   ]
+  },
+  {
+   "label": "Refren 2",
+   "type": "chorus",
+   "lyric_section": 9,
+   "repeat_group": "C",
+   "vocal_t0": 128.44,
+   "vocal_t1": 147.64,
+   "bar": 78,
+   "bar_t": 127.651,
+   "lines": [
+    [
+     128.44,
+     131.95,
+     "Puste zasięgi, puste zasięgi"
+    ],
+    [
+     131.95,
+     135.285,
+     "Każdy tu błyszczy, każdy tu pęka"
+    ],
+    [
+     135.24,
+     138.41,
+     "Puste zasięgi, wielkie zasięgi"
+    ],
+    [
+     138.41,
+     141.99,
+     "A pod spodem cisza, trochę jak męka"
+    ],
+    [
+     141.98,
+     144.5,
+     "Mocne zasięgi (hej)"
+    ],
+    [
+     144.5,
+     147.64,
+     "Puste zasięgi (hej)"
+    ]
+   ]
+  },
+  {
+   "label": "Bridge",
+   "type": "bridge",
+   "lyric_section": 10,
+   "repeat_group": null,
+   "vocal_t0": 148.85,
+   "vocal_t1": 163.92,
+   "bar": 91,
+   "bar_t": 148.759,
+   "lines": [
+    [
+     148.85,
+     150.62,
+     "\"A tak szczerze mówiąc...\""
+    ],
+    [
+     151.13,
+     153.27,
+     "A ja bym tylko chciał napisać prosto"
+    ],
+    [
+     154.08,
+     156.54,
+     "Bez tych ozdobników, bez tej mgły"
+    ],
+    [
+     157.54,
+     160.1,
+     "Że czasem człowiek po prostu robi swoje"
+    ],
+    [
+     160.82,
+     163.92,
+     "I nie potrzebuje fanfar ani łez"
+    ]
+   ]
+  },
+  {
+   "label": "Refren 3",
+   "type": "chorus",
+   "lyric_section": 11,
+   "repeat_group": "C",
+   "vocal_t0": 167.8,
+   "vocal_t1": 186.93,
+   "bar": 102,
+   "bar_t": 166.608,
+   "lines": [
+    [
+     167.8,
+     170.93,
+     "Puste zasięgi, wielkie zasięgi"
+    ],
+    [
+     170.93,
+     174.15,
+     "Każdy tu błyszczy, każdy tu pęka"
+    ],
+    [
+     174.15,
+     177.4,
+     "Wielkie zasięgi, puste zasięgi"
+    ],
+    [
+     177.4,
+     181.175,
+     "A pod spodem cisza, trochę jak męka"
+    ],
+    [
+     181.13,
+     183.86,
+     "Puste zasięgi (hej)"
+    ],
+    [
+     183.86,
+     186.93,
+     "Mocne zasięgi (hej)"
+    ]
+   ]
+  },
+  {
+   "label": "Outro",
+   "type": "outro",
+   "lyric_section": 12,
+   "repeat_group": null,
+   "vocal_t0": 188.7,
+   "vocal_t1": 201.4,
+   "bar": 115,
+   "bar_t": 187.768,
+   "lines": [
+    [
+     188.7,
+     193.09,
+     "\"Dziękuję za uwagę, miłego scrollowania.\""
+    ],
+    [
+     194.68,
+     201.4,
+     "Puste zasięgi! (hej!)"
+    ]
+   ]
+  }
+ ],
+ "instrumental": [
+  {
+   "label": "Intro instr.",
+   "t0": 0.0,
+   "t1": 3.27
+  },
+  {
+   "label": "Instr. przed bridge→refren 3",
+   "t0": 163.92,
+   "t1": 167.8
+  }
+ ]
+}

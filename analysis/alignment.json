@@ -1,0 +1,7685 @@
+{
+ "method": "Zdarzenia sylabowe stemu wokalu + programowanie dynamiczne (kotwice z fraz, siatka 2-taktowa, priory słów z pocketsphinx en-us + g2p PL); finał wg spektrogramu",
+ "lines": [
+  {
+   "sec": 0,
+   "line": 0,
+   "section": "Intro",
+   "text": "\"No i co tam na tym LinkedInie dzisiaj, kochani? Kolejny sukces? Zobaczmy...\"",
+   "spoken": true,
+   "singer": "lead",
+   "t0": 3.27,
+   "t1": 10.85,
+   "words": [
+    {
+     "w": "No",
+     "syl": [
+      {
+       "text": "No",
+       "t_on": 3.27,
+       "t_peak": 3.44,
+       "t_off": 3.373,
+       "matched": true
+      }
+     ],
+     "t0": 3.27,
+     "t1": 3.373
+    },
+    {
+     "w": "i",
+     "syl": [
+      {
+       "text": "i",
+       "t_on": 3.373,
+       "t_peak": 3.433,
+       "t_off": 3.475,
+       "matched": false
+      }
+     ],
+     "t0": 3.373,
+     "t1": 3.475
+    },
+    {
+     "w": "co",
+     "syl": [
+      {
+       "text": "co",
+       "t_on": 3.475,
+       "t_peak": 3.535,
+       "t_off": 3.578,
+       "matched": false
+      }
+     ],
+     "t0": 3.475,
+     "t1": 3.578
+    },
+    {
+     "w": "tam",
+     "syl": [
+      {
+       "text": "tam",
+       "t_on": 3.578,
+       "t_peak": 3.638,
+       "t_off": 3.68,
+       "matched": false
+      }
+     ],
+     "t0": 3.578,
+     "t1": 3.68
+    },
+    {
+     "w": "na",
+     "syl": [
+      {
+       "text": "na",
+       "t_on": 3.68,
+       "t_peak": 3.73,
+       "t_off": 3.8,
+       "matched": true
+      }
+     ],
+     "t0": 3.68,
+     "t1": 3.8
+    },
+    {
+     "w": "tym",
+     "syl": [
+      {
+       "text": "tym",
+       "t_on": 3.8,
+       "t_peak": 3.83,
+       "t_off": 3.94,
+       "matched": true
+      }
+     ],
+     "t0": 3.8,
+     "t1": 3.94
+    },
+    {
+     "w": "LinkedInie",
+     "syl": [
+      {
+       "text": "lin",
+       "t_on": 3.94,
+       "t_peak": 3.98,
+       "t_off": 4.08,
+       "matched": true
+      },
+      {
+       "text": "ke",
+       "t_on": 4.08,
+       "t_peak": 4.12,
+       "t_off": 4.2,
+       "matched": true
+      },
+      {
+       "text": "di",
+       "t_on": 4.2,
+       "t_peak": 4.29,
+       "t_off": 4.49,
+       "matched": true
+      },
+      {
+       "text": "nie",
+       "t_on": 4.49,
+       "t_peak": 4.54,
+       "t_off": 4.63,
+       "matched": true
+      }
+     ],
+     "t0": 3.94,
+     "t1": 4.63
+    },
+    {
+     "w": "dzisiaj",
+     "syl": [
+      {
+       "text": "dzi",
+       "t_on": 4.63,
+       "t_peak": 4.67,
+       "t_off": 4.75,
+       "matched": true
+      },
+      {
+       "text": "siaj",
+       "t_on": 4.75,
+       "t_peak": 4.8,
+       "t_off": 4.93,
+       "matched": true
+      }
+     ],
+     "t0": 4.63,
+     "t1": 4.93
+    },
+    {
+     "w": "kochani",
+     "syl": [
+      {
+       "text": "ko",
+       "t_on": 4.93,
+       "t_peak": 4.97,
+       "t_off": 5.1,
+       "matched": true
+      },
+      {
+       "text": "cha",
+       "t_on": 5.1,
+       "t_peak": 5.18,
+       "t_off": 5.32,
+       "matched": true
+      },
+      {
+       "text": "ni",
+       "t_on": 5.32,
+       "t_peak": 5.49,
+       "t_off": 5.76,
+       "matched": true
+      }
+     ],
+     "t0": 4.93,
+     "t1": 5.76
+    },
+    {
+     "w": "Kolejny",
+     "syl": [
+      {
+       "text": "Ko",
+       "t_on": 6.77,
+       "t_peak": 6.94,
+       "t_off": 7.07,
+       "matched": true
+      },
+      {
+       "text": "lej",
+       "t_on": 7.07,
+       "t_peak": 7.09,
+       "t_off": 7.21,
+       "matched": true
+      },
+      {
+       "text": "ny",
+       "t_on": 7.21,
+       "t_peak": 7.26,
+       "t_off": 7.45,
+       "matched": true
+      }
+     ],
+     "t0": 6.77,
+     "t1": 7.45
+    },
+    {
+     "w": "sukces",
+     "syl": [
+      {
+       "text": "suk",
+       "t_on": 7.45,
+       "t_peak": 7.51,
+       "t_off": 7.67,
+       "matched": true
+      },
+      {
+       "text": "ces",
+       "t_on": 7.67,
+       "t_peak": 7.9,
+       "t_off": 7.95,
+       "matched": true
+      }
+     ],
+     "t0": 7.45,
+     "t1": 7.95
+    },
+    {
+     "w": "Zobaczmy",
+     "syl": [
+      {
+       "text": "Zo",
+       "t_on": 9.82,
+       "t_peak": 9.91,
+       "t_off": 9.99,
+       "matched": true
+      },
+      {
+       "text": "bacz",
+       "t_on": 9.99,
+       "t_peak": 10.04,
+       "t_off": 10.33,
+       "matched": true
+      },
+      {
+       "text": "my",
+       "t_on": 10.33,
+       "t_peak": 10.46,
+       "t_off": 10.85,
+       "matched": true
+      }
+     ],
+     "t0": 9.82,
+     "t1": 10.85
+    }
+   ]
+  },
+  {
+   "sec": 1,
+   "line": 0,
+   "section": "Verse 1",
+   "text": "Poranna kawa, wielki plan",
+   "spoken": false,
+   "singer": "lead",
+   "t0": 14.16,
+   "t1": 17.53,
+   "words": [
+    {
+     "w": "Poranna",
+     "syl": [
+      {
+       "text": "Po",
+       "t_on": 14.16,
+       "t_peak": 14.2,
+       "t_off": 14.27,
+       "matched": true
+      },
+      {
+       "text": "ran",
+       "t_on": 14.38,
+       "t_peak": 14.47,
+       "t_off": 14.79,
+       "matched": true
+      },
+      {
+       "text": "na",
+       "t_on": 14.79,
+       "t_peak": 14.86,
+       "t_off": 15.02,
+       "matched": true
+      }
+     ],
+     "t0": 14.16,
+     "t1": 15.02
+    },
+    {
+     "w": "kawa",
+     "syl": [
+      {
+       "text": "ka",
+       "t_on": 15.02,
+       "t_peak": 15.08,
+       "t_off": 15.24,
+       "matched": true
+      },
+      {
+       "text": "wa",
+       "t_on": 15.24,
+       "t_peak": 15.28,
+       "t_off": 15.78,
+       "matched": true
+      }
+     ],
+     "t0": 15.02,
+     "t1": 15.78
+    },
+    {
+     "w": "wielki",
+     "syl": [
+      {
+       "text": "wiel",
+       "t_on": 15.78,
+       "t_peak": 15.84,
+       "t_off": 16.19,
+       "matched": true
+      },
+      {
+       "text": "ki",
+       "t_on": 16.19,
+       "t_peak": 16.22,
+       "t_off": 16.36,
+       "matched": true
+      }
+     ],
+     "t0": 15.78,
+     "t1": 16.36
+    },
+    {
+     "w": "plan",
+     "syl": [
+      {
+       "text": "plan",
+       "t_on": 16.36,
+       "t_peak": 16.44,
+       "t_off": 17.53,
+       "matched": true
+      }
+     ],
+     "t0": 16.36,
+     "t1": 17.53
+    }
+   ]
+  },
+  {
+   "sec": 1,
+   "line": 1,
+   "section": "Verse 1",
+   "text": "Wkładam garnitur, choć mam luźny stan",
+   "spoken": false,
+   "singer": "lead",
+   "t0": 17.53,
+   "t1": 20.46,
+   "words": [
+    {
+     "w": "Wkładam",
+     "syl": [
+      {
+       "text": "Wkła",
+       "t_on": 17.53,
+       "t_peak": 17.65,
+       "t_off": 17.78,
+       "matched": true
+      },
+      {
+       "text": "dam",
+       "t_on": 17.78,
+       "t_peak": 17.82,
+       "t_off": 18.0,
+       "matched": true
+      }
+     ],
+     "t0": 17.53,
+     "t1": 18.0
+    },
+    {
+     "w": "garnitur",
+     "syl": [
+      {
+       "text": "gar",
+       "t_on": 18.0,
+       "t_peak": 18.04,
+       "t_off": 18.19,
+       "matched": true
+      },
+      {
+       "text": "ni",
+       "t_on": 18.19,
+       "t_peak": 18.25,
+       "t_off": 18.37,
+       "matched": true
+      },
+      {
+       "text": "tur",
+       "t_on": 18.37,
+       "t_peak": 18.43,
+       "t_off": 18.55,
+       "matched": true
+      }
+     ],
+     "t0": 18.0,
+     "t1": 18.55
+    },
+    {
+     "w": "choć",
+     "syl": [
+      {
+       "text": "choć",
+       "t_on": 18.55,
+       "t_peak": 18.59,
+       "t_off": 18.72,
+       "matched": true
+      }
+     ],
+     "t0": 18.55,
+     "t1": 18.72
+    },
+    {
+     "w": "mam",
+     "syl": [
+      {
+       "text": "mam",
+       "t_on": 18.72,
+       "t_peak": 18.79,
+       "t_off": 18.89,
+       "matched": true
+      }
+     ],
+     "t0": 18.72,
+     "t1": 18.89
+    },
+    {
+     "w": "luźny",
+     "syl": [
+      {
+       "text": "luź",
+       "t_on": 18.89,
+       "t_peak": 19.03,
+       "t_off": 19.34,
+       "matched": true
+      },
+      {
+       "text": "ny",
+       "t_on": 19.34,
+       "t_peak": 19.4,
+       "t_off": 19.62,
+       "matched": true
+      }
+     ],
+     "t0": 18.89,
+     "t1": 19.62
+    },
+    {
+     "w": "stan",
+     "syl": [
+      {
+       "text": "stan",
+       "t_on": 19.62,
+       "t_peak": 19.67,
+       "t_off": 20.46,
+       "matched": true
+      }
+     ],
+     "t0": 19.62,
+     "t1": 20.46
+    }
+   ]
+  },
+  {
+   "sec": 1,
+   "line": 2,
+   "section": "Verse 1",
+   "text": "Piszę o synergiach, choć boli mnie szczęka",
+   "spoken": false,
+   "singer": "lead",
+   "t0": 20.56,
+   "t1": 23.025,
+   "words": [
+    {
+     "w": "Piszę",
+     "syl": [
+      {
+       "text": "Pi",
+       "t_on": 20.56,
+       "t_peak": 20.65,
+       "t_off": 20.81,
+       "matched": true
+      },
+      {
+       "text": "szę",
+       "t_on": 20.81,
+       "t_peak": 20.86,
+       "t_off": 20.95,
+       "matched": true
+      }
+     ],
+     "t0": 20.56,
+     "t1": 20.95
+    },
+    {
+     "w": "o",
+     "syl": [
+      {
+       "text": "o",
+       "t_on": 20.95,
+       "t_peak": 20.99,
+       "t_off": 21.21,
+       "matched": true
+      }
+     ],
+     "t0": 20.95,
+     "t1": 21.21
+    },
+    {
+     "w": "synergiach",
+     "syl": [
+      {
+       "text": "sy",
+       "t_on": 21.21,
+       "t_peak": 21.26,
+       "t_off": 21.35,
+       "matched": true
+      },
+      {
+       "text": "ner",
+       "t_on": 21.35,
+       "t_peak": 21.4,
+       "t_off": 21.61,
+       "matched": true
+      },
+      {
+       "text": "giach",
+       "t_on": 21.61,
+       "t_peak": 21.66,
+       "t_off": 21.84,
+       "matched": true
+      }
+     ],
+     "t0": 21.21,
+     "t1": 21.84
+    },
+    {
+     "w": "choć",
+     "syl": [
+      {
+       "text": "choć",
+       "t_on": 21.84,
+       "t_peak": 21.97,
+       "t_off": 22.06,
+       "matched": true
+      }
+     ],
+     "t0": 21.84,
+     "t1": 22.06
+    },
+    {
+     "w": "boli",
+     "syl": [
+      {
+       "text": "bo",
+       "t_on": 22.06,
+       "t_peak": 22.08,
+       "t_off": 22.17,
+       "matched": true
+      },
+      {
+       "text": "li",
+       "t_on": 22.17,
+       "t_peak": 22.32,
+       "t_off": 22.365,
+       "matched": true
+      }
+     ],
+     "t0": 22.06,
+     "t1": 22.365
+    },
+    {
+     "w": "mnie",
+     "syl": [
+      {
+       "text": "mnie",
+       "t_on": 22.365,
+       "t_peak": 22.425,
+       "t_off": 22.56,
+       "matched": false
+      }
+     ],
+     "t0": 22.365,
+     "t1": 22.56
+    },
+    {
+     "w": "szczęka",
+     "syl": [
+      {
+       "text": "szczę",
+       "t_on": 22.56,
+       "t_peak": 22.63,
+       "t_off": 22.86,
+       "matched": true
+      },
+      {
+       "text": "ka",
+       "t_on": 22.86,
+       "t_peak": 22.9,
+       "t_off": 23.025,
+       "matched": true
+      }
+     ],
+     "t0": 22.56,
+     "t1": 23.025
+    }
+   ]
+  },
+  {
+   "sec": 1,
+   "line": 3,
+   "section": "Verse 1",
+   "text": "„Z przyjemnością dzielę się” — i już mnie skręca",
+   "spoken": false,
+   "singer": "lead",
+   "t0": 22.99,
+   "t1": 27.01,
+   "words": [
+    {
+     "w": "Z",
+     "syl": [],
+     "t0": 22.99,
+     "t1": 23.05
+    },
+    {
+     "w": "przyjemnością",
+     "syl": [
+      {
+       "text": "przy",
+       "t_on": 23.05,
+       "t_peak": 23.11,
+       "t_off": 23.18,
+       "matched": false
+      },
+      {
+       "text": "jem",
+       "t_on": 23.19,
+       "t_peak": 23.24,
+       "t_off": 23.58,
+       "matched": true
+      },
+      {
+       "text": "noś",
+       "t_on": 23.58,
+       "t_peak": 23.65,
+       "t_off": 23.78,
+       "matched": true
+      },
+      {
+       "text": "cią",
+       "t_on": 23.78,
+       "t_peak": 23.81,
+       "t_off": 24.02,
+       "matched": true
+      }
+     ],
+     "t0": 23.05,
+     "t1": 24.02
+    },
+    {
+     "w": "dzielę",
+     "syl": [
+      {
+       "text": "dzie",
+       "t_on": 24.02,
+       "t_peak": 24.06,
+       "t_off": 24.21,
+       "matched": true
+      },
+      {
+       "text": "lę",
+       "t_on": 24.21,
+       "t_peak": 24.27,
+       "t_off": 24.56,
+       "matched": true
+      }
+     ],
+     "t0": 24.02,
+     "t1": 24.56
+    },
+    {
+     "w": "się",
+     "syl": [
+      {
+       "text": "się",
+       "t_on": 24.56,
+       "t_peak": 24.6,
+       "t_off": 24.8,
+       "matched": true
+      }
+     ],
+     "t0": 24.56,
+     "t1": 24.8
+    },
+    {
+     "w": "i",
+     "syl": [
+      {
+       "text": "i",
+       "t_on": 25.37,
+       "t_peak": 25.42,
+       "t_off": 25.55,
+       "matched": true
+      }
+     ],
+     "t0": 25.37,
+     "t1": 25.55
+    },
+    {
+     "w": "już",
+     "syl": [
+      {
+       "text": "już",
+       "t_on": 25.55,
+       "t_peak": 25.58,
+       "t_off": 25.8,
+       "matched": true
+      }
+     ],
+     "t0": 25.55,
+     "t1": 25.8
+    },
+    {
+     "w": "mnie",
+     "syl": [
+      {
+       "text": "mnie",
+       "t_on": 25.8,
+       "t_peak": 25.92,
+       "t_off": 26.08,
+       "matched": true
+      }
+     ],
+     "t0": 25.8,
+     "t1": 26.08
+    },
+    {
+     "w": "skręca",
+     "syl": [
+      {
+       "text": "skrę",
+       "t_on": 26.08,
+       "t_peak": 26.11,
+       "t_off": 26.17,
+       "matched": true
+      },
+      {
+       "text": "ca",
+       "t_on": 26.17,
+       "t_peak": 26.29,
+       "t_off": 27.01,
+       "matched": true
+      }
+     ],
+     "t0": 26.08,
+     "t1": 27.01
+    }
+   ]
+  },
+  {
+   "sec": 1,
+   "line": 4,
+   "section": "Verse 1",
+   "text": "\"Tak, tak, wszyscy się strasznie cieszą!\"",
+   "spoken": true,
+   "singer": "lead",
+   "t0": 27.01,
+   "t1": 30.41,
+   "words": [
+    {
+     "w": "Tak",
+     "syl": [
+      {
+       "text": "Tak",
+       "t_on": 27.01,
+       "t_peak": 27.07,
+       "t_off": 27.45,
+       "matched": true
+      }
+     ],
+     "t0": 27.01,
+     "t1": 27.45
+    },
+    {
+     "w": "tak",
+     "syl": [
+      {
+       "text": "tak",
+       "t_on": 27.45,
+       "t_peak": 27.49,
+       "t_off": 27.97,
+       "matched": true
+      }
+     ],
+     "t0": 27.45,
+     "t1": 27.97
+    },
+    {
+     "w": "wszyscy",
+     "syl": [
+      {
+       "text": "wszys",
+       "t_on": 27.97,
+       "t_peak": 28.01,
+       "t_off": 28.17,
+       "matched": true
+      },
+      {
+       "text": "cy",
+       "t_on": 28.17,
+       "t_peak": 28.22,
+       "t_off": 28.32,
+       "matched": true
+      }
+     ],
+     "t0": 27.97,
+     "t1": 28.32
+    },
+    {
+     "w": "się",
+     "syl": [
+      {
+       "text": "się",
+       "t_on": 28.32,
+       "t_peak": 28.37,
+       "t_off": 28.57,
+       "matched": true
+      }
+     ],
+     "t0": 28.32,
+     "t1": 28.57
+    },
+    {
+     "w": "strasznie",
+     "syl": [
+      {
+       "text": "strasz",
+       "t_on": 28.57,
+       "t_peak": 28.71,
+       "t_off": 28.89,
+       "matched": true
+      },
+      {
+       "text": "nie",
+       "t_on": 28.89,
+       "t_peak": 28.97,
+       "t_off": 29.14,
+       "matched": true
+      }
+     ],
+     "t0": 28.57,
+     "t1": 29.14
+    },
+    {
+     "w": "cieszą",
+     "syl": [
+      {
+       "text": "cie",
+       "t_on": 29.14,
+       "t_peak": 29.18,
+       "t_off": 29.4,
+       "matched": true
+      },
+      {
+       "text": "szą",
+       "t_on": 29.4,
+       "t_peak": 29.45,
+       "t_off": 30.41,
+       "matched": true
+      }
+     ],
+     "t0": 29.14,
+     "t1": 30.41
+    }
+   ]
+  },
+  {
+   "sec": 2,
+   "line": 0,
+   "section": "Verse 1 - Continued",
+   "text": "W tle awans, w głowie stres",
+   "spoken": false,
+   "singer": "lead",
+   "t0": 33.23,
+   "t1": 36.28,
+   "words": [
+    {
+     "w": "W",
+     "syl": [],
+     "t0": 33.23,
+     "t1": 33.29
+    },
+    {
+     "w": "tle",
+     "syl": [
+      {
+       "text": "tle",
+       "t_on": 33.29,
+       "t_peak": 33.37,
+       "t_off": 33.94,
+       "matched": true
+      }
+     ],
+     "t0": 33.29,
+     "t1": 33.94
+    },
+    {
+     "w": "awans",
+     "syl": [
+      {
+       "text": "a",
+       "t_on": 33.94,
+       "t_peak": 34.0,
+       "t_off": 34.17,
+       "matched": true
+      },
+      {
+       "text": "wans",
+       "t_on": 34.17,
+       "t_peak": 34.21,
+       "t_off": 35.12,
+       "matched": true
+      }
+     ],
+     "t0": 33.94,
+     "t1": 35.12
+    },
+    {
+     "w": "w",
+     "syl": [],
+     "t0": 35.06,
+     "t1": 35.12
+    },
+    {
+     "w": "głowie",
+     "syl": [
+      {
+       "text": "gło",
+       "t_on": 35.12,
+       "t_peak": 35.24,
+       "t_off": 35.43,
+       "matched": true
+      },
+      {
+       "text": "wie",
+       "t_on": 35.43,
+       "t_peak": 35.46,
+       "t_off": 35.6,
+       "matched": true
+      }
+     ],
+     "t0": 35.12,
+     "t1": 35.6
+    },
+    {
+     "w": "stres",
+     "syl": [
+      {
+       "text": "stres",
+       "t_on": 35.6,
+       "t_peak": 35.63,
+       "t_off": 36.28,
+       "matched": true
+      }
+     ],
+     "t0": 35.6,
+     "t1": 36.28
+    }
+   ]
+  },
+  {
+   "sec": 2,
+   "line": 1,
+   "section": "Verse 1 - Continued",
+   "text": "Wszyscy tu mają strategiczny gest",
+   "spoken": false,
+   "singer": "lead",
+   "t0": 36.28,
+   "t1": 39.29,
+   "words": [
+    {
+     "w": "Wszyscy",
+     "syl": [
+      {
+       "text": "Wszys",
+       "t_on": 36.28,
+       "t_peak": 36.31,
+       "t_off": 36.65,
+       "matched": true
+      },
+      {
+       "text": "cy",
+       "t_on": 36.65,
+       "t_peak": 36.7,
+       "t_off": 37.05,
+       "matched": true
+      }
+     ],
+     "t0": 36.28,
+     "t1": 37.05
+    },
+    {
+     "w": "tu",
+     "syl": [
+      {
+       "text": "tu",
+       "t_on": 37.05,
+       "t_peak": 37.1,
+       "t_off": 37.2,
+       "matched": true
+      }
+     ],
+     "t0": 37.05,
+     "t1": 37.2
+    },
+    {
+     "w": "mają",
+     "syl": [
+      {
+       "text": "ma",
+       "t_on": 37.2,
+       "t_peak": 37.26,
+       "t_off": 37.46,
+       "matched": true
+      },
+      {
+       "text": "ją",
+       "t_on": 37.46,
+       "t_peak": 37.49,
+       "t_off": 38.0,
+       "matched": true
+      }
+     ],
+     "t0": 37.2,
+     "t1": 38.0
+    },
+    {
+     "w": "strategiczny",
+     "syl": [
+      {
+       "text": "stra",
+       "t_on": 38.0,
+       "t_peak": 38.12,
+       "t_off": 38.24,
+       "matched": true
+      },
+      {
+       "text": "te",
+       "t_on": 38.24,
+       "t_peak": 38.3,
+       "t_off": 38.41,
+       "matched": true
+      },
+      {
+       "text": "gicz",
+       "t_on": 38.41,
+       "t_peak": 38.44,
+       "t_off": 38.76,
+       "matched": true
+      },
+      {
+       "text": "ny",
+       "t_on": 38.76,
+       "t_peak": 38.85,
+       "t_off": 38.97,
+       "matched": true
+      }
+     ],
+     "t0": 38.0,
+     "t1": 38.97
+    },
+    {
+     "w": "gest",
+     "syl": [
+      {
+       "text": "gest",
+       "t_on": 38.97,
+       "t_peak": 39.07,
+       "t_off": 39.29,
+       "matched": true
+      }
+     ],
+     "t0": 38.97,
+     "t1": 39.29
+    }
+   ]
+  },
+  {
+   "sec": 2,
+   "line": 2,
+   "section": "Verse 1 - Continued",
+   "text": "Zdjęcie z konferencji, mina jak z plakatu",
+   "spoken": false,
+   "singer": "lead",
+   "t0": 39.29,
+   "t1": 42.82,
+   "words": [
+    {
+     "w": "Zdjęcie",
+     "syl": [
+      {
+       "text": "Zdję",
+       "t_on": 39.29,
+       "t_peak": 39.32,
+       "t_off": 39.51,
+       "matched": true
+      },
+      {
+       "text": "cie",
+       "t_on": 39.51,
+       "t_peak": 39.54,
+       "t_off": 39.81,
+       "matched": true
+      }
+     ],
+     "t0": 39.29,
+     "t1": 39.81
+    },
+    {
+     "w": "z",
+     "syl": [],
+     "t0": 39.75,
+     "t1": 39.81
+    },
+    {
+     "w": "konferencji",
+     "syl": [
+      {
+       "text": "kon",
+       "t_on": 39.81,
+       "t_peak": 39.88,
+       "t_off": 40.23,
+       "matched": true
+      },
+      {
+       "text": "fe",
+       "t_on": 40.23,
+       "t_peak": 40.27,
+       "t_off": 40.4,
+       "matched": true
+      },
+      {
+       "text": "renc",
+       "t_on": 40.4,
+       "t_peak": 40.46,
+       "t_off": 40.67,
+       "matched": true
+      },
+      {
+       "text": "ji",
+       "t_on": 40.67,
+       "t_peak": 40.72,
+       "t_off": 41.09,
+       "matched": true
+      }
+     ],
+     "t0": 39.81,
+     "t1": 41.09
+    },
+    {
+     "w": "mina",
+     "syl": [
+      {
+       "text": "mi",
+       "t_on": 41.09,
+       "t_peak": 41.14,
+       "t_off": 41.41,
+       "matched": true
+      },
+      {
+       "text": "na",
+       "t_on": 41.41,
+       "t_peak": 41.47,
+       "t_off": 41.58,
+       "matched": true
+      }
+     ],
+     "t0": 41.09,
+     "t1": 41.58
+    },
+    {
+     "w": "jak",
+     "syl": [
+      {
+       "text": "jak",
+       "t_on": 41.58,
+       "t_peak": 41.61,
+       "t_off": 41.99,
+       "matched": true
+      }
+     ],
+     "t0": 41.58,
+     "t1": 41.99
+    },
+    {
+     "w": "z",
+     "syl": [],
+     "t0": 41.93,
+     "t1": 41.99
+    },
+    {
+     "w": "plakatu",
+     "syl": [
+      {
+       "text": "pla",
+       "t_on": 41.99,
+       "t_peak": 42.06,
+       "t_off": 42.23,
+       "matched": true
+      },
+      {
+       "text": "ka",
+       "t_on": 42.23,
+       "t_peak": 42.27,
+       "t_off": 42.48,
+       "matched": true
+      },
+      {
+       "text": "tu",
+       "t_on": 42.48,
+       "t_peak": 42.6,
+       "t_off": 42.82,
+       "matched": true
+      }
+     ],
+     "t0": 41.99,
+     "t1": 42.82
+    }
+   ]
+  },
+  {
+   "sec": 2,
+   "line": 3,
+   "section": "Verse 1 - Continued",
+   "text": "A w komentarzu: „Ogromny szacun” do tego łaskawca",
+   "spoken": false,
+   "singer": "lead",
+   "t0": 42.82,
+   "t1": 46.68,
+   "words": [
+    {
+     "w": "A",
+     "syl": [
+      {
+       "text": "A",
+       "t_on": 42.82,
+       "t_peak": 42.89,
+       "t_off": 42.97,
+       "matched": true
+      }
+     ],
+     "t0": 42.82,
+     "t1": 42.97
+    },
+    {
+     "w": "w",
+     "syl": [],
+     "t0": 42.91,
+     "t1": 42.97
+    },
+    {
+     "w": "komentarzu",
+     "syl": [
+      {
+       "text": "ko",
+       "t_on": 42.97,
+       "t_peak": 43.01,
+       "t_off": 43.2,
+       "matched": true
+      },
+      {
+       "text": "men",
+       "t_on": 43.2,
+       "t_peak": 43.24,
+       "t_off": 43.43,
+       "matched": true
+      },
+      {
+       "text": "ta",
+       "t_on": 43.43,
+       "t_peak": 43.48,
+       "t_off": 43.72,
+       "matched": true
+      },
+      {
+       "text": "rzu",
+       "t_on": 43.72,
+       "t_peak": 43.82,
+       "t_off": 43.95,
+       "matched": true
+      }
+     ],
+     "t0": 42.97,
+     "t1": 43.95
+    },
+    {
+     "w": "Ogromny",
+     "syl": [
+      {
+       "text": "Og",
+       "t_on": 43.95,
+       "t_peak": 43.99,
+       "t_off": 44.05,
+       "matched": true
+      },
+      {
+       "text": "rom",
+       "t_on": 44.05,
+       "t_peak": 44.14,
+       "t_off": 44.29,
+       "matched": true
+      },
+      {
+       "text": "ny",
+       "t_on": 44.29,
+       "t_peak": 44.34,
+       "t_off": 44.49,
+       "matched": true
+      }
+     ],
+     "t0": 43.95,
+     "t1": 44.49
+    },
+    {
+     "w": "szacun",
+     "syl": [
+      {
+       "text": "sza",
+       "t_on": 44.49,
+       "t_peak": 44.53,
+       "t_off": 44.77,
+       "matched": true
+      },
+      {
+       "text": "cun",
+       "t_on": 44.77,
+       "t_peak": 44.81,
+       "t_off": 45.11,
+       "matched": true
+      }
+     ],
+     "t0": 44.49,
+     "t1": 45.11
+    },
+    {
+     "w": "do",
+     "syl": [
+      {
+       "text": "do",
+       "t_on": 45.11,
+       "t_peak": 45.16,
+       "t_off": 45.26,
+       "matched": true
+      }
+     ],
+     "t0": 45.11,
+     "t1": 45.26
+    },
+    {
+     "w": "tego",
+     "syl": [
+      {
+       "text": "te",
+       "t_on": 45.26,
+       "t_peak": 45.3,
+       "t_off": 45.37,
+       "matched": true
+      },
+      {
+       "text": "go",
+       "t_on": 45.37,
+       "t_peak": 45.43,
+       "t_off": 45.73,
+       "matched": true
+      }
+     ],
+     "t0": 45.26,
+     "t1": 45.73
+    },
+    {
+     "w": "łaskawca",
+     "syl": [
+      {
+       "text": "łas",
+       "t_on": 45.73,
+       "t_peak": 45.77,
+       "t_off": 46.09,
+       "matched": true
+      },
+      {
+       "text": "kaw",
+       "t_on": 46.09,
+       "t_peak": 46.15,
+       "t_off": 46.41,
+       "matched": true
+      },
+      {
+       "text": "ca",
+       "t_on": 46.41,
+       "t_peak": 46.44,
+       "t_off": 46.68,
+       "matched": true
+      }
+     ],
+     "t0": 45.73,
+     "t1": 46.68
+    }
+   ]
+  },
+  {
+   "sec": 3,
+   "line": 0,
+   "section": "Pre-Chorus",
+   "text": "I każdy zna tu swoją rolę",
+   "spoken": false,
+   "singer": "lead",
+   "t0": 46.68,
+   "t1": 48.96,
+   "words": [
+    {
+     "w": "I",
+     "syl": [
+      {
+       "text": "I",
+       "t_on": 46.68,
+       "t_peak": 46.72,
+       "t_off": 46.84,
+       "matched": true
+      }
+     ],
+     "t0": 46.68,
+     "t1": 46.84
+    },
+    {
+     "w": "każdy",
+     "syl": [
+      {
+       "text": "każ",
+       "t_on": 46.84,
+       "t_peak": 46.9,
+       "t_off": 47.12,
+       "matched": true
+      },
+      {
+       "text": "dy",
+       "t_on": 47.12,
+       "t_peak": 47.16,
+       "t_off": 47.26,
+       "matched": true
+      }
+     ],
+     "t0": 46.84,
+     "t1": 47.26
+    },
+    {
+     "w": "zna",
+     "syl": [
+      {
+       "text": "zna",
+       "t_on": 47.26,
+       "t_peak": 47.32,
+       "t_off": 47.5,
+       "matched": true
+      }
+     ],
+     "t0": 47.26,
+     "t1": 47.5
+    },
+    {
+     "w": "tu",
+     "syl": [
+      {
+       "text": "tu",
+       "t_on": 47.5,
+       "t_peak": 47.53,
+       "t_off": 47.68,
+       "matched": true
+      }
+     ],
+     "t0": 47.5,
+     "t1": 47.68
+    },
+    {
+     "w": "swoją",
+     "syl": [
+      {
+       "text": "swo",
+       "t_on": 47.68,
+       "t_peak": 47.75,
+       "t_off": 47.9,
+       "matched": true
+      },
+      {
+       "text": "ją",
+       "t_on": 47.9,
+       "t_peak": 47.95,
+       "t_off": 48.07,
+       "matched": true
+      }
+     ],
+     "t0": 47.68,
+     "t1": 48.07
+    },
+    {
+     "w": "rolę",
+     "syl": [
+      {
+       "text": "ro",
+       "t_on": 48.07,
+       "t_peak": 48.14,
+       "t_off": 48.76,
+       "matched": true
+      },
+      {
+       "text": "lę",
+       "t_on": 48.76,
+       "t_peak": 48.8,
+       "t_off": 48.96,
+       "matched": true
+      }
+     ],
+     "t0": 48.07,
+     "t1": 48.96
+    }
+   ]
+  },
+  {
+   "sec": 3,
+   "line": 1,
+   "section": "Pre-Chorus",
+   "text": "Uśmiech wyuczony, rzut na czoło",
+   "spoken": false,
+   "singer": "lead",
+   "t0": 49.24,
+   "t1": 52.67,
+   "words": [
+    {
+     "w": "Uśmiech",
+     "syl": [
+      {
+       "text": "Uś",
+       "t_on": 49.24,
+       "t_peak": 49.4,
+       "t_off": 49.5,
+       "matched": true
+      },
+      {
+       "text": "miech",
+       "t_on": 49.5,
+       "t_peak": 49.58,
+       "t_off": 49.9,
+       "matched": true
+      }
+     ],
+     "t0": 49.24,
+     "t1": 49.9
+    },
+    {
+     "w": "wyuczony",
+     "syl": [
+      {
+       "text": "wy",
+       "t_on": 49.9,
+       "t_peak": 50.0,
+       "t_off": 50.11,
+       "matched": true
+      },
+      {
+       "text": "u",
+       "t_on": 50.11,
+       "t_peak": 50.29,
+       "t_off": 50.5,
+       "matched": true
+      },
+      {
+       "text": "czo",
+       "t_on": 50.5,
+       "t_peak": 50.55,
+       "t_off": 50.89,
+       "matched": true
+      },
+      {
+       "text": "ny",
+       "t_on": 50.89,
+       "t_peak": 50.94,
+       "t_off": 51.11,
+       "matched": true
+      }
+     ],
+     "t0": 49.9,
+     "t1": 51.11
+    },
+    {
+     "w": "rzut",
+     "syl": [
+      {
+       "text": "rzut",
+       "t_on": 51.11,
+       "t_peak": 51.17,
+       "t_off": 51.38,
+       "matched": true
+      }
+     ],
+     "t0": 51.11,
+     "t1": 51.38
+    },
+    {
+     "w": "na",
+     "syl": [
+      {
+       "text": "na",
+       "t_on": 51.38,
+       "t_peak": 51.62,
+       "t_off": 51.95,
+       "matched": true
+      }
+     ],
+     "t0": 51.38,
+     "t1": 51.95
+    },
+    {
+     "w": "czoło",
+     "syl": [
+      {
+       "text": "czo",
+       "t_on": 51.95,
+       "t_peak": 52.02,
+       "t_off": 52.37,
+       "matched": true
+      },
+      {
+       "text": "ło",
+       "t_on": 52.37,
+       "t_peak": 52.42,
+       "t_off": 52.67,
+       "matched": true
+      }
+     ],
+     "t0": 51.95,
+     "t1": 52.67
+    }
+   ]
+  },
+  {
+   "sec": 3,
+   "line": 2,
+   "section": "Pre-Chorus",
+   "text": "Jedno słowo za dużo — i już wiesz",
+   "spoken": false,
+   "singer": "lead",
+   "t0": 52.67,
+   "t1": 56.4,
+   "words": [
+    {
+     "w": "Jedno",
+     "syl": [
+      {
+       "text": "Jed",
+       "t_on": 52.67,
+       "t_peak": 52.75,
+       "t_off": 52.92,
+       "matched": true
+      },
+      {
+       "text": "no",
+       "t_on": 52.92,
+       "t_peak": 53.01,
+       "t_off": 53.19,
+       "matched": true
+      }
+     ],
+     "t0": 52.67,
+     "t1": 53.19
+    },
+    {
+     "w": "słowo",
+     "syl": [
+      {
+       "text": "sło",
+       "t_on": 53.19,
+       "t_peak": 53.23,
+       "t_off": 53.32,
+       "matched": true
+      },
+      {
+       "text": "wo",
+       "t_on": 53.32,
+       "t_peak": 53.35,
+       "t_off": 53.56,
+       "matched": true
+      }
+     ],
+     "t0": 53.19,
+     "t1": 53.56
+    },
+    {
+     "w": "za",
+     "syl": [
+      {
+       "text": "za",
+       "t_on": 53.56,
+       "t_peak": 53.61,
+       "t_off": 53.8,
+       "matched": true
+      }
+     ],
+     "t0": 53.56,
+     "t1": 53.8
+    },
+    {
+     "w": "dużo",
+     "syl": [
+      {
+       "text": "du",
+       "t_on": 53.8,
+       "t_peak": 53.85,
+       "t_off": 54.65,
+       "matched": true
+      },
+      {
+       "text": "żo",
+       "t_on": 54.65,
+       "t_peak": 54.83,
+       "t_off": 55.15,
+       "matched": true
+      }
+     ],
+     "t0": 53.8,
+     "t1": 55.15
+    },
+    {
+     "w": "i",
+     "syl": [
+      {
+       "text": "i",
+       "t_on": 55.15,
+       "t_peak": 55.23,
+       "t_off": 56.0,
+       "matched": true
+      }
+     ],
+     "t0": 55.15,
+     "t1": 56.0
+    },
+    {
+     "w": "już",
+     "syl": [
+      {
+       "text": "już",
+       "t_on": 56.0,
+       "t_peak": 56.05,
+       "t_off": 56.15,
+       "matched": true
+      }
+     ],
+     "t0": 56.0,
+     "t1": 56.15
+    },
+    {
+     "w": "wiesz",
+     "syl": [
+      {
+       "text": "wiesz",
+       "t_on": 56.15,
+       "t_peak": 56.2,
+       "t_off": 56.4,
+       "matched": true
+      }
+     ],
+     "t0": 56.15,
+     "t1": 56.4
+    }
+   ]
+  },
+  {
+   "sec": 3,
+   "line": 3,
+   "section": "Pre-Chorus",
+   "text": "Że dziś na siłę robisz wielki gest",
+   "spoken": false,
+   "singer": "lead",
+   "t0": 56.4,
+   "t1": 59.46,
+   "words": [
+    {
+     "w": "Że",
+     "syl": [
+      {
+       "text": "Że",
+       "t_on": 56.4,
+       "t_peak": 56.45,
+       "t_off": 56.59,
+       "matched": true
+      }
+     ],
+     "t0": 56.4,
+     "t1": 56.59
+    },
+    {
+     "w": "dziś",
+     "syl": [
+      {
+       "text": "dziś",
+       "t_on": 56.59,
+       "t_peak": 56.83,
+       "t_off": 56.96,
+       "matched": true
+      }
+     ],
+     "t0": 56.59,
+     "t1": 56.96
+    },
+    {
+     "w": "na",
+     "syl": [
+      {
+       "text": "na",
+       "t_on": 56.96,
+       "t_peak": 57.0,
+       "t_off": 57.19,
+       "matched": true
+      }
+     ],
+     "t0": 56.96,
+     "t1": 57.19
+    },
+    {
+     "w": "siłę",
+     "syl": [
+      {
+       "text": "si",
+       "t_on": 57.19,
+       "t_peak": 57.22,
+       "t_off": 57.52,
+       "matched": true
+      },
+      {
+       "text": "łę",
+       "t_on": 57.52,
+       "t_peak": 57.57,
+       "t_off": 57.63,
+       "matched": true
+      }
+     ],
+     "t0": 57.19,
+     "t1": 57.63
+    },
+    {
+     "w": "robisz",
+     "syl": [
+      {
+       "text": "ro",
+       "t_on": 57.63,
+       "t_peak": 57.66,
+       "t_off": 57.73,
+       "matched": true
+      },
+      {
+       "text": "bisz",
+       "t_on": 57.73,
+       "t_peak": 57.87,
+       "t_off": 58.17,
+       "matched": true
+      }
+     ],
+     "t0": 57.63,
+     "t1": 58.17
+    },
+    {
+     "w": "wielki",
+     "syl": [
+      {
+       "text": "wiel",
+       "t_on": 58.17,
+       "t_peak": 58.21,
+       "t_off": 58.38,
+       "matched": true
+      },
+      {
+       "text": "ki",
+       "t_on": 58.38,
+       "t_peak": 58.54,
+       "t_off": 59.16,
+       "matched": true
+      }
+     ],
+     "t0": 58.17,
+     "t1": 59.16
+    },
+    {
+     "w": "gest",
+     "syl": [
+      {
+       "text": "gest",
+       "t_on": 59.16,
+       "t_peak": 59.19,
+       "t_off": 59.46,
+       "matched": true
+      }
+     ],
+     "t0": 59.16,
+     "t1": 59.46
+    }
+   ]
+  },
+  {
+   "sec": 4,
+   "line": 0,
+   "section": "Chorus",
+   "text": "Puste zasięgi, puste zasięgi",
+   "spoken": false,
+   "singer": "lead",
+   "t0": 60.14,
+   "t1": 63.2,
+   "words": [
+    {
+     "w": "Puste",
+     "syl": [
+      {
+       "text": "Pus",
+       "t_on": 60.14,
+       "t_peak": 60.21,
+       "t_off": 60.42,
+       "matched": true
+      },
+      {
+       "text": "te",
+       "t_on": 60.42,
+       "t_peak": 60.49,
+       "t_off": 60.58,
+       "matched": true
+      }
+     ],
+     "t0": 60.14,
+     "t1": 60.58
+    },
+    {
+     "w": "zasięgi",
+     "syl": [
+      {
+       "text": "za",
+       "t_on": 60.58,
+       "t_peak": 60.63,
+       "t_off": 60.83,
+       "matched": true
+      },
+      {
+       "text": "się",
+       "t_on": 60.83,
+       "t_peak": 60.9,
+       "t_off": 61.09,
+       "matched": true
+      },
+      {
+       "text": "gi",
+       "t_on": 61.09,
+       "t_peak": 61.18,
+       "t_off": 61.26,
+       "matched": true
+      }
+     ],
+     "t0": 60.58,
+     "t1": 61.26
+    },
+    {
+     "w": "puste",
+     "syl": [
+      {
+       "text": "pus",
+       "t_on": 61.26,
+       "t_peak": 61.29,
+       "t_off": 61.63,
+       "matched": true
+      },
+      {
+       "text": "te",
+       "t_on": 61.63,
+       "t_peak": 61.68,
+       "t_off": 62.03,
+       "matched": true
+      }
+     ],
+     "t0": 61.26,
+     "t1": 62.03
+    },
+    {
+     "w": "zasięgi",
+     "syl": [
+      {
+       "text": "za",
+       "t_on": 62.03,
+       "t_peak": 62.1,
+       "t_off": 62.2,
+       "matched": true
+      },
+      {
+       "text": "się",
+       "t_on": 62.2,
+       "t_peak": 62.23,
+       "t_off": 62.45,
+       "matched": true
+      },
+      {
+       "text": "gi",
+       "t_on": 62.45,
+       "t_peak": 62.49,
+       "t_off": 63.2,
+       "matched": true
+      }
+     ],
+     "t0": 62.03,
+     "t1": 63.2
+    }
+   ]
+  },
+  {
+   "sec": 4,
+   "line": 1,
+   "section": "Chorus",
+   "text": "Każdy tu błyszczy, każdy tu pęka",
+   "spoken": false,
+   "singer": "lead",
+   "t0": 63.2,
+   "t1": 66.49,
+   "words": [
+    {
+     "w": "Każdy",
+     "syl": [
+      {
+       "text": "Każ",
+       "t_on": 63.2,
+       "t_peak": 63.28,
+       "t_off": 63.64,
+       "matched": true
+      },
+      {
+       "text": "dy",
+       "t_on": 63.64,
+       "t_peak": 63.69,
+       "t_off": 63.8,
+       "matched": true
+      }
+     ],
+     "t0": 63.2,
+     "t1": 63.8
+    },
+    {
+     "w": "tu",
+     "syl": [
+      {
+       "text": "tu",
+       "t_on": 63.8,
+       "t_peak": 63.91,
+       "t_off": 64.01,
+       "matched": true
+      }
+     ],
+     "t0": 63.8,
+     "t1": 64.01
+    },
+    {
+     "w": "błyszczy",
+     "syl": [
+      {
+       "text": "błysz",
+       "t_on": 64.01,
+       "t_peak": 64.07,
+       "t_off": 64.5,
+       "matched": true
+      },
+      {
+       "text": "czy",
+       "t_on": 64.5,
+       "t_peak": 64.55,
+       "t_off": 64.86,
+       "matched": true
+      }
+     ],
+     "t0": 64.01,
+     "t1": 64.86
+    },
+    {
+     "w": "każdy",
+     "syl": [
+      {
+       "text": "każ",
+       "t_on": 64.86,
+       "t_peak": 64.92,
+       "t_off": 65.28,
+       "matched": true
+      },
+      {
+       "text": "dy",
+       "t_on": 65.28,
+       "t_peak": 65.32,
+       "t_off": 65.44,
+       "matched": true
+      }
+     ],
+     "t0": 64.86,
+     "t1": 65.44
+    },
+    {
+     "w": "tu",
+     "syl": [
+      {
+       "text": "tu",
+       "t_on": 65.44,
+       "t_peak": 65.53,
+       "t_off": 65.67,
+       "matched": true
+      }
+     ],
+     "t0": 65.44,
+     "t1": 65.67
+    },
+    {
+     "w": "pęka",
+     "syl": [
+      {
+       "text": "pę",
+       "t_on": 65.67,
+       "t_peak": 65.71,
+       "t_off": 66.09,
+       "matched": true
+      },
+      {
+       "text": "ka",
+       "t_on": 66.09,
+       "t_peak": 66.17,
+       "t_off": 66.49,
+       "matched": true
+      }
+     ],
+     "t0": 65.67,
+     "t1": 66.49
+    }
+   ]
+  },
+  {
+   "sec": 4,
+   "line": 2,
+   "section": "Chorus",
+   "text": "Puste zasięgi, wielkie zasięgi",
+   "spoken": false,
+   "singer": "lead",
+   "t0": 66.49,
+   "t1": 69.66,
+   "words": [
+    {
+     "w": "Puste",
+     "syl": [
+      {
+       "text": "Pus",
+       "t_on": 66.49,
+       "t_peak": 66.53,
+       "t_off": 66.87,
+       "matched": true
+      },
+      {
+       "text": "te",
+       "t_on": 66.87,
+       "t_peak": 66.92,
+       "t_off": 67.04,
+       "matched": true
+      }
+     ],
+     "t0": 66.49,
+     "t1": 67.04
+    },
+    {
+     "w": "zasięgi",
+     "syl": [
+      {
+       "text": "za",
+       "t_on": 67.04,
+       "t_peak": 67.11,
+       "t_off": 67.29,
+       "matched": true
+      },
+      {
+       "text": "się",
+       "t_on": 67.29,
+       "t_peak": 67.35,
+       "t_off": 68.03,
+       "matched": true
+      },
+      {
+       "text": "gi",
+       "t_on": 68.03,
+       "t_peak": 68.14,
+       "t_off": 68.5,
+       "matched": true
+      }
+     ],
+     "t0": 67.04,
+     "t1": 68.5
+    },
+    {
+     "w": "wielkie",
+     "syl": [
+      {
+       "text": "wiel",
+       "t_on": 68.5,
+       "t_peak": 68.53,
+       "t_off": 68.67,
+       "matched": true
+      },
+      {
+       "text": "kie",
+       "t_on": 68.67,
+       "t_peak": 68.72,
+       "t_off": 68.91,
+       "matched": true
+      }
+     ],
+     "t0": 68.5,
+     "t1": 68.91
+    },
+    {
+     "w": "zasięgi",
+     "syl": [
+      {
+       "text": "za",
+       "t_on": 68.91,
+       "t_peak": 68.97,
+       "t_off": 69.28,
+       "matched": true
+      },
+      {
+       "text": "się",
+       "t_on": 69.28,
+       "t_peak": 69.32,
+       "t_off": 69.46,
+       "matched": true
+      },
+      {
+       "text": "gi",
+       "t_on": 69.46,
+       "t_peak": 69.57,
+       "t_off": 69.66,
+       "matched": true
+      }
+     ],
+     "t0": 68.91,
+     "t1": 69.66
+    }
+   ]
+  },
+  {
+   "sec": 4,
+   "line": 3,
+   "section": "Chorus",
+   "text": "A pod spodem cisza, trochę jak męka",
+   "spoken": false,
+   "singer": "lead",
+   "t0": 69.66,
+   "t1": 73.78,
+   "words": [
+    {
+     "w": "A",
+     "syl": [
+      {
+       "text": "A",
+       "t_on": 69.66,
+       "t_peak": 69.9,
+       "t_off": 70.02,
+       "matched": true
+      }
+     ],
+     "t0": 69.66,
+     "t1": 70.02
+    },
+    {
+     "w": "pod",
+     "syl": [
+      {
+       "text": "pod",
+       "t_on": 70.02,
+       "t_peak": 70.06,
+       "t_off": 70.28,
+       "matched": true
+      }
+     ],
+     "t0": 70.02,
+     "t1": 70.28
+    },
+    {
+     "w": "spodem",
+     "syl": [
+      {
+       "text": "spo",
+       "t_on": 70.28,
+       "t_peak": 70.33,
+       "t_off": 70.43,
+       "matched": true
+      },
+      {
+       "text": "dem",
+       "t_on": 70.43,
+       "t_peak": 70.45,
+       "t_off": 70.69,
+       "matched": true
+      }
+     ],
+     "t0": 70.28,
+     "t1": 70.69
+    },
+    {
+     "w": "cisza",
+     "syl": [
+      {
+       "text": "ci",
+       "t_on": 70.69,
+       "t_peak": 70.74,
+       "t_off": 70.91,
+       "matched": true
+      },
+      {
+       "text": "sza",
+       "t_on": 70.91,
+       "t_peak": 71.02,
+       "t_off": 71.42,
+       "matched": true
+      }
+     ],
+     "t0": 70.69,
+     "t1": 71.42
+    },
+    {
+     "w": "trochę",
+     "syl": [
+      {
+       "text": "tro",
+       "t_on": 71.42,
+       "t_peak": 71.48,
+       "t_off": 72.53,
+       "matched": true
+      },
+      {
+       "text": "chę",
+       "t_on": 72.53,
+       "t_peak": 72.58,
+       "t_off": 72.87,
+       "matched": true
+      }
+     ],
+     "t0": 71.42,
+     "t1": 72.87
+    },
+    {
+     "w": "jak",
+     "syl": [
+      {
+       "text": "jak",
+       "t_on": 72.87,
+       "t_peak": 72.97,
+       "t_off": 73.31,
+       "matched": true
+      }
+     ],
+     "t0": 72.87,
+     "t1": 73.31
+    },
+    {
+     "w": "męka",
+     "syl": [
+      {
+       "text": "mę",
+       "t_on": 73.31,
+       "t_peak": 73.37,
+       "t_off": 73.5,
+       "matched": true
+      },
+      {
+       "text": "ka",
+       "t_on": 73.5,
+       "t_peak": 73.56,
+       "t_off": 73.78,
+       "matched": true
+      }
+     ],
+     "t0": 73.31,
+     "t1": 73.78
+    }
+   ]
+  },
+  {
+   "sec": 4,
+   "line": 4,
+   "section": "Chorus",
+   "text": "Mocne zasięgi (hej)",
+   "spoken": false,
+   "singer": "lead",
+   "t0": 73.78,
+   "t1": 76.41,
+   "words": [
+    {
+     "w": "Mocne",
+     "syl": [
+      {
+       "text": "Moc",
+       "t_on": 73.78,
+       "t_peak": 73.92,
+       "t_off": 74.19,
+       "matched": true
+      },
+      {
+       "text": "ne",
+       "t_on": 74.19,
+       "t_peak": 74.25,
+       "t_off": 74.76,
+       "matched": true
+      }
+     ],
+     "t0": 73.78,
+     "t1": 74.76
+    },
+    {
+     "w": "zasięgi",
+     "syl": [
+      {
+       "text": "za",
+       "t_on": 74.76,
+       "t_peak": 74.88,
+       "t_off": 75.08,
+       "matched": true
+      },
+      {
+       "text": "się",
+       "t_on": 75.08,
+       "t_peak": 75.3,
+       "t_off": 76.09,
+       "matched": true
+      },
+      {
+       "text": "gi",
+       "t_on": 76.09,
+       "t_peak": 76.18,
+       "t_off": 76.41,
+       "matched": true
+      }
+     ],
+     "t0": 74.76,
+     "t1": 76.41
+    }
+   ]
+  },
+  {
+   "sec": 4,
+   "line": 5,
+   "section": "Chorus",
+   "text": "Wielkie zasięgi (hej)",
+   "spoken": false,
+   "singer": "lead",
+   "t0": 76.41,
+   "t1": 78.99,
+   "words": [
+    {
+     "w": "Wielkie",
+     "syl": [
+      {
+       "text": "Wiel",
+       "t_on": 76.41,
+       "t_peak": 76.43,
+       "t_off": 76.54,
+       "matched": true
+      },
+      {
+       "text": "kie",
+       "t_on": 76.54,
+       "t_peak": 76.6,
+       "t_off": 76.73,
+       "matched": true
+      }
+     ],
+     "t0": 76.41,
+     "t1": 76.73
+    },
+    {
+     "w": "zasięgi",
+     "syl": [
+      {
+       "text": "za",
+       "t_on": 76.73,
+       "t_peak": 76.77,
+       "t_off": 76.98,
+       "matched": true
+      },
+      {
+       "text": "się",
+       "t_on": 76.98,
+       "t_peak": 77.2,
+       "t_off": 77.79,
+       "matched": true
+      },
+      {
+       "text": "gi",
+       "t_on": 77.79,
+       "t_peak": 77.84,
+       "t_off": 78.99,
+       "matched": true
+      }
+     ],
+     "t0": 76.73,
+     "t1": 78.99
+    }
+   ]
+  },
+  {
+   "sec": 5,
+   "line": 0,
+   "section": "Verse 2",
+   "text": "\"Czekaj, ten wpis jest najlepszy...\"",
+   "spoken": true,
+   "singer": "lead",
+   "t0": 79.41,
+   "t1": 83.16,
+   "words": [
+    {
+     "w": "Czekaj",
+     "syl": [
+      {
+       "text": "Cze",
+       "t_on": 79.41,
+       "t_peak": 79.5,
+       "t_off": 80.57,
+       "matched": true
+      },
+      {
+       "text": "kaj",
+       "t_on": 80.57,
+       "t_peak": 80.63,
+       "t_off": 81.39,
+       "matched": true
+      }
+     ],
+     "t0": 79.41,
+     "t1": 81.39
+    },
+    {
+     "w": "ten",
+     "syl": [
+      {
+       "text": "ten",
+       "t_on": 81.54,
+       "t_peak": 81.6,
+       "t_off": 81.84,
+       "matched": true
+      }
+     ],
+     "t0": 81.54,
+     "t1": 81.84
+    },
+    {
+     "w": "wpis",
+     "syl": [
+      {
+       "text": "wpis",
+       "t_on": 81.84,
+       "t_peak": 81.89,
+       "t_off": 82.06,
+       "matched": true
+      }
+     ],
+     "t0": 81.84,
+     "t1": 82.06
+    },
+    {
+     "w": "jest",
+     "syl": [
+      {
+       "text": "jest",
+       "t_on": 82.06,
+       "t_peak": 82.11,
+       "t_off": 82.24,
+       "matched": true
+      }
+     ],
+     "t0": 82.06,
+     "t1": 82.24
+    },
+    {
+     "w": "najlepszy",
+     "syl": [
+      {
+       "text": "naj",
+       "t_on": 82.24,
+       "t_peak": 82.3,
+       "t_off": 82.43,
+       "matched": true
+      },
+      {
+       "text": "lep",
+       "t_on": 82.43,
+       "t_peak": 82.49,
+       "t_off": 82.73,
+       "matched": true
+      },
+      {
+       "text": "szy",
+       "t_on": 82.73,
+       "t_peak": 82.78,
+       "t_off": 83.16,
+       "matched": true
+      }
+     ],
+     "t0": 82.24,
+     "t1": 83.16
+    }
+   ]
+  },
+  {
+   "sec": 5,
+   "line": 1,
+   "section": "Verse 2",
+   "text": "„Z pokorą informuję” — brzmi jak cringe",
+   "spoken": false,
+   "singer": "lead",
+   "t0": 83.1,
+   "t1": 86.49,
+   "words": [
+    {
+     "w": "Z",
+     "syl": [],
+     "t0": 83.1,
+     "t1": 83.16
+    },
+    {
+     "w": "pokorą",
+     "syl": [
+      {
+       "text": "po",
+       "t_on": 83.16,
+       "t_peak": 83.29,
+       "t_off": 83.47,
+       "matched": true
+      },
+      {
+       "text": "ko",
+       "t_on": 83.47,
+       "t_peak": 83.5,
+       "t_off": 83.55,
+       "matched": true
+      },
+      {
+       "text": "rą",
+       "t_on": 83.55,
+       "t_peak": 83.6,
+       "t_off": 83.625,
+       "matched": true
+      }
+     ],
+     "t0": 83.16,
+     "t1": 83.625
+    },
+    {
+     "w": "informuję",
+     "syl": [
+      {
+       "text": "in",
+       "t_on": 83.625,
+       "t_peak": 83.685,
+       "t_off": 83.7,
+       "matched": false
+      },
+      {
+       "text": "for",
+       "t_on": 83.7,
+       "t_peak": 83.75,
+       "t_off": 84.14,
+       "matched": true
+      },
+      {
+       "text": "mu",
+       "t_on": 84.14,
+       "t_peak": 84.19,
+       "t_off": 84.34,
+       "matched": true
+      },
+      {
+       "text": "ję",
+       "t_on": 84.34,
+       "t_peak": 84.41,
+       "t_off": 85.1,
+       "matched": true
+      }
+     ],
+     "t0": 83.625,
+     "t1": 85.1
+    },
+    {
+     "w": "brzmi",
+     "syl": [
+      {
+       "text": "brzmi",
+       "t_on": 85.1,
+       "t_peak": 85.14,
+       "t_off": 85.31,
+       "matched": true
+      }
+     ],
+     "t0": 85.1,
+     "t1": 85.31
+    },
+    {
+     "w": "jak",
+     "syl": [
+      {
+       "text": "jak",
+       "t_on": 85.31,
+       "t_peak": 85.51,
+       "t_off": 85.73,
+       "matched": true
+      }
+     ],
+     "t0": 85.31,
+     "t1": 85.73
+    },
+    {
+     "w": "cringe",
+     "syl": [
+      {
+       "text": "krindż",
+       "t_on": 85.73,
+       "t_peak": 85.87,
+       "t_off": 86.49,
+       "matched": true
+      }
+     ],
+     "t0": 85.73,
+     "t1": 86.49
+    }
+   ]
+  },
+  {
+   "sec": 5,
+   "line": 2,
+   "section": "Verse 2",
+   "text": "A potem pięć scenek z życia i długi wywód o tym, że",
+   "spoken": false,
+   "singer": "lead",
+   "t0": 86.49,
+   "t1": 90.16,
+   "words": [
+    {
+     "w": "A",
+     "syl": [
+      {
+       "text": "A",
+       "t_on": 86.49,
+       "t_peak": 86.67,
+       "t_off": 86.74,
+       "matched": true
+      }
+     ],
+     "t0": 86.49,
+     "t1": 86.74
+    },
+    {
+     "w": "potem",
+     "syl": [
+      {
+       "text": "po",
+       "t_on": 86.74,
+       "t_peak": 86.77,
+       "t_off": 86.85,
+       "matched": true
+      },
+      {
+       "text": "tem",
+       "t_on": 86.85,
+       "t_peak": 86.88,
+       "t_off": 87.1,
+       "matched": true
+      }
+     ],
+     "t0": 86.74,
+     "t1": 87.1
+    },
+    {
+     "w": "pięć",
+     "syl": [
+      {
+       "text": "pięć",
+       "t_on": 87.1,
+       "t_peak": 87.19,
+       "t_off": 87.35,
+       "matched": true
+      }
+     ],
+     "t0": 87.1,
+     "t1": 87.35
+    },
+    {
+     "w": "scenek",
+     "syl": [
+      {
+       "text": "sce",
+       "t_on": 87.35,
+       "t_peak": 87.41,
+       "t_off": 87.67,
+       "matched": false
+      },
+      {
+       "text": "nek",
+       "t_on": 87.67,
+       "t_peak": 87.73,
+       "t_off": 87.83,
+       "matched": true
+      }
+     ],
+     "t0": 87.35,
+     "t1": 87.83
+    },
+    {
+     "w": "z",
+     "syl": [],
+     "t0": 87.77,
+     "t1": 87.83
+    },
+    {
+     "w": "życia",
+     "syl": [
+      {
+       "text": "ży",
+       "t_on": 87.83,
+       "t_peak": 87.86,
+       "t_off": 88.11,
+       "matched": true
+      },
+      {
+       "text": "cia",
+       "t_on": 88.11,
+       "t_peak": 88.17,
+       "t_off": 88.3,
+       "matched": true
+      }
+     ],
+     "t0": 87.83,
+     "t1": 88.3
+    },
+    {
+     "w": "i",
+     "syl": [
+      {
+       "text": "i",
+       "t_on": 88.3,
+       "t_peak": 88.36,
+       "t_off": 88.435,
+       "matched": true
+      }
+     ],
+     "t0": 88.3,
+     "t1": 88.435
+    },
+    {
+     "w": "długi",
+     "syl": [
+      {
+       "text": "dłu",
+       "t_on": 88.435,
+       "t_peak": 88.495,
+       "t_off": 88.57,
+       "matched": false
+      },
+      {
+       "text": "gi",
+       "t_on": 88.57,
+       "t_peak": 88.74,
+       "t_off": 88.98,
+       "matched": true
+      }
+     ],
+     "t0": 88.435,
+     "t1": 88.98
+    },
+    {
+     "w": "wywód",
+     "syl": [
+      {
+       "text": "wy",
+       "t_on": 88.98,
+       "t_peak": 89.11,
+       "t_off": 89.24,
+       "matched": true
+      },
+      {
+       "text": "wód",
+       "t_on": 89.24,
+       "t_peak": 89.29,
+       "t_off": 89.37,
+       "matched": true
+      }
+     ],
+     "t0": 88.98,
+     "t1": 89.37
+    },
+    {
+     "w": "o",
+     "syl": [
+      {
+       "text": "o",
+       "t_on": 89.37,
+       "t_peak": 89.42,
+       "t_off": 89.53,
+       "matched": true
+      }
+     ],
+     "t0": 89.37,
+     "t1": 89.53
+    },
+    {
+     "w": "tym",
+     "syl": [
+      {
+       "text": "tym",
+       "t_on": 89.53,
+       "t_peak": 89.57,
+       "t_off": 89.74,
+       "matched": true
+      }
+     ],
+     "t0": 89.53,
+     "t1": 89.74
+    },
+    {
+     "w": "że",
+     "syl": [
+      {
+       "text": "że",
+       "t_on": 89.74,
+       "t_peak": 89.81,
+       "t_off": 90.16,
+       "matched": true
+      }
+     ],
+     "t0": 89.74,
+     "t1": 90.16
+    }
+   ]
+  },
+  {
+   "sec": 5,
+   "line": 3,
+   "section": "Verse 2",
+   "text": "„Cieszę się z nowej drogi” — czytam bez tchu",
+   "spoken": false,
+   "singer": "lead",
+   "t0": 90.16,
+   "t1": 93.12,
+   "words": [
+    {
+     "w": "Cieszę",
+     "syl": [
+      {
+       "text": "Cie",
+       "t_on": 90.16,
+       "t_peak": 90.22,
+       "t_off": 90.33,
+       "matched": true
+      },
+      {
+       "text": "szę",
+       "t_on": 90.33,
+       "t_peak": 90.38,
+       "t_off": 90.48,
+       "matched": true
+      }
+     ],
+     "t0": 90.16,
+     "t1": 90.48
+    },
+    {
+     "w": "się",
+     "syl": [
+      {
+       "text": "się",
+       "t_on": 90.48,
+       "t_peak": 90.53,
+       "t_off": 90.64,
+       "matched": true
+      }
+     ],
+     "t0": 90.48,
+     "t1": 90.64
+    },
+    {
+     "w": "z",
+     "syl": [],
+     "t0": 90.58,
+     "t1": 90.64
+    },
+    {
+     "w": "nowej",
+     "syl": [
+      {
+       "text": "no",
+       "t_on": 90.64,
+       "t_peak": 90.74,
+       "t_off": 90.82,
+       "matched": true
+      },
+      {
+       "text": "wej",
+       "t_on": 90.82,
+       "t_peak": 90.87,
+       "t_off": 90.98,
+       "matched": true
+      }
+     ],
+     "t0": 90.64,
+     "t1": 90.98
+    },
+    {
+     "w": "drogi",
+     "syl": [
+      {
+       "text": "dro",
+       "t_on": 90.98,
+       "t_peak": 91.08,
+       "t_off": 91.24,
+       "matched": true
+      },
+      {
+       "text": "gi",
+       "t_on": 91.24,
+       "t_peak": 91.29,
+       "t_off": 91.73,
+       "matched": true
+      }
+     ],
+     "t0": 90.98,
+     "t1": 91.73
+    },
+    {
+     "w": "czytam",
+     "syl": [
+      {
+       "text": "czy",
+       "t_on": 91.73,
+       "t_peak": 91.78,
+       "t_off": 91.88,
+       "matched": true
+      },
+      {
+       "text": "tam",
+       "t_on": 91.88,
+       "t_peak": 91.92,
+       "t_off": 92.09,
+       "matched": true
+      }
+     ],
+     "t0": 91.73,
+     "t1": 92.09
+    },
+    {
+     "w": "bez",
+     "syl": [
+      {
+       "text": "bez",
+       "t_on": 92.09,
+       "t_peak": 92.12,
+       "t_off": 92.36,
+       "matched": true
+      }
+     ],
+     "t0": 92.09,
+     "t1": 92.36
+    },
+    {
+     "w": "tchu",
+     "syl": [
+      {
+       "text": "tchu",
+       "t_on": 92.36,
+       "t_peak": 92.52,
+       "t_off": 93.12,
+       "matched": true
+      }
+     ],
+     "t0": 92.36,
+     "t1": 93.12
+    }
+   ]
+  },
+  {
+   "sec": 5,
+   "line": 4,
+   "section": "Verse 2",
+   "text": "I wiem, że to znaczy: wywalili cię na bruk!",
+   "spoken": false,
+   "singer": "lead",
+   "t0": 93.12,
+   "t1": 98.19,
+   "words": [
+    {
+     "w": "I",
+     "syl": [
+      {
+       "text": "I",
+       "t_on": 93.12,
+       "t_peak": 93.15,
+       "t_off": 93.26,
+       "matched": true
+      }
+     ],
+     "t0": 93.12,
+     "t1": 93.26
+    },
+    {
+     "w": "wiem",
+     "syl": [
+      {
+       "text": "wiem",
+       "t_on": 93.26,
+       "t_peak": 93.36,
+       "t_off": 93.8,
+       "matched": true
+      }
+     ],
+     "t0": 93.26,
+     "t1": 93.8
+    },
+    {
+     "w": "że",
+     "syl": [
+      {
+       "text": "że",
+       "t_on": 93.8,
+       "t_peak": 93.84,
+       "t_off": 93.94,
+       "matched": true
+      }
+     ],
+     "t0": 93.8,
+     "t1": 93.94
+    },
+    {
+     "w": "to",
+     "syl": [
+      {
+       "text": "to",
+       "t_on": 93.94,
+       "t_peak": 93.98,
+       "t_off": 94.12,
+       "matched": true
+      }
+     ],
+     "t0": 93.94,
+     "t1": 94.12
+    },
+    {
+     "w": "znaczy",
+     "syl": [
+      {
+       "text": "zna",
+       "t_on": 94.12,
+       "t_peak": 94.18,
+       "t_off": 94.4,
+       "matched": true
+      },
+      {
+       "text": "czy",
+       "t_on": 94.4,
+       "t_peak": 94.61,
+       "t_off": 95.37,
+       "matched": true
+      }
+     ],
+     "t0": 94.12,
+     "t1": 95.37
+    },
+    {
+     "w": "wywalili",
+     "syl": [
+      {
+       "text": "wy",
+       "t_on": 95.37,
+       "t_peak": 95.47,
+       "t_off": 95.65,
+       "matched": true
+      },
+      {
+       "text": "wa",
+       "t_on": 95.65,
+       "t_peak": 95.7,
+       "t_off": 95.87,
+       "matched": true
+      },
+      {
+       "text": "li",
+       "t_on": 95.87,
+       "t_peak": 95.91,
+       "t_off": 96.05,
+       "matched": true
+      },
+      {
+       "text": "li",
+       "t_on": 96.05,
+       "t_peak": 96.1,
+       "t_off": 96.24,
+       "matched": true
+      }
+     ],
+     "t0": 95.37,
+     "t1": 96.24
+    },
+    {
+     "w": "cię",
+     "syl": [
+      {
+       "text": "cię",
+       "t_on": 96.24,
+       "t_peak": 96.29,
+       "t_off": 96.46,
+       "matched": true
+      }
+     ],
+     "t0": 96.24,
+     "t1": 96.46
+    },
+    {
+     "w": "na",
+     "syl": [
+      {
+       "text": "na",
+       "t_on": 96.46,
+       "t_peak": 96.52,
+       "t_off": 96.62,
+       "matched": true
+      }
+     ],
+     "t0": 96.46,
+     "t1": 96.62
+    },
+    {
+     "w": "bruk",
+     "syl": [
+      {
+       "text": "bruk",
+       "t_on": 96.62,
+       "t_peak": 96.68,
+       "t_off": 98.19,
+       "matched": true
+      }
+     ],
+     "t0": 96.62,
+     "t1": 98.19
+    }
+   ]
+  },
+  {
+   "sec": 6,
+   "line": 0,
+   "section": "Choir Interjection",
+   "text": "(Wywalili na bruk!)",
+   "spoken": false,
+   "singer": "choir",
+   "t0": 99.9,
+   "t1": 102.38,
+   "words": [
+    {
+     "w": "Wywalili",
+     "syl": [
+      {
+       "text": "Wy",
+       "t_on": 99.9,
+       "t_peak": 99.95,
+       "t_off": 100.22,
+       "matched": true
+      },
+      {
+       "text": "wa",
+       "t_on": 100.22,
+       "t_peak": 100.37,
+       "t_off": 100.77,
+       "matched": true
+      },
+      {
+       "text": "li",
+       "t_on": 100.77,
+       "t_peak": 100.82,
+       "t_off": 100.96,
+       "matched": true
+      },
+      {
+       "text": "li",
+       "t_on": 100.96,
+       "t_peak": 101.02,
+       "t_off": 101.62,
+       "matched": true
+      }
+     ],
+     "t0": 99.9,
+     "t1": 101.62
+    },
+    {
+     "w": "na",
+     "syl": [
+      {
+       "text": "na",
+       "t_on": 101.62,
+       "t_peak": 101.68,
+       "t_off": 101.87,
+       "matched": true
+      }
+     ],
+     "t0": 101.62,
+     "t1": 101.87
+    },
+    {
+     "w": "bruk",
+     "syl": [
+      {
+       "text": "bruk",
+       "t_on": 101.87,
+       "t_peak": 101.89,
+       "t_off": 102.38,
+       "matched": true
+      }
+     ],
+     "t0": 101.87,
+     "t1": 102.38
+    }
+   ]
+  },
+  {
+   "sec": 7,
+   "line": 0,
+   "section": "Verse 2 - Continued",
+   "text": "Ktoś robi z życia case study",
+   "spoken": false,
+   "singer": "lead",
+   "t0": 102.87,
+   "t1": 105.77,
+   "words": [
+    {
+     "w": "Ktoś",
+     "syl": [
+      {
+       "text": "Ktoś",
+       "t_on": 102.87,
+       "t_peak": 102.91,
+       "t_off": 103.45,
+       "matched": true
+      }
+     ],
+     "t0": 102.87,
+     "t1": 103.45
+    },
+    {
+     "w": "robi",
+     "syl": [
+      {
+       "text": "ro",
+       "t_on": 103.45,
+       "t_peak": 103.5,
+       "t_off": 103.58,
+       "matched": true
+      },
+      {
+       "text": "bi",
+       "t_on": 103.58,
+       "t_peak": 103.62,
+       "t_off": 103.83,
+       "matched": true
+      }
+     ],
+     "t0": 103.45,
+     "t1": 103.83
+    },
+    {
+     "w": "z",
+     "syl": [],
+     "t0": 103.77,
+     "t1": 103.83
+    },
+    {
+     "w": "życia",
+     "syl": [
+      {
+       "text": "ży",
+       "t_on": 103.83,
+       "t_peak": 103.86,
+       "t_off": 104.01,
+       "matched": true
+      },
+      {
+       "text": "cia",
+       "t_on": 104.01,
+       "t_peak": 104.09,
+       "t_off": 104.2,
+       "matched": true
+      }
+     ],
+     "t0": 103.83,
+     "t1": 104.2
+    },
+    {
+     "w": "case",
+     "syl": [
+      {
+       "text": "kejs",
+       "t_on": 104.2,
+       "t_peak": 104.24,
+       "t_off": 104.55,
+       "matched": true
+      }
+     ],
+     "t0": 104.2,
+     "t1": 104.55
+    },
+    {
+     "w": "study",
+     "syl": [
+      {
+       "text": "sta",
+       "t_on": 104.55,
+       "t_peak": 104.71,
+       "t_off": 104.83,
+       "matched": true
+      },
+      {
+       "text": "di",
+       "t_on": 104.83,
+       "t_peak": 104.98,
+       "t_off": 105.77,
+       "matched": true
+      }
+     ],
+     "t0": 104.55,
+     "t1": 105.77
+    }
+   ]
+  },
+  {
+   "sec": 7,
+   "line": 1,
+   "section": "Verse 2 - Continued",
+   "text": "Ktoś sprzedaje się za trzy opinie",
+   "spoken": false,
+   "singer": "lead",
+   "t0": 105.77,
+   "t1": 109.11,
+   "words": [
+    {
+     "w": "Ktoś",
+     "syl": [
+      {
+       "text": "Ktoś",
+       "t_on": 105.77,
+       "t_peak": 105.8,
+       "t_off": 105.87,
+       "matched": true
+      }
+     ],
+     "t0": 105.77,
+     "t1": 105.87
+    },
+    {
+     "w": "sprzedaje",
+     "syl": [
+      {
+       "text": "sprze",
+       "t_on": 105.87,
+       "t_peak": 105.92,
+       "t_off": 106.47,
+       "matched": true
+      },
+      {
+       "text": "da",
+       "t_on": 106.47,
+       "t_peak": 106.52,
+       "t_off": 106.73,
+       "matched": true
+      },
+      {
+       "text": "je",
+       "t_on": 106.73,
+       "t_peak": 106.77,
+       "t_off": 107.14,
+       "matched": true
+      }
+     ],
+     "t0": 105.87,
+     "t1": 107.14
+    },
+    {
+     "w": "się",
+     "syl": [
+      {
+       "text": "się",
+       "t_on": 107.14,
+       "t_peak": 107.18,
+       "t_off": 107.5,
+       "matched": true
+      }
+     ],
+     "t0": 107.14,
+     "t1": 107.5
+    },
+    {
+     "w": "za",
+     "syl": [
+      {
+       "text": "za",
+       "t_on": 107.5,
+       "t_peak": 107.56,
+       "t_off": 107.94,
+       "matched": true
+      }
+     ],
+     "t0": 107.5,
+     "t1": 107.94
+    },
+    {
+     "w": "trzy",
+     "syl": [
+      {
+       "text": "trzy",
+       "t_on": 107.94,
+       "t_peak": 107.98,
+       "t_off": 108.09,
+       "matched": true
+      }
+     ],
+     "t0": 107.94,
+     "t1": 108.09
+    },
+    {
+     "w": "opinie",
+     "syl": [
+      {
+       "text": "o",
+       "t_on": 108.09,
+       "t_peak": 108.14,
+       "t_off": 108.46,
+       "matched": true
+      },
+      {
+       "text": "pi",
+       "t_on": 108.46,
+       "t_peak": 108.5,
+       "t_off": 108.85,
+       "matched": true
+      },
+      {
+       "text": "nie",
+       "t_on": 108.85,
+       "t_peak": 108.9,
+       "t_off": 109.11,
+       "matched": true
+      }
+     ],
+     "t0": 108.09,
+     "t1": 109.11
+    }
+   ]
+  },
+  {
+   "sec": 7,
+   "line": 2,
+   "section": "Verse 2 - Continued",
+   "text": "Ktoś pisze „wdzięczność” przy każdym zdaniu",
+   "spoken": false,
+   "singer": "lead",
+   "t0": 109.11,
+   "t1": 111.96,
+   "words": [
+    {
+     "w": "Ktoś",
+     "syl": [
+      {
+       "text": "Ktoś",
+       "t_on": 109.11,
+       "t_peak": 109.17,
+       "t_off": 109.26,
+       "matched": true
+      }
+     ],
+     "t0": 109.11,
+     "t1": 109.26
+    },
+    {
+     "w": "pisze",
+     "syl": [
+      {
+       "text": "pi",
+       "t_on": 109.26,
+       "t_peak": 109.29,
+       "t_off": 109.51,
+       "matched": true
+      },
+      {
+       "text": "sze",
+       "t_on": 109.51,
+       "t_peak": 109.56,
+       "t_off": 109.66,
+       "matched": true
+      }
+     ],
+     "t0": 109.26,
+     "t1": 109.66
+    },
+    {
+     "w": "wdzięczność",
+     "syl": [
+      {
+       "text": "wdzięcz",
+       "t_on": 109.66,
+       "t_peak": 109.78,
+       "t_off": 110.09,
+       "matched": true
+      },
+      {
+       "text": "ność",
+       "t_on": 110.09,
+       "t_peak": 110.18,
+       "t_off": 110.54,
+       "matched": true
+      }
+     ],
+     "t0": 109.66,
+     "t1": 110.54
+    },
+    {
+     "w": "przy",
+     "syl": [
+      {
+       "text": "przy",
+       "t_on": 110.54,
+       "t_peak": 110.58,
+       "t_off": 110.79,
+       "matched": true
+      }
+     ],
+     "t0": 110.54,
+     "t1": 110.79
+    },
+    {
+     "w": "każdym",
+     "syl": [
+      {
+       "text": "każ",
+       "t_on": 110.79,
+       "t_peak": 110.84,
+       "t_off": 110.96,
+       "matched": true
+      },
+      {
+       "text": "dym",
+       "t_on": 110.96,
+       "t_peak": 111.0,
+       "t_off": 111.39,
+       "matched": true
+      }
+     ],
+     "t0": 110.79,
+     "t1": 111.39
+    },
+    {
+     "w": "zdaniu",
+     "syl": [
+      {
+       "text": "zda",
+       "t_on": 111.39,
+       "t_peak": 111.44,
+       "t_off": 111.8,
+       "matched": true
+      },
+      {
+       "text": "niu",
+       "t_on": 111.8,
+       "t_peak": 111.87,
+       "t_off": 111.96,
+       "matched": true
+      }
+     ],
+     "t0": 111.39,
+     "t1": 111.96
+    }
+   ]
+  },
+  {
+   "sec": 7,
+   "line": 3,
+   "section": "Verse 2 - Continued",
+   "text": "Jakby był świętym w korporacyjnym raju",
+   "spoken": false,
+   "singer": "lead",
+   "t0": 111.96,
+   "t1": 115.84,
+   "words": [
+    {
+     "w": "Jakby",
+     "syl": [
+      {
+       "text": "Jak",
+       "t_on": 111.96,
+       "t_peak": 112.07,
+       "t_off": 112.51,
+       "matched": true
+      },
+      {
+       "text": "by",
+       "t_on": 112.51,
+       "t_peak": 112.68,
+       "t_off": 112.78,
+       "matched": true
+      }
+     ],
+     "t0": 111.96,
+     "t1": 112.78
+    },
+    {
+     "w": "był",
+     "syl": [
+      {
+       "text": "był",
+       "t_on": 112.78,
+       "t_peak": 112.85,
+       "t_off": 113.26,
+       "matched": true
+      }
+     ],
+     "t0": 112.78,
+     "t1": 113.26
+    },
+    {
+     "w": "świętym",
+     "syl": [
+      {
+       "text": "świę",
+       "t_on": 113.26,
+       "t_peak": 113.3,
+       "t_off": 113.4,
+       "matched": true
+      },
+      {
+       "text": "tym",
+       "t_on": 113.4,
+       "t_peak": 113.48,
+       "t_off": 113.66,
+       "matched": true
+      }
+     ],
+     "t0": 113.26,
+     "t1": 113.66
+    },
+    {
+     "w": "w",
+     "syl": [],
+     "t0": 113.6,
+     "t1": 113.66
+    },
+    {
+     "w": "korporacyjnym",
+     "syl": [
+      {
+       "text": "kor",
+       "t_on": 113.66,
+       "t_peak": 113.72,
+       "t_off": 113.82,
+       "matched": true
+      },
+      {
+       "text": "po",
+       "t_on": 113.82,
+       "t_peak": 113.87,
+       "t_off": 114.06,
+       "matched": true
+      },
+      {
+       "text": "ra",
+       "t_on": 114.06,
+       "t_peak": 114.1,
+       "t_off": 114.24,
+       "matched": true
+      },
+      {
+       "text": "cyj",
+       "t_on": 114.24,
+       "t_peak": 114.3,
+       "t_off": 114.65,
+       "matched": true
+      },
+      {
+       "text": "nym",
+       "t_on": 114.65,
+       "t_peak": 114.7,
+       "t_off": 114.9,
+       "matched": true
+      }
+     ],
+     "t0": 113.66,
+     "t1": 114.9
+    },
+    {
+     "w": "raju",
+     "syl": [
+      {
+       "text": "ra",
+       "t_on": 114.9,
+       "t_peak": 114.93,
+       "t_off": 115.66,
+       "matched": true
+      },
+      {
+       "text": "ju",
+       "t_on": 115.66,
+       "t_peak": 115.7,
+       "t_off": 115.84,
+       "matched": true
+      }
+     ],
+     "t0": 114.9,
+     "t1": 115.84
+    }
+   ]
+  },
+  {
+   "sec": 8,
+   "line": 0,
+   "section": "Pre-Chorus",
+   "text": "I każdy zna tu swoją rolę",
+   "spoken": false,
+   "singer": "lead",
+   "t0": 115.84,
+   "t1": 118.56,
+   "words": [
+    {
+     "w": "I",
+     "syl": [
+      {
+       "text": "I",
+       "t_on": 115.84,
+       "t_peak": 115.99,
+       "t_off": 116.09,
+       "matched": true
+      }
+     ],
+     "t0": 115.84,
+     "t1": 116.09
+    },
+    {
+     "w": "każdy",
+     "syl": [
+      {
+       "text": "każ",
+       "t_on": 116.09,
+       "t_peak": 116.16,
+       "t_off": 116.48,
+       "matched": true
+      },
+      {
+       "text": "dy",
+       "t_on": 116.48,
+       "t_peak": 116.54,
+       "t_off": 116.69,
+       "matched": true
+      }
+     ],
+     "t0": 116.09,
+     "t1": 116.69
+    },
+    {
+     "w": "zna",
+     "syl": [
+      {
+       "text": "zna",
+       "t_on": 116.69,
+       "t_peak": 116.88,
+       "t_off": 117.08,
+       "matched": true
+      }
+     ],
+     "t0": 116.69,
+     "t1": 117.08
+    },
+    {
+     "w": "tu",
+     "syl": [
+      {
+       "text": "tu",
+       "t_on": 117.08,
+       "t_peak": 117.12,
+       "t_off": 117.49,
+       "matched": true
+      }
+     ],
+     "t0": 117.08,
+     "t1": 117.49
+    },
+    {
+     "w": "swoją",
+     "syl": [
+      {
+       "text": "swo",
+       "t_on": 117.49,
+       "t_peak": 117.53,
+       "t_off": 117.71,
+       "matched": true
+      },
+      {
+       "text": "ją",
+       "t_on": 117.71,
+       "t_peak": 117.75,
+       "t_off": 117.9,
+       "matched": true
+      }
+     ],
+     "t0": 117.49,
+     "t1": 117.9
+    },
+    {
+     "w": "rolę",
+     "syl": [
+      {
+       "text": "ro",
+       "t_on": 117.9,
+       "t_peak": 118.01,
+       "t_off": 118.23,
+       "matched": true
+      },
+      {
+       "text": "lę",
+       "t_on": 118.23,
+       "t_peak": 118.39,
+       "t_off": 118.56,
+       "matched": true
+      }
+     ],
+     "t0": 117.9,
+     "t1": 118.56
+    }
+   ]
+  },
+  {
+   "sec": 8,
+   "line": 1,
+   "section": "Pre-Chorus",
+   "text": "Uśmiech wyuczony, studio w drewnie",
+   "spoken": false,
+   "singer": "lead",
+   "t0": 118.56,
+   "t1": 121.78,
+   "words": [
+    {
+     "w": "Uśmiech",
+     "syl": [
+      {
+       "text": "Uś",
+       "t_on": 118.56,
+       "t_peak": 118.63,
+       "t_off": 118.97,
+       "matched": true
+      },
+      {
+       "text": "miech",
+       "t_on": 118.97,
+       "t_peak": 119.05,
+       "t_off": 119.23,
+       "matched": true
+      }
+     ],
+     "t0": 118.56,
+     "t1": 119.23
+    },
+    {
+     "w": "wyuczony",
+     "syl": [
+      {
+       "text": "wy",
+       "t_on": 119.23,
+       "t_peak": 119.34,
+       "t_off": 119.52,
+       "matched": true
+      },
+      {
+       "text": "u",
+       "t_on": 119.52,
+       "t_peak": 119.62,
+       "t_off": 119.8,
+       "matched": true
+      },
+      {
+       "text": "czo",
+       "t_on": 119.8,
+       "t_peak": 119.84,
+       "t_off": 119.94,
+       "matched": true
+      },
+      {
+       "text": "ny",
+       "t_on": 119.94,
+       "t_peak": 119.98,
+       "t_off": 120.17,
+       "matched": true
+      }
+     ],
+     "t0": 119.23,
+     "t1": 120.17
+    },
+    {
+     "w": "studio",
+     "syl": [
+      {
+       "text": "stu",
+       "t_on": 120.17,
+       "t_peak": 120.21,
+       "t_off": 120.38,
+       "matched": true
+      },
+      {
+       "text": "dio",
+       "t_on": 120.38,
+       "t_peak": 120.43,
+       "t_off": 120.97,
+       "matched": true
+      }
+     ],
+     "t0": 120.17,
+     "t1": 120.97
+    },
+    {
+     "w": "w",
+     "syl": [],
+     "t0": 120.91,
+     "t1": 120.97
+    },
+    {
+     "w": "drewnie",
+     "syl": [
+      {
+       "text": "drew",
+       "t_on": 120.97,
+       "t_peak": 121.02,
+       "t_off": 121.39,
+       "matched": true
+      },
+      {
+       "text": "nie",
+       "t_on": 121.39,
+       "t_peak": 121.61,
+       "t_off": 121.78,
+       "matched": true
+      }
+     ],
+     "t0": 120.97,
+     "t1": 121.78
+    }
+   ]
+  },
+  {
+   "sec": 8,
+   "line": 2,
+   "section": "Pre-Chorus",
+   "text": "Jedno słowo za dużo — i już wiesz",
+   "spoken": false,
+   "singer": "lead",
+   "t0": 121.78,
+   "t1": 124.265,
+   "words": [
+    {
+     "w": "Jedno",
+     "syl": [
+      {
+       "text": "Jed",
+       "t_on": 121.78,
+       "t_peak": 121.94,
+       "t_off": 122.17,
+       "matched": true
+      },
+      {
+       "text": "no",
+       "t_on": 122.17,
+       "t_peak": 122.2,
+       "t_off": 122.32,
+       "matched": true
+      }
+     ],
+     "t0": 121.78,
+     "t1": 122.32
+    },
+    {
+     "w": "słowo",
+     "syl": [
+      {
+       "text": "sło",
+       "t_on": 122.32,
+       "t_peak": 122.41,
+       "t_off": 122.64,
+       "matched": true
+      },
+      {
+       "text": "wo",
+       "t_on": 122.64,
+       "t_peak": 122.68,
+       "t_off": 122.81,
+       "matched": true
+      }
+     ],
+     "t0": 122.32,
+     "t1": 122.81
+    },
+    {
+     "w": "za",
+     "syl": [
+      {
+       "text": "za",
+       "t_on": 122.81,
+       "t_peak": 122.87,
+       "t_off": 123.02,
+       "matched": true
+      }
+     ],
+     "t0": 122.81,
+     "t1": 123.02
+    },
+    {
+     "w": "dużo",
+     "syl": [
+      {
+       "text": "du",
+       "t_on": 123.02,
+       "t_peak": 123.09,
+       "t_off": 123.2,
+       "matched": true
+      },
+      {
+       "text": "żo",
+       "t_on": 123.2,
+       "t_peak": 123.24,
+       "t_off": 123.54,
+       "matched": true
+      }
+     ],
+     "t0": 123.02,
+     "t1": 123.54
+    },
+    {
+     "w": "i",
+     "syl": [
+      {
+       "text": "i",
+       "t_on": 123.54,
+       "t_peak": 123.64,
+       "t_off": 123.84,
+       "matched": true
+      }
+     ],
+     "t0": 123.54,
+     "t1": 123.84
+    },
+    {
+     "w": "już",
+     "syl": [
+      {
+       "text": "już",
+       "t_on": 123.84,
+       "t_peak": 123.89,
+       "t_off": 124.15,
+       "matched": true
+      }
+     ],
+     "t0": 123.84,
+     "t1": 124.15
+    },
+    {
+     "w": "wiesz",
+     "syl": [
+      {
+       "text": "wiesz",
+       "t_on": 124.15,
+       "t_peak": 124.32,
+       "t_off": 124.265,
+       "matched": true
+      }
+     ],
+     "t0": 124.15,
+     "t1": 124.265
+    }
+   ]
+  },
+  {
+   "sec": 8,
+   "line": 3,
+   "section": "Pre-Chorus",
+   "text": "Że dziś na siłę robisz wielki gest",
+   "spoken": false,
+   "singer": "lead",
+   "t0": 124.24,
+   "t1": 128.08,
+   "words": [
+    {
+     "w": "Że",
+     "syl": [
+      {
+       "text": "Że",
+       "t_on": 124.24,
+       "t_peak": 124.3,
+       "t_off": 124.37,
+       "matched": false
+      }
+     ],
+     "t0": 124.24,
+     "t1": 124.37
+    },
+    {
+     "w": "dziś",
+     "syl": [
+      {
+       "text": "dziś",
+       "t_on": 124.38,
+       "t_peak": 124.42,
+       "t_off": 124.48,
+       "matched": true
+      }
+     ],
+     "t0": 124.38,
+     "t1": 124.48
+    },
+    {
+     "w": "na",
+     "syl": [
+      {
+       "text": "na",
+       "t_on": 124.48,
+       "t_peak": 124.54,
+       "t_off": 124.83,
+       "matched": true
+      }
+     ],
+     "t0": 124.48,
+     "t1": 124.83
+    },
+    {
+     "w": "siłę",
+     "syl": [
+      {
+       "text": "si",
+       "t_on": 124.83,
+       "t_peak": 124.87,
+       "t_off": 125.06,
+       "matched": true
+      },
+      {
+       "text": "łę",
+       "t_on": 125.06,
+       "t_peak": 125.14,
+       "t_off": 125.7,
+       "matched": true
+      }
+     ],
+     "t0": 124.83,
+     "t1": 125.7
+    },
+    {
+     "w": "robisz",
+     "syl": [
+      {
+       "text": "ro",
+       "t_on": 125.7,
+       "t_peak": 125.82,
+       "t_off": 126.07,
+       "matched": true
+      },
+      {
+       "text": "bisz",
+       "t_on": 126.07,
+       "t_peak": 126.29,
+       "t_off": 126.98,
+       "matched": true
+      }
+     ],
+     "t0": 125.7,
+     "t1": 126.98
+    },
+    {
+     "w": "wielki",
+     "syl": [
+      {
+       "text": "wiel",
+       "t_on": 126.98,
+       "t_peak": 127.09,
+       "t_off": 127.39,
+       "matched": true
+      },
+      {
+       "text": "ki",
+       "t_on": 127.39,
+       "t_peak": 127.46,
+       "t_off": 127.89,
+       "matched": true
+      }
+     ],
+     "t0": 126.98,
+     "t1": 127.89
+    },
+    {
+     "w": "gest",
+     "syl": [
+      {
+       "text": "gest",
+       "t_on": 127.97,
+       "t_peak": 128.08,
+       "t_off": 128.08,
+       "matched": true
+      }
+     ],
+     "t0": 127.97,
+     "t1": 128.08
+    }
+   ]
+  },
+  {
+   "sec": 9,
+   "line": 0,
+   "section": "Chorus",
+   "text": "Puste zasięgi, puste zasięgi",
+   "spoken": false,
+   "singer": "lead",
+   "t0": 128.44,
+   "t1": 131.95,
+   "words": [
+    {
+     "w": "Puste",
+     "syl": [
+      {
+       "text": "Pus",
+       "t_on": 128.44,
+       "t_peak": 128.51,
+       "t_off": 128.72,
+       "matched": true
+      },
+      {
+       "text": "te",
+       "t_on": 128.72,
+       "t_peak": 128.77,
+       "t_off": 128.88,
+       "matched": true
+      }
+     ],
+     "t0": 128.44,
+     "t1": 128.88
+    },
+    {
+     "w": "zasięgi",
+     "syl": [
+      {
+       "text": "za",
+       "t_on": 128.88,
+       "t_peak": 128.94,
+       "t_off": 129.13,
+       "matched": true
+      },
+      {
+       "text": "się",
+       "t_on": 129.13,
+       "t_peak": 129.23,
+       "t_off": 129.91,
+       "matched": true
+      },
+      {
+       "text": "gi",
+       "t_on": 129.91,
+       "t_peak": 129.98,
+       "t_off": 130.32,
+       "matched": true
+      }
+     ],
+     "t0": 128.88,
+     "t1": 130.32
+    },
+    {
+     "w": "puste",
+     "syl": [
+      {
+       "text": "pus",
+       "t_on": 130.32,
+       "t_peak": 130.36,
+       "t_off": 130.5,
+       "matched": true
+      },
+      {
+       "text": "te",
+       "t_on": 130.5,
+       "t_peak": 130.53,
+       "t_off": 130.76,
+       "matched": true
+      }
+     ],
+     "t0": 130.32,
+     "t1": 130.76
+    },
+    {
+     "w": "zasięgi",
+     "syl": [
+      {
+       "text": "za",
+       "t_on": 130.76,
+       "t_peak": 130.82,
+       "t_off": 131.22,
+       "matched": true
+      },
+      {
+       "text": "się",
+       "t_on": 131.22,
+       "t_peak": 131.4,
+       "t_off": 131.51,
+       "matched": true
+      },
+      {
+       "text": "gi",
+       "t_on": 131.51,
+       "t_peak": 131.58,
+       "t_off": 131.95,
+       "matched": true
+      }
+     ],
+     "t0": 130.76,
+     "t1": 131.95
+    }
+   ]
+  },
+  {
+   "sec": 9,
+   "line": 1,
+   "section": "Chorus",
+   "text": "Każdy tu błyszczy, każdy tu pęka",
+   "spoken": false,
+   "singer": "lead",
+   "t0": 131.95,
+   "t1": 135.285,
+   "words": [
+    {
+     "w": "Każdy",
+     "syl": [
+      {
+       "text": "Każ",
+       "t_on": 131.95,
+       "t_peak": 131.99,
+       "t_off": 132.11,
+       "matched": true
+      },
+      {
+       "text": "dy",
+       "t_on": 132.11,
+       "t_peak": 132.17,
+       "t_off": 132.32,
+       "matched": true
+      }
+     ],
+     "t0": 131.95,
+     "t1": 132.32
+    },
+    {
+     "w": "tu",
+     "syl": [
+      {
+       "text": "tu",
+       "t_on": 132.32,
+       "t_peak": 132.41,
+       "t_off": 132.8,
+       "matched": true
+      }
+     ],
+     "t0": 132.32,
+     "t1": 132.8
+    },
+    {
+     "w": "błyszczy",
+     "syl": [
+      {
+       "text": "błysz",
+       "t_on": 132.8,
+       "t_peak": 132.85,
+       "t_off": 133.19,
+       "matched": true
+      },
+      {
+       "text": "czy",
+       "t_on": 133.19,
+       "t_peak": 133.23,
+       "t_off": 133.65,
+       "matched": true
+      }
+     ],
+     "t0": 132.8,
+     "t1": 133.65
+    },
+    {
+     "w": "każdy",
+     "syl": [
+      {
+       "text": "każ",
+       "t_on": 133.65,
+       "t_peak": 133.68,
+       "t_off": 133.78,
+       "matched": true
+      },
+      {
+       "text": "dy",
+       "t_on": 133.78,
+       "t_peak": 133.82,
+       "t_off": 133.9,
+       "matched": true
+      }
+     ],
+     "t0": 133.65,
+     "t1": 133.9
+    },
+    {
+     "w": "tu",
+     "syl": [
+      {
+       "text": "tu",
+       "t_on": 134.39,
+       "t_peak": 134.5,
+       "t_off": 134.5,
+       "matched": true
+      }
+     ],
+     "t0": 134.39,
+     "t1": 134.5
+    },
+    {
+     "w": "pęka",
+     "syl": [
+      {
+       "text": "pę",
+       "t_on": 134.79,
+       "t_peak": 134.85,
+       "t_off": 135.19,
+       "matched": true
+      },
+      {
+       "text": "ka",
+       "t_on": 135.19,
+       "t_peak": 135.24,
+       "t_off": 135.285,
+       "matched": true
+      }
+     ],
+     "t0": 134.79,
+     "t1": 135.285
+    }
+   ]
+  },
+  {
+   "sec": 9,
+   "line": 2,
+   "section": "Chorus",
+   "text": "Puste zasięgi, wielkie zasięgi",
+   "spoken": false,
+   "singer": "lead",
+   "t0": 135.24,
+   "t1": 138.41,
+   "words": [
+    {
+     "w": "Puste",
+     "syl": [
+      {
+       "text": "Pus",
+       "t_on": 135.24,
+       "t_peak": 135.3,
+       "t_off": 135.37,
+       "matched": false
+      },
+      {
+       "text": "te",
+       "t_on": 135.38,
+       "t_peak": 135.42,
+       "t_off": 135.62,
+       "matched": true
+      }
+     ],
+     "t0": 135.24,
+     "t1": 135.62
+    },
+    {
+     "w": "zasięgi",
+     "syl": [
+      {
+       "text": "za",
+       "t_on": 135.62,
+       "t_peak": 135.74,
+       "t_off": 136.04,
+       "matched": true
+      },
+      {
+       "text": "się",
+       "t_on": 136.04,
+       "t_peak": 136.26,
+       "t_off": 136.37,
+       "matched": true
+      },
+      {
+       "text": "gi",
+       "t_on": 136.37,
+       "t_peak": 136.49,
+       "t_off": 136.82,
+       "matched": true
+      }
+     ],
+     "t0": 135.62,
+     "t1": 136.82
+    },
+    {
+     "w": "wielkie",
+     "syl": [
+      {
+       "text": "wiel",
+       "t_on": 136.82,
+       "t_peak": 136.85,
+       "t_off": 137.01,
+       "matched": true
+      },
+      {
+       "text": "kie",
+       "t_on": 137.01,
+       "t_peak": 137.07,
+       "t_off": 137.23,
+       "matched": true
+      }
+     ],
+     "t0": 136.82,
+     "t1": 137.23
+    },
+    {
+     "w": "zasięgi",
+     "syl": [
+      {
+       "text": "za",
+       "t_on": 137.23,
+       "t_peak": 137.32,
+       "t_off": 137.56,
+       "matched": true
+      },
+      {
+       "text": "się",
+       "t_on": 137.56,
+       "t_peak": 137.78,
+       "t_off": 138.3,
+       "matched": true
+      },
+      {
+       "text": "gi",
+       "t_on": 138.3,
+       "t_peak": 138.32,
+       "t_off": 138.41,
+       "matched": true
+      }
+     ],
+     "t0": 137.23,
+     "t1": 138.41
+    }
+   ]
+  },
+  {
+   "sec": 9,
+   "line": 3,
+   "section": "Chorus",
+   "text": "A pod spodem cisza, trochę jak męka",
+   "spoken": false,
+   "singer": "lead",
+   "t0": 138.41,
+   "t1": 141.99,
+   "words": [
+    {
+     "w": "A",
+     "syl": [
+      {
+       "text": "A",
+       "t_on": 138.41,
+       "t_peak": 138.45,
+       "t_off": 138.64,
+       "matched": true
+      }
+     ],
+     "t0": 138.41,
+     "t1": 138.64
+    },
+    {
+     "w": "pod",
+     "syl": [
+      {
+       "text": "pod",
+       "t_on": 138.64,
+       "t_peak": 138.7,
+       "t_off": 138.82,
+       "matched": true
+      }
+     ],
+     "t0": 138.64,
+     "t1": 138.82
+    },
+    {
+     "w": "spodem",
+     "syl": [
+      {
+       "text": "spo",
+       "t_on": 138.82,
+       "t_peak": 138.84,
+       "t_off": 139.06,
+       "matched": true
+      },
+      {
+       "text": "dem",
+       "t_on": 139.06,
+       "t_peak": 139.11,
+       "t_off": 139.34,
+       "matched": true
+      }
+     ],
+     "t0": 138.82,
+     "t1": 139.34
+    },
+    {
+     "w": "cisza",
+     "syl": [
+      {
+       "text": "ci",
+       "t_on": 139.34,
+       "t_peak": 139.58,
+       "t_off": 140.45,
+       "matched": true
+      },
+      {
+       "text": "sza",
+       "t_on": 140.45,
+       "t_peak": 140.49,
+       "t_off": 140.54,
+       "matched": true
+      }
+     ],
+     "t0": 139.34,
+     "t1": 140.54
+    },
+    {
+     "w": "trochę",
+     "syl": [
+      {
+       "text": "tro",
+       "t_on": 140.94,
+       "t_peak": 141.1,
+       "t_off": 141.15,
+       "matched": true
+      },
+      {
+       "text": "chę",
+       "t_on": 141.25,
+       "t_peak": 141.35,
+       "t_off": 141.56,
+       "matched": true
+      }
+     ],
+     "t0": 140.94,
+     "t1": 141.56
+    },
+    {
+     "w": "jak",
+     "syl": [
+      {
+       "text": "jak",
+       "t_on": 141.56,
+       "t_peak": 141.59,
+       "t_off": 141.69,
+       "matched": true
+      }
+     ],
+     "t0": 141.56,
+     "t1": 141.69
+    },
+    {
+     "w": "męka",
+     "syl": [
+      {
+       "text": "mę",
+       "t_on": 141.69,
+       "t_peak": 141.77,
+       "t_off": 141.86,
+       "matched": true
+      },
+      {
+       "text": "ka",
+       "t_on": 141.86,
+       "t_peak": 141.91,
+       "t_off": 141.99,
+       "matched": true
+      }
+     ],
+     "t0": 141.69,
+     "t1": 141.99
+    }
+   ]
+  },
+  {
+   "sec": 9,
+   "line": 4,
+   "section": "Chorus",
+   "text": "Mocne zasięgi (hej)",
+   "spoken": false,
+   "singer": "lead",
+   "t0": 141.98,
+   "t1": 144.5,
+   "words": [
+    {
+     "w": "Mocne",
+     "syl": [
+      {
+       "text": "Moc",
+       "t_on": 141.98,
+       "t_peak": 142.04,
+       "t_off": 142.11,
+       "matched": false
+      },
+      {
+       "text": "ne",
+       "t_on": 142.12,
+       "t_peak": 142.35,
+       "t_off": 142.96,
+       "matched": true
+      }
+     ],
+     "t0": 141.98,
+     "t1": 142.96
+    },
+    {
+     "w": "zasięgi",
+     "syl": [
+      {
+       "text": "za",
+       "t_on": 142.96,
+       "t_peak": 143.03,
+       "t_off": 143.97,
+       "matched": true
+      },
+      {
+       "text": "się",
+       "t_on": 143.97,
+       "t_peak": 144.0,
+       "t_off": 144.31,
+       "matched": true
+      },
+      {
+       "text": "gi",
+       "t_on": 144.31,
+       "t_peak": 144.34,
+       "t_off": 144.5,
+       "matched": true
+      }
+     ],
+     "t0": 142.96,
+     "t1": 144.5
+    }
+   ]
+  },
+  {
+   "sec": 9,
+   "line": 5,
+   "section": "Chorus",
+   "text": "Puste zasięgi (hej)",
+   "spoken": false,
+   "singer": "lead",
+   "t0": 144.5,
+   "t1": 147.64,
+   "words": [
+    {
+     "w": "Puste",
+     "syl": [
+      {
+       "text": "Pus",
+       "t_on": 144.5,
+       "t_peak": 144.56,
+       "t_off": 144.91,
+       "matched": true
+      },
+      {
+       "text": "te",
+       "t_on": 144.91,
+       "t_peak": 144.98,
+       "t_off": 145.11,
+       "matched": true
+      }
+     ],
+     "t0": 144.5,
+     "t1": 145.11
+    },
+    {
+     "w": "zasięgi",
+     "syl": [
+      {
+       "text": "za",
+       "t_on": 145.11,
+       "t_peak": 145.15,
+       "t_off": 145.37,
+       "matched": true
+      },
+      {
+       "text": "się",
+       "t_on": 145.37,
+       "t_peak": 145.43,
+       "t_off": 145.93,
+       "matched": true
+      },
+      {
+       "text": "gi",
+       "t_on": 145.93,
+       "t_peak": 145.98,
+       "t_off": 147.64,
+       "matched": true
+      }
+     ],
+     "t0": 145.11,
+     "t1": 147.64
+    }
+   ]
+  },
+  {
+   "sec": 10,
+   "line": 0,
+   "section": "Bridge",
+   "text": "\"A tak szczerze mówiąc...\"",
+   "spoken": true,
+   "singer": "lead",
+   "t0": 148.85,
+   "t1": 150.62,
+   "words": [
+    {
+     "w": "A",
+     "syl": [
+      {
+       "text": "A",
+       "t_on": 148.85,
+       "t_peak": 148.88,
+       "t_off": 148.92,
+       "matched": true
+      }
+     ],
+     "t0": 148.85,
+     "t1": 148.92
+    },
+    {
+     "w": "tak",
+     "syl": [
+      {
+       "text": "tak",
+       "t_on": 149.0,
+       "t_peak": 149.08,
+       "t_off": 149.14,
+       "matched": true
+      }
+     ],
+     "t0": 149.0,
+     "t1": 149.14
+    },
+    {
+     "w": "szczerze",
+     "syl": [
+      {
+       "text": "szcze",
+       "t_on": 149.14,
+       "t_peak": 149.18,
+       "t_off": 149.43,
+       "matched": true
+      },
+      {
+       "text": "rze",
+       "t_on": 149.43,
+       "t_peak": 149.49,
+       "t_off": 149.58,
+       "matched": true
+      }
+     ],
+     "t0": 149.14,
+     "t1": 149.58
+    },
+    {
+     "w": "mówiąc",
+     "syl": [
+      {
+       "text": "mó",
+       "t_on": 149.58,
+       "t_peak": 149.62,
+       "t_off": 150.46,
+       "matched": true
+      },
+      {
+       "text": "wiąc",
+       "t_on": 150.55,
+       "t_peak": 150.63,
+       "t_off": 150.62,
+       "matched": true
+      }
+     ],
+     "t0": 149.58,
+     "t1": 150.62
+    }
+   ]
+  },
+  {
+   "sec": 10,
+   "line": 1,
+   "section": "Bridge",
+   "text": "A ja bym tylko chciał napisać prosto",
+   "spoken": false,
+   "singer": "lead",
+   "t0": 151.13,
+   "t1": 153.27,
+   "words": [
+    {
+     "w": "A",
+     "syl": [
+      {
+       "text": "A",
+       "t_on": 151.13,
+       "t_peak": 151.29,
+       "t_off": 151.245,
+       "matched": true
+      }
+     ],
+     "t0": 151.13,
+     "t1": 151.245
+    },
+    {
+     "w": "ja",
+     "syl": [
+      {
+       "text": "ja",
+       "t_on": 151.245,
+       "t_peak": 151.305,
+       "t_off": 151.36,
+       "matched": false
+      }
+     ],
+     "t0": 151.245,
+     "t1": 151.36
+    },
+    {
+     "w": "bym",
+     "syl": [
+      {
+       "text": "bym",
+       "t_on": 151.36,
+       "t_peak": 151.39,
+       "t_off": 151.53,
+       "matched": true
+      }
+     ],
+     "t0": 151.36,
+     "t1": 151.53
+    },
+    {
+     "w": "tylko",
+     "syl": [
+      {
+       "text": "tyl",
+       "t_on": 151.53,
+       "t_peak": 151.57,
+       "t_off": 151.69,
+       "matched": true
+      },
+      {
+       "text": "ko",
+       "t_on": 151.69,
+       "t_peak": 151.74,
+       "t_off": 151.9,
+       "matched": true
+      }
+     ],
+     "t0": 151.53,
+     "t1": 151.9
+    },
+    {
+     "w": "chciał",
+     "syl": [
+      {
+       "text": "chciał",
+       "t_on": 151.9,
+       "t_peak": 151.96,
+       "t_off": 152.11,
+       "matched": true
+      }
+     ],
+     "t0": 151.9,
+     "t1": 152.11
+    },
+    {
+     "w": "napisać",
+     "syl": [
+      {
+       "text": "na",
+       "t_on": 152.11,
+       "t_peak": 152.15,
+       "t_off": 152.25,
+       "matched": true
+      },
+      {
+       "text": "pi",
+       "t_on": 152.25,
+       "t_peak": 152.28,
+       "t_off": 152.41,
+       "matched": true
+      },
+      {
+       "text": "sać",
+       "t_on": 152.41,
+       "t_peak": 152.46,
+       "t_off": 152.65,
+       "matched": true
+      }
+     ],
+     "t0": 152.11,
+     "t1": 152.65
+    },
+    {
+     "w": "prosto",
+     "syl": [
+      {
+       "text": "pros",
+       "t_on": 152.65,
+       "t_peak": 152.73,
+       "t_off": 153.0,
+       "matched": true
+      },
+      {
+       "text": "to",
+       "t_on": 153.0,
+       "t_peak": 153.04,
+       "t_off": 153.27,
+       "matched": true
+      }
+     ],
+     "t0": 152.65,
+     "t1": 153.27
+    }
+   ]
+  },
+  {
+   "sec": 10,
+   "line": 2,
+   "section": "Bridge",
+   "text": "Bez tych ozdobników, bez tej mgły",
+   "spoken": false,
+   "singer": "lead",
+   "t0": 154.08,
+   "t1": 156.54,
+   "words": [
+    {
+     "w": "Bez",
+     "syl": [
+      {
+       "text": "Bez",
+       "t_on": 154.08,
+       "t_peak": 154.17,
+       "t_off": 154.35,
+       "matched": true
+      }
+     ],
+     "t0": 154.08,
+     "t1": 154.35
+    },
+    {
+     "w": "tych",
+     "syl": [
+      {
+       "text": "tych",
+       "t_on": 154.35,
+       "t_peak": 154.39,
+       "t_off": 154.46,
+       "matched": true
+      }
+     ],
+     "t0": 154.35,
+     "t1": 154.46
+    },
+    {
+     "w": "ozdobników",
+     "syl": [
+      {
+       "text": "oz",
+       "t_on": 154.46,
+       "t_peak": 154.51,
+       "t_off": 154.65,
+       "matched": true
+      },
+      {
+       "text": "dob",
+       "t_on": 154.65,
+       "t_peak": 154.69,
+       "t_off": 154.78,
+       "matched": true
+      },
+      {
+       "text": "ni",
+       "t_on": 154.78,
+       "t_peak": 154.84,
+       "t_off": 155.0,
+       "matched": true
+      },
+      {
+       "text": "ków",
+       "t_on": 155.0,
+       "t_peak": 155.07,
+       "t_off": 155.21,
+       "matched": true
+      }
+     ],
+     "t0": 154.46,
+     "t1": 155.21
+    },
+    {
+     "w": "bez",
+     "syl": [
+      {
+       "text": "bez",
+       "t_on": 155.21,
+       "t_peak": 155.26,
+       "t_off": 155.6,
+       "matched": true
+      }
+     ],
+     "t0": 155.21,
+     "t1": 155.6
+    },
+    {
+     "w": "tej",
+     "syl": [
+      {
+       "text": "tej",
+       "t_on": 155.6,
+       "t_peak": 155.64,
+       "t_off": 155.94,
+       "matched": true
+      }
+     ],
+     "t0": 155.6,
+     "t1": 155.94
+    },
+    {
+     "w": "mgły",
+     "syl": [
+      {
+       "text": "mgły",
+       "t_on": 155.94,
+       "t_peak": 156.07,
+       "t_off": 156.54,
+       "matched": true
+      }
+     ],
+     "t0": 155.94,
+     "t1": 156.54
+    }
+   ]
+  },
+  {
+   "sec": 10,
+   "line": 3,
+   "section": "Bridge",
+   "text": "Że czasem człowiek po prostu robi swoje",
+   "spoken": false,
+   "singer": "lead",
+   "t0": 157.54,
+   "t1": 160.1,
+   "words": [
+    {
+     "w": "Że",
+     "syl": [
+      {
+       "text": "Że",
+       "t_on": 157.54,
+       "t_peak": 157.62,
+       "t_off": 157.72,
+       "matched": true
+      }
+     ],
+     "t0": 157.54,
+     "t1": 157.72
+    },
+    {
+     "w": "czasem",
+     "syl": [
+      {
+       "text": "cza",
+       "t_on": 157.72,
+       "t_peak": 157.77,
+       "t_off": 157.88,
+       "matched": true
+      },
+      {
+       "text": "sem",
+       "t_on": 157.88,
+       "t_peak": 157.92,
+       "t_off": 158.07,
+       "matched": true
+      }
+     ],
+     "t0": 157.72,
+     "t1": 158.07
+    },
+    {
+     "w": "człowiek",
+     "syl": [
+      {
+       "text": "czło",
+       "t_on": 158.07,
+       "t_peak": 158.16,
+       "t_off": 158.24,
+       "matched": true
+      },
+      {
+       "text": "wiek",
+       "t_on": 158.24,
+       "t_peak": 158.27,
+       "t_off": 158.32,
+       "matched": true
+      }
+     ],
+     "t0": 158.07,
+     "t1": 158.32
+    },
+    {
+     "w": "po",
+     "syl": [
+      {
+       "text": "po",
+       "t_on": 158.32,
+       "t_peak": 158.38,
+       "t_off": 158.4,
+       "matched": false
+      }
+     ],
+     "t0": 158.32,
+     "t1": 158.4
+    },
+    {
+     "w": "prostu",
+     "syl": [
+      {
+       "text": "pros",
+       "t_on": 158.4,
+       "t_peak": 158.44,
+       "t_off": 158.53,
+       "matched": true
+      },
+      {
+       "text": "tu",
+       "t_on": 158.53,
+       "t_peak": 158.6,
+       "t_off": 158.655,
+       "matched": true
+      }
+     ],
+     "t0": 158.4,
+     "t1": 158.655
+    },
+    {
+     "w": "robi",
+     "syl": [
+      {
+       "text": "ro",
+       "t_on": 158.655,
+       "t_peak": 158.715,
+       "t_off": 158.78,
+       "matched": false
+      },
+      {
+       "text": "bi",
+       "t_on": 158.78,
+       "t_peak": 158.97,
+       "t_off": 159.11,
+       "matched": true
+      }
+     ],
+     "t0": 158.655,
+     "t1": 159.11
+    },
+    {
+     "w": "swoje",
+     "syl": [
+      {
+       "text": "swo",
+       "t_on": 159.11,
+       "t_peak": 159.13,
+       "t_off": 159.39,
+       "matched": true
+      },
+      {
+       "text": "je",
+       "t_on": 159.39,
+       "t_peak": 159.45,
+       "t_off": 160.1,
+       "matched": true
+      }
+     ],
+     "t0": 159.11,
+     "t1": 160.1
+    }
+   ]
+  },
+  {
+   "sec": 10,
+   "line": 4,
+   "section": "Bridge",
+   "text": "I nie potrzebuje fanfar ani łez",
+   "spoken": false,
+   "singer": "lead",
+   "t0": 160.82,
+   "t1": 163.92,
+   "words": [
+    {
+     "w": "I",
+     "syl": [
+      {
+       "text": "I",
+       "t_on": 160.82,
+       "t_peak": 160.99,
+       "t_off": 161.09,
+       "matched": true
+      }
+     ],
+     "t0": 160.82,
+     "t1": 161.09
+    },
+    {
+     "w": "nie",
+     "syl": [
+      {
+       "text": "nie",
+       "t_on": 161.09,
+       "t_peak": 161.13,
+       "t_off": 161.29,
+       "matched": true
+      }
+     ],
+     "t0": 161.09,
+     "t1": 161.29
+    },
+    {
+     "w": "potrzebuje",
+     "syl": [
+      {
+       "text": "pot",
+       "t_on": 161.29,
+       "t_peak": 161.34,
+       "t_off": 161.42,
+       "matched": true
+      },
+      {
+       "text": "rze",
+       "t_on": 161.42,
+       "t_peak": 161.47,
+       "t_off": 161.79,
+       "matched": true
+      },
+      {
+       "text": "bu",
+       "t_on": 161.89,
+       "t_peak": 162.06,
+       "t_off": 162.1,
+       "matched": true
+      },
+      {
+       "text": "je",
+       "t_on": 162.29,
+       "t_peak": 162.36,
+       "t_off": 162.61,
+       "matched": true
+      }
+     ],
+     "t0": 161.29,
+     "t1": 162.61
+    },
+    {
+     "w": "fanfar",
+     "syl": [
+      {
+       "text": "fan",
+       "t_on": 162.61,
+       "t_peak": 162.66,
+       "t_off": 162.99,
+       "matched": true
+      },
+      {
+       "text": "far",
+       "t_on": 162.99,
+       "t_peak": 163.04,
+       "t_off": 163.21,
+       "matched": true
+      }
+     ],
+     "t0": 162.61,
+     "t1": 163.21
+    },
+    {
+     "w": "ani",
+     "syl": [
+      {
+       "text": "a",
+       "t_on": 163.21,
+       "t_peak": 163.3,
+       "t_off": 163.63,
+       "matched": true
+      },
+      {
+       "text": "ni",
+       "t_on": 163.63,
+       "t_peak": 163.68,
+       "t_off": 163.77,
+       "matched": true
+      }
+     ],
+     "t0": 163.21,
+     "t1": 163.77
+    },
+    {
+     "w": "łez",
+     "syl": [
+      {
+       "text": "łez",
+       "t_on": 163.77,
+       "t_peak": 163.8,
+       "t_off": 163.92,
+       "matched": true
+      }
+     ],
+     "t0": 163.77,
+     "t1": 163.92
+    }
+   ]
+  },
+  {
+   "sec": 11,
+   "line": 0,
+   "section": "Chorus",
+   "text": "Puste zasięgi, wielkie zasięgi",
+   "spoken": false,
+   "singer": "lead",
+   "t0": 167.8,
+   "t1": 170.93,
+   "words": [
+    {
+     "w": "Puste",
+     "syl": [
+      {
+       "text": "Pus",
+       "t_on": 167.8,
+       "t_peak": 167.89,
+       "t_off": 168.1,
+       "matched": true
+      },
+      {
+       "text": "te",
+       "t_on": 168.1,
+       "t_peak": 168.16,
+       "t_off": 168.25,
+       "matched": true
+      }
+     ],
+     "t0": 167.8,
+     "t1": 168.25
+    },
+    {
+     "w": "zasięgi",
+     "syl": [
+      {
+       "text": "za",
+       "t_on": 168.25,
+       "t_peak": 168.3,
+       "t_off": 168.51,
+       "matched": true
+      },
+      {
+       "text": "się",
+       "t_on": 168.51,
+       "t_peak": 168.61,
+       "t_off": 168.93,
+       "matched": true
+      },
+      {
+       "text": "gi",
+       "t_on": 168.93,
+       "t_peak": 169.0,
+       "t_off": 169.29,
+       "matched": true
+      }
+     ],
+     "t0": 168.25,
+     "t1": 169.29
+    },
+    {
+     "w": "wielkie",
+     "syl": [
+      {
+       "text": "wiel",
+       "t_on": 169.29,
+       "t_peak": 169.49,
+       "t_off": 169.7,
+       "matched": true
+      },
+      {
+       "text": "kie",
+       "t_on": 169.7,
+       "t_peak": 169.75,
+       "t_off": 169.89,
+       "matched": true
+      }
+     ],
+     "t0": 169.29,
+     "t1": 169.89
+    },
+    {
+     "w": "zasięgi",
+     "syl": [
+      {
+       "text": "za",
+       "t_on": 169.89,
+       "t_peak": 169.93,
+       "t_off": 170.12,
+       "matched": true
+      },
+      {
+       "text": "się",
+       "t_on": 170.12,
+       "t_peak": 170.19,
+       "t_off": 170.69,
+       "matched": true
+      },
+      {
+       "text": "gi",
+       "t_on": 170.69,
+       "t_peak": 170.72,
+       "t_off": 170.93,
+       "matched": true
+      }
+     ],
+     "t0": 169.89,
+     "t1": 170.93
+    }
+   ]
+  },
+  {
+   "sec": 11,
+   "line": 1,
+   "section": "Chorus",
+   "text": "Każdy tu błyszczy, każdy tu pęka",
+   "spoken": false,
+   "singer": "lead",
+   "t0": 170.93,
+   "t1": 174.15,
+   "words": [
+    {
+     "w": "Każdy",
+     "syl": [
+      {
+       "text": "Każ",
+       "t_on": 170.93,
+       "t_peak": 170.98,
+       "t_off": 171.35,
+       "matched": true
+      },
+      {
+       "text": "dy",
+       "t_on": 171.35,
+       "t_peak": 171.39,
+       "t_off": 171.5,
+       "matched": true
+      }
+     ],
+     "t0": 170.93,
+     "t1": 171.5
+    },
+    {
+     "w": "tu",
+     "syl": [
+      {
+       "text": "tu",
+       "t_on": 171.5,
+       "t_peak": 171.54,
+       "t_off": 171.72,
+       "matched": true
+      }
+     ],
+     "t0": 171.5,
+     "t1": 171.72
+    },
+    {
+     "w": "błyszczy",
+     "syl": [
+      {
+       "text": "błysz",
+       "t_on": 171.72,
+       "t_peak": 171.81,
+       "t_off": 172.19,
+       "matched": true
+      },
+      {
+       "text": "czy",
+       "t_on": 172.19,
+       "t_peak": 172.23,
+       "t_off": 172.54,
+       "matched": true
+      }
+     ],
+     "t0": 171.72,
+     "t1": 172.54
+    },
+    {
+     "w": "każdy",
+     "syl": [
+      {
+       "text": "każ",
+       "t_on": 172.54,
+       "t_peak": 172.63,
+       "t_off": 172.97,
+       "matched": true
+      },
+      {
+       "text": "dy",
+       "t_on": 172.97,
+       "t_peak": 172.99,
+       "t_off": 173.14,
+       "matched": true
+      }
+     ],
+     "t0": 172.54,
+     "t1": 173.14
+    },
+    {
+     "w": "tu",
+     "syl": [
+      {
+       "text": "tu",
+       "t_on": 173.14,
+       "t_peak": 173.16,
+       "t_off": 173.76,
+       "matched": true
+      }
+     ],
+     "t0": 173.14,
+     "t1": 173.76
+    },
+    {
+     "w": "pęka",
+     "syl": [
+      {
+       "text": "pę",
+       "t_on": 173.76,
+       "t_peak": 173.81,
+       "t_off": 173.92,
+       "matched": true
+      },
+      {
+       "text": "ka",
+       "t_on": 173.92,
+       "t_peak": 173.96,
+       "t_off": 174.15,
+       "matched": true
+      }
+     ],
+     "t0": 173.76,
+     "t1": 174.15
+    }
+   ]
+  },
+  {
+   "sec": 11,
+   "line": 2,
+   "section": "Chorus",
+   "text": "Wielkie zasięgi, puste zasięgi",
+   "spoken": false,
+   "singer": "lead",
+   "t0": 174.15,
+   "t1": 177.4,
+   "words": [
+    {
+     "w": "Wielkie",
+     "syl": [
+      {
+       "text": "Wiel",
+       "t_on": 174.15,
+       "t_peak": 174.19,
+       "t_off": 174.57,
+       "matched": true
+      },
+      {
+       "text": "kie",
+       "t_on": 174.57,
+       "t_peak": 174.61,
+       "t_off": 174.75,
+       "matched": true
+      }
+     ],
+     "t0": 174.15,
+     "t1": 174.75
+    },
+    {
+     "w": "zasięgi",
+     "syl": [
+      {
+       "text": "za",
+       "t_on": 174.75,
+       "t_peak": 174.78,
+       "t_off": 174.99,
+       "matched": true
+      },
+      {
+       "text": "się",
+       "t_on": 174.99,
+       "t_peak": 175.15,
+       "t_off": 175.42,
+       "matched": true
+      },
+      {
+       "text": "gi",
+       "t_on": 175.42,
+       "t_peak": 175.45,
+       "t_off": 175.79,
+       "matched": true
+      }
+     ],
+     "t0": 174.75,
+     "t1": 175.79
+    },
+    {
+     "w": "puste",
+     "syl": [
+      {
+       "text": "pus",
+       "t_on": 175.79,
+       "t_peak": 175.84,
+       "t_off": 176.19,
+       "matched": true
+      },
+      {
+       "text": "te",
+       "t_on": 176.19,
+       "t_peak": 176.24,
+       "t_off": 176.39,
+       "matched": true
+      }
+     ],
+     "t0": 175.79,
+     "t1": 176.39
+    },
+    {
+     "w": "zasięgi",
+     "syl": [
+      {
+       "text": "za",
+       "t_on": 176.39,
+       "t_peak": 176.43,
+       "t_off": 176.63,
+       "matched": true
+      },
+      {
+       "text": "się",
+       "t_on": 176.63,
+       "t_peak": 176.76,
+       "t_off": 177.02,
+       "matched": true
+      },
+      {
+       "text": "gi",
+       "t_on": 177.02,
+       "t_peak": 177.05,
+       "t_off": 177.4,
+       "matched": true
+      }
+     ],
+     "t0": 176.39,
+     "t1": 177.4
+    }
+   ]
+  },
+  {
+   "sec": 11,
+   "line": 3,
+   "section": "Chorus",
+   "text": "A pod spodem cisza, trochę jak męka",
+   "spoken": false,
+   "singer": "lead",
+   "t0": 177.4,
+   "t1": 181.175,
+   "words": [
+    {
+     "w": "A",
+     "syl": [
+      {
+       "text": "A",
+       "t_on": 177.4,
+       "t_peak": 177.46,
+       "t_off": 177.77,
+       "matched": true
+      }
+     ],
+     "t0": 177.4,
+     "t1": 177.77
+    },
+    {
+     "w": "pod",
+     "syl": [
+      {
+       "text": "pod",
+       "t_on": 177.77,
+       "t_peak": 177.81,
+       "t_off": 177.915,
+       "matched": true
+      }
+     ],
+     "t0": 177.77,
+     "t1": 177.915
+    },
+    {
+     "w": "spodem",
+     "syl": [
+      {
+       "text": "spo",
+       "t_on": 177.915,
+       "t_peak": 177.975,
+       "t_off": 178.06,
+       "matched": false
+      },
+      {
+       "text": "dem",
+       "t_on": 178.06,
+       "t_peak": 178.11,
+       "t_off": 178.21,
+       "matched": true
+      }
+     ],
+     "t0": 177.915,
+     "t1": 178.21
+    },
+    {
+     "w": "cisza",
+     "syl": [
+      {
+       "text": "ci",
+       "t_on": 178.21,
+       "t_peak": 178.23,
+       "t_off": 178.45,
+       "matched": true
+      },
+      {
+       "text": "sza",
+       "t_on": 178.45,
+       "t_peak": 178.5,
+       "t_off": 178.68,
+       "matched": true
+      }
+     ],
+     "t0": 178.21,
+     "t1": 178.68
+    },
+    {
+     "w": "trochę",
+     "syl": [
+      {
+       "text": "tro",
+       "t_on": 178.68,
+       "t_peak": 178.73,
+       "t_off": 179.91,
+       "matched": true
+      },
+      {
+       "text": "chę",
+       "t_on": 179.91,
+       "t_peak": 179.94,
+       "t_off": 180.04,
+       "matched": true
+      }
+     ],
+     "t0": 178.68,
+     "t1": 180.04
+    },
+    {
+     "w": "jak",
+     "syl": [
+      {
+       "text": "jak",
+       "t_on": 180.64,
+       "t_peak": 180.75,
+       "t_off": 180.86,
+       "matched": true
+      }
+     ],
+     "t0": 180.64,
+     "t1": 180.86
+    },
+    {
+     "w": "męka",
+     "syl": [
+      {
+       "text": "mę",
+       "t_on": 180.86,
+       "t_peak": 180.92,
+       "t_off": 181.08,
+       "matched": false
+      },
+      {
+       "text": "ka",
+       "t_on": 181.08,
+       "t_peak": 181.14,
+       "t_off": 181.175,
+       "matched": true
+      }
+     ],
+     "t0": 180.86,
+     "t1": 181.175
+    }
+   ]
+  },
+  {
+   "sec": 11,
+   "line": 4,
+   "section": "Chorus",
+   "text": "Puste zasięgi (hej)",
+   "spoken": false,
+   "singer": "lead",
+   "t0": 181.13,
+   "t1": 183.86,
+   "words": [
+    {
+     "w": "Puste",
+     "syl": [
+      {
+       "text": "Pus",
+       "t_on": 181.13,
+       "t_peak": 181.19,
+       "t_off": 181.26,
+       "matched": false
+      },
+      {
+       "text": "te",
+       "t_on": 181.27,
+       "t_peak": 181.34,
+       "t_off": 181.52,
+       "matched": true
+      }
+     ],
+     "t0": 181.13,
+     "t1": 181.52
+    },
+    {
+     "w": "zasięgi",
+     "syl": [
+      {
+       "text": "za",
+       "t_on": 181.52,
+       "t_peak": 181.65,
+       "t_off": 181.94,
+       "matched": true
+      },
+      {
+       "text": "się",
+       "t_on": 181.94,
+       "t_peak": 181.97,
+       "t_off": 183.7,
+       "matched": true
+      },
+      {
+       "text": "gi",
+       "t_on": 183.7,
+       "t_peak": 183.76,
+       "t_off": 183.86,
+       "matched": true
+      }
+     ],
+     "t0": 181.52,
+     "t1": 183.86
+    }
+   ]
+  },
+  {
+   "sec": 11,
+   "line": 5,
+   "section": "Chorus",
+   "text": "Mocne zasięgi (hej)",
+   "spoken": false,
+   "singer": "lead",
+   "t0": 183.86,
+   "t1": 186.93,
+   "words": [
+    {
+     "w": "Mocne",
+     "syl": [
+      {
+       "text": "Moc",
+       "t_on": 183.86,
+       "t_peak": 183.94,
+       "t_off": 184.31,
+       "matched": true
+      },
+      {
+       "text": "ne",
+       "t_on": 184.31,
+       "t_peak": 184.36,
+       "t_off": 184.53,
+       "matched": true
+      }
+     ],
+     "t0": 183.86,
+     "t1": 184.53
+    },
+    {
+     "w": "zasięgi",
+     "syl": [
+      {
+       "text": "za",
+       "t_on": 184.53,
+       "t_peak": 184.57,
+       "t_off": 185.35,
+       "matched": true
+      },
+      {
+       "text": "się",
+       "t_on": 185.35,
+       "t_peak": 185.39,
+       "t_off": 186.6,
+       "matched": true
+      },
+      {
+       "text": "gi",
+       "t_on": 186.6,
+       "t_peak": 186.63,
+       "t_off": 186.93,
+       "matched": true
+      }
+     ],
+     "t0": 184.53,
+     "t1": 186.93
+    }
+   ]
+  },
+  {
+   "sec": 12,
+   "line": 0,
+   "section": "Outro",
+   "text": "\"Dziękuję za uwagę, miłego scrollowania.\"",
+   "spoken": true,
+   "singer": "lead",
+   "t0": 188.7,
+   "t1": 193.09,
+   "words": [
+    {
+     "w": "Dziękuję",
+     "syl": [
+      {
+       "text": "Dzię",
+       "t_on": 188.7,
+       "t_peak": 188.82,
+       "t_off": 188.835,
+       "matched": true
+      },
+      {
+       "text": "ku",
+       "t_on": 188.835,
+       "t_peak": 188.895,
+       "t_off": 188.97,
+       "matched": false
+      },
+      {
+       "text": "ję",
+       "t_on": 188.97,
+       "t_peak": 189.06,
+       "t_off": 189.14,
+       "matched": true
+      }
+     ],
+     "t0": 188.7,
+     "t1": 189.14
+    },
+    {
+     "w": "za",
+     "syl": [
+      {
+       "text": "za",
+       "t_on": 189.14,
+       "t_peak": 189.2,
+       "t_off": 189.31,
+       "matched": false
+      }
+     ],
+     "t0": 189.14,
+     "t1": 189.31
+    },
+    {
+     "w": "uwagę",
+     "syl": [
+      {
+       "text": "u",
+       "t_on": 189.31,
+       "t_peak": 189.35,
+       "t_off": 189.55,
+       "matched": true
+      },
+      {
+       "text": "wa",
+       "t_on": 189.55,
+       "t_peak": 189.59,
+       "t_off": 189.76,
+       "matched": true
+      },
+      {
+       "text": "gę",
+       "t_on": 189.76,
+       "t_peak": 189.81,
+       "t_off": 190.4,
+       "matched": true
+      }
+     ],
+     "t0": 189.31,
+     "t1": 190.4
+    },
+    {
+     "w": "miłego",
+     "syl": [
+      {
+       "text": "mi",
+       "t_on": 191.21,
+       "t_peak": 191.44,
+       "t_off": 191.54,
+       "matched": true
+      },
+      {
+       "text": "łe",
+       "t_on": 191.54,
+       "t_peak": 191.58,
+       "t_off": 191.7,
+       "matched": true
+      },
+      {
+       "text": "go",
+       "t_on": 191.7,
+       "t_peak": 191.72,
+       "t_off": 191.78,
+       "matched": true
+      }
+     ],
+     "t0": 191.21,
+     "t1": 191.78
+    },
+    {
+     "w": "scrollowania",
+     "syl": [
+      {
+       "text": "skro",
+       "t_on": 191.78,
+       "t_peak": 191.87,
+       "t_off": 192.11,
+       "matched": true
+      },
+      {
+       "text": "lo",
+       "t_on": 192.11,
+       "t_peak": 192.15,
+       "t_off": 192.53,
+       "matched": true
+      },
+      {
+       "text": "wa",
+       "t_on": 192.63,
+       "t_peak": 192.67,
+       "t_off": 192.92,
+       "matched": true
+      },
+      {
+       "text": "nia",
+       "t_on": 192.92,
+       "t_peak": 193.09,
+       "t_off": 193.09,
+       "matched": true
+      }
+     ],
+     "t0": 191.78,
+     "t1": 193.09
+    }
+   ]
+  },
+  {
+   "sec": 12,
+   "line": 1,
+   "section": "Outro",
+   "text": "Puste zasięgi! (hej!)",
+   "spoken": false,
+   "singer": "lead",
+   "t0": 194.68,
+   "t1": 201.4,
+   "words": [
+    {
+     "w": "Puste",
+     "syl": [
+      {
+       "text": "Pu",
+       "t_on": 194.68,
+       "t_peak": 194.76000000000002,
+       "t_off": 195.1,
+       "matched": true
+      },
+      {
+       "text": "ste",
+       "t_on": 195.13,
+       "t_peak": 195.21,
+       "t_off": 195.52,
+       "matched": true
+      }
+     ],
+     "t0": 194.68,
+     "t1": 195.52
+    },
+    {
+     "w": "zasięgi",
+     "syl": [
+      {
+       "text": "za",
+       "t_on": 195.56,
+       "t_peak": 195.64000000000001,
+       "t_off": 196.15,
+       "matched": true
+      },
+      {
+       "text": "się",
+       "t_on": 196.17,
+       "t_peak": 196.25,
+       "t_off": 197.6,
+       "matched": true
+      },
+      {
+       "text": "gi",
+       "t_on": 197.65,
+       "t_peak": 197.73000000000002,
+       "t_off": 201.4,
+       "matched": true
+      }
+     ],
+     "t0": 195.56,
+     "t1": 201.4
+    }
+   ]
+  }
+ ],
+ "choir": {
+  "events": [
+   {
+    "t_on": 46.62,
+    "t_peak": 46.73,
+    "level": 9.5
+   },
+   {
+    "t_on": 46.84,
+    "t_peak": 46.91,
+    "level": 15.5
+   },
+   {
+    "t_on": 47.1,
+    "t_peak": 47.16,
+    "level": 8.7
+   },
+   {
+    "t_on": 47.27,
+    "t_peak": 47.34,
+    "level": 15.7
+   },
+   {
+    "t_on": 47.51,
+    "t_peak": 47.55,
+    "level": 4.0
+   },
+   {
+    "t_on": 47.68,
+    "t_peak": 47.74,
+    "level": 18.5
+   },
+   {
+    "t_on": 47.91,
+    "t_peak": 47.94,
+    "level": 15.8
+   },
+   {
+    "t_on": 48.07,
+    "t_peak": 48.14,
+    "level": 18.3
+   },
+   {
+    "t_on": 48.67,
+    "t_peak": 48.73,
+    "level": 2.8
+   },
+   {
+    "t_on": 49.49,
+    "t_peak": 49.53,
+    "level": -11.9
+   },
+   {
+    "t_on": 49.6,
+    "t_peak": 49.65,
+    "level": -11.6
+   },
+   {
+    "t_on": 49.89,
+    "t_peak": 49.98,
+    "level": 6.3
+   },
+   {
+    "t_on": 50.1,
+    "t_peak": 50.16,
+    "level": 12.5
+   },
+   {
+    "t_on": 50.28,
+    "t_peak": 50.35,
+    "level": 12.0
+   },
+   {
+    "t_on": 50.5,
+    "t_peak": 50.55,
+    "level": 17.9
+   },
+   {
+    "t_on": 50.89,
+    "t_peak": 50.95,
+    "level": 12.3
+   },
+   {
+    "t_on": 51.11,
+    "t_peak": 51.19,
+    "level": 16.8
+   },
+   {
+    "t_on": 51.35,
+    "t_peak": 51.42,
+    "level": 18.2
+   },
+   {
+    "t_on": 51.95,
+    "t_peak": 52.02,
+    "level": 19.4
+   },
+   {
+    "t_on": 53.97,
+    "t_peak": 54.1,
+    "level": 13.3
+   },
+   {
+    "t_on": 55.12,
+    "t_peak": 55.15,
+    "level": -3.6
+   },
+   {
+    "t_on": 55.48,
+    "t_peak": 55.51,
+    "level": -12.7
+   },
+   {
+    "t_on": 55.98,
+    "t_peak": 56.05,
+    "level": 15.1
+   },
+   {
+    "t_on": 56.16,
+    "t_peak": 56.2,
+    "level": 12.4
+   },
+   {
+    "t_on": 56.4,
+    "t_peak": 56.45,
+    "level": 15.4
+   },
+   {
+    "t_on": 56.56,
+    "t_peak": 56.63,
+    "level": 13.7
+   },
+   {
+    "t_on": 56.73,
+    "t_peak": 56.83,
+    "level": 17.5
+   },
+   {
+    "t_on": 56.97,
+    "t_peak": 57.01,
+    "level": 19.4
+   },
+   {
+    "t_on": 57.63,
+    "t_peak": 57.66,
+    "level": 5.1
+   },
+   {
+    "t_on": 57.75,
+    "t_peak": 57.98,
+    "level": 18.7
+   },
+   {
+    "t_on": 58.17,
+    "t_peak": 58.22,
+    "level": 14.2
+   },
+   {
+    "t_on": 58.38,
+    "t_peak": 58.47,
+    "level": 16.7
+   },
+   {
+    "t_on": 58.68,
+    "t_peak": 58.7,
+    "level": 16.5
+   },
+   {
+    "t_on": 58.98,
+    "t_peak": 59.01,
+    "level": 4.8
+   },
+   {
+    "t_on": 59.36,
+    "t_peak": 59.38,
+    "level": -6.2
+   },
+   {
+    "t_on": 60.14,
+    "t_peak": 60.22,
+    "level": 13.7
+   },
+   {
+    "t_on": 60.43,
+    "t_peak": 60.5,
+    "level": 16.5
+   },
+   {
+    "t_on": 60.58,
+    "t_peak": 60.64,
+    "level": 17.0
+   },
+   {
+    "t_on": 60.83,
+    "t_peak": 60.9,
+    "level": 14.3
+   },
+   {
+    "t_on": 61.1,
+    "t_peak": 61.13,
+    "level": 12.8
+   },
+   {
+    "t_on": 61.27,
+    "t_peak": 61.3,
+    "level": 11.7
+   },
+   {
+    "t_on": 61.63,
+    "t_peak": 61.69,
+    "level": 13.6
+   },
+   {
+    "t_on": 62.03,
+    "t_peak": 62.1,
+    "level": 14.4
+   },
+   {
+    "t_on": 62.21,
+    "t_peak": 62.26,
+    "level": 17.3
+   },
+   {
+    "t_on": 62.45,
+    "t_peak": 62.51,
+    "level": 13.5
+   },
+   {
+    "t_on": 62.89,
+    "t_peak": 62.97,
+    "level": 9.3
+   },
+   {
+    "t_on": 63.44,
+    "t_peak": 63.47,
+    "level": -8.0
+   },
+   {
+    "t_on": 63.61,
+    "t_peak": 63.63,
+    "level": -12.6
+   },
+   {
+    "t_on": 64.48,
+    "t_peak": 64.67,
+    "level": -9.6
+   },
+   {
+    "t_on": 64.73,
+    "t_peak": 64.75,
+    "level": -10.9
+   },
+   {
+    "t_on": 64.84,
+    "t_peak": 64.92,
+    "level": 18.5
+   },
+   {
+    "t_on": 65.28,
+    "t_peak": 65.32,
+    "level": 10.8
+   },
+   {
+    "t_on": 65.44,
+    "t_peak": 65.52,
+    "level": 14.9
+   },
+   {
+    "t_on": 65.67,
+    "t_peak": 65.71,
+    "level": 16.1
+   },
+   {
+    "t_on": 66.09,
+    "t_peak": 66.17,
+    "level": 18.5
+   },
+   {
+    "t_on": 66.5,
+    "t_peak": 66.56,
+    "level": 16.1
+   },
+   {
+    "t_on": 66.88,
+    "t_peak": 66.94,
+    "level": 16.2
+   },
+   {
+    "t_on": 67.05,
+    "t_peak": 67.13,
+    "level": 16.6
+   },
+   {
+    "t_on": 67.3,
+    "t_peak": 67.36,
+    "level": 15.3
+   },
+   {
+    "t_on": 67.59,
+    "t_peak": 67.81,
+    "level": 13.0
+   },
+   {
+    "t_on": 67.96,
+    "t_peak": 67.98,
+    "level": 5.3
+   },
+   {
+    "t_on": 68.63,
+    "t_peak": 68.71,
+    "level": 16.7
+   },
+   {
+    "t_on": 68.92,
+    "t_peak": 69.0,
+    "level": 16.4
+   },
+   {
+    "t_on": 69.34,
+    "t_peak": 69.38,
+    "level": 9.8
+   },
+   {
+    "t_on": 69.98,
+    "t_peak": 70.01,
+    "level": -11.3
+   },
+   {
+    "t_on": 71.06,
+    "t_peak": 71.13,
+    "level": -8.7
+   },
+   {
+    "t_on": 71.42,
+    "t_peak": 71.63,
+    "level": 18.8
+   },
+   {
+    "t_on": 71.75,
+    "t_peak": 71.8,
+    "level": 17.0
+   },
+   {
+    "t_on": 72.12,
+    "t_peak": 72.26,
+    "level": 16.0
+   },
+   {
+    "t_on": 72.53,
+    "t_peak": 72.6,
+    "level": 19.6
+   },
+   {
+    "t_on": 74.66,
+    "t_peak": 74.83,
+    "level": 18.8
+   },
+   {
+    "t_on": 75.25,
+    "t_peak": 75.3,
+    "level": 19.2
+   },
+   {
+    "t_on": 76.54,
+    "t_peak": 76.58,
+    "level": -8.5
+   },
+   {
+    "t_on": 77.38,
+    "t_peak": 77.6,
+    "level": -3.2
+   },
+   {
+    "t_on": 77.83,
+    "t_peak": 78.02,
+    "level": 18.5
+   },
+   {
+    "t_on": 78.83,
+    "t_peak": 78.93,
+    "level": 17.0
+   },
+   {
+    "t_on": 79.69,
+    "t_peak": 79.73,
+    "level": 0.4
+   },
+   {
+    "t_on": 79.82,
+    "t_peak": 79.87,
+    "level": 2.3
+   },
+   {
+    "t_on": 80.02,
+    "t_peak": 80.18,
+    "level": 1.5
+   },
+   {
+    "t_on": 80.43,
+    "t_peak": 80.47,
+    "level": -10.8
+   },
+   {
+    "t_on": 95.35,
+    "t_peak": 95.48,
+    "level": 13.8
+   },
+   {
+    "t_on": 95.66,
+    "t_peak": 95.72,
+    "level": 18.9
+   },
+   {
+    "t_on": 96.05,
+    "t_peak": 96.11,
+    "level": 10.4
+   },
+   {
+    "t_on": 96.24,
+    "t_peak": 96.32,
+    "level": 14.7
+   },
+   {
+    "t_on": 96.46,
+    "t_peak": 96.53,
+    "level": 16.3
+   },
+   {
+    "t_on": 96.65,
+    "t_peak": 96.74,
+    "level": 17.6
+   },
+   {
+    "t_on": 97.07,
+    "t_peak": 97.16,
+    "level": 13.2
+   },
+   {
+    "t_on": 97.33,
+    "t_peak": 97.38,
+    "level": 15.0
+   },
+   {
+    "t_on": 97.92,
+    "t_peak": 98.09,
+    "level": 15.0
+   },
+   {
+    "t_on": 98.27,
+    "t_peak": 98.47,
+    "level": 16.6
+   },
+   {
+    "t_on": 98.71,
+    "t_peak": 98.74,
+    "level": 2.6
+   },
+   {
+    "t_on": 99.02,
+    "t_peak": 99.05,
+    "level": -6.1
+   },
+   {
+    "t_on": 99.91,
+    "t_peak": 99.99,
+    "level": -6.9
+   },
+   {
+    "t_on": 100.42,
+    "t_peak": 100.51,
+    "level": 4.3
+   },
+   {
+    "t_on": 100.58,
+    "t_peak": 100.69,
+    "level": 4.8
+   },
+   {
+    "t_on": 100.8,
+    "t_peak": 100.97,
+    "level": 5.9
+   },
+   {
+    "t_on": 101.14,
+    "t_peak": 101.32,
+    "level": 8.4
+   },
+   {
+    "t_on": 101.68,
+    "t_peak": 101.71,
+    "level": 8.8
+   },
+   {
+    "t_on": 101.79,
+    "t_peak": 101.87,
+    "level": 8.6
+   },
+   {
+    "t_on": 101.94,
+    "t_peak": 102.01,
+    "level": 10.9
+   },
+   {
+    "t_on": 102.26,
+    "t_peak": 102.32,
+    "level": 15.8
+   },
+   {
+    "t_on": 102.63,
+    "t_peak": 102.73,
+    "level": 16.3
+   },
+   {
+    "t_on": 103.14,
+    "t_peak": 103.18,
+    "level": 8.1
+   },
+   {
+    "t_on": 103.4,
+    "t_peak": 103.49,
+    "level": 7.8
+   },
+   {
+    "t_on": 103.72,
+    "t_peak": 103.83,
+    "level": 7.6
+   },
+   {
+    "t_on": 104.46,
+    "t_peak": 104.57,
+    "level": 6.4
+   },
+   {
+    "t_on": 104.7,
+    "t_peak": 104.85,
+    "level": 7.2
+   },
+   {
+    "t_on": 105.03,
+    "t_peak": 105.1,
+    "level": 7.1
+   },
+   {
+    "t_on": 105.26,
+    "t_peak": 105.36,
+    "level": 10.7
+   },
+   {
+    "t_on": 105.73,
+    "t_peak": 105.76,
+    "level": 6.9
+   },
+   {
+    "t_on": 105.95,
+    "t_peak": 106.14,
+    "level": 5.5
+   },
+   {
+    "t_on": 106.29,
+    "t_peak": 106.35,
+    "level": 4.0
+   },
+   {
+    "t_on": 106.49,
+    "t_peak": 106.51,
+    "level": 0.9
+   },
+   {
+    "t_on": 106.84,
+    "t_peak": 106.87,
+    "level": -8.6
+   },
+   {
+    "t_on": 107.09,
+    "t_peak": 107.18,
+    "level": 16.1
+   },
+   {
+    "t_on": 107.52,
+    "t_peak": 107.57,
+    "level": 18.7
+   },
+   {
+    "t_on": 108.78,
+    "t_peak": 108.84,
+    "level": -6.3
+   },
+   {
+    "t_on": 110.13,
+    "t_peak": 110.2,
+    "level": -1.1
+   },
+   {
+    "t_on": 110.55,
+    "t_peak": 110.61,
+    "level": -12.5
+   },
+   {
+    "t_on": 110.95,
+    "t_peak": 111.04,
+    "level": -5.5
+   },
+   {
+    "t_on": 111.81,
+    "t_peak": 111.89,
+    "level": -4.3
+   },
+   {
+    "t_on": 112.1,
+    "t_peak": 112.28,
+    "level": -2.1
+   },
+   {
+    "t_on": 112.62,
+    "t_peak": 112.79,
+    "level": 2.2
+   },
+   {
+    "t_on": 112.97,
+    "t_peak": 113.0,
+    "level": 4.6
+   },
+   {
+    "t_on": 113.18,
+    "t_peak": 113.31,
+    "level": 8.8
+   },
+   {
+    "t_on": 113.42,
+    "t_peak": 113.49,
+    "level": 16.8
+   },
+   {
+    "t_on": 113.66,
+    "t_peak": 113.71,
+    "level": 9.0
+   },
+   {
+    "t_on": 113.82,
+    "t_peak": 113.88,
+    "level": 15.8
+   },
+   {
+    "t_on": 114.06,
+    "t_peak": 114.1,
+    "level": 8.5
+   },
+   {
+    "t_on": 114.24,
+    "t_peak": 114.31,
+    "level": 17.9
+   },
+   {
+    "t_on": 114.65,
+    "t_peak": 114.7,
+    "level": 16.7
+   },
+   {
+    "t_on": 114.9,
+    "t_peak": 114.93,
+    "level": 16.3
+   },
+   {
+    "t_on": 115.51,
+    "t_peak": 115.54,
+    "level": -4.2
+   },
+   {
+    "t_on": 115.77,
+    "t_peak": 115.83,
+    "level": -7.6
+   },
+   {
+    "t_on": 116.08,
+    "t_peak": 116.18,
+    "level": 18.0
+   },
+   {
+    "t_on": 116.48,
+    "t_peak": 116.56,
+    "level": 11.7
+   },
+   {
+    "t_on": 116.7,
+    "t_peak": 116.81,
+    "level": 16.8
+   },
+   {
+    "t_on": 117.08,
+    "t_peak": 117.14,
+    "level": 17.8
+   },
+   {
+    "t_on": 117.49,
+    "t_peak": 117.54,
+    "level": 17.6
+   },
+   {
+    "t_on": 117.71,
+    "t_peak": 117.75,
+    "level": 17.4
+   },
+   {
+    "t_on": 117.91,
+    "t_peak": 118.01,
+    "level": 17.3
+   },
+   {
+    "t_on": 118.09,
+    "t_peak": 118.14,
+    "level": 17.6
+   },
+   {
+    "t_on": 118.55,
+    "t_peak": 118.63,
+    "level": 16.1
+   },
+   {
+    "t_on": 118.97,
+    "t_peak": 119.01,
+    "level": 0.4
+   },
+   {
+    "t_on": 122.6,
+    "t_peak": 122.69,
+    "level": 15.0
+   },
+   {
+    "t_on": 122.81,
+    "t_peak": 122.86,
+    "level": 16.3
+   },
+   {
+    "t_on": 123.02,
+    "t_peak": 123.08,
+    "level": 16.2
+   },
+   {
+    "t_on": 123.61,
+    "t_peak": 123.64,
+    "level": 19.4
+   },
+   {
+    "t_on": 123.85,
+    "t_peak": 123.92,
+    "level": 14.7
+   },
+   {
+    "t_on": 124.29,
+    "t_peak": 124.31,
+    "level": 3.4
+   },
+   {
+    "t_on": 124.38,
+    "t_peak": 124.61,
+    "level": 18.1
+   },
+   {
+    "t_on": 124.83,
+    "t_peak": 124.87,
+    "level": 16.0
+   },
+   {
+    "t_on": 125.06,
+    "t_peak": 125.19,
+    "level": 19.5
+   },
+   {
+    "t_on": 125.54,
+    "t_peak": 125.58,
+    "level": 19.1
+   },
+   {
+    "t_on": 127.03,
+    "t_peak": 127.06,
+    "level": 17.9
+   },
+   {
+    "t_on": 127.25,
+    "t_peak": 127.32,
+    "level": 17.4
+   },
+   {
+    "t_on": 127.43,
+    "t_peak": 127.47,
+    "level": 16.8
+   },
+   {
+    "t_on": 128.04,
+    "t_peak": 128.06,
+    "level": -4.1
+   },
+   {
+    "t_on": 128.28,
+    "t_peak": 128.3,
+    "level": -7.8
+   },
+   {
+    "t_on": 128.44,
+    "t_peak": 128.52,
+    "level": 15.5
+   },
+   {
+    "t_on": 128.72,
+    "t_peak": 128.78,
+    "level": 16.9
+   },
+   {
+    "t_on": 128.88,
+    "t_peak": 128.95,
+    "level": 17.9
+   },
+   {
+    "t_on": 129.13,
+    "t_peak": 129.18,
+    "level": 17.6
+   },
+   {
+    "t_on": 129.56,
+    "t_peak": 129.67,
+    "level": 13.4
+   },
+   {
+    "t_on": 129.92,
+    "t_peak": 129.99,
+    "level": 17.7
+   },
+   {
+    "t_on": 130.32,
+    "t_peak": 130.38,
+    "level": 16.8
+   },
+   {
+    "t_on": 130.5,
+    "t_peak": 130.55,
+    "level": 18.8
+   },
+   {
+    "t_on": 130.75,
+    "t_peak": 130.83,
+    "level": 17.6
+   },
+   {
+    "t_on": 131.18,
+    "t_peak": 131.24,
+    "level": 11.2
+   },
+   {
+    "t_on": 131.62,
+    "t_peak": 131.66,
+    "level": 2.7
+   },
+   {
+    "t_on": 131.91,
+    "t_peak": 131.94,
+    "level": -11.7
+   },
+   {
+    "t_on": 132.13,
+    "t_peak": 132.2,
+    "level": -5.0
+   },
+   {
+    "t_on": 132.9,
+    "t_peak": 133.08,
+    "level": -9.3
+   },
+   {
+    "t_on": 133.15,
+    "t_peak": 133.24,
+    "level": 19.7
+   },
+   {
+    "t_on": 133.58,
+    "t_peak": 133.66,
+    "level": 15.3
+   },
+   {
+    "t_on": 133.76,
+    "t_peak": 133.81,
+    "level": 18.2
+   },
+   {
+    "t_on": 133.99,
+    "t_peak": 134.04,
+    "level": 19.8
+   },
+   {
+    "t_on": 134.4,
+    "t_peak": 134.52,
+    "level": 19.2
+   },
+   {
+    "t_on": 135.38,
+    "t_peak": 135.42,
+    "level": 6.2
+   },
+   {
+    "t_on": 136.17,
+    "t_peak": 136.24,
+    "level": -15.6
+   },
+   {
+    "t_on": 136.48,
+    "t_peak": 136.63,
+    "level": -14.3
+   },
+   {
+    "t_on": 136.98,
+    "t_peak": 137.11,
+    "level": -9.5
+   },
+   {
+    "t_on": 137.78,
+    "t_peak": 137.87,
+    "level": -13.3
+   },
+   {
+    "t_on": 138.61,
+    "t_peak": 138.68,
+    "level": -10.4
+   },
+   {
+    "t_on": 138.87,
+    "t_peak": 138.94,
+    "level": -18.8
+   },
+   {
+    "t_on": 139.03,
+    "t_peak": 139.09,
+    "level": -4.0
+   },
+   {
+    "t_on": 139.4,
+    "t_peak": 139.5,
+    "level": -6.0
+   },
+   {
+    "t_on": 139.65,
+    "t_peak": 139.68,
+    "level": -7.4
+   },
+   {
+    "t_on": 139.77,
+    "t_peak": 139.96,
+    "level": 20.1
+   },
+   {
+    "t_on": 140.1,
+    "t_peak": 140.15,
+    "level": 18.3
+   },
+   {
+    "t_on": 140.48,
+    "t_peak": 140.55,
+    "level": 18.3
+   },
+   {
+    "t_on": 140.89,
+    "t_peak": 141.09,
+    "level": 20.9
+   },
+   {
+    "t_on": 142.65,
+    "t_peak": 142.69,
+    "level": -12.7
+   },
+   {
+    "t_on": 143.04,
+    "t_peak": 143.16,
+    "level": 20.4
+   },
+   {
+    "t_on": 143.86,
+    "t_peak": 143.89,
+    "level": 19.5
+   },
+   {
+    "t_on": 145.39,
+    "t_peak": 145.41,
+    "level": -13.9
+   },
+   {
+    "t_on": 145.91,
+    "t_peak": 145.98,
+    "level": -2.3
+   },
+   {
+    "t_on": 146.3,
+    "t_peak": 146.52,
+    "level": 21.2
+   },
+   {
+    "t_on": 147.99,
+    "t_peak": 148.03,
+    "level": 4.4
+   },
+   {
+    "t_on": 148.36,
+    "t_peak": 148.38,
+    "level": -2.1
+   },
+   {
+    "t_on": 148.54,
+    "t_peak": 148.56,
+    "level": -9.7
+   },
+   {
+    "t_on": 167.78,
+    "t_peak": 167.89,
+    "level": 18.6
+   },
+   {
+    "t_on": 168.1,
+    "t_peak": 168.16,
+    "level": 18.5
+   },
+   {
+    "t_on": 168.25,
+    "t_peak": 168.31,
+    "level": 20.1
+   },
+   {
+    "t_on": 168.52,
+    "t_peak": 168.61,
+    "level": 19.9
+   },
+   {
+    "t_on": 168.93,
+    "t_peak": 169.0,
+    "level": 13.6
+   },
+   {
+    "t_on": 169.3,
+    "t_peak": 169.35,
+    "level": 8.2
+   },
+   {
+    "t_on": 169.52,
+    "t_peak": 169.55,
+    "level": 4.8
+   },
+   {
+    "t_on": 169.71,
+    "t_peak": 169.82,
+    "level": 17.3
+   },
+   {
+    "t_on": 169.88,
+    "t_peak": 169.93,
+    "level": 20.7
+   },
+   {
+    "t_on": 170.12,
+    "t_peak": 170.2,
+    "level": 19.1
+   },
+   {
+    "t_on": 170.55,
+    "t_peak": 170.6,
+    "level": 12.7
+   },
+   {
+    "t_on": 170.68,
+    "t_peak": 170.71,
+    "level": 11.6
+   },
+   {
+    "t_on": 170.92,
+    "t_peak": 170.95,
+    "level": -1.1
+   },
+   {
+    "t_on": 172.49,
+    "t_peak": 172.62,
+    "level": 21.0
+   },
+   {
+    "t_on": 172.97,
+    "t_peak": 173.01,
+    "level": 16.8
+   },
+   {
+    "t_on": 173.14,
+    "t_peak": 173.23,
+    "level": 18.1
+   },
+   {
+    "t_on": 173.37,
+    "t_peak": 173.42,
+    "level": 20.4
+   },
+   {
+    "t_on": 173.75,
+    "t_peak": 173.94,
+    "level": 19.4
+   },
+   {
+    "t_on": 175.17,
+    "t_peak": 175.26,
+    "level": -3.4
+   },
+   {
+    "t_on": 176.72,
+    "t_peak": 176.88,
+    "level": -1.2
+   },
+   {
+    "t_on": 179.14,
+    "t_peak": 179.35,
+    "level": 21.5
+   },
+   {
+    "t_on": 179.5,
+    "t_peak": 179.54,
+    "level": 19.6
+   },
+   {
+    "t_on": 179.87,
+    "t_peak": 179.93,
+    "level": 19.7
+   },
+   {
+    "t_on": 180.29,
+    "t_peak": 180.44,
+    "level": 19.8
+   },
+   {
+    "t_on": 182.43,
+    "t_peak": 182.55,
+    "level": 21.3
+   },
+   {
+    "t_on": 183.17,
+    "t_peak": 183.4,
+    "level": 20.3
+   },
+   {
+    "t_on": 185.68,
+    "t_peak": 185.9,
+    "level": 21.0
+   },
+   {
+    "t_on": 194.66,
+    "t_peak": 194.77,
+    "level": 17.8
+   },
+   {
+    "t_on": 195.13,
+    "t_peak": 195.21,
+    "level": 18.8
+   },
+   {
+    "t_on": 195.56,
+    "t_peak": 195.65,
+    "level": 19.1
+   },
+   {
+    "t_on": 196.13,
+    "t_peak": 196.3,
+    "level": 20.2
+   },
+   {
+    "t_on": 196.69,
+    "t_peak": 196.75,
+    "level": 19.3
+   },
+   {
+    "t_on": 196.85,
+    "t_peak": 196.97,
+    "level": 19.5
+   },
+   {
+    "t_on": 197.65,
+    "t_peak": 197.77,
+    "level": 14.4
+   },
+   {
+    "t_on": 197.87,
+    "t_peak": 197.97,
+    "level": 13.9
+   },
+   {
+    "t_on": 198.15,
+    "t_peak": 198.2,
+    "level": 13.9
+   },
+   {
+    "t_on": 198.49,
+    "t_peak": 198.53,
+    "level": 15.0
+   },
+   {
+    "t_on": 198.8,
+    "t_peak": 198.88,
+    "level": 11.8
+   },
+   {
+    "t_on": 199.2,
+    "t_peak": 199.4,
+    "level": 11.3
+   },
+   {
+    "t_on": 199.53,
+    "t_peak": 199.69,
+    "level": 15.2
+   },
+   {
+    "t_on": 200.09,
+    "t_peak": 200.31,
+    "level": 19.5
+   },
+   {
+    "t_on": 208.23,
+    "t_peak": 208.32,
+    "level": 10.8
+   },
+   {
+    "t_on": 208.53,
+    "t_peak": 208.6,
+    "level": 8.9
+   },
+   {
+    "t_on": 208.68,
+    "t_peak": 208.73,
+    "level": 13.4
+   },
+   {
+    "t_on": 208.94,
+    "t_peak": 209.02,
+    "level": 7.4
+   },
+   {
+    "t_on": 209.32,
+    "t_peak": 209.37,
+    "level": 2.8
+   },
+   {
+    "t_on": 210.0,
+    "t_peak": 210.19,
+    "level": 19.4
+   },
+   {
+    "t_on": 211.42,
+    "t_peak": 211.46,
+    "level": -3.5
+   },
+   {
+    "t_on": 211.96,
+    "t_peak": 212.01,
+    "level": -9.1
+   }
+  ],
+  "hej": [
+   {
+    "after_line": [
+     4,
+     4
+    ],
+    "t_on": 76.54
+   },
+   {
+    "after_line": [
+     4,
+     5
+    ],
+    "t_on": 78.83
+   },
+   {
+    "after_line": [
+     9,
+     4
+    ],
+    "t_on": 145.39
+   },
+   {
+    "after_line": [
+     9,
+     5
+    ],
+    "t_on": 147.99
+   }
+  ],
+  "finale": [
+   {
+    "text": "hej",
+    "t_on": 201.48,
+    "t_off": 202.3
+   },
+   {
+    "text": "HEJ",
+    "t_on": 209.78,
+    "t_off": 211.6
+   }
+  ],
+  "reprise": [
+   {
+    "text": "Pus",
+    "t_on": 208.23,
+    "t_off": 208.5
+   },
+   {
+    "text": "te",
+    "t_on": 208.53,
+    "t_off": 208.68
+   },
+   {
+    "text": "za",
+    "t_on": 208.69,
+    "t_off": 208.92
+   },
+   {
+    "text": "się",
+    "t_on": 208.94,
+    "t_off": 209.3
+   },
+   {
+    "text": "gi",
+    "t_on": 209.32,
+    "t_off": 209.7
+   }
+  ]
+ }
+}
