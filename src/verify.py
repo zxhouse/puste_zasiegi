@@ -59,5 +59,5 @@ KEY = {'intro_mowa': 5.0, 'kawa': 15.1, 'garnitur': 18.5, 'szczeka': 22.7, 'przy
        'robie_swoje': 158.7, 'fanfary': 162.7, 'prosty_wpis': 165.6, 'refren3': 169.0, 'cisza_razem': 179.0, 'dziekuje': 189.3, 'scrollowanie': 192.0,
        'final': 197.0, 'statystyki': 205.8, 'hej_koniec': 209.9, 'napisy': 214.0}
 for k, t in KEY.items():
-    run(['ffmpeg', '-v', 'error', '-y', '-ss', f'{t:.3f}', '-i', A.mp4, '-frames:v', '1', os.path.join(stills, f'{t:07.2f}_{k}.png')])
+    run(['ffmpeg', '-v', 'error', '-y', '-ss', f'{t:.3f}', '-i', A.mp4, '-frames:v', '1', '-q:v', '2', os.path.join(stills, f'{t:07.2f}_{k}.jpg')])
 print('sheets & stills written')

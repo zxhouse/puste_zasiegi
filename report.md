@@ -1,6 +1,7 @@
 # Raport: teledysk „Puste zasięgi” (Paweł Kuraś)
 
-> Szkic – sekcje z wynikami weryfikacji są uzupełniane po każdym renderze (patrz „Historia wersji”).
+> Stan: **wersja v2** (`final/music-video.mp4`). Poprzednia wersja: `archive/v1/`. Wyniki sprawdzeń poniżej dotyczą v2.
+> Nie słuchałem ani nie oglądałem filmu – wszystko niżej to pomiary liczbowe i obejrzane pojedyncze klatki / arkusze klatek.
 
 ## 1. Co powstało
 
@@ -112,3 +113,95 @@ podrygi pojawiają się w refrenach (reakcje na patykach w górę na „raz” t
   sklejenie bez rekompresji, końcowe kodowanie H.264 yuv420p (dwa przebiegi, 3200 kb/s – żeby plik zmieścił się w limicie
   100 MB na pojedynczy plik w GitHubie) + AAC 320 kb/s z całego MP3 (bez filtrów i cięć). Każda wersja renderowana z zamrożonej
   kopii kodu (`build/vN/src`).
+
+## 5. Jak sprawdziłem wersję v2
+Skrypty: `src/verify.py` (plik) i `src/verify_sync.py` (synchronizacja liczona z tych samych funkcji, z których renderowane są klatki).
+Wyniki: `checks/verify_file.json`, `checks/verify_sync.json`, `checks/sheets/` (arkusze co 4 s), `checks/stills/` (42 stopklatki z kluczowych momentów).
+
+**Plik** (`final/music-video.mp4`)
+* Pełne dekodowanie `ffmpeg -f null`: **0 błędów**.
+* Obraz: H.264 High, yuv420p, 1920×1080, 30/1 kl./s, **6482 klatki = oczekiwane 6482** (212,04 s piosenki + 4 s wyciemnienia i napisów), 216,067 s.
+* Dźwięk: AAC 48 kHz stereo, ~314 kb/s, 212,0 s; plik 94,87 MB (limit GitHuba na plik to 100 MB).
+* Metadane: tytuł „Puste zasięgi”, artist / author / composer „Paweł Kuraś”, komentarz „Teledysk: Paweł Kuraś”; ten sam autor w napisach końcowych.
+* **Przesunięcie dźwięku względem oryginalnego MP3: 0 próbek** w 8 miejscach (5, 30, 61, 100, 140, 170, 200, 210 s), korelacja 0,9996–0,9999.
+  Długość: MP4 ma 10 176 512 próbek, MP3 10 176 000 – na końcu jest 512 próbek ciszy z dopełnienia ramki AAC (początek się zgadza).
+  Stosunek sygnał/różnica 36,1 dB – to strata kodowania AAC, nie zmiana treści (bez filtrów, cięć i zmiany głośności).
+
+**Synchronizacja**
+* Usta Henia: **515 sylab wokalu → 515 otwarć szczęki**, każda sylaba ma własne otwarcie, 52/52 wersów dokładnie „sylaba = otwarcie”.
+  Usta otwarte w klatkach, w których wokal milczy: 3,6% takich klatek (końcówki zamykania i ~12 ms wyprzedzenia przed sylabą).
+  Korelacja otwarcia z obwiednią wokalu 0,57 – umiarkowana, bo usta celowo zamykają się między sylabami, a obwiednia nie spada do zera.
+* Chór: 263 otwarcia na 250 zdarzeń sylabowych stemu chórków, mediana odległości 37 ms, 92,8% w ±100 ms;
+  wtrącenie „(Wywalili na bruk!)”: **6 sylab → 6 otwarć**.
+* Akcenty ruchu (kiwnięcia, przysiady): 183 szczyty, **100% w ±1 klatce od prawdziwego uderzenia stopy/werbla** (mediana 8,8 ms).
+  Błyski świateł: 13, wszystkie w ±2 klatkach od werbla lub „hej” (mediana 13 ms).
+* Cięcia: **59/59 na początku wersu (lub zdania w kwestii mówionej) albo na „raz” taktu** (±70 ms). Ujęć bez ruchu kamery: 0.
+* Napisy: w 1893 sprawdzonych klatkach-napisach (co 2. klatka ujęć sceny) **największe nachodzenie napisu na postać: 0%**
+  (w kodzie sprzed poprawki opisanej w 7.2.3: 21% w 148,1 s).
+* Chór: w żadnym refrenie liczba lalek nie spada, tylko rośnie (do 8); w układzie grupowym 0 par nachodzących na siebie.
+
+**Obejrzane klatki**: oba arkusze (co 4 s, cały film) i stopklatki; dodatkowo pojedyncze klatki z gotowego pliku w 71,0 s („pod spodem”),
+100,8 s („Wywalili” na krawędzi sceny), 152,0 s i 155,5 s (bridge: napisy wersów na tekturze obok kartonu „Robię swoje.”).
+
+## 6. Niepewności i rzeczy do decyzji
+* **Granice słów**: dopasowanie bez modelu ASR dla polskiego. Liczba sylab i otwarć ust zgadza się co do jednej, ale czasy pojedynczych
+  sylab mogą odbiegać o kilkadziesiąt ms (dwie niezależne metody różniły się medianą 220 ms przed fuzją, 65 ms po niej; 19 z 516 sylab
+  interpolowanych). Najmniej pewne: szybkie fragmenty zwrotki 2 i finał chóralny (194–212 s), rozpisany ręcznie ze spektrogramu.
+* **Chórki**: otwarcia chóru idą za zdarzeniami wykrytymi w stemie chórków (263 otwarcia na 250 zdarzeń – kilka długich nut
+  rozbitych na dwa otwarcia); poza wtrąceniem „Wywalili na bruk!” nie mam dla chórków tekstu sylaba po sylabie.
+* **Kompresja**: wersja v2 jest kodowana do stałej przepływności 3200 kb/s, żeby zmieścić się w 100 MB na GitHubie. W scenach z ziarnem
+  i konfetti może to dać lekką „kaszę”; kawałki pośrednie (CRF 14, `build/v2/chunks`) są lepszej jakości i można z nich zrobić plik bez
+  limitu rozmiaru (`python3 src/assemble.py build/v2/chunks <plik> --crf 16`).
+* **Klon LinkedIna**: zgodnie z prośbą odtwarza wygląd serwisu 1:1 (układ, kolory, nazwa w tekście piosenki i na stronie). W stopce klonu
+  jest linijka „LinkedIn Corporation © 2026” jak w oryginale, obok dopisek, że to klon zrobiony na potrzeby teledysku, a w napisach
+  końcowych – „Lalki, scenografia i serwis w kadrze są fikcyjne”. Przed publikacją warto zdecydować, czy zostawić nazwę i stopkę.
+* **Interpretacje**: finał (wszyscy wracają na scenę, „Puste zasięgi! HEJ!” na neonie) i scena „pod spodem” (widok od strony lalkarzy)
+  to moje odczytanie tekstu, nie coś, co wynika z niego jednoznacznie.
+
+## 7. Historia wersji
+
+### 7.1 v1
+Pierwsza pełna wersja: 6482 klatki, 94,82 MB, kodowanie CRF. Plik i wynik sprawdzenia pliku: `archive/v1/` (opis w `archive/v1/NOTES.md`).
+Przejrzałem jej arkusze i stopklatki i na tej podstawie zrobiłem poprawki v2 poniżej.
+
+### 7.2 v2 – poprawki
+
+#### 7.2.1 Pusty napis wtrącenia chóru „(Wywalili na bruk!)”
+* Problem: w v1 w 99,6–102,9 s na krawędzi sceny była pusta, wąska tablica. Przyczyna: funkcja tekstu napisu wycinała wszystko w nawiasach
+  (żeby ukryć chórowe „(hej)” w wersach Henia), a ten wers jest cały w nawiasie.
+* Poprawka (`signs.py`): jeśli po wycięciu nawiasów nic nie zostaje, napis pokazuje tekst z nawiasu.
+* Sprawdzenie: klatka 100,8 s z pliku v2 – „Wywalili”, klatka 102,2 s – „Wywalili na bruk!”.
+
+#### 7.2.2 Usta chóru we wtrąceniu: 8 otwarć na 6 sylab
+* Problem: usta chóru szły za surowymi zdarzeniami stemu chórków, a w tym wersie detektor znalazł ich więcej niż sylab.
+* Poprawka (`engine.py`): dla wersów śpiewanych tylko przez chór otwarcia biorą się z sylab dopasowanego tekstu.
+* Sprawdzenie: otwarcia w 99,93 / 100,27 / 100,80 / 101,00 / 101,67 / 101,90 s = Wy-wa-li-li-na-bruk (6/6).
+
+#### 7.2.3 Napisy wjeżdżały jeszcze w poprzednim ujęciu
+* Problem: tablica pojawiała się 0,4 s przed pierwszym słowem. Cięcia są na początkach wersów, więc w 46 z 48 napisów na scenie tablica / neon
+  pojawiały się pod koniec poprzedniego ujęcia; w 148,1–148,85 s pusty dymek bridge'u zasłaniał głowę lalki z chóru (21% powierzchni napisu).
+* Poprawka (`signs.py`, `timeline.py`): jeśli wers zaczyna się na cięciu (cięcie do 0,75 s przed pierwszym słowem), tablica po prostu
+  wisi już w nowym ujęciu od pierwszej klatki – bez wjazdu w poprzednim.
+* Sprawdzenie: klatki 14,10 / 14,20 / 148,6 / 148,9 s; w teście napisów nachodzenie spadło z 21% do 0%.
+
+#### 7.2.4 Jedno otwarcie = jedna sylaba także przy szybkim śpiewie
+* Problem: w v1 otwarcie ust liczone było w czasie ciągłym; przy ~13 sylabach/s dwie krótkie sylaby mogły wypaść w tej samej klatce
+  albo bez klatki zamknięcia między nimi.
+* Poprawka (`engine.py`): usta liczone na siatce klatek – każda sylaba ma ≥ 1 klatkę otwarcia, między sylabami ≥ 1 klatkę zamknięcia.
+* Sprawdzenie: 515/515 sylab z własnym otwarciem, 52/52 wersów dokładnie.
+
+#### 7.2.5 Scena „A pod spodem cisza”
+* Problem: w v1 (klatka 71,5 s) widać było tylko czarne, nieczytelne sylwetki rąk na tle sklejki, bez lalek.
+* Poprawka (`under.py`, kamera w `timeline.py`): widok zza krawędzi sceny – nad krawędzią plecy lalek w ciepłym świetle show,
+  pod nią lalkarze w czerni z prętami, zimne światło robocze, wers kredą na sklejce.
+* Sprawdzenie: klatka 71,0 s z pliku v2 i arkusz (1:08).
+
+#### 7.2.6 Repryza: lalki wychylały się przed cięciem
+* Problem: wejścia na repryzę zaczynały się 0,2–0,25 s przed jej początkiem, czyli jeszcze w poprzednim ujęciu.
+* Poprawka (`timeline.py`): wejścia startują 0,35–0,4 s po „raz” taktu, od którego zaczyna się ujęcie repryzy.
+
+#### 7.2.7 Drobne
+* Napis „Puste zasięgi” na froncie sceny niżej i mniejszy (zasłaniał dłonie lalek w planach ogólnych).
+* Wyciemnienie obrazu od 210,6 s przed napisami końcowymi.
+* Ziarno zmienia się co 2 klatki i jest słabsze (0,12 zamiast 0,16) – spokojniejsze i lepiej znosi kompresję.
+* Kodowanie dwuprzebiegowe 3200 kb/s – plik mieści się w limicie 100 MB na GitHubie.
