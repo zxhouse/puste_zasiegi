@@ -178,19 +178,26 @@ Wyniki: `checks/verify_file.json`, `checks/verify_sync.json`, `checks/sheets/` (
 100,8 s („Wywalili” na krawędzi sceny), 152,0 s i 155,5 s (bridge: napisy wersów na tekturze obok kartonu „Robię swoje.”).
 
 ## 6. Niepewności i rzeczy do decyzji
-* **Granice słów**: dopasowanie bez modelu ASR dla polskiego. Liczba sylab i otwarć ust zgadza się co do jednej, ale czasy pojedynczych
-  sylab mogą odbiegać o kilkadziesiąt ms (dwie niezależne metody różniły się medianą 220 ms przed fuzją, 65 ms po niej; 19 z 516 sylab
-  interpolowanych). Najmniej pewne: szybkie fragmenty zwrotki 2 i finał chóralny (194–212 s), rozpisany ręcznie ze spektrogramu.
-* **Chórki**: otwarcia chóru idą za zdarzeniami wykrytymi w stemie chórków (263 otwarcia na 250 zdarzeń – kilka długich nut
-  rozbitych na dwa otwarcia); poza wtrąceniem „Wywalili na bruk!” nie mam dla chórków tekstu sylaba po sylabie.
-* **Kompresja**: wersja v2 jest kodowana do stałej przepływności 3200 kb/s, żeby zmieścić się w 100 MB na GitHubie. W scenach z ziarnem
-  i konfetti może to dać lekką „kaszę”; kawałki pośrednie (CRF 14, `build/v2/chunks`) są lepszej jakości i można z nich zrobić plik bez
-  limitu rozmiaru (`python3 src/assemble.py build/v2/chunks <plik> --crf 16`).
-* **Klon LinkedIna**: zgodnie z prośbą odtwarza wygląd serwisu 1:1 (układ, kolory, nazwa w tekście piosenki i na stronie). W stopce klonu
-  jest linijka „LinkedIn Corporation © 2026” jak w oryginale, obok dopisek, że to klon zrobiony na potrzeby teledysku, a w napisach
-  końcowych – „Lalki, scenografia i serwis w kadrze są fikcyjne”. Przed publikacją warto zdecydować, czy zostawić nazwę i stopkę.
-* **Interpretacje**: finał (wszyscy wracają na scenę, „Puste zasięgi! HEJ!” na neonie) i scena „pod spodem” (widok od strony lalkarzy)
-  to moje odczytanie tekstu, nie coś, co wynika z niego jednoznacznie.
+* **Granice sylab**: czasy słów potwierdzają cztery niezależne metody (2.4), ale granice pojedynczych sylab w szybkich frazach
+  i trzymanych nutach pochodzą z jednego narzędzia (MFA, model mowy, nie śpiewu) – możliwe błędy rzędu kilkudziesięciu ms.
+  Trzy słowa (angielskie „case”, „cringe” i „Że” w 55,9 s) nie zostały pewnie rozpoznane przez żaden model; ich pozycja pochodzi
+  z wymuszonego dopasowania.
+* **Podział Henio / chór** wynika ze stemów; tam, gdzie chór dubluje Henia cicho, mógł zostać pominięty (chór rusza wtedy ustami
+  tylko na wyraźnie słyszalnych słowach).
+* **Tekst a nagranie**: w refrenie 1 (wers 6) śpiewane jest „Puste zasięgi”, a nie „Wielkie zasięgi” – napis pokazuje wersję
+  śpiewaną; „hej” z tekstu w refrenach 1–2 nie ma w nagraniu, więc nie ma go też w obrazie (napis i okrzyki tylko w refrenie 3 i finale).
+  Jeśli ma być zgodnie z kartką tekstu – to jedna zmiana w danych.
+* **Modele mowy pobrane z mniej oczywistych źródeł**: Whisper small z rejestru npm (paczka osoby trzeciej; suma SHA-256 zgodna z jej
+  własną deklaracją, transkrypcja sensowna) – użyty tylko do kontroli, nie do czasów w filmie. Omnilingual, Parakeet i MFA pochodzą
+  z oficjalnych wydań projektów.
+* **Napisy**: w kilku ciasnych kadrach napis jest mały albo ma ~80–90% widoczności na brzegu kadru w ostatnich chwilach wersu
+  (lista w `checks/verify_sync.json`, pole `signs.placement`).
+* **Kompresja**: 3200 kb/s, żeby zmieścić się w 100 MB na GitHubie. Głębia ostrości i ziarno lepiej wyglądałyby w wyższej
+  przepływności – kawałki CRF 14 są w `build/v3/chunks` (`python3 src/assemble.py build/v3/chunks <plik> --crf 16`).
+* **Klon LinkedIna**: zgodnie z prośbą odtwarza wygląd serwisu 1:1, w stopce jest linijka „LinkedIn Corporation © 2026” jak
+  w oryginale (obok dopisek, że to klon; w napisach końcowych „serwis w kadrze jest fikcyjny”). Przed publikacją warto zdecydować,
+  czy zostawić nazwę i stopkę.
+* **Interpretacje**: finał (wszyscy wracają na scenę) i scena „pod spodem” (widok od strony lalkarzy) to moje odczytanie tekstu.
 
 ## 7. Historia wersji
 
