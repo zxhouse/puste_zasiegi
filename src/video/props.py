@@ -103,26 +103,15 @@ def flash_bulb(cv, a):
     if a > 0.01: light_pool(cv, 0, 0, 500, 400, (1, 1, 1), 0.9*a)
 
 def reaction_paddle(cv, kind, size=1.0):
+    """Reakcja z serwisu na patyku: tekturowy krążek z białym rantem, na nim ta sama ikona co w klonie (reactions.py)."""
+    import reactions as RX
     _stick(cv, 8*size, -GRIP*size); cv.translate(0, -GRIP*size)
-    c = {'like': '#378fe9', 'clap': '#44712e', 'heart': '#df704d', 'idea': '#f5bb5c', 'laugh': '#1a9ea8', 'support': '#a872e8'}[kind]
-    cv.drawCircle(0, -48*size, 50*size, skia.Paint(AntiAlias=True, Color4f=col(c)))
-    cv.drawCircle(0, -48*size, 50*size, skia.Paint(AntiAlias=True, Style=skia.Paint.kStroke_Style, StrokeWidth=5*size, Color4f=col('#ffffff')))
-    w = skia.Paint(AntiAlias=True, Color4f=col('#ffffff'))
-    cv.save(); cv.translate(0, -48*size); cv.scale(size, size)
-    if kind == 'like':
-        cv.drawRRect(skia.RRect.MakeRectXY(skia.Rect(-22, -6, 16, 26), 6, 6), w); cv.drawRRect(skia.RRect.MakeRectXY(skia.Rect(-10, -30, 4, 0), 6, 6), w)
-        cv.drawRect(skia.Rect(-30, -4, -24, 26), w)
-    elif kind == 'heart':
-        cv.drawPath(poly_path([(0, 26), (-28, -2), (-24, -20), (-10, -24), (0, -12), (10, -24), (24, -20), (28, -2)], True, True), w)
-    elif kind == 'clap':
-        for sg in (-1, 1): cv.drawRRect(skia.RRect.MakeRectXY(skia.Rect(sg*4 - 12, -24, sg*4 + 12, 24), 10, 10), w)
-    elif kind == 'idea':
-        cv.drawCircle(0, -6, 18, w); cv.drawRect(skia.Rect(-8, 10, 8, 24), w)
-    elif kind == 'laugh':
-        cv.drawArc(skia.Rect(-22, -16, 22, 22), 0, 180, True, w); cv.drawCircle(-10, -10, 4, w); cv.drawCircle(10, -10, 4, w)
-    else:
-        cv.drawCircle(-8, -4, 12, w); cv.drawCircle(8, -4, 12, w)
-    cv.restore()
+    cy = -48*size
+    sh = skia.Paint(AntiAlias=True, Color4f=skia.Color4f(0, 0, 0, 0.25)); sh.setMaskFilter(skia.MaskFilter.MakeBlur(skia.kNormal_BlurStyle, 4*size))
+    cv.drawCircle(3*size, cy + 4*size, 54*size, sh)
+    cv.drawCircle(0, cy, 54*size, skia.Paint(AntiAlias=True, Color4f=col('#f7f4ee')))
+    RX.draw(cv, kind, 0, cy, 49*size)
+    cv.drawCircle(0, cy, 54*size, skia.Paint(AntiAlias=True, Style=skia.Paint.kStroke_Style, StrokeWidth=2*size, Color4f=col('#cfc8bb')))
 
 def balloon_heart(cv, popped=0.0, t=0.0):
     cv.drawLine(0, 0, 0, 260, skia.Paint(AntiAlias=True, StrokeWidth=3, Color4f=col('#888888')))

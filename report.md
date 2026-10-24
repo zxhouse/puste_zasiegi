@@ -412,3 +412,12 @@ Przejrzałem jej arkusze i stopklatki i na tej podstawie zrobiłem poprawki v2 p
   sylaba z dwóch źródeł (końcowe „HEJ” chóru) łączona w jedną.
 * Sprawdzenie: test „trzymane nuty” w `src/verify_sync.py` – Henio: średnio 85,5% → 95,4% czasu dźwięku z otwartymi ustami
   (przed poprawką liczone na tych samych danych), chór 96,9% → 98,5%; wynik na pliku – sekcja 5.
+
+#### 7.4.11 Reakcje jak w serwisie
+* Uwaga (w trakcie renderu v4): reakcje (łapka, serduszko…) mają wyglądać jak w serwisie – i na patykach lalek, i w klonie.
+* Przyczyna: w klonie były to kolorowe kółka z białym prostokątem/rombem, na patykach – uproszczone białe kształty.
+* Poprawka (`src/video/reactions.py`): jeden zestaw sześciu ikon SVG narysowanych od nowa na wzór reakcji serwisu – Lubię to
+  (niebieskie koło, łapka z mankietem), Gratulacje (zielone, klaszczące dłonie), Wsparcie (fioletowe, dłoń z sercem), Uwielbiam
+  (koralowe, serce), Wnikliwe (żółte, żarówka), Zabawne (turkusowe, roześmiana buzia). Te same pliki są w klonie
+  (`linkedin_clone/assets/r_*.svg`, liczniki reakcji pod wpisami) i na tekturowych krążkach, które trzyma chór.
+* Sprawdzenie: zrzut klonu (liczniki pod wpisem Henia) i klatka 64,5 s (chór z reakcjami).
