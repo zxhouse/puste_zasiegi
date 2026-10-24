@@ -54,8 +54,8 @@ run(['ffmpeg', '-v', 'error', '-y', '-i', A.mp4, '-vf', "fps=1/4,scale=384:-1,dr
 stills = os.path.join(OUT, 'stills'); os.makedirs(stills, exist_ok=True)
 KEY = {'intro_mowa': 5.0, 'kawa': 15.1, 'garnitur': 18.5, 'szczeka': 22.7, 'przyjemnosc': 23.9, 'feed_tak_tak': 28.6, 'awans': 34.2, 'strategiczny_gest': 38.2,
        'konferencja_flesz': 40.0, 'szacun': 44.5, 'usmiech_wyuczony': 51.2, 'wielki_gest': 58.4, 'refren1': 61.0, 'peka': 65.9, 'pod_spodem': 71.5, 'hej': 75.5,
-       'feed_grazyna': 81.5, 'cringe': 85.9, 'piec_scenek': 88.0, 'nowa_droga': 91.0, 'bruk': 96.8, 'wywalili': 100.8, 'case_study': 104.4, 'trzy_opinie': 108.3,
-       'swiety': 113.5, 'studio_w_drewnie': 120.4, 'refren2': 129.5, 'maski_pekaja': 135.0, 'analityka': 137.0, 'brak_komentarzy': 140.0, 'bridge_szczerze': 149.5,
+       'feed_grazyna': 81.5, 'cringe': 85.9, 'piec_scenek': 88.0, 'nowa_droga': 91.0, 'bruk': 96.8, 'wywalili': 97.9, 'case_study': 101.2, 'trzy_opinie': 104.5,
+       'swiety': 110.5, 'studio_w_drewnie': 117.7, 'refren2': 129.5, 'maski_pekaja': 135.0, 'analityka': 137.0, 'brak_komentarzy': 140.0, 'bridge_szczerze': 149.5,
        'robie_swoje': 158.7, 'fanfary': 162.7, 'prosty_wpis': 165.6, 'refren3': 169.0, 'cisza_razem': 179.0, 'dziekuje': 189.3, 'scrollowanie': 192.0,
        'final': 197.0, 'statystyki': 205.8, 'hej_koniec': 209.9, 'napisy': 214.0}
 for k, t in KEY.items():

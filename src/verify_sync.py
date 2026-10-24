@@ -99,7 +99,7 @@ R['cuts'] = dict(n=len(cuts), on_line_or_downbeat=sum(c['ok'] for c in cuts), li
 still = []
 for s in T.SHOTS:
     if s[2] not in ('stage', 'under'): continue
-    c0, c1 = s[3][0][1], s[3][-1][1]
+    c0, c1 = T.cam_at(s[0] + 0.02, s), T.cam_at(s[1] - 0.02, s)
     mv = abs(c1.x - c0.x) + abs(c1.y - c0.y) + abs(c1.d - c0.d) + 100*abs(c1.roll - c0.roll)
     if mv < 40: still.append(round(s[0], 2))
 R['camera_static_shots'] = still

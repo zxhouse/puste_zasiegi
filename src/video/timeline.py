@@ -628,7 +628,7 @@ SHOTS = [
     (lt(V1, 4), bar_at_or_before(30.41), 'feed', dict(kind='henio_post')),
     # biuro
     (bar_at_or_before(30.41), lt(V1B, 0), 'stage', [(0, C_(-300, -400, 2300)), (1, C_(150, -390, 1900))]),
-    (lt(V1B, 0), lt(V1B, 1), 'stage', [(0, F('MS', 'H', dy=-0.16)), (1, F('MS', 'H', dy=-0.10))]),
+    (lt(V1B, 0), lt(V1B, 1), 'stage', [(0, F('MLS', 'H', dy=-0.16, dx=0.06)), (1, F('MS', 'H', dy=-0.12, dx=-0.04))]),
     (lt(V1B, 1), lt(V1B, 2), 'stage', [(0, F('LS', ['Cm', 'H'], w=1.1, dx=0.04)), (1, F('MLS', ['Cm', 'H'], w=1.05, dx=-0.04))]),
     # konferencja: ścianka, flesze
     (lt(V1B, 2), lt(V1B, 3), 'stage', [(0, F('MLS', ['G', 'P'], w=1.5)), (1, F('MS', ['G', 'P'], w=1.3))]),
@@ -671,7 +671,7 @@ SHOTS = [
     (lt(CH2, 5), lt(BR, 0), 'stage', [(0, F('MS', 'H', dx=-0.12)), (1, F('MLS', 'H', dy=-0.05))]),
     # bridge: wyciszenie, przed kurtyną, jeden reflektor
     (lt(BR, 0), lt(BR, 1), 'stage', [(0, F('MCU', 'H')), (1, F('CU', 'H'))]),
-    (lt(BR, 1), lt(BR, 2), 'stage', [(0, F('MS', 'H', dx=-0.30)), (1, F('MS', 'H', dx=-0.33))]),
+    (lt(BR, 1), lt(BR, 2), 'stage', [(0, F('MLS', 'H', dx=-0.26)), (1, F('MS', 'H', dx=-0.34))]),
     (lt(BR, 2), lt(BR, 3), 'stage', [(0, F('MLS', 'H', dy=-0.25)), (1, F('MLS', 'H', dy=-0.10))]),
     (lt(BR, 3), lt(BR, 4), 'stage', [(0, F('MLS', 'H', dx=-0.24, dy=-0.12)), (1, F('MLS', 'H', dx=-0.26, dy=-0.10))]),
     (lt(BR, 4), le(BR, 4) + 0.05, 'stage', [(0, F('MS', 'H', dx=-0.22)), (1, F('MS', 'H', dx=-0.18))]),
@@ -679,7 +679,7 @@ SHOTS = [
     # refren 3: majestatyczny
     (lt(CH3, 0), lt(CH3, 1), 'stage', [(0, C_(0, -580, 3800)), (1, C_(0, -470, 2900))]),
     (lt(CH3, 1), lt(CH3, 2), 'stage', [(0, F('LS', ['K', 'G', 'T', 'H'], w=1.12)), (1, F('LS', ['H', 'M', 'P'], w=1.2))]),
-    (lt(CH3, 2), lt(CH3, 3), 'stage', [(0, F('MLS', ['T', 'H'], w=1.3)), (1, F('MLS', ['T', 'H'], w=1.2))]),
+    (lt(CH3, 2), lt(CH3, 3), 'stage', [(0, F('LS', ['T', 'H'], w=1.3, dx=0.06)), (1, F('LS', ['T', 'H'], w=1.22, dx=-0.06))]),
     (lt(CH3, 3), lt(CH3, 4), 'stage', [(0, F('LS', ['H', 'C'], w=1.06)), (1, F('LS', ['H', 'C'], w=1.02))]),
     (lt(CH3, 4), lt(CH3, 5), 'stage', [(0, F('WS', ['H', 'C', 'G', 'P', 'K', 'M', 'T'], w=1.05)), (1, F('LS', ['H', 'C', 'G', 'P', 'K', 'M', 'T'], w=1.02))]),
     (lt(CH3, 5), lt(OUT, 0), 'stage', [(0, F('LS', ['H', 'T', 'M'], w=1.3)), (0.5, F('LS', ['H', 'T', 'M', 'G', 'P'], w=1.15)), (1, C_(0, -660, 3050))]),
@@ -924,10 +924,14 @@ def _layout_signs():
         # ...i znika, gdy zaczyna się następny wers (zachodzące wersy refrenu), ale nie wcześniej niż 0,6 s po ostatnim słowie
         nxt0 = min([M['t0'] for kk, M in LINES.items() if M['t0'] > L['t0'] + 0.3 and kk not in FEED_LINES and kk not in UNDER_LINES] + [1e9])
         t_out = min(t_out, max(nxt0 + 0.1, L['words'][-1]['t0'] + 0.6))
+        # cięcie na początku następnego wersu kończy napis (nie przechodzi do nowego ujęcia)
+        bnd = [s_[0] for s_ in SHOTS if L['t0'] + 0.3 < s_[0] <= t_out and s_[0] >= nxt0 - 0.05]
+        if bnd: t_out = min(bnd)
         # ...i nie pojawia się w ujęciu przed cięciem, jeśli pierwsze słowo pada dopiero po cięciu
         cin = [s[0] for s in SHOTS if L['t0'] - 0.75 < s[0] <= L['t0'] + 0.05]
         cut_in = max(cin) if cin else None
-        ts = np.unique(np.r_[np.linspace(L['t0'], t_out - 0.02, 9), [s[0] + 0.02 for s in SHOTS if L['t0'] < s[0] < t_out - 0.05]])
+        t_first = cut_in + 0.02 if cut_in is not None else L['t0'] - 0.3
+        ts = np.unique(np.r_[np.arange(t_first, t_out - 0.02, 0.2), [t_out - 0.03], [s[0] + 0.02 for s in SHOTS if t_first < s[0] < t_out - 0.05]])
         _OTHER[0] = [sg for sg in SIGNS if sg.t1 > L['t0'] - 0.4 and sg.kind != 'marquee']
         best = None
         for kind, x, y, d, size, kw in _candidates(key, (L['t0'] + L['t1'])/2):
