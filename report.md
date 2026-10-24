@@ -107,7 +107,8 @@ podrygi pojawiają się w refrenach (reakcje na patykach w górę na „raz” t
   (`linkedin.py`) składane z: przewijaniem, „kamerą” na ekranie przeglądarki, filmem ze sceny na żywo w ramce posta (wjazd w kadr filmu
   kończy się dokładnie na pierwszej klatce następnego ujęcia), licznikami rosnącymi klatka po klatce i pisaniem słowo po słowie.
 * **„Ludzki” wygląd** (`post.py`): halacja (jasne partie rozmyte i dodane ciepłym tonem), lekka miękkość, ziarno (12 klatek szumu
-  wybieranych i przesuwanych deterministycznie od numeru klatki), winieta; w przebitkach obróbka słabsza i narasta przy wjeździe w film.
+  wybieranych i przesuwanych deterministycznie od numeru klatki, zmiana co 2 klatki), winieta; w przebitkach obróbka słabsza i narasta przy wjeździe w film.
 * **Render** (`src/render_all.py`, `src/assemble.py`): kawałki po 300 klatek, 4 procesy równolegle, każdy kawałek kodowany x264 CRF 14,
-  sklejenie bez rekompresji, końcowe kodowanie H.264 yuv420p + AAC z całego MP3 (bez filtrów i cięć). Każda wersja renderowana
-  z zamrożonej kopii kodu (`build/vN/src`).
+  sklejenie bez rekompresji, końcowe kodowanie H.264 yuv420p (dwa przebiegi, 3200 kb/s – żeby plik zmieścił się w limicie
+  100 MB na pojedynczy plik w GitHubie) + AAC 320 kb/s z całego MP3 (bez filtrów i cięć). Każda wersja renderowana z zamrożonej
+  kopii kodu (`build/vN/src`).
