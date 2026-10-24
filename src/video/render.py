@@ -25,7 +25,7 @@ def render_frame(i, surf=None):
     if sc['mode'] == 'feed':
         # przebitka: im bliżej pełnego kadru filmu, tym bardziej 'filmowa' obróbka (płynne przejście do sceny)
         k = LI.film_amount(t, sc)
-        post.apply(surf, i, halation=0.12 + 0.63*k, grain=0.45 + 0.55*k, soft=0.2 + 0.35*k, vignette=0.35 + 0.65*k)
+        post.apply(surf, i, halation=0.12 + 0.48*k, grain=0.45 + 0.55*k, soft=0.2 + 0.2*k, vignette=0.35 + 0.65*k, grade=k)
     elif sc['mode'] == 'credits':
         post.apply(surf, i, halation=0.5, grain=0.7)
     else:

@@ -8,56 +8,61 @@ ROOT = E.ROOT; OUT = os.path.join(ROOT, 'checks'); os.makedirs(OUT, exist_ok=Tru
 FPS = E.FPS; N = int(E.SONG_DUR*FPS)
 ts = np.arange(N)/FPS
 R = {}
-# ---------------------------------------------------------------- usta Henia: jedno otwarcie na sylabę
+# ---------------------------------------------------------------- usta: jedno otwarcie (szczyt) na sylabę
+def peaks(m, lo=0.15, dip=0.6):
+    """Szczyty otwarcia ust: maksima > lo; dwa sąsiednie liczą się osobno, jeśli między nimi szczęka przymyka się
+    co najmniej do dip x mniejszego z nich (półotwarcia nie muszą zamykać się do zera)."""
+    pk = [i for i in range(1, len(m) - 1) if m[i] > lo and m[i] >= m[i-1] and m[i] > m[i+1]]
+    out = []
+    for i in pk:
+        if out and min(m[out[-1]:i + 1]) > dip*min(m[out[-1]], m[i]):
+            if m[i] > m[out[-1]]: out[-1] = i
+        else: out.append(i)
+    return out
+def mouth_check(curve, singer):
+    pk = peaks(curve); pk_t = np.array(pk)/FPS
+    lines = []; tot_s = tot_h = 0
+    for L in E.AL['lines'] + E.AL.get('repeats', []):
+        syl = []
+        for w in L['words']:
+            if singer in w['singers']: syl += (w.get('syl_choir') if singer == 'choir' and 'syl_choir' in w else w['syl'])
+        if not syl: continue
+        a, b = syl[0]['t_on'] - 0.05, syl[-1]['t_off'] + 0.05
+        n_open = int(np.sum((pk_t >= a) & (pk_t <= b)))
+        hit = sum(bool(np.any((pk_t >= s['t_on'] - 0.06) & (pk_t <= max(s['t_off'], s['t_on'] + 0.1)))) for s in syl)
+        lines.append(dict(t0=round(L['t0'], 2), text=L['text'][:60], syllables=len(syl), openings=n_open, syllables_with_opening=hit))
+        tot_s += len(syl); tot_h += hit
+    return pk, lines, tot_s, tot_h
 mouth = np.array([E.lead_mouth(t) for t in ts])
-def openings(m, hi=0.22, lo=0.12):
-    """Liczba otwarć: przejścia powyżej hi po wcześniejszym zejściu poniżej lo (histereza)."""
-    st = 'closed'; idx = []
-    for i, v in enumerate(m):
-        if st == 'closed' and v > hi: st = 'open'; idx.append(i)
-        elif st == 'open' and v < lo: st = 'closed'
-    return idx
-op = openings(mouth)
-lines = []
-for L in E.AL['lines']:
-    if L['singer'] != 'lead': continue
-    syl = [s for w in L['words'] for s in w['syl']]
-    # okno wersu: od klatki startu pierwszej sylaby do klatki przed startem pierwszej sylaby następnego wersu
-    nxt_on = min([s['t_on'] for M in E.AL['lines'] if M['singer'] == 'lead' for w in M['words'] for s in w['syl'] if s['t_on'] > syl[-1]['t_on'] + 1e-3] + [1e9])
-    a = int(math.ceil((syl[0]['t_on'] - 0.0125)*FPS - 1e-6))
-    b = min(int(math.ceil((nxt_on - 0.0125)*FPS - 1e-6)) - 1, int(math.floor((max(s['t_off'] for s in syl) + 0.2)*FPS)))
-    n_open = sum(a <= i <= b for i in op)
-    # dla każdej sylaby: czy w jej oknie [t_on-0.05, t_off] jest początek otwarcia (z dokładnością do klatki)
-    hit = 0
-    for s in syl:
-        i0, i1 = int((s['t_on'] - 0.06)*FPS), int(min(s['t_off'], s['t_on'] + 0.35)*FPS) + 1
-        if any(i0 <= i <= i1 for i in op): hit += 1
-    lines.append(dict(t0=round(L['t0'], 2), text=L['text'][:60], syllables=len(syl), openings=n_open, syllables_with_opening=hit))
-tot_s = sum(l['syllables'] for l in lines); tot_o = sum(l['openings'] for l in lines); tot_h = sum(l['syllables_with_opening'] for l in lines)
-R['lead_mouth'] = dict(total_syllables=tot_s, total_openings=tot_o, syllables_with_own_opening=tot_h, ratio_openings_per_syllable=round(tot_o/tot_s, 3),
+pk, lines, tot_s, tot_h = mouth_check(mouth, 'lead')
+lv = np.array([E.vocal_level(t, 'lead') for t in ts]); act = lv > 0.15
+R['lead_mouth'] = dict(total_syllables=tot_s, syllables_with_own_opening=tot_h, total_openings_in_lines=sum(l['openings'] for l in lines),
                        lines_exact=sum(l['syllables'] == l['openings'] for l in lines), lines_total=len(lines),
-                       worst_lines=sorted(lines, key=lambda l: -abs(l['syllables'] - l['openings']))[:8])
-# usta vs obwiednia wokalu (korelacja na ramkach 10 ms -> klatki)
-lv = np.array([E.vocal_level(t, 'lead') for t in ts])
-act = lv > 0.15
-R['lead_mouth']['corr_mouth_vs_vocal_envelope'] = round(float(np.corrcoef(mouth, lv)[0, 1]), 3)
-R['lead_mouth']['mouth_open_when_vocal_silent_pct'] = round(float(np.mean(mouth[~act] > 0.2)*100), 2)
-R['lead_mouth']['vocal_active_frames_with_mouth_open_pct'] = round(float(np.mean(mouth[act] > 0.12)*100), 2)
-# chór: otwarcia vs zdarzenia sylabowe stemu chórków
-cm = np.array([E.choir_mouth(t, 0) for t in ts]); co = openings(cm, 0.2, 0.1)
-bev = E.BACK_EV[:, 0]
-d = [min(abs(i/FPS - bev)) for i in co]
-R['choir_mouth'] = dict(openings=len(co), backing_events=len(bev), median_dist_to_event_ms=round(float(np.median(d))*1000, 1),
-                        pct_within_100ms=round(float(np.mean(np.array(d) < 0.1)*100), 1))
-# wersy śpiewane tylko przez chór: otwarcia ust chóru vs sylaby z wyrównania
-R['choir_mouth']['choir_lines'] = []
-for L in E.AL['lines']:
-    if L['singer'] != 'choir': continue
-    syl = [s for w in L['words'] for s in w['syl']]
-    a = int(math.ceil((syl[0]['t_on'] - 0.0125)*FPS - 1e-6)); b = int(math.floor((syl[-1]['t_off'])*FPS))
-    hit = sum(any(int((s['t_on'] - 0.06)*FPS) <= i <= int(s['t_off']*FPS) + 1 for i in co) for s in syl)
-    R['choir_mouth']['choir_lines'].append(dict(t0=round(L['t0'], 2), text=L['text'], syllables=len(syl),
-                                                openings=sum(a <= i <= b for i in co), syllables_with_opening=hit))
+                       half_openings_pct=round(float(np.mean([mouth[i] < 0.7 for i in pk])*100), 1),
+                       worst_lines=sorted(lines, key=lambda l: -abs(l['syllables'] - l['openings']))[:8],
+                       corr_mouth_vs_vocal_envelope=round(float(np.corrcoef(mouth, lv)[0, 1]), 3),
+                       mouth_open_when_vocal_silent_pct=round(float(np.mean(mouth[~act] > 0.2)*100), 2))
+cm = np.array([E.choir_mouth(t, 0)/0.88 for t in ts])
+cpk, clines, cs, ch_ = mouth_check(cm, 'choir')
+R['choir_mouth'] = dict(lyric_syllables=cs, syllables_with_own_opening=ch_, lines=clines,
+                        wordless_segments=len(E.AL['choir']['wordless']), hej=[h['t_on'] for h in E.AL['choir']['hej']])
+# początki słów tam, gdzie gra stem wokalu (poziom w [t, t+150 ms] w górnych 20 dB stemu)
+def stem_db(name):
+    import soundfile as sf, librosa
+    x, sr = sf.read(os.path.join(ROOT, 'build/wav', name), always_2d=True); x = x.mean(1)
+    hop = int(0.01*sr); r = librosa.feature.rms(y=x, frame_length=4*hop, hop_length=hop)[0]
+    return 20*np.log10(r + 1e-9)
+for singer, stem in (('lead', '0_lead_vocals.wav'), ('choir', '1_backing_vocals.wav')):
+    e = stem_db(stem); ok = n = 0; bad = []
+    for L in E.AL['lines'] + E.AL.get('repeats', []):
+        for w in L['words']:
+            if singer not in w['singers'] or not w['syl']: continue
+            t0 = (w.get('syl_choir') if singer == 'choir' and 'syl_choir' in w else w['syl'])[0]['t_on']
+            seg = e[int(t0*100):int(t0*100) + 15]; n += 1
+            if len(seg) and seg.max() > e.max() - 20: ok += 1
+            else: bad.append((w['w'], round(t0, 2)))
+    R.setdefault('word_starts_in_vocal', {})[singer] = dict(words=n, inside_pct=round(100*ok/max(n, 1), 1), outside=bad[:12])
+R['alignment_crosscheck'] = json.load(open(os.path.join(ROOT, 'analysis/alignment_crosscheck.json')))
 # ---------------------------------------------------------------- akcenty ruchu vs prawdziwe uderzenia
 acc = np.array([E.kick(t, decay=0.14) + E.snare(t, decay=0.12) for t in ts])
 pk = [i for i in range(1, N - 1) if acc[i] > 0.35 and acc[i] >= acc[i-1] and acc[i] > acc[i+1]]
@@ -99,21 +104,23 @@ for s in T.SHOTS:
     if mv < 40: still.append(round(s[0], 2))
 R['camera_static_shots'] = still
 # ---------------------------------------------------------------- napisy: nie zasłaniają postaci (co 2 klatki)
-worst = 0.0; worst_at = None; checked = 0
+worst = 0.0; worst_at = None; checked = 0; vis_min = 1.0; vis_at = None
 for i in range(0, N, 2):
     t = i/FPS; s = T.shot_at(t)
     if s[2] != 'stage': continue
     cam = T.cam_at(t, s); acts = T.actors_at(t)
     for sg in T.SIGNS:
-        if not sg.active(t) or sg.kind == 'marquee': continue
+        if not sg.active(t) or sg.kind == 'marquee' or t < (sg.cut_in if sg.cut_in is not None else sg.t0 - 0.05): continue
         r = T.project_rect(cam, sg.rect(), sg.depth); checked += 1
+        v = T.inter(r, T.FRAME)/max(T.area(r), 1)
+        if v < vis_min: vis_min, vis_at = v, (round(t, 2), sg.key)
         for a in acts:
-            # tylko postaci przed napisem mogłyby być zasłonięte, gdy napis jest bliżej kamery
-            if a.depth <= sg.depth and sg.kind not in ('playboard',): continue
-            ar = T.project_rect(cam, T.actor_rect(a), a.depth)
-            o = T.inter(r, ar)/max(T.area(r), 1)
-            if o > worst: worst, worst_at = o, (round(t, 2), sg.key, a.name)
-R['signs'] = dict(sign_frames_checked=checked, max_overlap_fraction_with_character_in_front=round(worst, 4), at=worst_at,
+            if sg.kind in ('playboard', 'riser') and a.depth > sg.depth: continue     # lalka za panelem z napisem
+            for rr in T.actor_rects(a):
+                o = T.inter(r, T.project_rect(cam, rr, a.depth))/max(T.area(r), 1)
+                if o > worst: worst, worst_at = o, (round(t, 2), sg.key, a.name)
+R['signs'] = dict(sign_frames_checked=checked, max_overlap_fraction_with_character=round(worst, 4), at=worst_at,
+                  min_visible_fraction=round(vis_min, 3), min_visible_at=vis_at,
                   placement=[dict(line=list(k), kind=kd, visibility=float(v), overlap=float(o)) for k, kd, v, o in T.SIGN_REPORT])
 # ---------------------------------------------------------------- chór: liczebność i brak nachodzenia w układzie grupowym
 counts = []; overl = 0

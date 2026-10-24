@@ -11,12 +11,13 @@
 | `scenariusz.md` | obsada (oryginalne lalki) i scenariusz z czasami |
 | `linkedin_clone/` | samodzielny klon feedu (HTML/CSS/JS, własne ikony SVG); po otwarciu `index.html` w poście Henia odtwarza się `final/music-video.mp4` |
 | `analysis/` | wyniki analizy muzyki (tekst, bity, części, dopasowanie słów) + wykresy kontrolne |
-| `src/` | cały kod: analiza (`a01…a12`, `lyrics.py`, `g2p_pl.py`, `ps_align.py`), renderer (`src/video/`), render równoległy, montaż, weryfikacja |
+| `src/` | cały kod: analiza (`a01…a12`; v3: `a20…a25` – modele mowy, dopasowanie, fuzja), renderer (`src/video/`), render równoległy, montaż, weryfikacja |
 | `checks/` | arkusze klatek, stopklatki, wyniki weryfikacji (`verify_file.json`, `verify_sync.json`) |
 | `fonts/` | czcionki OFL użyte w obrazie i w klonie + pełny tekst licencji |
-| `archive/` | poprzednie wersje (nic nie jest kasowane) |
+| `archive/` | poprzednie wersje filmu: `v1/`, `v2/` (nic nie jest kasowane) |
+| `analysis/asr/` | surowe wyniki modeli mowy: transkrypcje Omnilingual (stem prowadzący i chórki), Whisper, Parakeet, Silero VAD, dopasowania CTC i MFA |
 
-Wymagane narzędzia (wszystkie darmowe, z menedżerów pakietów): `ffmpeg`, Python (`numpy`, `scipy`, `librosa`, `soundfile`, `skia-python`, `pocketsphinx`, `matplotlib`), `espeak-ng` + `mbrola-pl1` (apt), Node + Playwright/Chromium (preinstalowane). Żadnych gotowych nagrań ani grafik z internetu – cały obraz jest generowany kodem.
+Wymagane narzędzia (wszystkie darmowe, z menedżerów pakietów): `ffmpeg`, Python (`numpy`, `scipy`, `librosa`, `soundfile`, `skia-python`, `pocketsphinx`, `matplotlib`, `onnxruntime`, `sherpa-onnx`, `faster-whisper`, `silero-vad`), Montreal Forced Aligner (conda-forge, przez micromamba), `espeak-ng` + `mbrola-pl1` (apt), Node + Playwright/Chromium (preinstalowane). Modele mowy (pobierane do `tools/models/`, poza repozytorium): Omnilingual ASR CTC 1B i Parakeet TDT v3 (wydania sherpa-onnx), `polish_mfa` (wydania mfa-models, CC BY 4.0), Whisper small CT2 (npm). Żadnych gotowych nagrań ani grafik z internetu – cały obraz jest generowany kodem.
 
 ## 2. Analiza muzyki (zanim cokolwiek zaprojektowałem)
 
@@ -46,29 +47,57 @@ wymowa słów obcych zapisana ręcznie (LinkedInie, case study, cringe, scrollow
 * Niezależnie: chroma wokalu przesuwana po całym utworze – przedrefren 1 (46,3 s) pasuje do 112,9 s (0,90), refren 1 do 127,4 s (0,90–0,92).
 * Granice części (`analysis/structure.json`) = początki wersów z dopasowania, dociągnięte do „raz” taktu przed pierwszym dźwiękiem.
 
-### 2.4 Dopasowanie tekstu do nagrania słowo po słowie (forced alignment)
-Modele ASR z HuggingFace/PyTorch nie dały się pobrać (proxy 403), więc użyłem lżejszych narzędzi offline:
-1. **Zdarzenia sylabowe** ze stemu wokalu (`a08_syllable_events.py`): szczyty energii pasma formantów z narastaniem przed nimi
-   (603 zdarzenia). Liczba zdarzeń we frazach zgadza się z liczbą sylab (np. 33,1–49,0 s: 58 zdarzeń = 49 sylab zwrotki 1b + 9 sylab
-   pierwszego wersu przedrefrenu) – to ustaliło jednoznacznie przypisanie wersów do fraz.
-2. **Programowanie dynamiczne** sylaby tekstu ↔ zdarzenia (`a09_align_dp.py`): koszt pominięcia zdarzenia, scalenia sylab,
-   ciszy wewnątrz słowa, nienaturalnych odstępów; kotwice = początki fraz po pauzach; miękka siatka „wers co 2 takty”
-   (zmierzona na pewnych wersach: refren 1 takty 36/38/40/42, refren 3 – 102/104/106/108).
-3. **Priory fonetyczne z pocketsphinx** (model en-us z paczki pip + własny słownik polski→ARPAbet `g2p_pl.py`), tylko tam, gdzie
-   dopasowanie się udało (19 wersów pojedynczo + odcinki) – 146 słów.
-4. Wynik (`analysis/alignment.json`, kontrola `analysis/alignment_check.txt`): **497/516 sylab przypięte do zdarzenia wokalu**,
-   19 interpolowanych; **99,7% początków słów wypada tam, gdzie wokal gra** (poziom w [t, t+150 ms] > −20 dB; jedyny wyjątek „tu” 134,39 s).
-   Niezależne porównanie DP bez priorów z pocketsphinx: mediana 220 ms (46% < 200 ms) – metody się różnią, więc nie twierdzę,
-   że granice słów są dokładne do kilkudziesięciu ms; po fuzji mediana różnicy 65 ms.
-5. Finał chóralny (194–212 s) nie wynika jednoznacznie z tekstu – rozpisany ze spektrogramu (`analysis/plots/04_syl_finale.png`):
-   rozciągnięte „Pu-ste za-się-gi” 194,7–201,4 s, okrzyk 201,5 s, szybka powtórka 208,2–209,3 s i „HEJ!” 209,78 s.
+### 2.4 Dopasowanie tekstu do nagrania słowo po słowie (v3: modele rozpoznawania mowy)
+W v1/v2 modele ASR nie były dostępne (HuggingFace i serwery modeli są zablokowane w tym środowisku), a dopasowanie z detektora
+sylab i programowania dynamicznego okazało się miejscami przesunięte o cały wers. W v3 pobrałem modele innymi, dozwolonymi drogami
+(wydania na GitHubie, rejestr npm, conda-forge, PyPI) i użyłem kilku niezależnych narzędzi na **stemach wokalu** (prowadzący i chórki osobno):
+
+| Narzędzie | Skąd | Do czego |
+|---|---|---|
+| **Omnilingual ASR CTC 1B** (Meta, int8 ONNX, 1600 języków) | wydanie `asr-models` projektu k2-fsa/sherpa-onnx | prawdopodobieństwa znaków co 20 ms → transkrypcja + wymuszone dopasowanie CTC (Viterbi) znanego tekstu |
+| **Montreal Forced Aligner 3.4** + model `polish_mfa` 2.0.0a, słownik i g2p | conda-forge + wydania MontrealCorpusTools/mfa-models (CC BY 4.0) | czasy słów i **fonemów** (granice sylab) |
+| **Whisper small** (CTranslate2 int8, faster-whisper) | rejestr npm (4 części, suma SHA-256 zgodna z deklarowaną) | niezależne rozpoznanie z czasami słów (kontrola) |
+| **NVIDIA Parakeet TDT 0.6B v3** (int8 ONNX, języki europejskie) | wydanie `asr-models` sherpa-onnx | niezależne rozpoznanie z czasami tokenów (kontrola) |
+| **Silero VAD** | PyPI | gdzie w stemie jest głos (kontrola) |
+
+Kroki (`src/a20…a25`):
+1. **Transkrypcja Omnilingual** stemu prowadzącego (`build/asr/omni_lead_greedy.txt`) – praktycznie bezbłędnie odtwarza tekst,
+   z czasami. Już ona pokazała, gdzie stare dopasowanie się myliło (np. „Ktoś robi z życia case study” śpiewane od 100,4 s, a w v2
+   ustawione na 102,9 s – cała zwrotka 2b przesunięta o jeden wers).
+2. **Wymuszone dopasowanie CTC całego tekstu** z możliwością pominięcia słowa (kara zależna od długości słowa) – osobno na stemie
+   prowadzącym i na stemie chórków (chórki w oknach czasowych części, żeby powtarzane frazy nie „przeskakiwały” między refrenami).
+   Z tego wynika, **kto śpiewa które słowo** (Henio / chór / oba – patrz `scenariusz.md`, „Kto śpiewa co”).
+3. **Weryfikacja wariantów tekstu** akustycznie: przymiotnik przed „zasięgi” (puste / wielkie / mocne) wybierany po wyniku
+   dopasowania w oknie słowa. Jedna różnica: refren 1, wers 6 – śpiewane **„Puste zasięgi”** (wynik −0,07 wobec −1,22 dla „Wielkie”).
+4. **MFA** na wersach (granice segmentów z kroku 2 ± 0,6 s, 14 słów spoza słownika przez g2p) – fonemy dla 504 z 521 sylab.
+5. **Fuzja**: początek słowa = MFA, jeśli zgadza się z CTC (± 150 ms po poprawce o 45 ms – CTC „strzela” chwilę po początku
+   dźwięku), inaczej CTC; sylaby z grup fonemów MFA wokół samogłosek (inaczej ze znaczników znaków CTC); koniec trzymanej nuty
+   z obwiedni stemu (spadek o 18 dB). Słowa nierozpoznane pewnie („case”, „cringe”, „Że” w 55,9 s) – pozycja z pierwszego wymuszonego
+   dopasowania. Wynik: `analysis/alignment.json` (poprzedni: `analysis/alignment_v2.json`).
+6. **„Hej”**: w stemie chórków okrzyki są tylko w refrenie 3 (182,4 i 185,7 s, +34 i +56 dB); w refrenach 1–2 ich w nagraniu nie ma.
+   Okrzyk Henia 201,5 s i końcowe „HEJ” 209,8 s – z obwiedni stemu prowadzącego. Wokalizy chóru bez słów (12 odcinków,
+   szczyt > maks − 11 dB) – „uuu” chóru.
+
+**Zgodność z niezależnymi narzędziami** (początki 243 słów wokalu prowadzącego, `analysis/alignment_crosscheck.json`, wykres
+`analysis/plots/20_crosscheck.png`):
+
+| Narzędzie | mediana różnicy | w ±100 ms | w ±200 ms | > 0,5 s |
+|---|---|---|---|---|
+| MFA | 50 ms | 89.3% | 97.9% | 3 |
+| Parakeet TDT v3 | 60 ms | 72.9% | 91.9% | 0 |
+| Whisper small | 80 ms | 61.2% | 85.7% | 6 |
+| stare dopasowanie (v2) | 60 ms | 56.9% | 71.8% | 14 (+41 słów nieznalezionych w ±1,5 s) |
+
+Silero VAD: 98.4% początków słów leży w odcinkach z głosem (wyjątki: 4 razy „Puste” na początku refrenu – śpiewany początek frazy).
 
 ### 2.5 Ruch ust
-* Wokal prowadzący = Henio: każda sylaba z dopasowania = jedno otwarcie szczęki (kształt: szybkie otwarcie, utrzymanie modulowane
-  obwiednią wokalu, zamknięcie przed następną sylabą), szerokość wg samogłoski (a/o szeroko, i/u wąsko).
-  Liczone **na siatce klatek**: każda sylaba ma ≥ 1 klatkę wyraźnego otwarcia, między sylabami ≥ 1 klatkę zamknięcia
-  (przy szybkim śpiewie ~13 sylab/s to jedyny sposób, by przy 30 kl./s zachować „jedno otwarcie = jedna sylaba”).
-* Chórki (stem „Backing Vocals”, 250 zdarzeń sylabowych) = Chór Zasięgów; „hej” i „Wywalili na bruk!” – chór.
+* Henio = stem prowadzący: **jedna sylaba = jeden ruch szczęki**, ale wielkość otwarcia zależy od sylaby: samogłoska (a szeroko,
+  o/e średnio, u/i/y wąsko) × głośność stemu w sylabie × długość × akcent (przedostatnia sylaba mocniej, krótkie słowa
+  funkcyjne słabiej) – stąd **półotwarcia** (0,22–1,0). Między sylabami szczęka przymyka się do „dołka” (≤ 32% mniejszego
+  z sąsiednich otwarć), a całkowicie domyka przed m/b/p i w przerwach. Dla o/u usta się **zaokrąglają** (otwarcie skupione
+  w środku). Długa nuta: otwarcie lekko przymyka się w trakcie trzymania.
+* Liczone na siatce klatek: każda sylaba ma klatkę z ≥ 85% swojego otwarcia, między sylabami jest klatka z dołkiem.
+* Chór = stem chórków: sylaby dopasowanego tekstu (tam, gdzie chór śpiewa słowa), „uuu” we wokalizach bez słów, „hej” tylko w refrenie 3.
 
 ## 3. Obsada i scenariusz
 Pełny opis: `scenariusz.md`. Pomysł wynika z tekstu: piosenka mówi o wielkich gestach na LinkedInie, więc **cały teledysk jest filmem
@@ -78,41 +107,46 @@ do wpisu Grażyny i wjazd w jej zdjęcie), refren 2 „wielkie zasięgi” (licz
 komentarzy), po bridge'u prosty wpis „Robię swoje.”, outro „miłego scrollowania” (przewijanie feedu) i statystyki na koniec.
 Obsada (oryginalne lalki): Henio Kawka (narrator, cały wokal prowadzący), Grażyna Gratka, Prezes Bogumił Łaskawiec, Tadek Nowadroga,
 Mirek Szacun, Kasia Kejs, Chór Zasięgów (8 lalek: 4 panów w przedrefrenach, panie dochodzą w refrenach – liczebność tylko rośnie).
+Chór śpiewa to, co w nagraniu jest w stemie chórków (dublowania, „trochę jak męka”, wtrącenie, wokalizy) – lista w `scenariusz.md`.
 Taniec nie jest głównym językiem: gesty ilustrują słowa (łyk kawy na „kawa”, ręka na żuchwie na „szczęka”, wyuczony uśmiech
 i salut do czoła na „uśmiech wyuczony, rzut na czoło”, stempel „RESTRUKTURYZACJA” na „bruk”, aureola na „świętym”…), a rytmiczne
 podrygi pojawiają się w refrenach (reakcje na patykach w górę na „raz” taktu, dociągnięte do prawdziwej stopy).
 
 ## 4. Realizacja obrazu
-* **Renderer 2D (skia-python), bezstanowy**: każda klatka liczona wyłącznie z czasu t = n/30 (`src/video/render.py`). Ruch między pozami
-  kluczowymi = splajn Hermite'a (pozy trzymane, przejścia 0,4–0,8 s, bez zatrzymań – stale działa „oddychanie”, bujanie w siatce bitów
-  i wtórny ruch prętów); skoki pozycji tylko na cięciach (klucze < 50 ms traktowane jak skok, bez przestrzałów splajnu).
-* **Lalki** (`puppet.py`, `cast.py`): głowa jako superelipsa przecięta linią ust dokładnie w kącikach; szczęka opada najmocniej pośrodku
-  (zawias w kącikach), widać wnętrze ust i język; oczy-piłeczki z odblaskiem i filcowymi powiekami (mruganie deterministyczne), nos
-  z pianki, futro z kosmyków (nagrane raz jako skia.Picture), faktura filcu (proceduralny szum włókien), dłonie-rękawiczki na prętach,
-  ciało od pasa w górę zza krawędzi sceny, wejścia „z dołu” zza playboardu lub z boku (głowa obraca się w stronę ruchu).
-* **Akcenty na prawdziwych uderzeniach**: kiwnięcie głową i przysiad lalki to impulsy w chwilach onsetów stopy/werbla ze stemu,
-  błyski flesza i światła na werblu i „hej”; bujanie w fazie lokalnej siatki bitów.
-* **Scena i studio** (`stage.py`): portal z żarówkami (pogoń w rytm), kurtyna z aksamitu, krawędź sceny, dekoracje z tektury dla każdej
-  części (kuchnia, biuro, ścianka konferencyjna, wielka scena show z podestem chóru, studio Grażyny, droga z bruku, korporacyjny raj,
-  studio w drewnie, „pod spodem” – zaplecze lalkarzy), reflektory, snopy w zadymieniu, cienie lalek na dekoracji.
-* **Kamery** (`timeline.py`): perspektywa warstw (tło, dekoracje, chór, lalki, krawędź sceny, kurtyna, portal na różnych głębokościach),
-  więc tło ma stałe miejsce w świecie i poprawną paralaksę; 62 ujęcia, w każdym ruch (najazd/odjazd/panorama/żuraw), cięcia na
-  początkach wersów lub na „raz” taktu; trzy refreny mają różne zestawy ujęć (ogólny z żurawiem + zejście „pod spodem”; żuraw z góry +
-  przebitki do analityki i pustych komentarzy; plan z daleka całego studia + przejazd + cisza we dwóch).
-* **Napisy jako scenografia** (`signs.py`): tablice z tektury na sznurkach, neon na tablicy portalu, malowane litery na froncie krawędzi
-  sceny, dymki do kwestii mówionych, karton pisany markerem (bridge), kreda na sklejce (pod spodem), pole komentarza / czat w feedzie.
-  Każdy wers ma jedno stałe miejsce w świecie; miejsce wybierane automatycznie spośród kandydatów tak, by napis był w kadrze i nie
-  nachodził na żadną postać w całym czasie trwania wersu; słowa pojawiają się w chwili zaśpiewania (czasy z dopasowania).
-* **Klon LinkedIna** (`linkedin_clone/`): HTML/CSS/JS od zera (Inter OFL, własne ikony SVG, awatary = portrety lalek z renderera).
-  Stany strony (komentarze, czat, analityka, prosty wpis) przechwytywane Playwrightem (`src/video/capture_clone.js`), a w teledysku
-  (`linkedin.py`) składane z: przewijaniem, „kamerą” na ekranie przeglądarki, filmem ze sceny na żywo w ramce posta (wjazd w kadr filmu
-  kończy się dokładnie na pierwszej klatce następnego ujęcia), licznikami rosnącymi klatka po klatce i pisaniem słowo po słowie.
-* **„Ludzki” wygląd** (`post.py`): halacja (jasne partie rozmyte i dodane ciepłym tonem), lekka miękkość, ziarno (12 klatek szumu
-  wybieranych i przesuwanych deterministycznie od numeru klatki, zmiana co 2 klatki), winieta; w przebitkach obróbka słabsza i narasta przy wjeździe w film.
-* **Render** (`src/render_all.py`, `src/assemble.py`): kawałki po 300 klatek, 4 procesy równolegle, każdy kawałek kodowany x264 CRF 14,
-  sklejenie bez rekompresji, końcowe kodowanie H.264 yuv420p (dwa przebiegi, 3200 kb/s – żeby plik zmieścił się w limicie
-  100 MB na pojedynczy plik w GitHubie) + AAC 320 kb/s z całego MP3 (bez filtrów i cięć). Każda wersja renderowana z zamrożonej
-  kopii kodu (`build/vN/src`).
+* **Renderer 2D z perspektywą warstw (skia-python), bezstanowy**: każda klatka liczona wyłącznie z czasu t = n/30 (`src/video/render.py`).
+* **Lalki** (`puppet.py`, `cast.py`): głowa jako superelipsa przecięta linią ust dokładnie w kącikach (zawias w kącikach), wnętrze ust
+  i język, oczy-piłeczki, powieki, nos z pianki, futro z kosmyków, faktura filcu, dłonie na prętach; ciało od pasa w górę zza krawędzi
+  sceny. **v3 – bryła**: wspólne cieniowanie całej głowy (cień własny po stronie przeciwnej do reflektora, miękki odblask, kontrświatło
+  na krawędzi), cylindryczne cieniowanie korpusu i spadek światła w dół; korpus sięga głęboko pod krawędź sceny, więc przy kamerze
+  z góry paralaksa nie odsłania jego spodu („brak nóg”).
+* **Rekwizyty na drążkach** (v3): tabliczki, maski, wachlarze reakcji, gwiazdki, łza mają drążek, który przechodzi **przez zaciśniętą
+  pięść** (palce i kciuk rysowane na drążku), a tabliczka jest nad dłonią; kostki bruku to kamienie w garści. Rekwizyty nie zasłaniają
+  ust w trakcie śpiewu (łyk kawy przed wersem, telefon z boku).
+* **Ruch** (v3): gesty jak u lalkarza – poza trzymana do ostatniej chwili, potem szybki ruch (0,12–0,3 s) z 8% przestrzałem i powrotem;
+  **ekspresja śpiewu z sylab**: kiwnięcie głowy na każdej akcentowanej sylabie (siła = otwarcie ust), na długich nutach głowa w górę,
+  przymknięte oczy i uniesione brwi; **taniec tylko w refrenach i finale** (krok w bok co 2 bity, sprężynowanie na stopie);
+  akcenty (kiwnięcia, przysiady, błyski) na prawdziwych uderzeniach stopy/werbla.
+* **Kamera** (v3, `timeline.py`): kadrowanie **względem postaci** – plan wybierany jak w studiu TV (CU zbliżenie twarzy, MCU do piersi,
+  MS do pasa, MLS/LS grupowe, WS teatralny), kamera śledzi postaci i płynnie zmienia plan między kluczami (najazd, odjazd, jazda);
+  w planach CU/MCU/MS dół kadru nie schodzi poniżej pasa lalki, więc nie widać krawędzi sceny pod nią. Skład grupy w kadrze ustalany dla
+  całego ujęcia (kadr nie skacze, gdy ktoś się wynurza). Cięcia na początkach wersów lub na „raz” taktu, każdy refren ma inne ujęcia.
+* **Przestrzeń i światło** (v3, `compose.py`, `post.py`): **głębia ostrości** liczona z odległości kamery (tło i dekoracje rozmyte
+  w zbliżeniach, portal na pierwszym planie lekko nieostry), **cienie sylwetek** lalek (głowa z oczami, korpus, ręce, rekwizyty) rzucone
+  na dekorację – przesunięte od reflektora i rozmyte zależnie od odległości od ściany, cień warstwy środkowej dekoracji na ścianie,
+  gradacja (krzywa S, +8% nasycenia), słabsza halacja i zmiękczenie niż w v2, ziarno, winieta.
+* **Napisy jako scenografia** (`signs.py`, `timeline.py`): tablice z tektury na sznurkach, litery na froncie sceny, **podświetlone
+  litery na froncie podestu chóru** (v3), neon portalu, dymki do kwestii mówionych, karton pisany markerem (bridge). Każdy wers ma jedno
+  stałe miejsce w świecie, wybierane automatycznie z ~1000 kandydatów (także zakotwiczonych w kadrze ujęcia), tak by napis był w kadrze
+  przez cały czas trwania (także po cięciu) i nie nachodził na postacie, ważne rekwizyty ani inne napisy; słowa pojawiają się
+  w chwili zaśpiewania (czasy z nowego dopasowania). Fonty świata lalek (v3, OFL, Google Fonts, polskie znaki sprawdzone):
+  Titan One (tablice), Cherry Bomb One (front sceny i podestu), Rammetto One (portal), Sigmar One (duże napisy), Kalam (dymki),
+  Caveat Brush (marker), Shrikhand (tytuł); w świecie serwisu bez zmian (Inter).
+* **Klon LinkedIna** (`linkedin_clone/`): HTML/CSS/JS od zera (Inter OFL, własne ikony SVG, awatary = portrety lalek). Stany strony
+  przechwytywane Playwrightem, w teledysku składane z przewijaniem, „kamerą” na ekranie, filmem ze sceny na żywo w ramce posta,
+  licznikami rosnącymi klatka po klatce i pisaniem słowo po słowie.
+* **Render** (`src/render_all.py`, `src/assemble.py`): kawałki po 300 klatek, 4 procesy równolegle (x264 CRF 14), sklejenie bez
+  rekompresji, końcowe kodowanie H.264 yuv420p (dwa przebiegi, ≤ 100 MB dla GitHuba) + AAC 320 kb/s z całego MP3 (bez filtrów i cięć).
+  Każda wersja renderowana z zamrożonej kopii kodu (`build/vN/src`).
 
 ## 5. Jak sprawdziłem wersję v2
 Skrypty: `src/verify.py` (plik) i `src/verify_sync.py` (synchronizacja liczona z tych samych funkcji, z których renderowane są klatki).

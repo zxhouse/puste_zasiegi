@@ -1,0 +1,5095 @@
+{
+"frame": 0.02,
+"words": [
+{
+"w": "No",
+"sung": "no",
+"syl": [
+"no"
+],
+"paren": false,
+"li": 0,
+"sec": 0,
+"line": 0,
+"occ": 0,
+"present": false
+},
+{
+"w": "i",
+"sung": "i",
+"syl": [
+"i"
+],
+"paren": false,
+"li": 0,
+"sec": 0,
+"line": 0,
+"occ": 0,
+"present": false
+},
+{
+"w": "co",
+"sung": "co",
+"syl": [
+"co"
+],
+"paren": false,
+"li": 0,
+"sec": 0,
+"line": 0,
+"occ": 0,
+"present": false
+},
+{
+"w": "tam",
+"sung": "tam",
+"syl": [
+"tam"
+],
+"paren": false,
+"li": 0,
+"sec": 0,
+"line": 0,
+"occ": 0,
+"present": false
+},
+{
+"w": "na",
+"sung": "na",
+"syl": [
+"na"
+],
+"paren": false,
+"li": 0,
+"sec": 0,
+"line": 0,
+"occ": 0,
+"present": false
+},
+{
+"w": "tym",
+"sung": "tym",
+"syl": [
+"tym"
+],
+"paren": false,
+"li": 0,
+"sec": 0,
+"line": 0,
+"occ": 0,
+"present": false
+},
+{
+"w": "LinkedInie",
+"sung": "linkedinie",
+"syl": [
+"lin",
+"ke",
+"di",
+"nie"
+],
+"paren": false,
+"li": 0,
+"sec": 0,
+"line": 0,
+"occ": 0,
+"present": false
+},
+{
+"w": "dzisiaj",
+"sung": "dzisiaj",
+"syl": [
+"dzi",
+"siaj"
+],
+"paren": false,
+"li": 0,
+"sec": 0,
+"line": 0,
+"occ": 0,
+"present": false
+},
+{
+"w": "kochani",
+"sung": "kochani",
+"syl": [
+"ko",
+"cha",
+"ni"
+],
+"paren": false,
+"li": 0,
+"sec": 0,
+"line": 0,
+"occ": 0,
+"present": false
+},
+{
+"w": "Kolejny",
+"sung": "kolejny",
+"syl": [
+"ko",
+"lej",
+"ny"
+],
+"paren": false,
+"li": 0,
+"sec": 0,
+"line": 0,
+"occ": 0,
+"present": false
+},
+{
+"w": "sukces",
+"sung": "sukces",
+"syl": [
+"suk",
+"ces"
+],
+"paren": false,
+"li": 0,
+"sec": 0,
+"line": 0,
+"occ": 0,
+"present": false
+},
+{
+"w": "Zobaczmy",
+"sung": "zobaczmy",
+"syl": [
+"zo",
+"bacz",
+"my"
+],
+"paren": false,
+"li": 0,
+"sec": 0,
+"line": 0,
+"occ": 0,
+"present": false
+},
+{
+"w": "Poranna",
+"sung": "poranna",
+"syl": [
+"po",
+"ran",
+"na"
+],
+"paren": false,
+"li": 1,
+"sec": 1,
+"line": 0,
+"occ": 0,
+"present": false
+},
+{
+"w": "kawa",
+"sung": "kawa",
+"syl": [
+"ka",
+"wa"
+],
+"paren": false,
+"li": 1,
+"sec": 1,
+"line": 0,
+"occ": 0,
+"present": false
+},
+{
+"w": "wielki",
+"sung": "wielki",
+"syl": [
+"wiel",
+"ki"
+],
+"paren": false,
+"li": 1,
+"sec": 1,
+"line": 0,
+"occ": 0,
+"present": false
+},
+{
+"w": "plan",
+"sung": "plan",
+"syl": [
+"plan"
+],
+"paren": false,
+"li": 1,
+"sec": 1,
+"line": 0,
+"occ": 0,
+"present": false
+},
+{
+"w": "Wkładam",
+"sung": "wkładam",
+"syl": [
+"wkła",
+"dam"
+],
+"paren": false,
+"li": 2,
+"sec": 1,
+"line": 1,
+"occ": 0,
+"present": false
+},
+{
+"w": "garnitur",
+"sung": "garnitur",
+"syl": [
+"gar",
+"ni",
+"tur"
+],
+"paren": false,
+"li": 2,
+"sec": 1,
+"line": 1,
+"occ": 0,
+"present": false
+},
+{
+"w": "choć",
+"sung": "choć",
+"syl": [
+"choć"
+],
+"paren": false,
+"li": 2,
+"sec": 1,
+"line": 1,
+"occ": 0,
+"present": false
+},
+{
+"w": "mam",
+"sung": "mam",
+"syl": [
+"mam"
+],
+"paren": false,
+"li": 2,
+"sec": 1,
+"line": 1,
+"occ": 0,
+"present": false
+},
+{
+"w": "luźny",
+"sung": "luźny",
+"syl": [
+"luź",
+"ny"
+],
+"paren": false,
+"li": 2,
+"sec": 1,
+"line": 1,
+"occ": 0,
+"present": false
+},
+{
+"w": "stan",
+"sung": "stan",
+"syl": [
+"stan"
+],
+"paren": false,
+"li": 2,
+"sec": 1,
+"line": 1,
+"occ": 0,
+"present": false
+},
+{
+"w": "Piszę",
+"sung": "piszę",
+"syl": [
+"pi",
+"szę"
+],
+"paren": false,
+"li": 3,
+"sec": 1,
+"line": 2,
+"occ": 0,
+"present": false
+},
+{
+"w": "o",
+"sung": "o",
+"syl": [
+"o"
+],
+"paren": false,
+"li": 3,
+"sec": 1,
+"line": 2,
+"occ": 0,
+"present": false
+},
+{
+"w": "synergiach",
+"sung": "synergiach",
+"syl": [
+"sy",
+"ner",
+"giach"
+],
+"paren": false,
+"li": 3,
+"sec": 1,
+"line": 2,
+"occ": 0,
+"present": false
+},
+{
+"w": "choć",
+"sung": "choć",
+"syl": [
+"choć"
+],
+"paren": false,
+"li": 3,
+"sec": 1,
+"line": 2,
+"occ": 0,
+"present": false
+},
+{
+"w": "boli",
+"sung": "boli",
+"syl": [
+"bo",
+"li"
+],
+"paren": false,
+"li": 3,
+"sec": 1,
+"line": 2,
+"occ": 0,
+"present": false
+},
+{
+"w": "mnie",
+"sung": "mnie",
+"syl": [
+"mnie"
+],
+"paren": false,
+"li": 3,
+"sec": 1,
+"line": 2,
+"occ": 0,
+"present": false
+},
+{
+"w": "szczęka",
+"sung": "szczęka",
+"syl": [
+"szczę",
+"ka"
+],
+"paren": false,
+"li": 3,
+"sec": 1,
+"line": 2,
+"occ": 0,
+"present": false
+},
+{
+"w": "Z",
+"sung": "z",
+"syl": [],
+"paren": false,
+"li": 4,
+"sec": 1,
+"line": 3,
+"occ": 0,
+"present": false
+},
+{
+"w": "przyjemnością",
+"sung": "przyjemnością",
+"syl": [
+"przy",
+"jem",
+"noś",
+"cią"
+],
+"paren": false,
+"li": 4,
+"sec": 1,
+"line": 3,
+"occ": 0,
+"present": false
+},
+{
+"w": "dzielę",
+"sung": "dzielę",
+"syl": [
+"dzie",
+"lę"
+],
+"paren": false,
+"li": 4,
+"sec": 1,
+"line": 3,
+"occ": 0,
+"present": false
+},
+{
+"w": "się",
+"sung": "się",
+"syl": [
+"się"
+],
+"paren": false,
+"li": 4,
+"sec": 1,
+"line": 3,
+"occ": 0,
+"present": false
+},
+{
+"w": "i",
+"sung": "i",
+"syl": [
+"i"
+],
+"paren": false,
+"li": 4,
+"sec": 1,
+"line": 3,
+"occ": 0,
+"present": false
+},
+{
+"w": "już",
+"sung": "już",
+"syl": [
+"już"
+],
+"paren": false,
+"li": 4,
+"sec": 1,
+"line": 3,
+"occ": 0,
+"present": false
+},
+{
+"w": "mnie",
+"sung": "mnie",
+"syl": [
+"mnie"
+],
+"paren": false,
+"li": 4,
+"sec": 1,
+"line": 3,
+"occ": 0,
+"present": false
+},
+{
+"w": "skręca",
+"sung": "skręca",
+"syl": [
+"skrę",
+"ca"
+],
+"paren": false,
+"li": 4,
+"sec": 1,
+"line": 3,
+"occ": 0,
+"present": false
+},
+{
+"w": "Tak",
+"sung": "tak",
+"syl": [
+"tak"
+],
+"paren": false,
+"li": 5,
+"sec": 1,
+"line": 4,
+"occ": 0,
+"present": false
+},
+{
+"w": "tak",
+"sung": "tak",
+"syl": [
+"tak"
+],
+"paren": false,
+"li": 5,
+"sec": 1,
+"line": 4,
+"occ": 0,
+"present": false
+},
+{
+"w": "wszyscy",
+"sung": "wszyscy",
+"syl": [
+"wszys",
+"cy"
+],
+"paren": false,
+"li": 5,
+"sec": 1,
+"line": 4,
+"occ": 0,
+"present": false
+},
+{
+"w": "się",
+"sung": "się",
+"syl": [
+"się"
+],
+"paren": false,
+"li": 5,
+"sec": 1,
+"line": 4,
+"occ": 0,
+"present": false
+},
+{
+"w": "strasznie",
+"sung": "strasznie",
+"syl": [
+"strasz",
+"nie"
+],
+"paren": false,
+"li": 5,
+"sec": 1,
+"line": 4,
+"occ": 0,
+"present": false
+},
+{
+"w": "cieszą",
+"sung": "cieszą",
+"syl": [
+"cie",
+"szą"
+],
+"paren": false,
+"li": 5,
+"sec": 1,
+"line": 4,
+"occ": 0,
+"present": false
+},
+{
+"w": "W",
+"sung": "w",
+"syl": [],
+"paren": false,
+"li": 6,
+"sec": 2,
+"line": 0,
+"occ": 0,
+"present": false
+},
+{
+"w": "tle",
+"sung": "tle",
+"syl": [
+"tle"
+],
+"paren": false,
+"li": 6,
+"sec": 2,
+"line": 0,
+"occ": 0,
+"present": false
+},
+{
+"w": "awans",
+"sung": "awans",
+"syl": [
+"a",
+"wans"
+],
+"paren": false,
+"li": 6,
+"sec": 2,
+"line": 0,
+"occ": 0,
+"present": false
+},
+{
+"w": "w",
+"sung": "w",
+"syl": [],
+"paren": false,
+"li": 6,
+"sec": 2,
+"line": 0,
+"occ": 0,
+"present": false
+},
+{
+"w": "głowie",
+"sung": "głowie",
+"syl": [
+"gło",
+"wie"
+],
+"paren": false,
+"li": 6,
+"sec": 2,
+"line": 0,
+"occ": 0,
+"present": false
+},
+{
+"w": "stres",
+"sung": "stres",
+"syl": [
+"stres"
+],
+"paren": false,
+"li": 6,
+"sec": 2,
+"line": 0,
+"occ": 0,
+"present": false
+},
+{
+"w": "Wszyscy",
+"sung": "wszyscy",
+"syl": [
+"wszys",
+"cy"
+],
+"paren": false,
+"li": 7,
+"sec": 2,
+"line": 1,
+"occ": 0,
+"present": false
+},
+{
+"w": "tu",
+"sung": "tu",
+"syl": [
+"tu"
+],
+"paren": false,
+"li": 7,
+"sec": 2,
+"line": 1,
+"occ": 0,
+"present": false
+},
+{
+"w": "mają",
+"sung": "mają",
+"syl": [
+"ma",
+"ją"
+],
+"paren": false,
+"li": 7,
+"sec": 2,
+"line": 1,
+"occ": 0,
+"present": false
+},
+{
+"w": "strategiczny",
+"sung": "strategiczny",
+"syl": [
+"stra",
+"te",
+"gicz",
+"ny"
+],
+"paren": false,
+"li": 7,
+"sec": 2,
+"line": 1,
+"occ": 0,
+"present": false
+},
+{
+"w": "gest",
+"sung": "gest",
+"syl": [
+"gest"
+],
+"paren": false,
+"li": 7,
+"sec": 2,
+"line": 1,
+"occ": 0,
+"present": false
+},
+{
+"w": "Zdjęcie",
+"sung": "zdjęcie",
+"syl": [
+"zdję",
+"cie"
+],
+"paren": false,
+"li": 8,
+"sec": 2,
+"line": 2,
+"occ": 0,
+"present": false
+},
+{
+"w": "z",
+"sung": "z",
+"syl": [],
+"paren": false,
+"li": 8,
+"sec": 2,
+"line": 2,
+"occ": 0,
+"present": false
+},
+{
+"w": "konferencji",
+"sung": "konferencji",
+"syl": [
+"kon",
+"fe",
+"renc",
+"ji"
+],
+"paren": false,
+"li": 8,
+"sec": 2,
+"line": 2,
+"occ": 0,
+"present": false
+},
+{
+"w": "mina",
+"sung": "mina",
+"syl": [
+"mi",
+"na"
+],
+"paren": false,
+"li": 8,
+"sec": 2,
+"line": 2,
+"occ": 0,
+"present": false
+},
+{
+"w": "jak",
+"sung": "jak",
+"syl": [
+"jak"
+],
+"paren": false,
+"li": 8,
+"sec": 2,
+"line": 2,
+"occ": 0,
+"present": false
+},
+{
+"w": "z",
+"sung": "z",
+"syl": [],
+"paren": false,
+"li": 8,
+"sec": 2,
+"line": 2,
+"occ": 0,
+"present": false
+},
+{
+"w": "plakatu",
+"sung": "plakatu",
+"syl": [
+"pla",
+"ka",
+"tu"
+],
+"paren": false,
+"li": 8,
+"sec": 2,
+"line": 2,
+"occ": 0,
+"present": false
+},
+{
+"w": "A",
+"sung": "a",
+"syl": [
+"a"
+],
+"paren": false,
+"li": 9,
+"sec": 2,
+"line": 3,
+"occ": 0,
+"present": true,
+"char_t": [
+46.74
+],
+"t0": 46.74,
+"t1": 46.76,
+"conf": -6.659
+},
+{
+"w": "w",
+"sung": "w",
+"syl": [],
+"paren": false,
+"li": 9,
+"sec": 2,
+"line": 3,
+"occ": 0,
+"present": false
+},
+{
+"w": "komentarzu",
+"sung": "komentarzu",
+"syl": [
+"ko",
+"men",
+"ta",
+"rzu"
+],
+"paren": false,
+"li": 9,
+"sec": 2,
+"line": 3,
+"occ": 0,
+"present": false
+},
+{
+"w": "Ogromny",
+"sung": "ogromny",
+"syl": [
+"og",
+"rom",
+"ny"
+],
+"paren": false,
+"li": 9,
+"sec": 2,
+"line": 3,
+"occ": 0,
+"present": false
+},
+{
+"w": "szacun",
+"sung": "szacun",
+"syl": [
+"sza",
+"cun"
+],
+"paren": false,
+"li": 9,
+"sec": 2,
+"line": 3,
+"occ": 0,
+"present": false
+},
+{
+"w": "do",
+"sung": "do",
+"syl": [
+"do"
+],
+"paren": false,
+"li": 9,
+"sec": 2,
+"line": 3,
+"occ": 0,
+"present": false
+},
+{
+"w": "tego",
+"sung": "tego",
+"syl": [
+"te",
+"go"
+],
+"paren": false,
+"li": 9,
+"sec": 2,
+"line": 3,
+"occ": 0,
+"present": false
+},
+{
+"w": "łaskawca",
+"sung": "łaskawca",
+"syl": [
+"łas",
+"kaw",
+"ca"
+],
+"paren": false,
+"li": 9,
+"sec": 2,
+"line": 3,
+"occ": 0,
+"present": false
+},
+{
+"w": "I",
+"sung": "i",
+"syl": [
+"i"
+],
+"paren": false,
+"li": 10,
+"sec": 3,
+"line": 0,
+"occ": 0,
+"present": true,
+"char_t": [
+46.74
+],
+"t0": 46.74,
+"t1": 46.76,
+"conf": -0.026
+},
+{
+"w": "każdy",
+"sung": "każdy",
+"syl": [
+"każ",
+"dy"
+],
+"paren": false,
+"li": 10,
+"sec": 3,
+"line": 0,
+"occ": 0,
+"present": true,
+"char_t": [
+46.84,
+46.9,
+46.98,
+47.08,
+47.12
+],
+"t0": 46.84,
+"t1": 47.14,
+"conf": -0.008
+},
+{
+"w": "zna",
+"sung": "zna",
+"syl": [
+"zna"
+],
+"paren": false,
+"li": 10,
+"sec": 3,
+"line": 0,
+"occ": 0,
+"present": true,
+"char_t": [
+47.22,
+47.28,
+47.34
+],
+"t0": 47.22,
+"t1": 47.36,
+"conf": -0.006
+},
+{
+"w": "tu",
+"sung": "tu",
+"syl": [
+"tu"
+],
+"paren": false,
+"li": 10,
+"sec": 3,
+"line": 0,
+"occ": 0,
+"present": true,
+"char_t": [
+47.46,
+47.52
+],
+"t0": 47.46,
+"t1": 47.54,
+"conf": -0.105
+},
+{
+"w": "swoją",
+"sung": "swoją",
+"syl": [
+"swo",
+"ją"
+],
+"paren": false,
+"li": 10,
+"sec": 3,
+"line": 0,
+"occ": 0,
+"present": true,
+"char_t": [
+47.64,
+47.68,
+47.76,
+47.84,
+47.92
+],
+"t0": 47.64,
+"t1": 47.94,
+"conf": -0.022
+},
+{
+"w": "rolę",
+"sung": "rolę",
+"syl": [
+"ro",
+"lę"
+],
+"paren": false,
+"li": 10,
+"sec": 3,
+"line": 0,
+"occ": 0,
+"present": true,
+"char_t": [
+48.08,
+48.14,
+48.28,
+48.38
+],
+"t0": 48.08,
+"t1": 48.4,
+"conf": -0.008
+},
+{
+"w": "Uśmiech",
+"sung": "uśmiech",
+"syl": [
+"uś",
+"miech"
+],
+"paren": false,
+"li": 11,
+"sec": 3,
+"line": 1,
+"occ": 0,
+"present": false
+},
+{
+"w": "wyuczony",
+"sung": "wyuczony",
+"syl": [
+"wy",
+"u",
+"czo",
+"ny"
+],
+"paren": false,
+"li": 11,
+"sec": 3,
+"line": 1,
+"occ": 0,
+"present": true,
+"char_t": [
+50.1,
+50.16,
+50.34,
+50.42,
+50.46,
+50.56,
+50.7,
+50.78
+],
+"t0": 50.1,
+"t1": 50.8,
+"conf": -0.069
+},
+{
+"w": "rzut",
+"sung": "rzut",
+"syl": [
+"rzut"
+],
+"paren": false,
+"li": 11,
+"sec": 3,
+"line": 1,
+"occ": 0,
+"present": true,
+"char_t": [
+50.88,
+50.9,
+50.94,
+51.0
+],
+"t0": 50.88,
+"t1": 51.02,
+"conf": -0.368
+},
+{
+"w": "na",
+"sung": "na",
+"syl": [
+"na"
+],
+"paren": false,
+"li": 11,
+"sec": 3,
+"line": 1,
+"occ": 0,
+"present": true,
+"char_t": [
+51.14,
+51.18
+],
+"t0": 51.14,
+"t1": 51.2,
+"conf": -0.031
+},
+{
+"w": "czoło",
+"sung": "czoło",
+"syl": [
+"czo",
+"ło"
+],
+"paren": false,
+"li": 11,
+"sec": 3,
+"line": 1,
+"occ": 0,
+"present": true,
+"char_t": [
+51.3,
+51.32,
+51.42,
+51.92,
+52.0
+],
+"t0": 51.3,
+"t1": 52.02,
+"conf": -0.154
+},
+{
+"w": "Jedno",
+"sung": "jedno",
+"syl": [
+"jed",
+"no"
+],
+"paren": false,
+"li": 12,
+"sec": 3,
+"line": 2,
+"occ": 0,
+"present": false
+},
+{
+"w": "słowo",
+"sung": "słowo",
+"syl": [
+"sło",
+"wo"
+],
+"paren": false,
+"li": 12,
+"sec": 3,
+"line": 2,
+"occ": 0,
+"present": false
+},
+{
+"w": "za",
+"sung": "za",
+"syl": [
+"za"
+],
+"paren": false,
+"li": 12,
+"sec": 3,
+"line": 2,
+"occ": 0,
+"present": false
+},
+{
+"w": "dużo",
+"sung": "dużo",
+"syl": [
+"du",
+"żo"
+],
+"paren": false,
+"li": 12,
+"sec": 3,
+"line": 2,
+"occ": 0,
+"present": false
+},
+{
+"w": "i",
+"sung": "i",
+"syl": [
+"i"
+],
+"paren": false,
+"li": 12,
+"sec": 3,
+"line": 2,
+"occ": 0,
+"present": false
+},
+{
+"w": "już",
+"sung": "już",
+"syl": [
+"już"
+],
+"paren": false,
+"li": 12,
+"sec": 3,
+"line": 2,
+"occ": 0,
+"present": false
+},
+{
+"w": "wiesz",
+"sung": "wiesz",
+"syl": [
+"wiesz"
+],
+"paren": false,
+"li": 12,
+"sec": 3,
+"line": 2,
+"occ": 0,
+"present": false
+},
+{
+"w": "Że",
+"sung": "że",
+"syl": [
+"że"
+],
+"paren": false,
+"li": 13,
+"sec": 3,
+"line": 3,
+"occ": 0,
+"present": true,
+"char_t": [
+55.94,
+56.04
+],
+"t0": 55.94,
+"t1": 56.06,
+"conf": -2.261
+},
+{
+"w": "dziś",
+"sung": "dziś",
+"syl": [
+"dziś"
+],
+"paren": false,
+"li": 13,
+"sec": 3,
+"line": 3,
+"occ": 0,
+"present": true,
+"char_t": [
+56.12,
+56.14,
+56.22,
+56.28
+],
+"t0": 56.12,
+"t1": 56.3,
+"conf": -0.099
+},
+{
+"w": "na",
+"sung": "na",
+"syl": [
+"na"
+],
+"paren": false,
+"li": 13,
+"sec": 3,
+"line": 3,
+"occ": 0,
+"present": true,
+"char_t": [
+56.4,
+56.44
+],
+"t0": 56.4,
+"t1": 56.46,
+"conf": -0.019
+},
+{
+"w": "siłę",
+"sung": "siłę",
+"syl": [
+"si",
+"łę"
+],
+"paren": false,
+"li": 13,
+"sec": 3,
+"line": 3,
+"occ": 0,
+"present": true,
+"char_t": [
+56.54,
+56.62,
+56.76,
+56.8
+],
+"t0": 56.54,
+"t1": 56.82,
+"conf": -0.014
+},
+{
+"w": "robisz",
+"sung": "robisz",
+"syl": [
+"ro",
+"bisz"
+],
+"paren": false,
+"li": 13,
+"sec": 3,
+"line": 3,
+"occ": 0,
+"present": true,
+"char_t": [
+56.98,
+57.04,
+57.14,
+57.22,
+57.32,
+57.34
+],
+"t0": 56.98,
+"t1": 57.38,
+"conf": -0.027
+},
+{
+"w": "wielki",
+"sung": "wielki",
+"syl": [
+"wiel",
+"ki"
+],
+"paren": false,
+"li": 13,
+"sec": 3,
+"line": 3,
+"occ": 0,
+"present": true,
+"char_t": [
+57.74,
+57.78,
+57.86,
+58.0,
+58.12,
+58.22
+],
+"t0": 57.74,
+"t1": 58.24,
+"conf": -0.005
+},
+{
+"w": "gest",
+"sung": "gest",
+"syl": [
+"gest"
+],
+"paren": false,
+"li": 13,
+"sec": 3,
+"line": 3,
+"occ": 0,
+"present": true,
+"char_t": [
+58.36,
+58.46,
+60.3,
+60.38
+],
+"t0": 58.36,
+"t1": 60.4,
+"conf": -0.038
+},
+{
+"w": "Puste",
+"sung": "puste",
+"syl": [
+"pus",
+"te"
+],
+"paren": false,
+"li": 14,
+"sec": 4,
+"line": 0,
+"occ": 0,
+"present": true,
+"char_t": [
+60.14,
+60.2,
+60.3,
+60.38,
+60.46
+],
+"t0": 60.14,
+"t1": 60.48,
+"conf": -0.064,
+"variant_scores": {
+"puste": -0.013,
+"wielkie": -2.409,
+"mocne": -1.409
+}
+},
+{
+"w": "zasięgi",
+"sung": "zasięgi",
+"syl": [
+"za",
+"się",
+"gi"
+],
+"paren": false,
+"li": 14,
+"sec": 4,
+"line": 0,
+"occ": 0,
+"present": true,
+"char_t": [
+60.58,
+60.64,
+60.76,
+60.84,
+60.88,
+61.2,
+61.3
+],
+"t0": 60.58,
+"t1": 61.32,
+"conf": -0.035
+},
+{
+"w": "puste",
+"sung": "puste",
+"syl": [
+"pus",
+"te"
+],
+"paren": false,
+"li": 14,
+"sec": 4,
+"line": 0,
+"occ": 0,
+"present": true,
+"char_t": [
+61.64,
+61.7,
+61.84,
+61.98,
+62.06
+],
+"t0": 61.64,
+"t1": 62.08,
+"conf": -0.058,
+"variant_scores": {
+"puste": -0.01,
+"wielkie": -1.989,
+"mocne": -1.134
+}
+},
+{
+"w": "zasięgi",
+"sung": "zasięgi",
+"syl": [
+"za",
+"się",
+"gi"
+],
+"paren": false,
+"li": 14,
+"sec": 4,
+"line": 0,
+"occ": 0,
+"present": true,
+"char_t": [
+62.18,
+62.26,
+62.38,
+62.44,
+62.5,
+62.8,
+62.92
+],
+"t0": 62.18,
+"t1": 62.94,
+"conf": -0.032
+},
+{
+"w": "Każdy",
+"sung": "każdy",
+"syl": [
+"każ",
+"dy"
+],
+"paren": false,
+"li": 15,
+"sec": 4,
+"line": 1,
+"occ": 0,
+"present": false
+},
+{
+"w": "tu",
+"sung": "tu",
+"syl": [
+"tu"
+],
+"paren": false,
+"li": 15,
+"sec": 4,
+"line": 1,
+"occ": 0,
+"present": false
+},
+{
+"w": "błyszczy",
+"sung": "błyszczy",
+"syl": [
+"błysz",
+"czy"
+],
+"paren": false,
+"li": 15,
+"sec": 4,
+"line": 1,
+"occ": 0,
+"present": false
+},
+{
+"w": "każdy",
+"sung": "każdy",
+"syl": [
+"każ",
+"dy"
+],
+"paren": false,
+"li": 15,
+"sec": 4,
+"line": 1,
+"occ": 0,
+"present": true,
+"char_t": [
+64.84,
+64.94,
+65.1,
+65.24,
+65.3
+],
+"t0": 64.84,
+"t1": 65.32,
+"conf": -0.017
+},
+{
+"w": "tu",
+"sung": "tu",
+"syl": [
+"tu"
+],
+"paren": false,
+"li": 15,
+"sec": 4,
+"line": 1,
+"occ": 0,
+"present": true,
+"char_t": [
+65.42,
+65.48
+],
+"t0": 65.42,
+"t1": 65.5,
+"conf": -0.055
+},
+{
+"w": "pęka",
+"sung": "pęka",
+"syl": [
+"pę",
+"ka"
+],
+"paren": false,
+"li": 15,
+"sec": 4,
+"line": 1,
+"occ": 0,
+"present": true,
+"char_t": [
+65.64,
+65.74,
+66.02,
+66.16
+],
+"t0": 65.64,
+"t1": 66.18,
+"conf": -0.145
+},
+{
+"w": "Puste",
+"sung": "puste",
+"syl": [
+"pus",
+"te"
+],
+"paren": false,
+"li": 16,
+"sec": 4,
+"line": 2,
+"occ": 0,
+"present": true,
+"char_t": [
+66.48,
+66.56,
+66.7,
+66.82,
+66.92
+],
+"t0": 66.48,
+"t1": 66.94,
+"conf": -0.099,
+"variant_scores": {
+"puste": -0.016,
+"wielkie": -1.904,
+"mocne": -1.083
+}
+},
+{
+"w": "zasięgi",
+"sung": "zasięgi",
+"syl": [
+"za",
+"się",
+"gi"
+],
+"paren": false,
+"li": 16,
+"sec": 4,
+"line": 2,
+"occ": 0,
+"present": true,
+"char_t": [
+67.02,
+67.1,
+67.24,
+67.3,
+67.36,
+67.64,
+67.78
+],
+"t0": 67.02,
+"t1": 67.8,
+"conf": -0.246
+},
+{
+"w": "wielkie",
+"sung": "wielkie",
+"syl": [
+"wiel",
+"kie"
+],
+"paren": false,
+"li": 16,
+"sec": 4,
+"line": 2,
+"occ": 0,
+"present": false,
+"variant_scores": {
+"puste": -1.172,
+"wielkie": -1.502,
+"mocne": -1.182
+}
+},
+{
+"w": "zasięgi",
+"sung": "zasięgi",
+"syl": [
+"za",
+"się",
+"gi"
+],
+"paren": false,
+"li": 16,
+"sec": 4,
+"line": 2,
+"occ": 0,
+"present": true,
+"char_t": [
+68.64,
+68.72,
+68.86,
+68.92,
+68.98,
+69.24,
+69.38
+],
+"t0": 68.64,
+"t1": 69.4,
+"conf": -0.064
+},
+{
+"w": "A",
+"sung": "a",
+"syl": [
+"a"
+],
+"paren": false,
+"li": 17,
+"sec": 4,
+"line": 3,
+"occ": 0,
+"present": false
+},
+{
+"w": "pod",
+"sung": "pod",
+"syl": [
+"pod"
+],
+"paren": false,
+"li": 17,
+"sec": 4,
+"line": 3,
+"occ": 0,
+"present": false
+},
+{
+"w": "spodem",
+"sung": "spodem",
+"syl": [
+"spo",
+"dem"
+],
+"paren": false,
+"li": 17,
+"sec": 4,
+"line": 3,
+"occ": 0,
+"present": false
+},
+{
+"w": "cisza",
+"sung": "cisza",
+"syl": [
+"ci",
+"sza"
+],
+"paren": false,
+"li": 17,
+"sec": 4,
+"line": 3,
+"occ": 0,
+"present": false
+},
+{
+"w": "trochę",
+"sung": "trochę",
+"syl": [
+"tro",
+"chę"
+],
+"paren": false,
+"li": 17,
+"sec": 4,
+"line": 3,
+"occ": 0,
+"present": true,
+"char_t": [
+71.42,
+71.5,
+71.56,
+71.68,
+71.7,
+71.76
+],
+"t0": 71.42,
+"t1": 71.78,
+"conf": -0.026
+},
+{
+"w": "jak",
+"sung": "jak",
+"syl": [
+"jak"
+],
+"paren": false,
+"li": 17,
+"sec": 4,
+"line": 3,
+"occ": 0,
+"present": true,
+"char_t": [
+71.92,
+71.96,
+72.0
+],
+"t0": 71.92,
+"t1": 72.02,
+"conf": -0.029
+},
+{
+"w": "męka",
+"sung": "męka",
+"syl": [
+"mę",
+"ka"
+],
+"paren": false,
+"li": 17,
+"sec": 4,
+"line": 3,
+"occ": 0,
+"present": true,
+"char_t": [
+72.14,
+72.22,
+72.46,
+72.6
+],
+"t0": 72.14,
+"t1": 72.62,
+"conf": -0.116
+},
+{
+"w": "Mocne",
+"sung": "mocne",
+"syl": [
+"moc",
+"ne"
+],
+"paren": false,
+"li": 18,
+"sec": 4,
+"line": 4,
+"occ": 0,
+"present": false
+},
+{
+"w": "zasięgi",
+"sung": "zasięgi",
+"syl": [
+"za",
+"się",
+"gi"
+],
+"paren": false,
+"li": 18,
+"sec": 4,
+"line": 4,
+"occ": 0,
+"present": false
+},
+{
+"w": "hej",
+"sung": "hej",
+"syl": [
+"hej"
+],
+"paren": true,
+"li": 18,
+"sec": 4,
+"line": 4,
+"occ": 0,
+"present": false
+},
+{
+"w": "Wielkie",
+"sung": "wielkie",
+"syl": [
+"wiel",
+"kie"
+],
+"paren": false,
+"li": 19,
+"sec": 4,
+"line": 5,
+"occ": 0,
+"present": false
+},
+{
+"w": "zasięgi",
+"sung": "zasięgi",
+"syl": [
+"za",
+"się",
+"gi"
+],
+"paren": false,
+"li": 19,
+"sec": 4,
+"line": 5,
+"occ": 0,
+"present": false
+},
+{
+"w": "hej",
+"sung": "hej",
+"syl": [
+"hej"
+],
+"paren": true,
+"li": 19,
+"sec": 4,
+"line": 5,
+"occ": 0,
+"present": false
+},
+{
+"w": "Czekaj",
+"sung": "czekaj",
+"syl": [
+"cze",
+"kaj"
+],
+"paren": false,
+"li": 20,
+"sec": 5,
+"line": 0,
+"occ": 0,
+"present": false
+},
+{
+"w": "ten",
+"sung": "ten",
+"syl": [
+"ten"
+],
+"paren": false,
+"li": 20,
+"sec": 5,
+"line": 0,
+"occ": 0,
+"present": false
+},
+{
+"w": "wpis",
+"sung": "wpis",
+"syl": [
+"wpis"
+],
+"paren": false,
+"li": 20,
+"sec": 5,
+"line": 0,
+"occ": 0,
+"present": false
+},
+{
+"w": "jest",
+"sung": "jest",
+"syl": [
+"jest"
+],
+"paren": false,
+"li": 20,
+"sec": 5,
+"line": 0,
+"occ": 0,
+"present": false
+},
+{
+"w": "najlepszy",
+"sung": "najlepszy",
+"syl": [
+"naj",
+"lep",
+"szy"
+],
+"paren": false,
+"li": 20,
+"sec": 5,
+"line": 0,
+"occ": 0,
+"present": false
+},
+{
+"w": "Z",
+"sung": "z",
+"syl": [],
+"paren": false,
+"li": 21,
+"sec": 5,
+"line": 1,
+"occ": 0,
+"present": false
+},
+{
+"w": "pokorą",
+"sung": "pokorą",
+"syl": [
+"po",
+"ko",
+"rą"
+],
+"paren": false,
+"li": 21,
+"sec": 5,
+"line": 1,
+"occ": 0,
+"present": false
+},
+{
+"w": "informuję",
+"sung": "informuję",
+"syl": [
+"in",
+"for",
+"mu",
+"ję"
+],
+"paren": false,
+"li": 21,
+"sec": 5,
+"line": 1,
+"occ": 0,
+"present": false
+},
+{
+"w": "brzmi",
+"sung": "brzmi",
+"syl": [
+"brzmi"
+],
+"paren": false,
+"li": 21,
+"sec": 5,
+"line": 1,
+"occ": 0,
+"present": false
+},
+{
+"w": "jak",
+"sung": "jak",
+"syl": [
+"jak"
+],
+"paren": false,
+"li": 21,
+"sec": 5,
+"line": 1,
+"occ": 0,
+"present": false
+},
+{
+"w": "cringe",
+"sung": "krindż",
+"syl": [
+"krindż"
+],
+"paren": false,
+"li": 21,
+"sec": 5,
+"line": 1,
+"occ": 0,
+"present": false
+},
+{
+"w": "A",
+"sung": "a",
+"syl": [
+"a"
+],
+"paren": false,
+"li": 22,
+"sec": 5,
+"line": 2,
+"occ": 0,
+"present": false
+},
+{
+"w": "potem",
+"sung": "potem",
+"syl": [
+"po",
+"tem"
+],
+"paren": false,
+"li": 22,
+"sec": 5,
+"line": 2,
+"occ": 0,
+"present": false
+},
+{
+"w": "pięć",
+"sung": "pięć",
+"syl": [
+"pięć"
+],
+"paren": false,
+"li": 22,
+"sec": 5,
+"line": 2,
+"occ": 0,
+"present": false
+},
+{
+"w": "scenek",
+"sung": "scenek",
+"syl": [
+"sce",
+"nek"
+],
+"paren": false,
+"li": 22,
+"sec": 5,
+"line": 2,
+"occ": 0,
+"present": false
+},
+{
+"w": "z",
+"sung": "z",
+"syl": [],
+"paren": false,
+"li": 22,
+"sec": 5,
+"line": 2,
+"occ": 0,
+"present": false
+},
+{
+"w": "życia",
+"sung": "życia",
+"syl": [
+"ży",
+"cia"
+],
+"paren": false,
+"li": 22,
+"sec": 5,
+"line": 2,
+"occ": 0,
+"present": false
+},
+{
+"w": "i",
+"sung": "i",
+"syl": [
+"i"
+],
+"paren": false,
+"li": 22,
+"sec": 5,
+"line": 2,
+"occ": 0,
+"present": false
+},
+{
+"w": "długi",
+"sung": "długi",
+"syl": [
+"dłu",
+"gi"
+],
+"paren": false,
+"li": 22,
+"sec": 5,
+"line": 2,
+"occ": 0,
+"present": false
+},
+{
+"w": "wywód",
+"sung": "wywód",
+"syl": [
+"wy",
+"wód"
+],
+"paren": false,
+"li": 22,
+"sec": 5,
+"line": 2,
+"occ": 0,
+"present": false
+},
+{
+"w": "o",
+"sung": "o",
+"syl": [
+"o"
+],
+"paren": false,
+"li": 22,
+"sec": 5,
+"line": 2,
+"occ": 0,
+"present": false
+},
+{
+"w": "tym",
+"sung": "tym",
+"syl": [
+"tym"
+],
+"paren": false,
+"li": 22,
+"sec": 5,
+"line": 2,
+"occ": 0,
+"present": false
+},
+{
+"w": "że",
+"sung": "że",
+"syl": [
+"że"
+],
+"paren": false,
+"li": 22,
+"sec": 5,
+"line": 2,
+"occ": 0,
+"present": false
+},
+{
+"w": "Cieszę",
+"sung": "cieszę",
+"syl": [
+"cie",
+"szę"
+],
+"paren": false,
+"li": 23,
+"sec": 5,
+"line": 3,
+"occ": 0,
+"present": false
+},
+{
+"w": "się",
+"sung": "się",
+"syl": [
+"się"
+],
+"paren": false,
+"li": 23,
+"sec": 5,
+"line": 3,
+"occ": 0,
+"present": false
+},
+{
+"w": "z",
+"sung": "z",
+"syl": [],
+"paren": false,
+"li": 23,
+"sec": 5,
+"line": 3,
+"occ": 0,
+"present": false
+},
+{
+"w": "nowej",
+"sung": "nowej",
+"syl": [
+"no",
+"wej"
+],
+"paren": false,
+"li": 23,
+"sec": 5,
+"line": 3,
+"occ": 0,
+"present": false
+},
+{
+"w": "drogi",
+"sung": "drogi",
+"syl": [
+"dro",
+"gi"
+],
+"paren": false,
+"li": 23,
+"sec": 5,
+"line": 3,
+"occ": 0,
+"present": false
+},
+{
+"w": "czytam",
+"sung": "czytam",
+"syl": [
+"czy",
+"tam"
+],
+"paren": false,
+"li": 23,
+"sec": 5,
+"line": 3,
+"occ": 0,
+"present": false
+},
+{
+"w": "bez",
+"sung": "bez",
+"syl": [
+"bez"
+],
+"paren": false,
+"li": 23,
+"sec": 5,
+"line": 3,
+"occ": 0,
+"present": false
+},
+{
+"w": "tchu",
+"sung": "tchu",
+"syl": [
+"tchu"
+],
+"paren": false,
+"li": 23,
+"sec": 5,
+"line": 3,
+"occ": 0,
+"present": false
+},
+{
+"w": "I",
+"sung": "i",
+"syl": [
+"i"
+],
+"paren": false,
+"li": 24,
+"sec": 5,
+"line": 4,
+"occ": 0,
+"present": false
+},
+{
+"w": "wiem",
+"sung": "wiem",
+"syl": [
+"wiem"
+],
+"paren": false,
+"li": 24,
+"sec": 5,
+"line": 4,
+"occ": 0,
+"present": false
+},
+{
+"w": "że",
+"sung": "że",
+"syl": [
+"że"
+],
+"paren": false,
+"li": 24,
+"sec": 5,
+"line": 4,
+"occ": 0,
+"present": false
+},
+{
+"w": "to",
+"sung": "to",
+"syl": [
+"to"
+],
+"paren": false,
+"li": 24,
+"sec": 5,
+"line": 4,
+"occ": 0,
+"present": false
+},
+{
+"w": "znaczy",
+"sung": "znaczy",
+"syl": [
+"zna",
+"czy"
+],
+"paren": false,
+"li": 24,
+"sec": 5,
+"line": 4,
+"occ": 0,
+"present": false
+},
+{
+"w": "wywalili",
+"sung": "wywalili",
+"syl": [
+"wy",
+"wa",
+"li",
+"li"
+],
+"paren": false,
+"li": 24,
+"sec": 5,
+"line": 4,
+"occ": 0,
+"present": true,
+"char_t": [
+95.42,
+95.5,
+95.64,
+95.72,
+95.8,
+95.92,
+96.02,
+96.1
+],
+"t0": 95.42,
+"t1": 96.12,
+"conf": -0.113
+},
+{
+"w": "cię",
+"sung": "cię",
+"syl": [
+"cię"
+],
+"paren": false,
+"li": 24,
+"sec": 5,
+"line": 4,
+"occ": 0,
+"present": true,
+"char_t": [
+96.2,
+96.24,
+96.3
+],
+"t0": 96.2,
+"t1": 96.32,
+"conf": -0.151
+},
+{
+"w": "na",
+"sung": "na",
+"syl": [
+"na"
+],
+"paren": false,
+"li": 24,
+"sec": 5,
+"line": 4,
+"occ": 0,
+"present": true,
+"char_t": [
+96.46,
+96.5
+],
+"t0": 96.46,
+"t1": 96.52,
+"conf": -0.073
+},
+{
+"w": "bruk",
+"sung": "bruk",
+"syl": [
+"bruk"
+],
+"paren": false,
+"li": 24,
+"sec": 5,
+"line": 4,
+"occ": 0,
+"present": true,
+"char_t": [
+96.6,
+96.64,
+98.36,
+98.5
+],
+"t0": 96.6,
+"t1": 98.52,
+"conf": -0.966
+},
+{
+"w": "Wywalili",
+"sung": "wywalili",
+"syl": [
+"wy",
+"wa",
+"li",
+"li"
+],
+"paren": true,
+"li": 25,
+"sec": 6,
+"line": 0,
+"occ": 0,
+"present": true,
+"char_t": [
+97.06,
+97.16,
+97.28,
+97.38,
+97.46,
+97.56,
+97.68,
+97.76
+],
+"t0": 97.06,
+"t1": 97.78,
+"conf": -0.663
+},
+{
+"w": "na",
+"sung": "na",
+"syl": [
+"na"
+],
+"paren": true,
+"li": 25,
+"sec": 6,
+"line": 0,
+"occ": 0,
+"present": true,
+"char_t": [
+97.92,
+98.0
+],
+"t0": 97.92,
+"t1": 98.02,
+"conf": -0.286
+},
+{
+"w": "bruk",
+"sung": "bruk",
+"syl": [
+"bruk"
+],
+"paren": true,
+"li": 25,
+"sec": 6,
+"line": 0,
+"occ": 0,
+"present": true,
+"char_t": [
+98.22,
+98.28,
+98.36,
+98.5
+],
+"t0": 98.22,
+"t1": 98.52,
+"conf": -1.09
+},
+{
+"w": "Ktoś",
+"sung": "ktoś",
+"syl": [
+"ktoś"
+],
+"paren": false,
+"li": 26,
+"sec": 7,
+"line": 0,
+"occ": 0,
+"present": false
+},
+{
+"w": "robi",
+"sung": "robi",
+"syl": [
+"ro",
+"bi"
+],
+"paren": false,
+"li": 26,
+"sec": 7,
+"line": 0,
+"occ": 0,
+"present": false
+},
+{
+"w": "z",
+"sung": "z",
+"syl": [],
+"paren": false,
+"li": 26,
+"sec": 7,
+"line": 0,
+"occ": 0,
+"present": false
+},
+{
+"w": "życia",
+"sung": "życia",
+"syl": [
+"ży",
+"cia"
+],
+"paren": false,
+"li": 26,
+"sec": 7,
+"line": 0,
+"occ": 0,
+"present": false
+},
+{
+"w": "case",
+"sung": "kejs",
+"syl": [
+"kejs"
+],
+"paren": false,
+"li": 26,
+"sec": 7,
+"line": 0,
+"occ": 0,
+"present": false
+},
+{
+"w": "study",
+"sung": "stadi",
+"syl": [
+"sta",
+"di"
+],
+"paren": false,
+"li": 26,
+"sec": 7,
+"line": 0,
+"occ": 0,
+"present": false
+},
+{
+"w": "Ktoś",
+"sung": "ktoś",
+"syl": [
+"ktoś"
+],
+"paren": false,
+"li": 27,
+"sec": 7,
+"line": 1,
+"occ": 0,
+"present": false
+},
+{
+"w": "sprzedaje",
+"sung": "sprzedaje",
+"syl": [
+"sprze",
+"da",
+"je"
+],
+"paren": false,
+"li": 27,
+"sec": 7,
+"line": 1,
+"occ": 0,
+"present": false
+},
+{
+"w": "się",
+"sung": "się",
+"syl": [
+"się"
+],
+"paren": false,
+"li": 27,
+"sec": 7,
+"line": 1,
+"occ": 0,
+"present": false
+},
+{
+"w": "za",
+"sung": "za",
+"syl": [
+"za"
+],
+"paren": false,
+"li": 27,
+"sec": 7,
+"line": 1,
+"occ": 0,
+"present": false
+},
+{
+"w": "trzy",
+"sung": "trzy",
+"syl": [
+"trzy"
+],
+"paren": false,
+"li": 27,
+"sec": 7,
+"line": 1,
+"occ": 0,
+"present": false
+},
+{
+"w": "opinie",
+"sung": "opinie",
+"syl": [
+"o",
+"pi",
+"nie"
+],
+"paren": false,
+"li": 27,
+"sec": 7,
+"line": 1,
+"occ": 0,
+"present": false
+},
+{
+"w": "Ktoś",
+"sung": "ktoś",
+"syl": [
+"ktoś"
+],
+"paren": false,
+"li": 28,
+"sec": 7,
+"line": 2,
+"occ": 0,
+"present": false
+},
+{
+"w": "pisze",
+"sung": "pisze",
+"syl": [
+"pi",
+"sze"
+],
+"paren": false,
+"li": 28,
+"sec": 7,
+"line": 2,
+"occ": 0,
+"present": false
+},
+{
+"w": "wdzięczność",
+"sung": "wdzięczność",
+"syl": [
+"wdzięcz",
+"ność"
+],
+"paren": false,
+"li": 28,
+"sec": 7,
+"line": 2,
+"occ": 0,
+"present": true,
+"char_t": [
+107.02,
+107.1,
+107.12,
+107.16,
+107.22,
+107.38,
+107.42,
+107.52,
+107.58,
+107.68,
+107.76
+],
+"t0": 107.02,
+"t1": 107.78,
+"conf": -0.436
+},
+{
+"w": "przy",
+"sung": "przy",
+"syl": [
+"przy"
+],
+"paren": false,
+"li": 28,
+"sec": 7,
+"line": 2,
+"occ": 0,
+"present": false
+},
+{
+"w": "każdym",
+"sung": "każdym",
+"syl": [
+"każ",
+"dym"
+],
+"paren": false,
+"li": 28,
+"sec": 7,
+"line": 2,
+"occ": 0,
+"present": false
+},
+{
+"w": "zdaniu",
+"sung": "zdaniu",
+"syl": [
+"zda",
+"niu"
+],
+"paren": false,
+"li": 28,
+"sec": 7,
+"line": 2,
+"occ": 0,
+"present": false
+},
+{
+"w": "Jakby",
+"sung": "jakby",
+"syl": [
+"jak",
+"by"
+],
+"paren": false,
+"li": 29,
+"sec": 7,
+"line": 3,
+"occ": 0,
+"present": false
+},
+{
+"w": "był",
+"sung": "był",
+"syl": [
+"był"
+],
+"paren": false,
+"li": 29,
+"sec": 7,
+"line": 3,
+"occ": 0,
+"present": false
+},
+{
+"w": "świętym",
+"sung": "świętym",
+"syl": [
+"świę",
+"tym"
+],
+"paren": false,
+"li": 29,
+"sec": 7,
+"line": 3,
+"occ": 0,
+"present": false
+},
+{
+"w": "w",
+"sung": "w",
+"syl": [],
+"paren": false,
+"li": 29,
+"sec": 7,
+"line": 3,
+"occ": 0,
+"present": true,
+"char_t": [
+113.42
+],
+"t0": 113.42,
+"t1": 113.44,
+"conf": -8.587
+},
+{
+"w": "korporacyjnym",
+"sung": "korporacyjnym",
+"syl": [
+"kor",
+"po",
+"ra",
+"cyj",
+"nym"
+],
+"paren": false,
+"li": 29,
+"sec": 7,
+"line": 3,
+"occ": 0,
+"present": false
+},
+{
+"w": "raju",
+"sung": "raju",
+"syl": [
+"ra",
+"ju"
+],
+"paren": false,
+"li": 29,
+"sec": 7,
+"line": 3,
+"occ": 0,
+"present": false
+},
+{
+"w": "I",
+"sung": "i",
+"syl": [
+"i"
+],
+"paren": false,
+"li": 30,
+"sec": 8,
+"line": 0,
+"occ": 0,
+"present": true,
+"char_t": [
+113.32
+],
+"t0": 113.32,
+"t1": 113.34,
+"conf": -0.015
+},
+{
+"w": "każdy",
+"sung": "każdy",
+"syl": [
+"każ",
+"dy"
+],
+"paren": false,
+"li": 30,
+"sec": 8,
+"line": 0,
+"occ": 0,
+"present": true,
+"char_t": [
+113.42,
+113.5,
+113.56,
+113.64,
+113.68
+],
+"t0": 113.42,
+"t1": 113.7,
+"conf": -0.003
+},
+{
+"w": "zna",
+"sung": "zna",
+"syl": [
+"zna"
+],
+"paren": false,
+"li": 30,
+"sec": 8,
+"line": 0,
+"occ": 0,
+"present": true,
+"char_t": [
+113.78,
+113.84,
+113.88
+],
+"t0": 113.78,
+"t1": 113.9,
+"conf": -0.003
+},
+{
+"w": "tu",
+"sung": "tu",
+"syl": [
+"tu"
+],
+"paren": false,
+"li": 30,
+"sec": 8,
+"line": 0,
+"occ": 0,
+"present": true,
+"char_t": [
+114.02,
+114.08
+],
+"t0": 114.02,
+"t1": 114.1,
+"conf": -0.015
+},
+{
+"w": "swoją",
+"sung": "swoją",
+"syl": [
+"swo",
+"ją"
+],
+"paren": false,
+"li": 30,
+"sec": 8,
+"line": 0,
+"occ": 0,
+"present": true,
+"char_t": [
+114.2,
+114.24,
+114.3,
+114.4,
+114.48
+],
+"t0": 114.2,
+"t1": 114.5,
+"conf": -0.015
+},
+{
+"w": "rolę",
+"sung": "rolę",
+"syl": [
+"ro",
+"lę"
+],
+"paren": false,
+"li": 30,
+"sec": 8,
+"line": 0,
+"occ": 0,
+"present": true,
+"char_t": [
+114.66,
+114.72,
+114.84,
+114.94
+],
+"t0": 114.66,
+"t1": 114.96,
+"conf": -0.002
+},
+{
+"w": "Uśmiech",
+"sung": "uśmiech",
+"syl": [
+"uś",
+"miech"
+],
+"paren": false,
+"li": 31,
+"sec": 8,
+"line": 1,
+"occ": 0,
+"present": true,
+"char_t": [
+116.18,
+116.38,
+116.48,
+116.5,
+116.54,
+116.6,
+116.62
+],
+"t0": 116.18,
+"t1": 116.64,
+"conf": -0.007
+},
+{
+"w": "wyuczony",
+"sung": "wyuczony",
+"syl": [
+"wy",
+"u",
+"czo",
+"ny"
+],
+"paren": false,
+"li": 31,
+"sec": 8,
+"line": 1,
+"occ": 0,
+"present": true,
+"char_t": [
+116.72,
+116.78,
+116.94,
+117.02,
+117.04,
+117.14,
+117.26,
+117.34
+],
+"t0": 116.72,
+"t1": 117.36,
+"conf": -0.003
+},
+{
+"w": "studio",
+"sung": "studio",
+"syl": [
+"stu",
+"dio"
+],
+"paren": false,
+"li": 31,
+"sec": 8,
+"line": 1,
+"occ": 0,
+"present": true,
+"char_t": [
+117.44,
+117.5,
+117.54,
+117.66,
+117.72,
+117.76
+],
+"t0": 117.44,
+"t1": 117.78,
+"conf": -0.008
+},
+{
+"w": "w",
+"sung": "w",
+"syl": [],
+"paren": false,
+"li": 31,
+"sec": 8,
+"line": 1,
+"occ": 0,
+"present": true,
+"char_t": [
+117.84
+],
+"t0": 117.84,
+"t1": 117.86,
+"conf": -0.01
+},
+{
+"w": "drewnie",
+"sung": "drewnie",
+"syl": [
+"drew",
+"nie"
+],
+"paren": false,
+"li": 31,
+"sec": 8,
+"line": 1,
+"occ": 0,
+"present": true,
+"char_t": [
+117.92,
+117.96,
+118.02,
+118.42,
+118.52,
+118.56,
+118.62
+],
+"t0": 117.92,
+"t1": 118.64,
+"conf": -0.009
+},
+{
+"w": "Jedno",
+"sung": "jedno",
+"syl": [
+"jed",
+"no"
+],
+"paren": false,
+"li": 32,
+"sec": 8,
+"line": 2,
+"occ": 0,
+"present": false
+},
+{
+"w": "słowo",
+"sung": "słowo",
+"syl": [
+"sło",
+"wo"
+],
+"paren": false,
+"li": 32,
+"sec": 8,
+"line": 2,
+"occ": 0,
+"present": false
+},
+{
+"w": "za",
+"sung": "za",
+"syl": [
+"za"
+],
+"paren": false,
+"li": 32,
+"sec": 8,
+"line": 2,
+"occ": 0,
+"present": false
+},
+{
+"w": "dużo",
+"sung": "dużo",
+"syl": [
+"du",
+"żo"
+],
+"paren": false,
+"li": 32,
+"sec": 8,
+"line": 2,
+"occ": 0,
+"present": false
+},
+{
+"w": "i",
+"sung": "i",
+"syl": [
+"i"
+],
+"paren": false,
+"li": 32,
+"sec": 8,
+"line": 2,
+"occ": 0,
+"present": true,
+"char_t": [
+122.64
+],
+"t0": 122.64,
+"t1": 122.66,
+"conf": -0.994
+},
+{
+"w": "już",
+"sung": "już",
+"syl": [
+"już"
+],
+"paren": false,
+"li": 32,
+"sec": 8,
+"line": 2,
+"occ": 0,
+"present": false
+},
+{
+"w": "wiesz",
+"sung": "wiesz",
+"syl": [
+"wiesz"
+],
+"paren": false,
+"li": 32,
+"sec": 8,
+"line": 2,
+"occ": 0,
+"present": false
+},
+{
+"w": "Że",
+"sung": "że",
+"syl": [
+"że"
+],
+"paren": false,
+"li": 33,
+"sec": 8,
+"line": 3,
+"occ": 0,
+"present": false
+},
+{
+"w": "dziś",
+"sung": "dziś",
+"syl": [
+"dziś"
+],
+"paren": false,
+"li": 33,
+"sec": 8,
+"line": 3,
+"occ": 0,
+"present": true,
+"char_t": [
+122.76,
+122.78,
+122.86,
+122.92
+],
+"t0": 122.76,
+"t1": 122.94,
+"conf": -0.19
+},
+{
+"w": "na",
+"sung": "na",
+"syl": [
+"na"
+],
+"paren": false,
+"li": 33,
+"sec": 8,
+"line": 3,
+"occ": 0,
+"present": true,
+"char_t": [
+123.06,
+123.08
+],
+"t0": 123.06,
+"t1": 123.1,
+"conf": -0.015
+},
+{
+"w": "siłę",
+"sung": "siłę",
+"syl": [
+"si",
+"łę"
+],
+"paren": false,
+"li": 33,
+"sec": 8,
+"line": 3,
+"occ": 0,
+"present": true,
+"char_t": [
+123.18,
+123.28,
+123.4,
+123.46
+],
+"t0": 123.18,
+"t1": 123.48,
+"conf": -0.013
+},
+{
+"w": "robisz",
+"sung": "robisz",
+"syl": [
+"ro",
+"bisz"
+],
+"paren": false,
+"li": 33,
+"sec": 8,
+"line": 3,
+"occ": 0,
+"present": true,
+"char_t": [
+123.62,
+123.68,
+123.8,
+123.88,
+123.98,
+124.0
+],
+"t0": 123.62,
+"t1": 124.04,
+"conf": -0.056
+},
+{
+"w": "wielki",
+"sung": "wielki",
+"syl": [
+"wiel",
+"ki"
+],
+"paren": false,
+"li": 33,
+"sec": 8,
+"line": 3,
+"occ": 0,
+"present": true,
+"char_t": [
+124.38,
+124.44,
+124.5,
+124.62,
+124.76,
+124.88
+],
+"t0": 124.38,
+"t1": 124.9,
+"conf": -0.006
+},
+{
+"w": "gest",
+"sung": "gest",
+"syl": [
+"gest"
+],
+"paren": false,
+"li": 33,
+"sec": 8,
+"line": 3,
+"occ": 0,
+"present": true,
+"char_t": [
+125.04,
+125.16,
+128.58,
+128.68
+],
+"t0": 125.04,
+"t1": 128.7,
+"conf": -0.074
+},
+{
+"w": "Puste",
+"sung": "puste",
+"syl": [
+"pus",
+"te"
+],
+"paren": false,
+"li": 34,
+"sec": 9,
+"line": 0,
+"occ": 0,
+"present": true,
+"char_t": [
+128.42,
+128.5,
+128.58,
+128.68,
+128.76
+],
+"t0": 128.42,
+"t1": 128.78,
+"conf": -0.071,
+"variant_scores": {
+"puste": -0.013,
+"wielkie": -2.227,
+"mocne": -1.282
+}
+},
+{
+"w": "zasięgi",
+"sung": "zasięgi",
+"syl": [
+"za",
+"się",
+"gi"
+],
+"paren": false,
+"li": 34,
+"sec": 9,
+"line": 0,
+"occ": 0,
+"present": true,
+"char_t": [
+128.86,
+128.94,
+129.06,
+129.12,
+129.18,
+129.46,
+129.6
+],
+"t0": 128.86,
+"t1": 129.62,
+"conf": -0.069
+},
+{
+"w": "puste",
+"sung": "puste",
+"syl": [
+"pus",
+"te"
+],
+"paren": false,
+"li": 34,
+"sec": 9,
+"line": 0,
+"occ": 0,
+"present": true,
+"char_t": [
+129.9,
+129.98,
+130.12,
+130.26,
+130.34
+],
+"t0": 129.9,
+"t1": 130.36,
+"conf": -0.055,
+"variant_scores": {
+"puste": -0.009,
+"wielkie": -1.932,
+"mocne": -1.143
+}
+},
+{
+"w": "zasięgi",
+"sung": "zasięgi",
+"syl": [
+"za",
+"się",
+"gi"
+],
+"paren": false,
+"li": 34,
+"sec": 9,
+"line": 0,
+"occ": 0,
+"present": true,
+"char_t": [
+130.48,
+130.56,
+130.68,
+130.74,
+130.8,
+131.08,
+131.22
+],
+"t0": 130.48,
+"t1": 131.24,
+"conf": -0.079
+},
+{
+"w": "Każdy",
+"sung": "każdy",
+"syl": [
+"każ",
+"dy"
+],
+"paren": false,
+"li": 35,
+"sec": 9,
+"line": 1,
+"occ": 0,
+"present": false
+},
+{
+"w": "tu",
+"sung": "tu",
+"syl": [
+"tu"
+],
+"paren": false,
+"li": 35,
+"sec": 9,
+"line": 1,
+"occ": 0,
+"present": false
+},
+{
+"w": "błyszczy",
+"sung": "błyszczy",
+"syl": [
+"błysz",
+"czy"
+],
+"paren": false,
+"li": 35,
+"sec": 9,
+"line": 1,
+"occ": 0,
+"present": false
+},
+{
+"w": "każdy",
+"sung": "każdy",
+"syl": [
+"każ",
+"dy"
+],
+"paren": false,
+"li": 35,
+"sec": 9,
+"line": 1,
+"occ": 0,
+"present": true,
+"char_t": [
+133.14,
+133.26,
+133.42,
+133.54,
+133.6
+],
+"t0": 133.14,
+"t1": 133.62,
+"conf": -0.099
+},
+{
+"w": "tu",
+"sung": "tu",
+"syl": [
+"tu"
+],
+"paren": false,
+"li": 35,
+"sec": 9,
+"line": 1,
+"occ": 0,
+"present": true,
+"char_t": [
+133.72,
+133.8
+],
+"t0": 133.72,
+"t1": 133.82,
+"conf": -0.138
+},
+{
+"w": "pęka",
+"sung": "pęka",
+"syl": [
+"pę",
+"ka"
+],
+"paren": false,
+"li": 35,
+"sec": 9,
+"line": 1,
+"occ": 0,
+"present": true,
+"char_t": [
+133.98,
+134.06,
+134.32,
+134.46
+],
+"t0": 133.98,
+"t1": 134.48,
+"conf": -0.433
+},
+{
+"w": "Puste",
+"sung": "puste",
+"syl": [
+"pus",
+"te"
+],
+"paren": false,
+"li": 36,
+"sec": 9,
+"line": 2,
+"occ": 0,
+"present": false
+},
+{
+"w": "zasięgi",
+"sung": "zasięgi",
+"syl": [
+"za",
+"się",
+"gi"
+],
+"paren": false,
+"li": 36,
+"sec": 9,
+"line": 2,
+"occ": 0,
+"present": false
+},
+{
+"w": "wielkie",
+"sung": "wielkie",
+"syl": [
+"wiel",
+"kie"
+],
+"paren": false,
+"li": 36,
+"sec": 9,
+"line": 2,
+"occ": 0,
+"present": false
+},
+{
+"w": "zasięgi",
+"sung": "zasięgi",
+"syl": [
+"za",
+"się",
+"gi"
+],
+"paren": false,
+"li": 36,
+"sec": 9,
+"line": 2,
+"occ": 0,
+"present": false
+},
+{
+"w": "A",
+"sung": "a",
+"syl": [
+"a"
+],
+"paren": false,
+"li": 37,
+"sec": 9,
+"line": 3,
+"occ": 0,
+"present": false
+},
+{
+"w": "pod",
+"sung": "pod",
+"syl": [
+"pod"
+],
+"paren": false,
+"li": 37,
+"sec": 9,
+"line": 3,
+"occ": 0,
+"present": false
+},
+{
+"w": "spodem",
+"sung": "spodem",
+"syl": [
+"spo",
+"dem"
+],
+"paren": false,
+"li": 37,
+"sec": 9,
+"line": 3,
+"occ": 0,
+"present": false
+},
+{
+"w": "cisza",
+"sung": "cisza",
+"syl": [
+"ci",
+"sza"
+],
+"paren": false,
+"li": 37,
+"sec": 9,
+"line": 3,
+"occ": 0,
+"present": false
+},
+{
+"w": "trochę",
+"sung": "trochę",
+"syl": [
+"tro",
+"chę"
+],
+"paren": false,
+"li": 37,
+"sec": 9,
+"line": 3,
+"occ": 0,
+"present": true,
+"char_t": [
+139.76,
+139.84,
+139.92,
+140.02,
+140.04,
+140.1
+],
+"t0": 139.76,
+"t1": 140.12,
+"conf": -0.045
+},
+{
+"w": "jak",
+"sung": "jak",
+"syl": [
+"jak"
+],
+"paren": false,
+"li": 37,
+"sec": 9,
+"line": 3,
+"occ": 0,
+"present": true,
+"char_t": [
+140.26,
+140.32,
+140.36
+],
+"t0": 140.26,
+"t1": 140.38,
+"conf": -0.051
+},
+{
+"w": "męka",
+"sung": "męka",
+"syl": [
+"mę",
+"ka"
+],
+"paren": false,
+"li": 37,
+"sec": 9,
+"line": 3,
+"occ": 0,
+"present": true,
+"char_t": [
+140.48,
+140.56,
+140.82,
+140.96
+],
+"t0": 140.48,
+"t1": 140.98,
+"conf": -0.113
+},
+{
+"w": "Mocne",
+"sung": "mocne",
+"syl": [
+"moc",
+"ne"
+],
+"paren": false,
+"li": 38,
+"sec": 9,
+"line": 4,
+"occ": 0,
+"present": false
+},
+{
+"w": "zasięgi",
+"sung": "zasięgi",
+"syl": [
+"za",
+"się",
+"gi"
+],
+"paren": false,
+"li": 38,
+"sec": 9,
+"line": 4,
+"occ": 0,
+"present": false
+},
+{
+"w": "hej",
+"sung": "hej",
+"syl": [
+"hej"
+],
+"paren": true,
+"li": 38,
+"sec": 9,
+"line": 4,
+"occ": 0,
+"present": false
+},
+{
+"w": "Puste",
+"sung": "puste",
+"syl": [
+"pus",
+"te"
+],
+"paren": false,
+"li": 39,
+"sec": 9,
+"line": 5,
+"occ": 0,
+"present": false
+},
+{
+"w": "zasięgi",
+"sung": "zasięgi",
+"syl": [
+"za",
+"się",
+"gi"
+],
+"paren": false,
+"li": 39,
+"sec": 9,
+"line": 5,
+"occ": 0,
+"present": false
+},
+{
+"w": "hej",
+"sung": "hej",
+"syl": [
+"hej"
+],
+"paren": true,
+"li": 39,
+"sec": 9,
+"line": 5,
+"occ": 0,
+"present": false
+},
+{
+"w": "A",
+"sung": "a",
+"syl": [
+"a"
+],
+"paren": false,
+"li": 40,
+"sec": 10,
+"line": 0,
+"occ": 0,
+"present": false
+},
+{
+"w": "tak",
+"sung": "tak",
+"syl": [
+"tak"
+],
+"paren": false,
+"li": 40,
+"sec": 10,
+"line": 0,
+"occ": 0,
+"present": false
+},
+{
+"w": "szczerze",
+"sung": "szczerze",
+"syl": [
+"szcze",
+"rze"
+],
+"paren": false,
+"li": 40,
+"sec": 10,
+"line": 0,
+"occ": 0,
+"present": false
+},
+{
+"w": "mówiąc",
+"sung": "mówiąc",
+"syl": [
+"mó",
+"wiąc"
+],
+"paren": false,
+"li": 40,
+"sec": 10,
+"line": 0,
+"occ": 0,
+"present": false
+},
+{
+"w": "A",
+"sung": "a",
+"syl": [
+"a"
+],
+"paren": false,
+"li": 41,
+"sec": 10,
+"line": 1,
+"occ": 0,
+"present": false
+},
+{
+"w": "ja",
+"sung": "ja",
+"syl": [
+"ja"
+],
+"paren": false,
+"li": 41,
+"sec": 10,
+"line": 1,
+"occ": 0,
+"present": false
+},
+{
+"w": "bym",
+"sung": "bym",
+"syl": [
+"bym"
+],
+"paren": false,
+"li": 41,
+"sec": 10,
+"line": 1,
+"occ": 0,
+"present": false
+},
+{
+"w": "tylko",
+"sung": "tylko",
+"syl": [
+"tyl",
+"ko"
+],
+"paren": false,
+"li": 41,
+"sec": 10,
+"line": 1,
+"occ": 0,
+"present": false
+},
+{
+"w": "chciał",
+"sung": "chciał",
+"syl": [
+"chciał"
+],
+"paren": false,
+"li": 41,
+"sec": 10,
+"line": 1,
+"occ": 0,
+"present": false
+},
+{
+"w": "napisać",
+"sung": "napisać",
+"syl": [
+"na",
+"pi",
+"sać"
+],
+"paren": false,
+"li": 41,
+"sec": 10,
+"line": 1,
+"occ": 0,
+"present": false
+},
+{
+"w": "prosto",
+"sung": "prosto",
+"syl": [
+"pros",
+"to"
+],
+"paren": false,
+"li": 41,
+"sec": 10,
+"line": 1,
+"occ": 0,
+"present": false
+},
+{
+"w": "Bez",
+"sung": "bez",
+"syl": [
+"bez"
+],
+"paren": false,
+"li": 42,
+"sec": 10,
+"line": 2,
+"occ": 0,
+"present": false
+},
+{
+"w": "tych",
+"sung": "tych",
+"syl": [
+"tych"
+],
+"paren": false,
+"li": 42,
+"sec": 10,
+"line": 2,
+"occ": 0,
+"present": false
+},
+{
+"w": "ozdobników",
+"sung": "ozdobników",
+"syl": [
+"oz",
+"dob",
+"ni",
+"ków"
+],
+"paren": false,
+"li": 42,
+"sec": 10,
+"line": 2,
+"occ": 0,
+"present": false
+},
+{
+"w": "bez",
+"sung": "bez",
+"syl": [
+"bez"
+],
+"paren": false,
+"li": 42,
+"sec": 10,
+"line": 2,
+"occ": 0,
+"present": false
+},
+{
+"w": "tej",
+"sung": "tej",
+"syl": [
+"tej"
+],
+"paren": false,
+"li": 42,
+"sec": 10,
+"line": 2,
+"occ": 0,
+"present": false
+},
+{
+"w": "mgły",
+"sung": "mgły",
+"syl": [
+"mgły"
+],
+"paren": false,
+"li": 42,
+"sec": 10,
+"line": 2,
+"occ": 0,
+"present": false
+},
+{
+"w": "Że",
+"sung": "że",
+"syl": [
+"że"
+],
+"paren": false,
+"li": 43,
+"sec": 10,
+"line": 3,
+"occ": 0,
+"present": false
+},
+{
+"w": "czasem",
+"sung": "czasem",
+"syl": [
+"cza",
+"sem"
+],
+"paren": false,
+"li": 43,
+"sec": 10,
+"line": 3,
+"occ": 0,
+"present": false
+},
+{
+"w": "człowiek",
+"sung": "człowiek",
+"syl": [
+"czło",
+"wiek"
+],
+"paren": false,
+"li": 43,
+"sec": 10,
+"line": 3,
+"occ": 0,
+"present": false
+},
+{
+"w": "po",
+"sung": "po",
+"syl": [
+"po"
+],
+"paren": false,
+"li": 43,
+"sec": 10,
+"line": 3,
+"occ": 0,
+"present": true,
+"char_t": [
+167.78,
+167.86
+],
+"t0": 167.78,
+"t1": 167.88,
+"conf": -0.9
+},
+{
+"w": "prostu",
+"sung": "prostu",
+"syl": [
+"pros",
+"tu"
+],
+"paren": false,
+"li": 43,
+"sec": 10,
+"line": 3,
+"occ": 0,
+"present": false
+},
+{
+"w": "robi",
+"sung": "robi",
+"syl": [
+"ro",
+"bi"
+],
+"paren": false,
+"li": 43,
+"sec": 10,
+"line": 3,
+"occ": 0,
+"present": false
+},
+{
+"w": "swoje",
+"sung": "swoje",
+"syl": [
+"swo",
+"je"
+],
+"paren": false,
+"li": 43,
+"sec": 10,
+"line": 3,
+"occ": 0,
+"present": false
+},
+{
+"w": "I",
+"sung": "i",
+"syl": [
+"i"
+],
+"paren": false,
+"li": 44,
+"sec": 10,
+"line": 4,
+"occ": 0,
+"present": false
+},
+{
+"w": "nie",
+"sung": "nie",
+"syl": [
+"nie"
+],
+"paren": false,
+"li": 44,
+"sec": 10,
+"line": 4,
+"occ": 0,
+"present": false
+},
+{
+"w": "potrzebuje",
+"sung": "potrzebuje",
+"syl": [
+"pot",
+"rze",
+"bu",
+"je"
+],
+"paren": false,
+"li": 44,
+"sec": 10,
+"line": 4,
+"occ": 0,
+"present": false
+},
+{
+"w": "fanfar",
+"sung": "fanfar",
+"syl": [
+"fan",
+"far"
+],
+"paren": false,
+"li": 44,
+"sec": 10,
+"line": 4,
+"occ": 0,
+"present": false
+},
+{
+"w": "ani",
+"sung": "ani",
+"syl": [
+"a",
+"ni"
+],
+"paren": false,
+"li": 44,
+"sec": 10,
+"line": 4,
+"occ": 0,
+"present": false
+},
+{
+"w": "łez",
+"sung": "łez",
+"syl": [
+"łez"
+],
+"paren": false,
+"li": 44,
+"sec": 10,
+"line": 4,
+"occ": 0,
+"present": false
+},
+{
+"w": "Puste",
+"sung": "puste",
+"syl": [
+"pus",
+"te"
+],
+"paren": false,
+"li": 45,
+"sec": 11,
+"line": 0,
+"occ": 0,
+"present": true,
+"char_t": [
+167.78,
+167.86,
+167.96,
+168.06,
+168.12
+],
+"t0": 167.78,
+"t1": 168.14,
+"conf": -0.161,
+"variant_scores": {
+"puste": -0.036,
+"wielkie": -2.075,
+"mocne": -0.959
+}
+},
+{
+"w": "zasięgi",
+"sung": "zasięgi",
+"syl": [
+"za",
+"się",
+"gi"
+],
+"paren": false,
+"li": 45,
+"sec": 11,
+"line": 0,
+"occ": 0,
+"present": true,
+"char_t": [
+168.24,
+168.32,
+168.44,
+168.5,
+168.56,
+168.86,
+168.98
+],
+"t0": 168.24,
+"t1": 169.0,
+"conf": -1.427
+},
+{
+"w": "wielkie",
+"sung": "wielkie",
+"syl": [
+"wiel",
+"kie"
+],
+"paren": false,
+"li": 45,
+"sec": 11,
+"line": 0,
+"occ": 0,
+"present": false,
+"variant_scores": {
+"puste": -0.689,
+"wielkie": -0.925,
+"mocne": -0.684
+}
+},
+{
+"w": "zasięgi",
+"sung": "zasięgi",
+"syl": [
+"za",
+"się",
+"gi"
+],
+"paren": false,
+"li": 45,
+"sec": 11,
+"line": 0,
+"occ": 0,
+"present": true,
+"char_t": [
+169.86,
+169.92,
+170.04,
+170.1,
+170.16,
+170.48,
+170.6
+],
+"t0": 169.86,
+"t1": 170.62,
+"conf": -1.34
+},
+{
+"w": "Każdy",
+"sung": "każdy",
+"syl": [
+"każ",
+"dy"
+],
+"paren": false,
+"li": 46,
+"sec": 11,
+"line": 1,
+"occ": 0,
+"present": false
+},
+{
+"w": "tu",
+"sung": "tu",
+"syl": [
+"tu"
+],
+"paren": false,
+"li": 46,
+"sec": 11,
+"line": 1,
+"occ": 0,
+"present": false
+},
+{
+"w": "błyszczy",
+"sung": "błyszczy",
+"syl": [
+"błysz",
+"czy"
+],
+"paren": false,
+"li": 46,
+"sec": 11,
+"line": 1,
+"occ": 0,
+"present": false
+},
+{
+"w": "każdy",
+"sung": "każdy",
+"syl": [
+"każ",
+"dy"
+],
+"paren": false,
+"li": 46,
+"sec": 11,
+"line": 1,
+"occ": 0,
+"present": true,
+"char_t": [
+172.52,
+172.64,
+172.82,
+172.92,
+172.98
+],
+"t0": 172.52,
+"t1": 173.0,
+"conf": -0.137
+},
+{
+"w": "tu",
+"sung": "tu",
+"syl": [
+"tu"
+],
+"paren": false,
+"li": 46,
+"sec": 11,
+"line": 1,
+"occ": 0,
+"present": true,
+"char_t": [
+173.1,
+173.18
+],
+"t0": 173.1,
+"t1": 173.2,
+"conf": -0.521
+},
+{
+"w": "pęka",
+"sung": "pęka",
+"syl": [
+"pę",
+"ka"
+],
+"paren": false,
+"li": 46,
+"sec": 11,
+"line": 1,
+"occ": 0,
+"present": true,
+"char_t": [
+173.34,
+173.42,
+173.7,
+173.82
+],
+"t0": 173.34,
+"t1": 173.84,
+"conf": -0.12
+},
+{
+"w": "Wielkie",
+"sung": "wielkie",
+"syl": [
+"wiel",
+"kie"
+],
+"paren": false,
+"li": 47,
+"sec": 11,
+"line": 2,
+"occ": 0,
+"present": false
+},
+{
+"w": "zasięgi",
+"sung": "zasięgi",
+"syl": [
+"za",
+"się",
+"gi"
+],
+"paren": false,
+"li": 47,
+"sec": 11,
+"line": 2,
+"occ": 0,
+"present": false
+},
+{
+"w": "puste",
+"sung": "puste",
+"syl": [
+"pus",
+"te"
+],
+"paren": false,
+"li": 47,
+"sec": 11,
+"line": 2,
+"occ": 0,
+"present": false
+},
+{
+"w": "zasięgi",
+"sung": "zasięgi",
+"syl": [
+"za",
+"się",
+"gi"
+],
+"paren": false,
+"li": 47,
+"sec": 11,
+"line": 2,
+"occ": 0,
+"present": false
+},
+{
+"w": "A",
+"sung": "a",
+"syl": [
+"a"
+],
+"paren": false,
+"li": 48,
+"sec": 11,
+"line": 3,
+"occ": 0,
+"present": false
+},
+{
+"w": "pod",
+"sung": "pod",
+"syl": [
+"pod"
+],
+"paren": false,
+"li": 48,
+"sec": 11,
+"line": 3,
+"occ": 0,
+"present": false
+},
+{
+"w": "spodem",
+"sung": "spodem",
+"syl": [
+"spo",
+"dem"
+],
+"paren": false,
+"li": 48,
+"sec": 11,
+"line": 3,
+"occ": 0,
+"present": false
+},
+{
+"w": "cisza",
+"sung": "cisza",
+"syl": [
+"ci",
+"sza"
+],
+"paren": false,
+"li": 48,
+"sec": 11,
+"line": 3,
+"occ": 0,
+"present": false
+},
+{
+"w": "trochę",
+"sung": "trochę",
+"syl": [
+"tro",
+"chę"
+],
+"paren": false,
+"li": 48,
+"sec": 11,
+"line": 3,
+"occ": 0,
+"present": true,
+"char_t": [
+179.14,
+179.22,
+179.3,
+179.44,
+179.46,
+179.52
+],
+"t0": 179.14,
+"t1": 179.54,
+"conf": -0.419
+},
+{
+"w": "jak",
+"sung": "jak",
+"syl": [
+"jak"
+],
+"paren": false,
+"li": 48,
+"sec": 11,
+"line": 3,
+"occ": 0,
+"present": true,
+"char_t": [
+179.66,
+179.72,
+179.76
+],
+"t0": 179.66,
+"t1": 179.78,
+"conf": -0.055
+},
+{
+"w": "męka",
+"sung": "męka",
+"syl": [
+"mę",
+"ka"
+],
+"paren": false,
+"li": 48,
+"sec": 11,
+"line": 3,
+"occ": 0,
+"present": true,
+"char_t": [
+179.88,
+179.94,
+180.22,
+180.36
+],
+"t0": 179.88,
+"t1": 180.38,
+"conf": -0.228
+},
+{
+"w": "Puste",
+"sung": "puste",
+"syl": [
+"pus",
+"te"
+],
+"paren": false,
+"li": 49,
+"sec": 11,
+"line": 4,
+"occ": 0,
+"present": false
+},
+{
+"w": "zasięgi",
+"sung": "zasięgi",
+"syl": [
+"za",
+"się",
+"gi"
+],
+"paren": false,
+"li": 49,
+"sec": 11,
+"line": 4,
+"occ": 0,
+"present": false
+},
+{
+"w": "hej",
+"sung": "hej",
+"syl": [
+"hej"
+],
+"paren": true,
+"li": 49,
+"sec": 11,
+"line": 4,
+"occ": 0,
+"present": true,
+"char_t": [
+182.44,
+182.52,
+183.4
+],
+"t0": 182.44,
+"t1": 183.42,
+"conf": -1.327
+},
+{
+"w": "Mocne",
+"sung": "mocne",
+"syl": [
+"moc",
+"ne"
+],
+"paren": false,
+"li": 50,
+"sec": 11,
+"line": 5,
+"occ": 0,
+"present": false
+},
+{
+"w": "zasięgi",
+"sung": "zasięgi",
+"syl": [
+"za",
+"się",
+"gi"
+],
+"paren": false,
+"li": 50,
+"sec": 11,
+"line": 5,
+"occ": 0,
+"present": false
+},
+{
+"w": "hej",
+"sung": "hej",
+"syl": [
+"hej"
+],
+"paren": true,
+"li": 50,
+"sec": 11,
+"line": 5,
+"occ": 0,
+"present": true,
+"char_t": [
+185.7,
+185.76,
+186.7
+],
+"t0": 185.7,
+"t1": 186.72,
+"conf": -1.445
+},
+{
+"w": "Dziękuję",
+"sung": "dziękuję",
+"syl": [
+"dzię",
+"ku",
+"ję"
+],
+"paren": false,
+"li": 51,
+"sec": 12,
+"line": 0,
+"occ": 0,
+"present": false
+},
+{
+"w": "za",
+"sung": "za",
+"syl": [
+"za"
+],
+"paren": false,
+"li": 51,
+"sec": 12,
+"line": 0,
+"occ": 0,
+"present": false
+},
+{
+"w": "uwagę",
+"sung": "uwagę",
+"syl": [
+"u",
+"wa",
+"gę"
+],
+"paren": false,
+"li": 51,
+"sec": 12,
+"line": 0,
+"occ": 0,
+"present": false
+},
+{
+"w": "miłego",
+"sung": "miłego",
+"syl": [
+"mi",
+"łe",
+"go"
+],
+"paren": false,
+"li": 51,
+"sec": 12,
+"line": 0,
+"occ": 0,
+"present": false
+},
+{
+"w": "scrollowania",
+"sung": "skrolowania",
+"syl": [
+"skro",
+"lo",
+"wa",
+"nia"
+],
+"paren": false,
+"li": 51,
+"sec": 12,
+"line": 0,
+"occ": 0,
+"present": false
+},
+{
+"w": "Puste",
+"sung": "puste",
+"syl": [
+"pus",
+"te"
+],
+"paren": false,
+"li": 52,
+"sec": 12,
+"line": 1,
+"occ": 0,
+"present": false
+},
+{
+"w": "zasięgi",
+"sung": "zasięgi",
+"syl": [
+"za",
+"się",
+"gi"
+],
+"paren": false,
+"li": 52,
+"sec": 12,
+"line": 1,
+"occ": 0,
+"present": false
+},
+{
+"w": "Puste",
+"sung": "puste",
+"syl": [
+"pus",
+"te"
+],
+"paren": false,
+"li": 53,
+"sec": 12,
+"line": 1,
+"occ": 1,
+"present": true,
+"char_t": [
+194.66,
+194.74,
+194.96,
+195.08,
+195.18
+],
+"t0": 194.66,
+"t1": 195.2,
+"conf": -0.278,
+"variant_scores": {
+"puste": -0.045,
+"wielkie": -1.537,
+"mocne": -0.746
+}
+},
+{
+"w": "zasięgi",
+"sung": "zasięgi",
+"syl": [
+"za",
+"się",
+"gi"
+],
+"paren": false,
+"li": 53,
+"sec": 12,
+"line": 1,
+"occ": 1,
+"present": true,
+"char_t": [
+195.5,
+195.6,
+195.86,
+195.94,
+196.0,
+197.52,
+197.66
+],
+"t0": 195.5,
+"t1": 197.68,
+"conf": -2.456
+},
+{
+"w": "Puste",
+"sung": "puste",
+"syl": [
+"pus",
+"te"
+],
+"paren": false,
+"li": 54,
+"sec": 12,
+"line": 1,
+"occ": 2,
+"present": true,
+"char_t": [
+208.22,
+208.28,
+208.4,
+208.5,
+208.56
+],
+"t0": 208.22,
+"t1": 208.58,
+"conf": -0.355,
+"variant_scores": {
+"puste": -0.071,
+"wielkie": -2.113,
+"mocne": -1.035
+}
+},
+{
+"w": "zasięgi",
+"sung": "zasięgi",
+"syl": [
+"za",
+"się",
+"gi"
+],
+"paren": false,
+"li": 54,
+"sec": 12,
+"line": 1,
+"occ": 2,
+"present": true,
+"char_t": [
+208.66,
+208.74,
+208.84,
+208.9,
+208.96,
+209.26,
+209.36
+],
+"t0": 208.66,
+"t1": 209.38,
+"conf": -1.971
+},
+{
+"w": "hej",
+"sung": "hej",
+"syl": [
+"hej"
+],
+"paren": true,
+"li": 54,
+"sec": 12,
+"line": 1,
+"occ": 2,
+"present": true,
+"char_t": [
+209.8,
+209.86,
+212.04
+],
+"t0": 209.8,
+"t1": 212.06,
+"conf": -3334.21
+}
+],
+"changes": []
+}

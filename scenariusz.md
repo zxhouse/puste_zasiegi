@@ -24,13 +24,29 @@ reflektor), a w feedzie pojawia się jego prosty, nieozdobny wpis – z małymi 
 | **Kasia Kejs** – „Life Strategist” | morelowy filc, granatowe „boba”, okulary, pomarańczowa marynarka, flipchart | „Robi z życia case study”, sprzedaje się „za trzy opinie” (karty z gwiazdkami) |
 | **Chór Zasięgów** (8 lalek) | mniejsze lalki w różnych kolorach; 4 panów w krawatach (chór męski przedrefrenów) + 4 panie (dochodzą w refrenie – chór mieszany) | Śpiewają chórki ze stemu chórków (każda paszcza otwiera się na zdarzenia sylabowe chórków), trzymają „reakcje” na patykach. Liczebność tylko rośnie: 4 → 8 → cały zespół w finale |
 
+## Kto śpiewa co (v3, z modeli rozpoznawania mowy na stemach wokalu – patrz `report.md`, 2.4)
+
+Stem wokalu prowadzącego = Henio, stem chórków = Chór Zasięgów. Oprócz miejsc oznaczonych w tekście nawiasem chór śpiewa też:
+* **dubluje Henia**: przedrefreny 1 i 2 poza wersem „Jedno słowo za dużo — i już wiesz”, „Puste zasięgi, puste zasięgi” na
+  początku refrenów 1 i 2, „…każdy tu pęka” w refrenie 1, drugie „zasięgi” w wersach „…wielkie zasięgi”,
+  „wywalili cię na bruk” na końcu zwrotki 2a, „wdzięczność”;
+* **sam (Henio milczy)**: „trochę jak męka” we wszystkich refrenach, „każdy tu pęka” w refrenach 2 i 3, pierwsze „Puste zasięgi”
+  w refrenach 1 (wers 3) i 3 (wers 1), wtrącenie „Wywalili na bruk!” (97,0–98,7 s);
+* **wokalizy bez słów** (zaokrąglone usta, trzymane): końcówki refrenów, zwrotka 2b, finał;
+* **„hej”** chóru jest tylko w refrenie 3 (182,4 i 185,7 s); w refrenach 1–2 w nagraniu go nie ma, choć tekst ma „(hej)”.
+* Refren 1, wers 6: w nagraniu „Puste zasięgi” (w tekście „Wielkie zasięgi”) – napis pokazuje to, co śpiewane.
+* Finał: Henio śpiewa „Pu-ste za-się-gi” rozciągnięte (194,6–197,7 s), krzyczy „hej” (201,5 s), szybko powtarza „Puste zasięgi”
+  (208,2 s) i wszyscy kończą „HEJ!” (209,8 s).
+
 ## Zasady realizacji
 
-* **Kto śpiewa, ten rusza ustami**: wokal prowadzący = Henio (jedno otwarcie paszczy = jedna sylaba z dopasowania tekstu),
-  chórki = Chór Zasięgów (otwarcia na zdarzeniach sylabowych stemu chórków), wtrącenie „Wywalili na bruk!” i „hej!” = chór.
+* **Kto śpiewa, ten rusza ustami**: wokal prowadzący = Henio (jedno otwarcie paszczy = jedna sylaba z dopasowania tekstu,
+  wielkość otwarcia zależna od samogłoski, głośności, długości i akcentu – stąd półotwarcia), chórki = Chór Zasięgów (sylaby
+  dopasowanego tekstu w stemie chórków, a we wokalizach bez słów – trzymane „uuu”).
 * **Napisy w scenografii**: każdy wers ma jedno stałe miejsce w świecie sceny (tablica na sznurkach, neon nad portalem,
   plansza trzymana przez lalkę, napis na kurtynie), słowa pojawiają się w momencie ich zaśpiewania, nigdy na postaciach.
-* **Kamery jak w studiu TV**: plan ogólny, plany średnie z lewej/prawej, zbliżenia, „żuraw”; w każdym ujęciu ruch kamery;
+* **Kamery jak w studiu TV**: kadrowanie względem postaci (zbliżenie / plan średni do pasa / plan grupowy / ogólny teatralny),
+  kamera śledzi postać i płynnie zmienia plan; w planach bliższych niż ogólny dół kadru nie odsłania krawędzi sceny pod lalką;
   cięcia na początkach wersów lub na „raz” taktu; każdy refren ma inny zestaw ujęć.
 * **Akcenty** (kiwnięcia, kłapnięcia, podskoki, błyski świateł) – na prawdziwych uderzeniach stopy/werbla ze stemu perkusji.
 
@@ -45,18 +61,18 @@ reflektor), a w feedzie pojawia się jego prosty, nieozdobny wpis – z małymi 
 | 27.0–30.4 | mowa „Tak, tak, wszyscy się strasznie cieszą!” | Przebitka: feed – post Henia, liczniki reakcji rosną, komentarze „Gratulacje!” |
 | 30.4–33.2 | instr. (wejście perkusji) | Powrót w kadr filmu, scena biurowa |
 | 33.2–46.7 | Zwrotka 1b | „W tle awans, w głowie stres” – za Heniem zjeżdża baner „AWANS”, nad głową chmurka z waty; „strategiczny gest” – 4 lalki biurowe w okienkach robią „strategiczną” pozę; „Zdjęcie z konferencji, mina jak z plakatu” – ścianka konferencyjna, Grażyna i Prezes pozują, błysk flesza na werblu; „„Ogromny szacun” do tego łaskawca” – Mirek wyskakuje z dymkiem do Prezesa |
-| 46.7–59.5 | Przedrefren 1 | Chór męski (4) wynurza się zza krawędzi; „Uśmiech wyuczony, rzut na czoło” – wszyscy jednocześnie zakładają uśmiech i salutują do czoła; „Jedno słowo za dużo” – wszyscy patrzą na Henia; „wielki gest” – Henio rozkłada ręce, reflektory narastają |
-| 60.1–79.0 | Refren 1 | Wielka scena show (neon nad portalem, żarówki w rytm), chór 8 z reakcjami na patykach; „każdy tu pęka” – pęka balon-serce; „A pod spodem cisza, trochę jak męka” – kamera schodzi pod krawędź sceny: ciemno, czarne rękawy lalkarzy, pręty, cisza; „Mocne/Wielkie zasięgi (hej)” – powrót, wszyscy w górę na „hej” |
-| 79.4–83.1 | mowa „Czekaj, ten wpis jest najlepszy…” | Przebitka: feed się przewija, zatrzymuje na wpisie Grażyny „Z pokorą informuję…” – wjazd w jej zdjęcie |
-| 83.1–98.2 | Zwrotka 2a | Studio Grażyny z ring-lightem; „pięć scenek z życia” – 5 komiksowych kadrów wyskakuje na 5 uderzeń; „Cieszę się z nowej drogi” – Tadek z kartonem i planszą; „wywalili cię na bruk!” – Prezes ze stemplem „RESTRUKTURYZACJA”, Tadek zjeżdża w dół za krawędź, w tle bruk |
-| 99.9–102.4 | „(Wywalili na bruk!)” | Chór wyskakuje i krzyczy, tekturowe kostki bruku |
-| 102.9–115.8 | Zwrotka 2b | „case study” – Kasia z flipchartem; „za trzy opinie” – karty ★★★; „wdzięczność przy każdym zdaniu” – Grażyna i długi zwój z #wdzięczność; „święty w korporacyjnym raju” – aureola na drucie, chmurki z waty |
-| 115.8–128.1 | Przedrefren 2 | Jak 1, ale „studio w drewnie” – ściana z drewnianych lameli, mikrofon podcastowy |
-| 128.4–147.6 | Refren 2 | Inne ujęcia: z boku, z góry, przebitki do analityki posta (wyświetlenia rosną) i do pustych komentarzy („A pod spodem cisza”) |
-| 148.9–163.9 | Bridge | Kurtyna się zamyka, jeden ciepły reflektor. Henio zdejmuje krawat; pisze markerem na zwykłym kartonie „Robię swoje.”; „Bez tych ozdobników, bez tej mgły” – opadają brokatowe ozdoby, rozwiewa się mgła; „nie potrzebuje fanfar ani łez” – spycha w dół wysuwającą się trąbkę |
+| 46.7–59.1 | Przedrefren 1 | Chór męski (4) wynurza się zza krawędzi; „Uśmiech wyuczony, rzut na czoło” – wszyscy jednocześnie zakładają uśmiech i salutują do czoła; „Jedno słowo za dużo” – wszyscy patrzą na Henia; „wielki gest” – Henio rozkłada ręce, reflektory narastają |
+| 60.1–78.2 | Refren 1 | Wielka scena show (neon nad portalem, żarówki w rytm), chór 8 z reakcjami na patykach; „każdy tu pęka” – pęka balon-serce; „A pod spodem cisza, trochę jak męka” – kamera schodzi pod krawędź sceny: ciemno, czarne rękawy lalkarzy, pręty, cisza; „Mocne/Wielkie zasięgi (hej)” – powrót, wszyscy w górę na „hej” |
+| 80.5–83.1 | mowa „Czekaj, ten wpis jest najlepszy…” | Przebitka: feed się przewija, zatrzymuje na wpisie Grażyny „Z pokorą informuję…” – wjazd w jej zdjęcie |
+| 83.4–97.0 | Zwrotka 2a | Studio Grażyny z ring-lightem; „pięć scenek z życia” – 5 komiksowych kadrów wyskakuje na 5 uderzeń; „Cieszę się z nowej drogi” – Tadek z kartonem i planszą; „wywalili cię na bruk!” – Prezes ze stemplem „RESTRUKTURYZACJA”, Tadek zjeżdża w dół za krawędź, w tle bruk |
+| 97.0–98.7 | „(Wywalili na bruk!)” | Chór wyskakuje i krzyczy, tekturowe kostki bruku |
+| 99.7–113.0 | Zwrotka 2b | „case study” – Kasia z flipchartem; „za trzy opinie” – karty ★★★; „wdzięczność przy każdym zdaniu” – Grażyna i długi zwój z #wdzięczność; „święty w korporacyjnym raju” – aureola na drucie, chmurki z waty |
+| 113.2–125.2 | Przedrefren 2 | Jak 1, ale „studio w drewnie” – ściana z drewnianych lameli, mikrofon podcastowy |
+| 128.4–146.0 | Refren 2 | Inne ujęcia: z boku, z góry, przebitki do analityki posta (wyświetlenia rosną) i do pustych komentarzy („A pod spodem cisza”) |
+| 149.0–163.9 | Bridge | Kurtyna się zamyka, jeden ciepły reflektor. Henio zdejmuje krawat; pisze markerem na zwykłym kartonie „Robię swoje.”; „Bez tych ozdobników, bez tej mgły” – opadają brokatowe ozdoby, rozwiewa się mgła; „nie potrzebuje fanfar ani łez” – spycha w dół wysuwającą się trąbkę |
 | 163.9–167.8 | instr. | Przebitka: prosty wpis Henia w feedzie, kilka reakcji i jedna prawdziwa odpowiedź od Tadka |
 | 167.8–186.9 | Refren 3 (majestatyczny) | Kurtyna w górę, cały zespół (chór 8 + Grażyna, Prezes, Tadek, Kasia, Mirek), konfetti, szerokie ujęcia z „żurawia” |
 | 188.7–193.1 | mowa „Dziękuję za uwagę, miłego scrollowania.” | Henio kłania się do kamery; kamera wyjeżdża z filmu do feedu, feed się przewija |
-| 194.7–202.3 | finał chóru „Puste zasięgi!” (+„hej”) | Cały zespół w kadrze posta, ostatni wielki akord |
+| 194.6–202.3 | finał „Puste zasięgi!” (Henio i chór) + okrzyk Henia 201,5 s | Cały zespół w kadrze posta, ostatni wielki akord |
 | 202.7–212.0 | wybrzmienie, „Pus-te za-się-gi! HEJ!” | Statystyki posta: ogromne wyświetlenia, garść reakcji, 0 komentarzy… i Mirek: „Ogromny szacun!”. Na „HEJ!” – cięcie |
 | 212.0–216.0 | napisy | Wyciemnienie, napisy końcowe: „Puste zasięgi – słowa i muzyka: Paweł Kuraś”, „Teledysk: Paweł Kuraś” |

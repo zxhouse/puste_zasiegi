@@ -12,7 +12,19 @@ _BRIGHT = skia.ColorFilters.Matrix([1.6, 0, 0, 0, -0.75,
                                     0, 1.45, 0, 0, -0.72,
                                     0, 0, 1.3, 0, -0.7,
                                     0, 0, 0, 1, 0])
-def apply(surface, frame_idx, halation=0.75, grain=1.0, soft=0.55, vignette=1.0):
+def _grade():
+    """Gradacja: krzywa S (kontrast w półtonach, głębsze cienie, miękko zaokrąglone światła) + lekko więcej nasycenia."""
+    x = np.arange(256)/255.0
+    s_ = x*x*(3 - 2*x)
+    y = np.clip((0.62*x + 0.38*s_ - 0.015)/0.985, 0, 1)
+    tab = [int(v) for v in (y*255 + 0.5).astype(np.uint8)]
+    curve = skia.TableColorFilter.MakeARGB(None, tab, tab, tab)
+    k = 1.08; lr, lg, lb = 0.2126, 0.7152, 0.0722
+    sat = skia.ColorFilters.Matrix([lr*(1-k)+k, lg*(1-k), lb*(1-k), 0, 0,  lr*(1-k), lg*(1-k)+k, lb*(1-k), 0, 0,
+                                    lr*(1-k), lg*(1-k), lb*(1-k)+k, 0, 0,  0, 0, 0, 1, 0])
+    return skia.ColorFilters.Compose(curve, sat)
+_GRADE = None
+def apply(surface, frame_idx, halation=0.6, grain=1.0, soft=0.4, vignette=1.0, grade=1.0):
     global _VIG
     cv = surface.getCanvas()
     img = surface.makeImageSnapshot()
@@ -24,8 +36,12 @@ def apply(surface, frame_idx, halation=0.75, grain=1.0, soft=0.55, vignette=1.0)
     glow = small.makeImageSnapshot()
     cv.save(); cv.resetMatrix()
     # 2) miękkość: lekkie rozmycie całości (obiektyw/kamera studyjna)
-    if soft > 0:
-        bp = skia.Paint(); bp.setImageFilter(skia.ImageFilters.Blur(soft, soft))
+    global _GRADE
+    if _GRADE is None: _GRADE = _grade()
+    if soft > 0 or grade > 0:
+        bp = skia.Paint()
+        if soft > 0: bp.setImageFilter(skia.ImageFilters.Blur(soft, soft))
+        if grade > 0: bp.setColorFilter(_GRADE)
         cv.drawImage(img, 0, 0, skia.SamplingOptions(), bp)
     if halation > 0:
         gp = skia.Paint(); gp.setBlendMode(skia.BlendMode.kPlus)

@@ -240,7 +240,7 @@ gest(g, lt(V2B, 2) - 0.5, 'hold_R', smile=0.8, gaze=(0.2, 0.6), brow=0.6)
 gest(g, wt(V2B, 2, 2), 'hold_R', gaze=(0.6, 0.3), smile=1.0)
 gest(g, lt(V2B, 3), 'hold_R', gaze=(0.0, -0.9), smile=1.0, brow=1.0, lid=0.0)
 g.on(lt(CH3, 0) - 0.87, FIN_HEJ + 1.0, 'rise', 'sink', 0.6, 0.5)                          # refren 3 i finał
-g.key(lt(CH3, 0) - 1.8, x=-610.0, y=0.0)
+g.key(lt(CH3, 0) - 1.8, x=-655.0, y=0.0, depth=18.0)
 gest(g, lt(CH3, 0) - 0.77, 'up', smile=0.8, brow=0.7); gest(g, lt(CH3, 2), 'wide', smile=0.5); gest(g, lt(CH3, 3), 'rest', smile=0.0, lid=0.4)
 gest(g, lt(CH3, 4), 'up', smile=0.7); gest(g, lt(OUT, 1) - 0.45, 'wide'); gest(g, FIN_HEJ - 0.1, 'up')
 g.on(bar_at_or_before(REPRISE) + 0.4, 212.5, 'rise', 'none', 0.35); gest(g, REPRISE, 'wide', smile=0.8); gest(g, FINAL_HEJ - 0.08, 'up')
@@ -261,7 +261,7 @@ gest(p, lt(V2, 4), 'hold_R', gaze=(-0.8, 0.2), turn=-0.5, brow=-0.6, lid=0.4)
 gest(p, wt(V2, 4, 5), 'holdup_R', gaze=(-0.8, 0.4), brow=-0.8)
 gest(p, wt(V2, 4, 8) - 0.12, 'hold_R', gaze=(-0.8, 0.6))                         # 'bruk' - stempel w dół
 p.on(lt(CH3, 0) - 0.87, FIN_HEJ + 1.0, 'rise', 'sink', 0.6, 0.5)
-p.key(lt(CH3, 0) - 1.8, x=600.0)
+p.key(lt(CH3, 0) - 1.8, x=655.0, depth=18.0)
 gest(p, lt(CH3, 0) - 0.77, 'wide', smile=0.8, turn=0.0, lid=0.25, brow=0.4); gest(p, lt(CH3, 3), 'chest', smile=0.0, lid=0.5)
 gest(p, lt(CH3, 4), 'up', smile=0.8); gest(p, FIN_HEJ - 0.1, 'up')
 p.on(bar_at_or_before(REPRISE) + 0.4, 212.5, 'rise', 'none', 0.35); gest(p, REPRISE, 'wide', smile=0.8); gest(p, FINAL_HEJ - 0.08, 'up')
@@ -277,7 +277,7 @@ td.key(lt(V2, 3) - 0.3, hR=(230.0, -330.0))
 td.key(lt(V2, 4), smile=0.6, gaze=(0.6, 0.0), brow=0.3)
 td.key(wt(V2, 4, 5), smile=0.0, gaze=(0.8, -0.4), brow=-0.8, lid=0.0)             # 'wywalili' - widzi stempel
 td.on(lt(CH3, 0) - 0.87, FIN_HEJ + 1.0, 'rise', 'sink', 0.6, 0.5)
-td.key(lt(CH3, 0) - 1.8, x=-300.0)
+td.key(lt(CH3, 0) - 1.8, x=-330.0, depth=-8.0)
 gest(td, lt(CH3, 0) - 0.77, 'up', smile=0.8, brow=0.6, lid=0.1); gest(td, lt(CH3, 2), 'present_R', gaze=(0.8, 0.0), turn=0.3, smile=0.6)
 gest(td, lt(CH3, 3), 'chest', gaze=(0.7, 0.1), turn=0.2, smile=0.3); gest(td, lt(CH3, 4), 'up', turn=0.0); gest(td, FIN_HEJ - 0.1, 'up')
 td.on(bar_at_or_before(REPRISE) + 0.4, 212.5, 'rise', 'none', 0.35); gest(td, REPRISE, 'wide', smile=0.8); gest(td, FINAL_HEJ - 0.08, 'up')
@@ -292,7 +292,7 @@ m.key(wt(V1B, 3, 3) - 0.35, mouth_extra=0.0)
 for k, tk in enumerate(snares_between(wt(V1B, 3, 3), lt(PRE1, 0) - 0.6)):
     m.key(tk - 0.05, hR=(150.0, -260.0)); m.key(tk + 0.12, hR=(150.0, -300.0))
 m.on(lt(CH3, 0) - 0.87, FIN_HEJ + 1.0, 'rise', 'sink', 0.6, 0.5)
-m.key(lt(CH3, 0) - 1.8, x=280.0, depth=0.0)
+m.key(lt(CH3, 0) - 1.8, x=325.0, depth=-8.0)
 gest(m, lt(CH3, 0) - 0.77, 'up', smile=1.0); gest(m, FIN_HEJ - 0.1, 'up')
 m.on(bar_at_or_before(REPRISE) + 0.4, 212.5, 'rise', 'none', 0.35); gest(m, FINAL_HEJ - 0.08, 'up')
 
@@ -304,7 +304,7 @@ gest(k_, lt(V2B, 0) - 0.4, 'present_L', smile=1.0, brow=0.8, gaze=(-0.7, -0.2), 
 gest(k_, wt(V2B, 0, 4), 'present_L', gaze=(0.0, 0.0), turn=0.0)
 gest(k_, lt(V2B, 1), 'hips', smile=0.6, gaze=(0.8, 0.0)); gest(k_, lt(V2B, 3), 'up', gaze=(0.6, -0.8), smile=1.0)
 k_.on(lt(CH3, 0) - 0.87, FIN_HEJ + 1.0, 'rise', 'sink', 0.6, 0.5)
-k_.key(lt(CH3, 0) - 1.8, x=-900.0, y=0.0)
+k_.key(lt(CH3, 0) - 1.8, x=-975.0, y=0.0, depth=22.0)
 gest(k_, lt(CH3, 0) - 0.77, 'up', smile=0.8); gest(k_, lt(CH3, 3), 'rest', smile=0.0); gest(k_, lt(CH3, 4), 'up'); gest(k_, FIN_HEJ - 0.1, 'up')
 k_.on(bar_at_or_before(REPRISE) + 0.4, 212.5, 'rise', 'none', 0.35); gest(k_, FINAL_HEJ - 0.08, 'up')
 
@@ -873,6 +873,7 @@ def _candidates(key, t_mid):
     return cands
 
 _SAMPLE_CACHE = {}
+_OTHER = [[]]
 def _sample(t):
     """Kamera, kadr i przeszkody (prostokąty postaci i ważnych rekwizytów na ekranie) w chwili t - liczone raz."""
     if t in _SAMPLE_CACHE: return _SAMPLE_CACHE[t]
@@ -901,6 +902,10 @@ def _score(sg, ts):
             # napis na zasłaniającym panelu (front sceny / podestu): lalki za panelem są w tym miejscu i tak zasłonięte
             if sg.kind in ('playboard', 'riser') and dd > sg.depth: continue
             o = max(o, inter(r, rr)/ar_)
+        st_ = sg.cut_in if sg.cut_in is not None else sg.t0 - 0.4
+        for og in _OTHER[0]:                                      # inny napis widoczny w tej samej chwili (poza właśnie gasnącym)
+            if og.active(t) and og is not sg and og.t1 > st_ + 0.15:
+                o = max(o, inter(r, project_rect(cam, og.rect(), og.depth))/ar_)
         ov.append(o)
     if not vis: return -1e9, 0, 0
     return np.mean(vis) - 1.5*(1 - min(vis)) - 20*max(ov), np.mean(vis), max(ov)
@@ -916,10 +921,14 @@ def _layout_signs():
         # napis znika najpóźniej przy najbliższym cięciu po końcu wersu (nie przechodzi do innego ujęcia)
         cut = min([s[0] for s in SHOTS if s[0] >= L['t1'] - 0.05] + [L['t1'] + 0.55])
         t_out = min(L['t1'] + 0.55, cut)
+        # ...i znika, gdy zaczyna się następny wers (zachodzące wersy refrenu), ale nie wcześniej niż 0,6 s po ostatnim słowie
+        nxt0 = min([M['t0'] for kk, M in LINES.items() if M['t0'] > L['t0'] + 0.3 and kk not in FEED_LINES and kk not in UNDER_LINES] + [1e9])
+        t_out = min(t_out, max(nxt0 + 0.1, L['words'][-1]['t0'] + 0.6))
         # ...i nie pojawia się w ujęciu przed cięciem, jeśli pierwsze słowo pada dopiero po cięciu
         cin = [s[0] for s in SHOTS if L['t0'] - 0.75 < s[0] <= L['t0'] + 0.05]
         cut_in = max(cin) if cin else None
-        ts = np.linspace(L['t0'], min(L['t1'], cut - 0.01), 7)
+        ts = np.unique(np.r_[np.linspace(L['t0'], t_out - 0.02, 9), [s[0] + 0.02 for s in SHOTS if L['t0'] < s[0] < t_out - 0.05]])
+        _OTHER[0] = [sg for sg in SIGNS if sg.t1 > L['t0'] - 0.4 and sg.kind != 'marquee']
         best = None
         for kind, x, y, d, size, kw in _candidates(key, (L['t0'] + L['t1'])/2):
             kw = dict(kw); maxw = kw.pop('maxw', 1500)
