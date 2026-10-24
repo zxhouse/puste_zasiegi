@@ -17,6 +17,8 @@ def line_text(key):
     L = LINES[key]
     # tekst do wyświetlenia: oryginalny wers bez nawiasów chóru i cudzysłowów prostych
     t = re.sub(r'\(.*?\)', '', L['text']).replace('"', '').strip()
+    if not t:                             # wers śpiewany tylko przez chór, np. "(Wywalili na bruk!)"
+        t = re.sub(r'[()"]', '', L['text']).strip()
     return t
 
 def _tokens(key):

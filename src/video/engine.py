@@ -150,12 +150,17 @@ def lead_mouth(t):
 
 BACK_EV = np.array([[e['t_on'], e['t_peak']] for e in AL['choir']['events']])
 def _choir_sylls():
+    # wersy śpiewane tylko przez chór (np. "(Wywalili na bruk!)"): sylaby z wyrównania słów zamiast surowych zdarzeń stemu
+    solo = [(L['t0'], L['t1'], [sy for w in L['words'] for sy in w['syl']]) for L in AL['lines'] if L.get('singer') == 'choir']
+    ev = [e for e in BACK_EV[:, 0] if not any(a - 0.05 <= e <= b + 0.05 for a, b, _ in solo)]
     out = []
-    for i in range(len(BACK_EV)):
-        on = BACK_EV[i, 0]; nxt = BACK_EV[i+1, 0] if i + 1 < len(BACK_EV) else on + 0.6
+    for i in range(len(ev)):
+        on = ev[i]; nxt = ev[i+1] if i + 1 < len(ev) else on + 0.6
         off = min(nxt - 0.012 - GAP, on + 0.9)
         out.append((on - 0.012, max(off, on + 0.06), 0.9))
-    return out
+    for a, b, syl in solo:
+        for sy in syl: out.append((sy['t_on'] - 0.012, max(sy['t_off'] - GAP, sy['t_on'] + 0.06), 0.9))
+    return sorted(out)
 CHOIR_MOUTH = _quantize(_choir_sylls(), lambda t: vocal_level(t, 'back'), N_FRAMES)
 def choir_mouth(t, member=0):
     """Chór: otwarcie na każde zdarzenie sylabowe stemu chórków (amplituda lekko różna między lalkami, czas wspólny)."""

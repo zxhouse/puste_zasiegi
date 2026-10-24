@@ -1,0 +1,82 @@
+{
+ "decode_errors": [],
+ "video": {
+  "codec": "h264",
+  "profile": "High",
+  "pix_fmt": "yuv420p",
+  "size": "1920x1080",
+  "r_frame_rate": "30/1",
+  "nb_read_frames": 6482,
+  "duration": 216.066667
+ },
+ "audio": {
+  "codec": "aac",
+  "sample_rate": 48000,
+  "channels": 2,
+  "duration": 212.0,
+  "bit_rate": "314118"
+ },
+ "format": {
+  "duration": 216.066667,
+  "size_MB": 94.82,
+  "tags": {
+   "major_brand": "isom",
+   "minor_version": "512",
+   "compatible_brands": "isomiso2avc1mp41",
+   "title": "Puste zasięgi",
+   "artist": "Paweł Kuraś",
+   "composer": "Paweł Kuraś",
+   "encoder": "Lavf60.16.100",
+   "comment": "Teledysk: Paweł Kuraś"
+  }
+ },
+ "expected_frames": 6482,
+ "audio_offset": [
+  {
+   "at_s": 5.0,
+   "lag_samples": 0,
+   "corr": 0.999934
+  },
+  {
+   "at_s": 30.0,
+   "lag_samples": 0,
+   "corr": 0.999784
+  },
+  {
+   "at_s": 61.0,
+   "lag_samples": 0,
+   "corr": 0.999642
+  },
+  {
+   "at_s": 100.0,
+   "lag_samples": 0,
+   "corr": 0.999889
+  },
+  {
+   "at_s": 140.0,
+   "lag_samples": 0,
+   "corr": 0.99985
+  },
+  {
+   "at_s": 170.0,
+   "lag_samples": 0,
+   "corr": 0.999884
+  },
+  {
+   "at_s": 200.0,
+   "lag_samples": 0,
+   "corr": 0.999797
+  },
+  {
+   "at_s": 210.0,
+   "lag_samples": 0,
+   "corr": 0.999896
+  }
+ ],
+ "audio_samples": {
+  "original": 10176000,
+  "in_mp4": 10176512,
+  "diff": 512
+ },
+ "audio_snr_db": 36.09
+}
