@@ -12,7 +12,8 @@ def le(s, l): return LINES[(s, l)]['t1']
 def wt(s, l, i): return LINES[(s, l)]['words'][i]['t0']
 INTRO, V1, V1B, PRE1, CH1, V2, CHOIRI, V2B, PRE2, CH2, BR, CH3, OUT = range(13)
 HEJ = sorted([h['t_on'] for h in E.AL['choir']['hej']])
-FIN_HEJ = 201.48; REPRISE = 208.23; FINAL_HEJ = 209.78
+FIN_HEJ = E.AL['choir']['finale'][0]['t_on']; FINAL_HEJ = E.AL['choir']['finale'][-1]['t_on']
+REPRISE = E.AL['choir']['reprise'][0]['t_on'] if E.AL['choir']['reprise'] else 208.2
 def bar_at_or_before(t): i = np.searchsorted(E.BARS, t + 0.02) - 1; return float(E.BARS[max(i, 0)])
 def bar_at_or_after(t): i = np.searchsorted(E.BARS, t - 0.02); return float(E.BARS[min(i, len(E.BARS) - 1)])
 def snap_bar(t, tol=0.15):

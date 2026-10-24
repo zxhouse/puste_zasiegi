@@ -1,0 +1,64 @@
+{
+ "mfa": {
+  "words_compared": 242,
+  "of": 243,
+  "median_abs_ms": 50.0,
+  "mean_signed_ms": -50.0,
+  "within_50ms_pct": 46.7,
+  "within_100ms_pct": 89.3,
+  "within_200ms_pct": 97.9,
+  "over_500ms": 3
+ },
+ "whisper_small": {
+  "words_compared": 237,
+  "of": 243,
+  "median_abs_ms": 80.0,
+  "mean_signed_ms": -112.8,
+  "within_50ms_pct": 24.9,
+  "within_100ms_pct": 61.2,
+  "within_200ms_pct": 85.7,
+  "over_500ms": 6
+ },
+ "parakeet_v3": {
+  "words_compared": 236,
+  "of": 243,
+  "median_abs_ms": 60.0,
+  "mean_signed_ms": -33.6,
+  "within_50ms_pct": 47.5,
+  "within_100ms_pct": 72.9,
+  "within_200ms_pct": 91.9,
+  "over_500ms": 0
+ },
+ "silero_vad": {
+  "speech_segments": 45,
+  "word_starts_inside_speech_pct": 98.4,
+  "outside": [
+   [
+    "Puste",
+    60.14
+   ],
+   [
+    "Puste",
+    76.1
+   ],
+   [
+    "Puste",
+    128.44
+   ],
+   [
+    "Puste",
+    180.64
+   ]
+  ]
+ },
+ "old_v2_alignment": {
+  "words_compared": 202,
+  "of": 243,
+  "median_abs_ms": 60.0,
+  "mean_signed_ms": 45.8,
+  "within_50ms_pct": 46.0,
+  "within_100ms_pct": 56.9,
+  "within_200ms_pct": 71.8,
+  "over_500ms": 14
+ }
+}

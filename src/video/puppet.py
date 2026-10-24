@@ -148,10 +148,14 @@ class Character:
         y = np.where(y > 0, y*self.jaw_squash, y)
         return np.c_[x, y]
 
-    def head_paths(self, o, smile):
+    def head_paths(self, o, smile, rnd=0.0):
         mw = self.mw
-        def dl(x): return o*self.jaw_drop*(1 - 0.8*np.clip(np.abs(x)/mw, 0, 1)**2)
-        def du(x): return -o*self.lip_lift*(1 - 0.55*np.clip(np.abs(x)/mw, 0, 1)**2)
+        # rnd: zaokrąglenie ust (samogłoski o/u) - otwarcie skupione w środku, kąciki prawie zamknięte
+        def prof(x, k):
+            u = np.clip(np.abs(x)/mw, 0, 1)
+            return (1 - rnd)*(1 - k*u**2) + rnd*np.clip(1 - (u/0.6)**2, 0, 1)**0.75
+        def dl(x): return o*self.jaw_drop*prof(x, 0.8)
+        def du(x): return -o*self.lip_lift*prof(x, 0.55)*(1 + 0.4*rnd)
         mc = self.mouth_curve.copy()
         mc[:, 1] -= smile*12*(np.abs(mc[:, 0])/mw)**3           # wyuczony uśmiech: kąciki w górę
         ul = mc + np.c_[np.zeros(len(mc)), du(mc[:, 0])]
@@ -262,7 +266,7 @@ class Character:
     def _draw_head(self, cv, pose):
         o = float(np.clip(pose.get('mouth', 0.0), 0, 1.15)); smile = pose.get('smile', 0.0)
         turn = pose.get('turn', 0.0)
-        top, bot, cav, ul, ll = self.head_paths(o, smile)
+        top, bot, cav, ul, ll = self.head_paths(o, smile, float(np.clip(pose.get('round', 0.0), 0, 1)))
         fx = turn*self.head_w*0.22          # przesunięcie elementów twarzy przy obrocie głowy
         # włosy z tyłu
         if self.hair is not None and self.hair_style in ('long', 'bob'):

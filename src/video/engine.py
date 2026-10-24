@@ -77,97 +77,106 @@ def vocal_level(t, which='lead'):
     return float(np.clip((a[i] + 25)/35, 0, 1))
 
 # ---------------------------------------------------------------- usta: jedna sylaba = jedno otwarcie
-OPEN = {'a': 1.0, 'o': 0.85, 'ó': 0.6, 'e': 0.8, 'ę': 0.8, 'ą': 0.85, 'u': 0.6, 'y': 0.65, 'i': 0.55}
-def _vowel_open(text):
-    t = text.lower()
-    for ch in t:
-        if ch in OPEN and not (ch == 'i' and any(c in OPEN for c in t[t.index(ch)+1:])): return OPEN[ch]
-    return 0.6
-def _build_syllables():
-    syl = []
-    for L in AL['lines']:
-        if L['singer'] != 'lead': continue
-        for w in L['words']:
-            for s in w['syl']:
-                syl.append((s['t_on'], s['t_peak'], s['t_off'], _vowel_open(s['text']), L['spoken']))
-    for e in AL['choir'].get('reprise', []):  # finał: 'Pus-te za-się-gi' w stemie prowadzącym
-        syl.append((e['t_on'], e['t_on'] + 0.08, e['t_off'], _vowel_open(e['text']), False))
-    syl.sort()
-    return np.array([s[:4] for s in syl])
-LEAD_SYL = _build_syllables()
-LEAD_ON = LEAD_SYL[:, 0]
+# Dane: analysis/alignment.json (v3: Omnilingual CTC + MFA). Każda sylaba ma własne otwarcie 0..1 (samogłoska x głośność x
+# długość x akcent) - stąd półotwarcia; między sylabami szczęka przymyka się do 'dołka' (pełne zamknięcie przed m/b/p
+# i w przerwach, częściowe między innymi spółgłoskami), więc każda sylaba to osobny, widoczny ruch szczęki.
+ROUND = {'o': 0.8, 'ó': 1.0, 'u': 1.0, 'ą': 0.6, 'y': 0.2, 'a': 0.0, 'e': 0.0, 'ę': 0.1, 'i': 0.0}
+LABIAL = ('m', 'b', 'p')
 GAP = 0.037          # minimalne zamknięcie ust między sylabami (> 1 klatka przy 30 kl./s)
-def _env(t, on, off, peak_open, rise_len=0.085):
-    if t < on or t > off: return 0.0
-    dur = off - on
-    rise = smoothstep((t - on)/max(min(rise_len, dur*0.45), 0.02))
-    fall_len = min(0.09, max(dur*0.35, 0.03))
-    fall = smoothstep((off - t)/fall_len)
-    return peak_open*rise*fall
-def _quantize(sylls, level_fn, n_frames):
-    """Usta liczone na siatce klatek: każda sylaba ma >=1 klatkę wyraźnego otwarcia, między sylabami >=1 klatkę zamknięcia.
-    sylls: lista (start, koniec_efektywny, otwarcie). Wynik: tablica wartości na klatkę (funkcja czysta numeru klatki)."""
-    m = np.zeros(n_frames + 2)
-    owner = -np.ones(n_frames + 2, int)
-    for k, (s, e, op) in enumerate(sylls):
-        f0 = int(math.ceil(s*FPS - 1e-6)); f1 = int(math.floor(e*FPS + 1e-6))
-        if f1 < f0: f1 = f0
-        f0 = max(f0, 0); f1 = min(f1, n_frames + 1)
-        for f in range(f0, f1 + 1):
-            v = _env(f/FPS, s, max(e, s + 0.04), op)*(0.72 + 0.28*level_fn(f/FPS))
-            if owner[f] >= 0 and owner[f] != k:          # klatka już zajęta przez poprzednią sylabę -> zamknięcie
-                continue
-            m[f] = v; owner[f] = k
-        seg = np.where(owner[f0:f1 + 1] == k)[0] + f0
-        if len(seg) and m[seg].max() < 0.45*op:           # bardzo krótka sylaba: wymuś wyraźne otwarcie w środku
-            mid = seg[len(seg)//2]; m[mid] = max(m[mid], 0.62*op)
-    # zamknięcie między kolejnymi sylabami: jeśli dwie sylaby stykają się klatkami, ostatnia klatka poprzedniej = 0
-    for f in range(1, len(m)):
-        if owner[f] >= 0 and owner[f-1] >= 0 and owner[f] != owner[f-1] and m[f-1] > 0.05:
-            seg_prev = np.where(owner == owner[f-1])[0]
-            if len(seg_prev) >= 2: m[f-1] = 0.0
-            else:
-                seg_cur = np.where(owner == owner[f])[0]
-                if len(seg_cur) >= 2: m[f] = 0.0; m[f+1] = max(m[f+1], 0.62*0.8)
-    return m
-def _lead_sylls():
+def _syl_list(singer):
     out = []
-    for i in range(len(LEAD_SYL)):
-        on, pk, off, op = LEAD_SYL[i]
-        nxt = LEAD_SYL[i+1, 0] if i + 1 < len(LEAD_SYL) else 1e9
-        start = on - 0.012
-        off_eff = min(off, nxt - 0.012 - GAP) if off > on + 0.06 else min(on + 0.14, nxt - 0.012 - GAP)
-        if off_eff - start < 0.075: off_eff = min(start + 0.075, nxt - 0.012 - GAP)
-        out.append((start, off_eff, op))
+    for L in AL['lines'] + AL.get('repeats', []):
+        for w in L['words']:
+            if singer not in w['singers']: continue
+            if singer == 'choir' and 'syl_choir' in w: syl, op = w['syl_choir'], w['open_choir']
+            else: syl, op = w['syl'], w['open']
+            for s, o in zip(syl, op):
+                out.append(dict(on=s['t_on'], pk=s['t_peak'], off=s['t_off'], open=o, round=ROUND.get(s['vowel'], 0.2),
+                                labial=s['text'].lower().startswith(LABIAL), spoken=L['spoken']))
+    out.sort(key=lambda d: d['on'])
     return out
-LEAD_MOUTH = _quantize(_lead_sylls(), lambda t: vocal_level(t, 'lead'), N_FRAMES)
+def _choir_extra():
+    """Chór: wokalizy bez słów ('uuu', 'aaa' - zaokrąglone usta, trzymane) i okrzyki 'hej'."""
+    out = []
+    ev = sorted(e['t_on'] for e in AL['choir']['events'])
+    for seg in AL['choir']['wordless']:
+        on_s = [e for e in ev if seg['t0'] - 0.05 <= e <= seg['t1']] or [seg['t0']]
+        if on_s[0] > seg['t0'] + 0.15: on_s = [seg['t0']] + on_s
+        for i, on in enumerate(on_s):
+            off = on_s[i+1] - 0.02 if i + 1 < len(on_s) else seg['t1']
+            if off - on < 0.12: continue
+            out.append(dict(on=on, pk=on + 0.08, off=off, open=0.55, round=1.0, labial=False, spoken=False))
+    for h in AL['choir']['hej']:
+        out.append(dict(on=h['t_on'] - 0.02, pk=h['t_on'] + 0.05, off=h['t_on'] + 0.38, open=1.0, round=0.0, labial=False, spoken=False))
+    fh = AL['choir']['finale'][-1]                      # końcowe "HEJ" - wszyscy
+    out.append(dict(on=fh['t_on'] - 0.02, pk=fh['t_on'] + 0.05, off=fh['t_on'] + 0.9, open=1.0, round=0.0, labial=False, spoken=False))
+    return out
+def _curve(sylls, n_frames):
+    """Krzywa otwarcia i zaokrąglenia ust na siatce klatek. Gwarancje: w każdej sylabie >=1 klatka z otwarciem >= 0,8 jej
+    poziomu; między sąsiednimi sylabami >=1 klatka z dołkiem <= 40% mniejszego z dwóch otwarć (pełne zero przy m/b/p i przerwach)."""
+    m = np.zeros(n_frames + 2); r = np.zeros(n_frames + 2)
+    sylls = sorted(sylls, key=lambda d: d['on'])
+    for k, s in enumerate(sylls):
+        nxt = sylls[k+1] if k + 1 < len(sylls) else None
+        on = s['on'] - 0.012; pk = max(s['pk'], on + 0.035)
+        off = s['off'] if nxt is None else min(s['off'], nxt['on'] - 0.012)
+        off = max(off, pk + 0.03)
+        f0 = max(int(math.ceil(on*FPS - 1e-6)), 0); f1 = min(int(math.floor(off*FPS + 1e-6)), n_frames + 1)
+        for f in range(f0, f1 + 1):
+            t = f/FPS
+            rise = smoothstep((t - on)/max(pk - on, 0.03))
+            hold = 1.0 - 0.15*smoothstep((t - pk)/max(off - pk, 0.05))          # długa nuta: lekkie przymknięcie
+            fall = smoothstep((off - t)/min(0.08, max((off - pk)*0.5, 0.03)))
+            v = s['open']*rise*hold*fall
+            if v > m[f]: m[f] = v; r[f] = s['round']
+        # gwarancja wyraźnego otwarcia: klatka najbliższa szczytu
+        fp = min(max(int(round(pk*FPS)), f0), max(f1, f0))
+        if fp < len(m): m[fp] = max(m[fp], 0.85*s['open']); r[fp] = s['round']
+    # dołki między sylabami
+    for k in range(1, len(sylls)):
+        a, b = sylls[k-1], sylls[k]
+        gap = b['on'] - a['off']
+        depth = 0.0 if (b['labial'] or gap > 0.10) else 0.32*min(a['open'], b['open'])
+        fa = int(round(max(a['pk'], a['on'] + 0.035)*FPS)); fb = int(round(max(b['pk'], b['on'] + 0.035)*FPS))
+        fd = int(round((b['on'] - 0.012)*FPS))
+        fd = min(max(fd, fa + 1), fb - 1) if fb - fa >= 2 else None
+        if fd is None:                                   # sylaby w sąsiednich klatkach: przesuń szczyt następnej o klatkę
+            fb = fa + 2; fd = fa + 1
+            if fb < len(m): m[fb] = max(m[fb], 0.85*b['open']); r[fb] = b['round']
+        if 0 <= fd < len(m): m[fd] = min(m[fd], depth)
+    return m, r
+LEAD_SYLS = _syl_list('lead')
+for f in AL['choir']['finale']:                          # okrzyki Henia w finale ("hej" 201,5 s i "HEJ" 209,8 s)
+    LEAD_SYLS.append(dict(on=f['t_on'] - 0.02, pk=f['t_on'] + 0.05, off=f['t_off'], open=1.0, round=0.0, labial=False, spoken=False))
+LEAD_ON = np.array(sorted(s['on'] for s in LEAD_SYLS))
+LEAD_MOUTH, LEAD_ROUND = _curve(LEAD_SYLS, N_FRAMES)
 def _frame_lookup(arr, t):
     x = t*FPS; i = int(math.floor(x + 1e-6)); f = x - i
     if f < 1e-4: return float(arr[min(max(i, 0), len(arr) - 1)])
     i = min(max(i, 0), len(arr) - 2); return float(arr[i]*(1 - f) + arr[i+1]*f)
 def lead_mouth(t):
     return _frame_lookup(LEAD_MOUTH, t)
-
-BACK_EV = np.array([[e['t_on'], e['t_peak']] for e in AL['choir']['events']])
-def _choir_sylls():
-    # wersy śpiewane tylko przez chór (np. "(Wywalili na bruk!)"): sylaby z wyrównania słów zamiast surowych zdarzeń stemu
-    solo = [(L['t0'], L['t1'], [sy for w in L['words'] for sy in w['syl']]) for L in AL['lines'] if L.get('singer') == 'choir']
-    ev = [e for e in BACK_EV[:, 0] if not any(a - 0.05 <= e <= b + 0.05 for a, b, _ in solo)]
-    out = []
-    for i in range(len(ev)):
-        on = ev[i]; nxt = ev[i+1] if i + 1 < len(ev) else on + 0.6
-        off = min(nxt - 0.012 - GAP, on + 0.9)
-        out.append((on - 0.012, max(off, on + 0.06), 0.9))
-    for a, b, syl in solo:
-        for sy in syl: out.append((sy['t_on'] - 0.012, max(sy['t_off'] - GAP, sy['t_on'] + 0.06), 0.9))
-    return sorted(out)
-CHOIR_MOUTH = _quantize(_choir_sylls(), lambda t: vocal_level(t, 'back'), N_FRAMES)
+def lead_round(t):
+    return _frame_lookup(LEAD_ROUND, t)
+CHOIR_SYLS = _syl_list('choir') + _choir_extra()
+CHOIR_MOUTH, CHOIR_ROUND = _curve(CHOIR_SYLS, N_FRAMES)
 def choir_mouth(t, member=0):
-    """Chór: otwarcie na każde zdarzenie sylabowe stemu chórków (amplituda lekko różna między lalkami, czas wspólny)."""
-    lv = vocal_level(t, 'back')
-    if lv < 0.05: return 0.0
-    k = 0.85 + 0.15*math.sin(member*1.7)
-    return _frame_lookup(CHOIR_MOUTH, t)*k*(0.6 + 0.4*lv)
+    """Chór: wspólny czas (śpiewają razem), amplituda lekko różna między lalkami."""
+    k = 0.88 + 0.12*math.sin(member*1.7)
+    return _frame_lookup(CHOIR_MOUTH, t)*k
+def choir_round(t):
+    return _frame_lookup(CHOIR_ROUND, t)
+def singing(t, singer='lead', pad=0.15):
+    """Czy w chwili t dany głos śpiewa (do gestów i ekspresji)."""
+    S = LEAD_SYLS if singer == 'lead' else CHOIR_SYLS
+    return any(s['on'] - pad <= t <= s['off'] + pad for s in S[max(0, _idx(S, t) - 3):_idx(S, t) + 2])
+def _idx(S, t):
+    lo, hi = 0, len(S)
+    while lo < hi:
+        mid = (lo + hi)//2
+        if S[mid]['on'] < t: lo = mid + 1
+        else: hi = mid
+    return lo
 
 # ---------------------------------------------------------------- kamera z perspektywą warstw
 class Cam:
