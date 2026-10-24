@@ -39,11 +39,12 @@ def apply(surface, frame_idx, halation=0.75, grain=1.0, soft=0.55, vignette=1.0)
     # 4) ziarno (klatka ziarna i przesunięcie zależne od numeru klatki)
     if grain > 0:
         G = TX.grain_frames()
-        gi = G[frame_idx % len(G)]
-        rng = np.random.default_rng(frame_idx*7919 + 13)
+        gk = frame_idx//2                 # ziarno zmienia się co 2 klatki (spokojniejsze, lepiej znosi kompresję)
+        gi = G[gk % len(G)]
+        rng = np.random.default_rng(gk*7919 + 13)
         dx, dy = rng.integers(0, 64, 2)
         sh = gi.makeShader(skia.TileMode.kRepeat, skia.TileMode.kRepeat, skia.SamplingOptions(skia.FilterMode.kLinear),
                            skia.Matrix.Translate(-float(dx), -float(dy)).preScale(2.0, 2.0))
-        gp = skia.Paint(); gp.setShader(sh); gp.setBlendMode(skia.BlendMode.kOverlay); gp.setAlphaf(0.16*grain)
+        gp = skia.Paint(); gp.setShader(sh); gp.setBlendMode(skia.BlendMode.kOverlay); gp.setAlphaf(0.12*grain)
         cv.drawRect(skia.Rect(0, 0, E.W, E.H), gp)
     cv.restore()
