@@ -148,34 +148,36 @@ podrygi pojawiają się w refrenach (reakcje na patykach w górę na „raz” t
   rekompresji, końcowe kodowanie H.264 yuv420p (dwa przebiegi, ≤ 100 MB dla GitHuba) + AAC 320 kb/s z całego MP3 (bez filtrów i cięć).
   Każda wersja renderowana z zamrożonej kopii kodu (`build/vN/src`).
 
-## 5. Jak sprawdziłem wersję v2
+## 5. Jak sprawdziłem wersję v3
 Skrypty: `src/verify.py` (plik) i `src/verify_sync.py` (synchronizacja liczona z tych samych funkcji, z których renderowane są klatki).
-Wyniki: `checks/verify_file.json`, `checks/verify_sync.json`, `checks/sheets/` (arkusze co 4 s), `checks/stills/` (42 stopklatki z kluczowych momentów).
+Wyniki: `checks/verify_file.json`, `checks/verify_sync.json`, `checks/sheets/` (arkusze co 4 s), `checks/stills/` (42 stopklatki).
 
 **Plik** (`final/music-video.mp4`)
 * Pełne dekodowanie `ffmpeg -f null`: **0 błędów**.
-* Obraz: H.264 High, yuv420p, 1920×1080, 30/1 kl./s, **6482 klatki = oczekiwane 6482** (212,04 s piosenki + 4 s wyciemnienia i napisów), 216,067 s.
-* Dźwięk: AAC 48 kHz stereo, ~314 kb/s, 212,0 s; plik 94,87 MB (limit GitHuba na plik to 100 MB).
-* Metadane: tytuł „Puste zasięgi”, artist / author / composer „Paweł Kuraś”, komentarz „Teledysk: Paweł Kuraś”; ten sam autor w napisach końcowych.
-* **Przesunięcie dźwięku względem oryginalnego MP3: 0 próbek** w 8 miejscach (5, 30, 61, 100, 140, 170, 200, 210 s), korelacja 0,9996–0,9999.
-  Długość: MP4 ma 10 176 512 próbek, MP3 10 176 000 – na końcu jest 512 próbek ciszy z dopełnienia ramki AAC (początek się zgadza).
-  Stosunek sygnał/różnica 36,1 dB – to strata kodowania AAC, nie zmiana treści (bez filtrów, cięć i zmiany głośności).
+* Obraz: H.264 High, yuv420p, 1920x1080, 30/1 kl./s, **6482 klatek = oczekiwane 6482**, 216.067 s.
+* Dźwięk: AAC 48000 Hz, 2 kanały, 212.0 s; plik 94.97 MB.
+* Metadane: tytuł „Puste zasięgi”, artist/composer „Paweł Kuraś”, komentarz „Teledysk: Paweł Kuraś”; autor także w napisach końcowych.
+* **Przesunięcie dźwięku względem MP3: 0, 0, 0, 0, 0, 0, 0, 0 próbek** w 8 miejscach (5, 30, 61, 100, 140, 170, 200, 210 s),
+  korelacja 0.9996–0.9999; na końcu 512 próbek ciszy z dopełnienia ramki AAC; SNR 36.09 dB (strata AAC).
 
 **Synchronizacja**
-* Usta Henia: **515 sylab wokalu → 515 otwarć szczęki**, każda sylaba ma własne otwarcie, 52/52 wersów dokładnie „sylaba = otwarcie”.
-  Usta otwarte w klatkach, w których wokal milczy: 3,6% takich klatek (końcówki zamykania i ~12 ms wyprzedzenia przed sylabą).
-  Korelacja otwarcia z obwiednią wokalu 0,57 – umiarkowana, bo usta celowo zamykają się między sylabami, a obwiednia nie spada do zera.
-* Chór: 263 otwarcia na 250 zdarzeń sylabowych stemu chórków, mediana odległości 37 ms, 92,8% w ±100 ms;
-  wtrącenie „(Wywalili na bruk!)”: **6 sylab → 6 otwarć**.
-* Akcenty ruchu (kiwnięcia, przysiady): 183 szczyty, **100% w ±1 klatce od prawdziwego uderzenia stopy/werbla** (mediana 8,8 ms).
-  Błyski świateł: 13, wszystkie w ±2 klatkach od werbla lub „hej” (mediana 13 ms).
-* Cięcia: **59/59 na początku wersu (lub zdania w kwestii mówionej) albo na „raz” taktu** (±70 ms). Ujęć bez ruchu kamery: 0.
-* Napisy: w 1893 sprawdzonych klatkach-napisach (co 2. klatka ujęć sceny) **największe nachodzenie napisu na postać: 0%**
-  (w kodzie sprzed poprawki opisanej w 7.2.3: 21% w 148,1 s).
-* Chór: w żadnym refrenie liczba lalek nie spada, tylko rośnie (do 8); w układzie grupowym 0 par nachodzących na siebie.
+* Usta Henia: **484 z 484 sylab ma własny szczyt otwarcia**, 53/53 wersów
+  dokładnie „sylaba = szczyt”; 62.6% szczytów to półotwarcia (< 0,7); usta otwarte w ciszy wokalu: 2.81% takich klatek.
+* Usta chóru: **140 z 140 sylab** tekstu śpiewanego przez chór ma własny szczyt; 12 wokaliz bez słów; „hej” w 182.43, 185.66 s.
+* Początki słów tam, gdzie gra stem: Henio 99.2% z 265 (wyjątki: „kochani” 5.28 s, „fanfar” 162.17 s),
+  chór 100.0% z 75.
+* Zgodność dopasowania z niezależnymi narzędziami – tabela w 2.4.
+* Akcenty ruchu: 183 szczytów, **100.0% w ±1 klatce od uderzenia stopy/werbla** (mediana 8.8 ms);
+  błyski: 10, 100.0% w ±2 klatkach od werbla lub „hej”.
+* Cięcia: **59/59 na początku wersu (lub zdania w kwestii mówionej) albo na „raz” taktu**. Ujęcia bez ruchu kamery: 0.
+* Napisy (co 2. klatka ujęć sceny, 2185 sprawdzeń): największe nachodzenie napisu na postać **7.0%**
+  powierzchni napisu ([50.4, [3, 1], 'Chór 2']; prostokąty postaci są zgrubne), najmniejsza widoczność napisu w kadrze 44% ([96.6, [5, 4]]);
+  42 z 47 napisów w pełni widocznych i bez kolizji przez cały czas trwania.
+* Chór: liczebność w refrenach nie spada; w układzie grupowym 0 par nachodzących na siebie.
 
-**Obejrzane klatki**: oba arkusze (co 4 s, cały film) i stopklatki; dodatkowo pojedyncze klatki z gotowego pliku w 71,0 s („pod spodem”),
-100,8 s („Wywalili” na krawędzi sceny), 152,0 s i 155,5 s (bridge: napisy wersów na tekturze obok kartonu „Robię swoje.”).
+**Obejrzane klatki**: oba arkusze (co 4 s, cały film), 42 stopklatki, arkusze środków wszystkich 53 ujęć sceny w trakcie pracy,
+ciągi kolejnych klatek ust (68,0–68,5 s) i zbliżenia rekwizytów. Drobiazgi widoczne na klatkach: w 51,2 s (przedrefren 1) na dole kadru
+wystają oczy Henia stojącego przed chórem, a napis wersu jest mały.
 
 ## 6. Niepewności i rzeczy do decyzji
 * **Granice sylab**: czasy słów potwierdzają cztery niezależne metody (2.4), ale granice pojedynczych sylab w szybkich frazach
@@ -284,8 +286,8 @@ Przejrzałem jej arkusze i stopklatki i na tej podstawie zrobiłem poprawki v2 p
 * Analiza v2: wszystkie 53 ujęcia sceny miały ręcznie wpisane pozycje kamery, niezależne od tego, gdzie stoją postacie; 23 z nich
   w jakiejś fazie pokazywały cały portal (płasko, postaci małe), plany średnie odsłaniały krawędź sceny pod lalkami.
 * Poprawka: kadrowanie względem postaci (rozdział 4), skład grupy stały w ujęciu, przejścia między planami w obrębie ujęcia.
-* Sprawdzenie: arkusze środków ujęć; ruch kadru między klatkami w ujęciach: najwyżej 44 px/klatkę (zamierzone przejście z Henia na chór),
-  pozostałe ≤ 36 px/klatkę.
+* Sprawdzenie: arkusze środków ujęć; ruch kadru między sąsiednimi klatkami w ujęciach najwyżej 33,5 px/klatkę (płynne jazdy, bez skoków);
+  każde ujęcie sceny ma ruch kamery (test „ujęcia bez ruchu”: 0).
 
 #### 7.3.6 Wygląd: przestrzeń, cienie
 * Uwaga: „wszystko płaskie”, „popracować nad cieniem”.
@@ -305,4 +307,6 @@ Przejrzałem jej arkusze i stopklatki i na tej podstawie zrobiłem poprawki v2 p
 * Problem (wyszedł po zmianie kamery): w ciaśniejszych kadrach 38 z 47 napisów wypadało częściowo lub całkiem poza kadr.
 * Poprawka: kolizje liczone osobno dla głowy, korpusu i dłoni z rekwizytem; kandydaci zakotwiczeni w kadrze ujęcia; litery na froncie
   podestu chóru; napis oceniany przez cały czas trwania (także po cięciu) i bez kolizji z innymi napisami; napis gaśnie, gdy zaczyna się
-  następny wers. Wynik: 39 z 47 napisów w pełni widocznych i bez kolizji, pozostałe ≥ 81% widoczności (szczegóły w sekcji 5).
+  następny wers; gęste próbkowanie (co 0,2 s) – pierwsza wersja v3 przegapiła ruch ręki Henia i napis „Poranna kawa…” nachodził na nią
+  w 37,6% (17,27 s), po poprawce i przerenderowaniu 13 z 22 kawałków: 42 z 47 napisów w pełni widocznych i bez kolizji, największe
+  nachodzenie 7,0% (zgrubne prostokąty), najmniejsza chwilowa widoczność 44% na końcu wersu (sekcja 5).
