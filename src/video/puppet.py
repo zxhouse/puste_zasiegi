@@ -66,6 +66,31 @@ def fill(canvas, path, mat):
     tp = mat.tex_paint()
     if tp is not None: canvas.drawPath(path, tp)
 
+def volume_shade(cv, paths, bx, kd=-1.0, strength=1.0, rim=0.5, spec=0.18):
+    """Bryła dla kilku ścieżek jednego obiektu (np. głowa = czubek + żuchwa): cień własny po stronie przeciwnej do
+    reflektora (multiply), miękki odblask (screen) i kontrświatło na krawędzi. bx = (x0, y0, x1, y1) całego obiektu,
+    kd = kierunek światła w osi x (-1 z lewej, +1 z prawej)."""
+    x0, y0, x1, y1 = bx; w, h = x1 - x0, y1 - y0; cx, cy = (x0 + x1)/2, (y0 + y1)/2
+    lx, ly = cx + kd*0.30*w, cy - 0.30*h
+    g = skia.GradientShader.MakeRadial(skia.Point(lx, ly), max(w, h)*0.95,
+            [skia.Color4f(1, 1, 1, 1).toColor(), skia.Color4f(0.93, 0.92, 0.95, 1).toColor(), skia.Color4f(0.56, 0.52, 0.62, 1).toColor()], [0, 0.5, 1])
+    mp = skia.Paint(AntiAlias=True); mp.setShader(g); mp.setBlendMode(skia.BlendMode.kMultiply); mp.setAlphaf(min(strength, 1.0))
+    sp = None
+    if spec > 0:
+        g2 = skia.GradientShader.MakeRadial(skia.Point(lx - kd*0.02*w, ly - 0.02*h), max(w, h)*0.32, [skia.Color4f(1, 0.98, 0.94, spec).toColor(), skia.Color4f(1, 1, 1, 0).toColor()])
+        sp = skia.Paint(AntiAlias=True); sp.setShader(g2); sp.setBlendMode(skia.BlendMode.kScreen)
+    rp = None
+    if rim > 0:
+        g3 = skia.GradientShader.MakeLinear([skia.Point(cx + kd*0.1*w, 0), skia.Point(cx - kd*0.5*w, 0)], [skia.Color4f(1, 0.9, 0.75, 0).toColor(), skia.Color4f(1, 0.88, 0.7, rim).toColor()])
+        rp = skia.Paint(AntiAlias=True, Style=skia.Paint.kStroke_Style, StrokeWidth=7); rp.setShader(g3); rp.setBlendMode(skia.BlendMode.kScreen)
+        rp.setMaskFilter(skia.MaskFilter.MakeBlur(skia.kNormal_BlurStyle, 3.5))
+    for pth in paths:
+        cv.save(); cv.clipPath(pth, doAntiAlias=True)
+        cv.drawRect(skia.Rect(x0 - 20, y0 - 20, x1 + 20, y1 + 20), mp)
+        if sp is not None: cv.drawRect(skia.Rect(x0 - 20, y0 - 20, x1 + 20, y1 + 20), sp)
+        if rp is not None: cv.drawPath(pth, rp)
+        cv.restore()
+
 def soft_edge(canvas, path, color, width=3, alpha=0.35):
     p = skia.Paint(AntiAlias=True, Style=skia.Paint.kStroke_Style, StrokeWidth=width, Color4f=skia.Color4f(color.fR, color.fG, color.fB, alpha))
     p.setMaskFilter(skia.MaskFilter.MakeBlur(skia.kNormal_BlurStyle, 1.2))
@@ -189,8 +214,9 @@ class Character:
     def _draw_body(self, cv, pose):
         w0, w1 = self.torso_w; h = self.torso_h
         sh = 26   # zaokrąglenie barków
-        body = np.array([[-w0, 40], [-w0*1.02, -h*0.45], [-w1, -h + sh], [-w1 + sh*0.6, -h + 4], [-w1*0.35, -h - 6], [0, -h - 8],
-                         [w1*0.35, -h - 6], [w1 - sh*0.6, -h + 4], [w1, -h + sh], [w0*1.02, -h*0.45], [w0, 40]])
+        # korpus sięga głęboko pod krawędź sceny (przy kamerze z góry paralaksa nie odsłoni jego spodu)
+        body = np.array([[-w0, 320], [-w0*1.02, -h*0.45], [-w1, -h + sh], [-w1 + sh*0.6, -h + 4], [-w1*0.35, -h - 6], [0, -h - 8],
+                         [w1*0.35, -h - 6], [w1 - sh*0.6, -h + 4], [w1, -h + sh], [w0*1.02, -h*0.45], [w0, 320]])
         self._draw_arms(cv, pose, front=False)
         c = dict(self.costume); c.update(pose.get('costume', {}))
         jacket = Material(c.get('jacket', '#6d6f78'), c.get('jacket_tex', 'felt'), 0.7, seed=self.seed + 7)
@@ -212,6 +238,15 @@ class Character:
             for yy in (-h*0.24, -h*0.08): cv.drawCircle(0, yy, 6, p)
         if c.get('badge'):
             c['badge'](cv, w1, h)
+        kd = pose.get('key_dir', -1.0)
+        cv.save(); cv.clipPath(bp, doAntiAlias=True)
+        gx = skia.GradientShader.MakeLinear([skia.Point(-w1, 0), skia.Point(w1, 0)],
+             [skia.Color4f(0.62, 0.6, 0.68, 1).toColor(), skia.Color4f(1, 1, 1, 1).toColor(), skia.Color4f(0.9, 0.9, 0.93, 1).toColor(), skia.Color4f(0.58, 0.56, 0.64, 1).toColor()],
+             [0.0, 0.35 if kd < 0 else 0.65, 0.6 if kd < 0 else 0.4, 1.0] if kd < 0 else [0.0, 0.4, 0.65, 1.0])
+        pg = skia.Paint(AntiAlias=True); pg.setShader(gx); pg.setBlendMode(skia.BlendMode.kMultiply); cv.drawRect(skia.Rect(-w1 - 10, -h - 20, w1 + 10, 330), pg)
+        gy = skia.GradientShader.MakeLinear([skia.Point(0, -h*0.4), skia.Point(0, 60)], [skia.Color4f(1, 1, 1, 1).toColor(), skia.Color4f(0.5, 0.47, 0.55, 1).toColor()])
+        pg2 = skia.Paint(AntiAlias=True); pg2.setShader(gy); pg2.setBlendMode(skia.BlendMode.kMultiply); cv.drawRect(skia.Rect(-w1 - 10, -h - 20, w1 + 10, 330), pg2)
+        cv.restore()
         soft_edge(cv, bp, shade(col(c.get('jacket', '#6d6f78')), 0.5), 4, 0.4)
 
 
@@ -252,15 +287,34 @@ class Character:
                 cv.drawPath(path, p2)
             # mankiet + dłoń (rękawiczka z kciukiem)
             ang = math.degrees(math.atan2(hy - ey, hx - ex))
-            cv.save(); cv.translate(hx, hy); cv.rotate(ang - 90)
-            hp = skia.Path(); hp.addRRect(skia.RRect.MakeRectXY(skia.Rect(-20, -4, 20, 34), 18, 18))
-            th = skia.Path(); th.addRRect(skia.RRect.MakeRectXY(skia.Rect(-28 if side == 'R' else 12, 4, -10 if side == 'R' else 28, 18), 8, 8))
+            plist = [(pr if isinstance(pr, tuple) else (pr, False)) for pr in pose.get('props', {}).get(side, [])]
+            gripping = any(g for _, g in plist)
             hm = Material(self.hand_c, 'felt', 0.55, seed=self.seed + 41)
-            fill(cv, th, hm); fill(cv, hp, hm)
-            soft_edge(cv, hp, shade(self.hand_c, 0.5), 2.5, 0.35)
-            cv.rotate(-(ang - 90))
-            for prop in pose.get('props', {}).get(side, []):
-                prop(cv)
+            cv.save(); cv.translate(hx, hy)
+            # 1) rekwizyty trzymane w pięści (drążek tabliczki, kamień): pod dłonią
+            for fn, g in plist:
+                if g: cv.save(); fn(cv); cv.restore()
+            if gripping:
+                # 2) pięść zaciśnięta na drążku: zwinięte palce + kciuk z przodu, mankiet od strony ręki
+                cv.save(); cv.rotate((ang - 90)*0.35)
+                fist = skia.Path(); fist.addRRect(skia.RRect.MakeRectXY(skia.Rect(-24, -20, 24, 22), 17, 17))
+                fill(cv, fist, hm); soft_edge(cv, fist, shade(self.hand_c, 0.45), 3, 0.4)
+                kn = skia.Paint(AntiAlias=True, Style=skia.Paint.kStroke_Style, StrokeWidth=2.6, Color4f=shade(self.hand_c, 0.55), StrokeCap=skia.Paint.kRound_Cap)
+                for yy in (-8, 2, 12): cv.drawLine(-18 if side == 'R' else 6, yy, -6 if side == 'R' else 18, yy, kn)
+                sgn = -1 if side == 'R' else 1
+                th = skia.Path(); th.addRRect(skia.RRect.MakeRectXY(skia.Rect(-14 if sgn > 0 else -4, -24, 4 if sgn > 0 else 14, -8), 7, 7))
+                fill(cv, th, Material(shade(self.hand_c, 1.06), 'felt', 0.55, seed=self.seed + 43)); soft_edge(cv, th, shade(self.hand_c, 0.45), 2, 0.35)
+                cv.restore()
+            else:
+                cv.save(); cv.rotate(ang - 90)
+                hp = skia.Path(); hp.addRRect(skia.RRect.MakeRectXY(skia.Rect(-20, -4, 20, 34), 18, 18))
+                th = skia.Path(); th.addRRect(skia.RRect.MakeRectXY(skia.Rect(-28 if side == 'R' else 12, 4, -10 if side == 'R' else 28, 18), 8, 8))
+                fill(cv, th, hm); fill(cv, hp, hm)
+                soft_edge(cv, hp, shade(self.hand_c, 0.5), 2.5, 0.35)
+                cv.restore()
+            # 3) pozostałe rekwizyty (kubek, telefon, karta) - przed dłonią
+            for fn, g in plist:
+                if not g: cv.save(); fn(cv); cv.restore()
             cv.restore()
 
     def _draw_head(self, cv, pose):
@@ -298,6 +352,8 @@ class Character:
             tp = skia.Paint(AntiAlias=True, Color4f=self.tongue); cv.drawOval(skia.Rect(-tw + fx*0.5, cy - 16*o - 6, tw + fx*0.5, cy + 22), tp)
             cv.restore()
         tp_ = poly_path(top, True, True); fill(cv, tp_, self.skin)
+        hb = (-self.head_w*1.02, -self.head_h*1.05, self.head_w*1.02, self.head_h*self.jaw_squash + o*self.jaw_drop)
+        volume_shade(cv, [tp_, bp], hb, pose.get('key_dir', -1.0), strength=0.95, rim=0.45, spec=0.16)
         # krawędzie warg (ciemniejszy filc)
         lp = skia.Paint(AntiAlias=True, Style=skia.Paint.kStroke_Style, StrokeWidth=4.5, StrokeCap=skia.Paint.kRound_Cap,
                         Color4f=shade(self.skin_c, 0.62))

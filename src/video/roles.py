@@ -13,6 +13,22 @@ ENERGY = Track([(0, 0.25), (13.5, 0.35), (14.2, 0.5), (30.0, 0.55), (33.2, 0.7),
                 (79.4, 0.6), (102.5, 0.7), (115.8, 0.8), (127.6, 1.0), (147.6, 0.9), (148.8, 0.15), (163.9, 0.2), (166.6, 0.6),
                 (167.8, 1.0), (186.9, 0.9), (188.6, 0.4), (194.6, 0.9), (202.5, 0.6), (212.0, 0.3)])
 
+SNAPPY = ('hL', 'hR', 'lean', 'turn', 'tilt')
+
+def _sing_state(syls, ons, t):
+    """Ekspresja śpiewu z sylab (czysta funkcja t): akcent sylaby (impuls na początku, waga = otwarcie), długa nuta (0..1)."""
+    i = int(np.searchsorted(ons, t + 0.03)) - 1
+    acc = 0.0; longn = 0.0
+    for j in range(max(i - 3, 0), i + 1):
+        sy = syls[j]; dt = t - sy['on']
+        if dt < -0.03: continue
+        acc += sy['open']*(smoothstep((dt + 0.03)/0.05) if dt < 0.02 else math.exp(-(dt - 0.02)/0.13))
+        dur = sy['off'] - sy['on']
+        if dur > 0.45 and sy['on'] + 0.18 < t < sy['off']:
+            longn = max(longn, smoothstep((t - sy['on'] - 0.18)/0.35)*smoothstep((sy['off'] - t)/0.15))
+    return min(acc, 1.4), longn
+_LEAD_ON = np.array([s['on'] for s in E.LEAD_SYLS]); _CH_SYLS = sorted(E.CHOIR_SYLS, key=lambda d: d['on']); _CH_ON = np.array([s['on'] for s in _CH_SYLS])
+
 class Role:
     def __init__(self, ch, mouth='none', member=0, base=None):
         self.ch, self.mouth, self.member = ch, mouth, member
@@ -30,8 +46,9 @@ class Role:
     def key(self, t, **kw):
         for k, v in kw.items(): self.k[k].append((t, v))
         return self
-    def hold(self, t0, t1, side, fn):
-        self.holds.append((t0, t1, side, fn)); return self
+    def hold(self, t0, t1, side, fn, grip=False):
+        """Rekwizyt w dłoni. grip=True: dłoń zaciśnięta na drążku/przedmiocie (rekwizyt rysowany pod pięścią)."""
+        self.holds.append((t0, t1, side, fn, grip)); return self
     def costume(self, t, **kw):
         self.costume_keys.append((t, kw)); return self
     def build(self):
@@ -46,10 +63,19 @@ class Role:
                     gap = tk - tp
                     if positional and gap > 3.0:
                         out.append((tk - 0.02, vp))          # trzymaj pozycję, przeskok dopiero przy następnym kluczu (cięcie)
+                    elif not positional and k in SNAPPY and gap > 0.22:
+                        # ruch lalkarski: poza trzymana do ostatniej chwili, szybki ruch z lekkim przestrzałem i powrotem
+                        dur = min(0.30, max(gap*0.5, 0.12))
+                        a = np.asarray(vp, float); b = np.asarray(val, float)
+                        out.append((tk - dur, vp))
+                        os_ = b + 0.08*(b - a)
+                        out.append((tk - 0.02, tuple(os_) if np.ndim(os_) else float(os_)))
+                        out.append((tk + min(0.16, gap*0.3), val))
+                        continue
                     elif not positional and gap > 6.0:
                         out.append((tk - 0.8, vp))           # trzymaj pozę, płynne przejście w ostatnich 0.8 s
                     elif not positional and gap > 1.0:
-                        out.append((tk - min(0.45, gap*0.4), vp))   # poza kluczowa trzymana, szybsze przejście do następnej
+                        out.append((tk - min(0.35, gap*0.4), vp))   # poza kluczowa trzymana, szybsze przejście do następnej
                 out.append((tk, val))
             self.tracks[k] = Track(out)
         self.costume_keys.sort(key=lambda c: c[0])
@@ -101,6 +127,22 @@ class Role:
         mo = max(mo, self.g('mouth_extra', t) if 'mouth_extra' in self.k else 0.0)
         if 'mouth_mute' in self.k: mo *= 1 - self.g('mouth_mute', t)
         tilt = self.g('tilt', t) + 4*mo*math.sin(t*3.1 + ph*6) + 1.5*en*E.beat_sway(t, 4.0, ph + 0.25)
+        # ekspresja śpiewu: kiwnięcie głową na akcentowanych sylabach, długie nuty - głowa w górę i przymknięte oczy
+        lid_add = 0.0; brow_add = 0.0
+        if self.mouth in ('lead', 'choir'):
+            acc, longn = _sing_state(E.LEAD_SYLS, _LEAD_ON, t) if self.mouth == 'lead' else _sing_state(_CH_SYLS, _CH_ON, t)
+            k_ = 1.0 if self.mouth == 'lead' else 0.7
+            nod += k_*(11*acc - 16*longn)
+            tilt += k_*(5*longn*math.sin(ph*6 + 1.0) + 2.5*acc*math.sin(t*1.7 + ph*4))
+            lean += k_*(-2.5*longn + 1.5*acc)
+            lid_add = 0.32*longn; brow_add = 0.35*longn + 0.25*min(acc, 1.0)
+        # taniec tylko tam, gdzie niesie go piosenka (refreny, finał): krok w bok co 2 bity, sprężynowanie na stopie
+        if en > 0.82:
+            dk = smoothstep((en - 0.82)/0.18)
+            step = math.sin(math.pi*E.beat_pos(t) + ph*2.0)
+            x += dk*16*step*self.g('scale', t)
+            lean += dk*4.5*step
+            bob -= dk*10*k_hit
         # mruganie (deterministyczne)
         blink = 0.0
         period = 3.2 + 1.8*_hash01(self.ch.name, 'bl')
@@ -113,10 +155,13 @@ class Role:
         hL = hL + np.array([4*math.sin(t*2.1 + ph*7), 6*en*k_hit + 3*math.sin(t*1.7 + ph)])
         hR = hR + np.array([4*math.sin(t*2.3 + ph*3), 6*en*k_hit + 3*math.sin(t*1.9 + ph*2)])
         props = {'L': [], 'R': []}
-        for (a, b, side, fn) in self.holds:
-            if a <= t <= b: props[side].append(lambda cv, fn=fn, t=t: fn(cv, t))
-        pose = dict(mouth=mo, smile=self.g('smile', t), turn=turn, tilt=tilt, nod=nod, lean=lean, bob=bob, gaze=(gx, gy), blink=blink,
-                    lid=self.g('lid', t), brow=self.g('brow', t), hands={'L': tuple(hL), 'R': tuple(hR)}, props=props)
+        grips = {'L': False, 'R': False}
+        for (a, b, side, fn, grip) in self.holds:
+            if a <= t <= b:
+                props[side].append((lambda cv, fn=fn, t=t: fn(cv, t), grip)); grips[side] = grips[side] or grip
+        rnd = E.lead_round(t) if self.mouth == 'lead' else (E.choir_round(t) if self.mouth == 'choir' else 0.0)
+        pose = dict(mouth=mo, round=rnd, smile=self.g('smile', t), turn=turn, tilt=tilt, nod=nod, lean=lean, bob=bob, gaze=(gx, gy), blink=blink,
+                    lid=min(self.g('lid', t) + lid_add, 0.85), brow=self.g('brow', t) + brow_add, hands={'L': tuple(hL), 'R': tuple(hR)}, props=props, grip=grips)
         # kostium w danej chwili
         for (tc, kw) in self.costume_keys:
             if t >= tc: pose.setdefault('costume', {}).update(kw)

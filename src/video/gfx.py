@@ -4,10 +4,14 @@ from puppet import Material, fill, poly_path, col, shade, mix
 import textures as TX
 from engine import ROOT
 FONTS = {
-    'sign': 'fonts/bajaderka/Bajaderka-Regular.otf', 'marquee': 'fonts/apropal/Apropal-Bold.otf', 'script': 'fonts/lobster/lobster.otf',
-    'block': 'fonts/league-spartan/LeagueSpartan-Black.otf', 'block2': 'fonts/league-spartan/LeagueSpartan-Bold.otf',
-    'hand': 'fonts/comic-neue/ComicNeue-Bold.otf', 'credits': 'fonts/montserrat/Montserrat-ExtraBold.otf',
-    'credits2': 'fonts/montserrat/Montserrat-Medium.otf', 'ui': 'fonts/inter/Inter-Regular.otf', 'ui_b': 'fonts/inter/Inter-SemiBold.otf'}
+    # świat lalek: kroje wystawowe (OFL, Google Fonts) - pełne polskie znaki sprawdzone fontTools
+    'sign': 'fonts/bajaderka/Bajaderka-Regular.otf', 'marquee': 'fonts/rammettoone/RammettoOne-Regular.ttf',
+    'script': 'fonts/shrikhand/Shrikhand-Regular.ttf', 'block': 'fonts/sigmarone/SigmarOne-Regular.ttf',
+    'block2': 'fonts/titanone/TitanOne-Regular.ttf', 'hand': 'fonts/kalam/Kalam-Bold.ttf', 'brush': 'fonts/caveatbrush/CaveatBrush-Regular.ttf',
+    'bubbly': 'fonts/cherrybombone/CherryBombOne-Regular.ttf',
+    # napisy końcowe i świat serwisu (bez zmian)
+    'credits': 'fonts/montserrat/Montserrat-ExtraBold.otf', 'credits2': 'fonts/montserrat/Montserrat-Medium.otf',
+    'ui': 'fonts/inter/Inter-Regular.otf', 'ui_b': 'fonts/inter/Inter-SemiBold.otf'}
 @functools.lru_cache(None)
 def typeface(name): return skia.Typeface.MakeFromFile(os.path.join(ROOT, FONTS[name]))
 @functools.lru_cache(None)

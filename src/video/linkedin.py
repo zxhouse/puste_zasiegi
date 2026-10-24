@@ -47,8 +47,8 @@ def shot_bounds(kind):
 def neighbour_cams(t0, t1):
     nxt = next(s for s in T.SHOTS if s[0] >= t1 - 1e-6 and s[2] == 'stage')
     prev = next((s for s in reversed(T.SHOTS) if s[1] <= t0 + 1e-6 and s[2] == 'stage'), nxt)
-    pc = E.shot_cam(prev[1] - 1e-3, prev[0], prev[1], prev[3]) if prev is not nxt else E.shot_cam(nxt[0], nxt[0], nxt[1], nxt[3])
-    return pc, E.shot_cam(nxt[0], nxt[0], nxt[1], nxt[3])
+    pc = T._shot_cam(prev[1] - 1e-3, prev) if prev is not nxt else T._shot_cam(nxt[0], nxt)
+    return pc, T._shot_cam(nxt[0], nxt)
 
 # ------------------------------------------------------------------ definicje przebitek
 def words_typed(key, t, start=None):

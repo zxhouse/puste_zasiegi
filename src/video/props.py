@@ -4,6 +4,14 @@ from puppet import Material, fill, poly_path, col, shade, fur_fringe
 from gfx import card, draw_text, text_width, light_pool, drop_shadow
 import engine as E
 
+GRIP = 95          # tabliczka zaczyna się tyle px nad dłonią; drążek przechodzi przez pięść i wystaje pod nią
+STICK_BELOW = 120
+def _stick(cv, w=9, top=-GRIP, color='#a0743f'):
+    """Drążek trzymany w pięści (0,0 = środek dłoni): od spodu tabliczki przez dłoń w dół."""
+    p = skia.Paint(AntiAlias=True, StrokeWidth=w, Color4f=col(color), StrokeCap=skia.Paint.kRound_Cap)
+    cv.drawLine(0, top, 0, STICK_BELOW, p)
+    hl = skia.Paint(AntiAlias=True, StrokeWidth=w*0.3, Color4f=skia.Color4f(1, 0.9, 0.7, 0.35)); cv.drawLine(-w*0.2, top, -w*0.2, STICK_BELOW, hl)
+
 def mug(cv, color='#e05d5d', steam=0.0, t=0.0):
     card(cv, (-34, -70, 34, 10), color, 12, 'card', 201, 0.6)
     cv.drawArc(skia.Rect(22, -58, 62, -10), -90, 180, False, skia.Paint(AntiAlias=True, Style=skia.Paint.kStroke_Style, StrokeWidth=10, Color4f=col(color)))
@@ -38,7 +46,8 @@ def laptop(cv, glow=0.6, t=0.0):
 def linkedin_card(cv, text, w=520, h=230, author='Henio Kawka', smile=True, color='#ffffff', reveal=1.0, side=1):
     """Plansza 'post' z tektury: wygląda jak karta wpisu (awatar-kółko, nazwisko, tekst, pasek reakcji).
     side=+1: karta wysunięta w prawo od dłoni (żeby nie zasłaniać twarzy), -1 w lewo."""
-    cv.translate(side*(w/2 - 40), 0)
+    _stick(cv, 10)
+    cv.translate(side*(w/2 - 40), -GRIP)
     path = card(cv, (-w/2, -h, w/2, 0), color, 16, 'card', 210, 0.75)
     cv.drawCircle(-w/2 + 46, -h + 46, 26, skia.Paint(AntiAlias=True, Color4f=col('#0a66c2')))
     draw_text(cv, author, -w/2 + 86, -h + 44, 'ui_b', 26, '#191919', 'left')
@@ -49,13 +58,12 @@ def linkedin_card(cv, text, w=520, h=230, author='Henio Kawka', smile=True, colo
     for i, c in enumerate(['#378fe9', '#44712e', '#df704d']):
         cv.drawCircle(-w/2 + 34 + i*22, -24, 12, skia.Paint(AntiAlias=True, Color4f=col(c)))
     draw_text(cv, '1 482', -w/2 + 104, -16, 'ui', 20, '#666666', 'left')
-    stick = skia.Paint(AntiAlias=True, StrokeWidth=10, Color4f=col('#a0743f')); cv.drawLine(-side*(w/2 - 40), 0, -side*(w/2 - 40), 260, stick)
 
 def placard(cv, text, w=None, size=46, fname='hand', color='#fff8e1', ink='#2b2b2b', stick=True, h=None, side=0):
     tw = text_width(text, fname, size); w = w or tw + 70; h = h or size*2.0
-    if side: cv.translate(side*(w/2 - 30), 0)
     if stick:
-        cv.drawLine(0, 0, 0, 280, skia.Paint(AntiAlias=True, StrokeWidth=10, Color4f=col('#a0743f')))
+        _stick(cv, 10); cv.translate(0, -GRIP)
+    if side: cv.translate(side*(w/2 - 30), 0)
     card(cv, (-w/2, -h, w/2, 0), color, 12, 'card', 211, 0.7, wobble=2)
     draw_text(cv, text, 0, -h/2 + size*0.35, fname, size, ink)
 
@@ -95,7 +103,7 @@ def flash_bulb(cv, a):
     if a > 0.01: light_pool(cv, 0, 0, 500, 400, (1, 1, 1), 0.9*a)
 
 def reaction_paddle(cv, kind, size=1.0):
-    cv.drawLine(0, 0, 0, 200*size, skia.Paint(AntiAlias=True, StrokeWidth=8*size, Color4f=col('#a0743f')))
+    _stick(cv, 8*size, -GRIP*size); cv.translate(0, -GRIP*size)
     c = {'like': '#378fe9', 'clap': '#44712e', 'heart': '#df704d', 'idea': '#f5bb5c', 'laugh': '#1a9ea8', 'support': '#a872e8'}[kind]
     cv.drawCircle(0, -48*size, 50*size, skia.Paint(AntiAlias=True, Color4f=col(c)))
     cv.drawCircle(0, -48*size, 50*size, skia.Paint(AntiAlias=True, Style=skia.Paint.kStroke_Style, StrokeWidth=5*size, Color4f=col('#ffffff')))
@@ -178,9 +186,21 @@ def stamp_mark(cv, a):
     cv.restore()
 
 def cobble(cv, k=0):
-    shapes = [(-60, -40, 60, 40), (-50, -45, 55, 35), (-58, -38, 50, 42)]
-    x0, y0, x1, y1 = shapes[k % 3]
-    card(cv, (x0, y0, x1, y1), '#8d8a84', 18, 'card', 260 + k, 0.55)
+    """Kostka bruku w garści: nieregularny granitowy kamień (cieniowanie z góry-lewej, ziarno, krawędzie)."""
+    rng = np.random.default_rng(260 + k)
+    n = 9; ang = np.linspace(0, 2*np.pi, n, endpoint=False) + rng.uniform(-0.15, 0.15, n)
+    rx, ry = 58 + rng.uniform(-6, 6), 46 + rng.uniform(-5, 5)
+    pts = [(rx*math.cos(a)*(0.88 + 0.12*abs(math.cos(a))) + rng.uniform(-4, 4), -38 + ry*math.sin(a)*(0.9 + 0.1*abs(math.sin(a))) + rng.uniform(-4, 4)) for a in ang]
+    path = poly_path(pts, True, True)
+    base = ['#8d8a84', '#7e7a74', '#96918a'][k % 3]
+    g = skia.GradientShader.MakeRadial(skia.Point(-22, -62), 120, [shade(col(base), 1.35).toColor(), col(base).toColor(), shade(col(base), 0.55).toColor()], [0, 0.45, 1])
+    pp = skia.Paint(AntiAlias=True); pp.setShader(g); cv.drawPath(path, pp)
+    cv.save(); cv.clipPath(path, doAntiAlias=True)
+    for j in range(70):
+        x, y = rng.uniform(-60, 60), rng.uniform(-90, 10)
+        cv.drawCircle(x, y, rng.uniform(1, 2.6), skia.Paint(AntiAlias=True, Color4f=skia.Color4f(*([0.2]*3 if j % 2 else [0.92]*3), 0.35)))
+    cv.restore()
+    cv.drawPath(path, skia.Paint(AntiAlias=True, Style=skia.Paint.kStroke_Style, StrokeWidth=3, Color4f=skia.Color4f(0.2, 0.19, 0.18, 0.6)))
 
 def flipchart(cv, page=0):
     lp = skia.Paint(AntiAlias=True, StrokeWidth=12, Color4f=col('#555555'))
@@ -196,11 +216,12 @@ def star_shape(cv, x, y, r, color):
     pts = [(x + (r if k % 2 == 0 else r*0.45)*math.cos(-math.pi/2 + k*math.pi/5), y + (r if k % 2 == 0 else r*0.45)*math.sin(-math.pi/2 + k*math.pi/5)) for k in range(10)]
     cv.drawPath(poly_path(pts, True, False), skia.Paint(AntiAlias=True, Color4f=col(color)))
 def star_card(cv, n=1):
+    _stick(cv, 8); cv.translate(0, -GRIP)
     card(cv, (-70, -120, 70, 0), '#fff3b0', 10, 'card', 280, 0.6)
     star_shape(cv, 0, -60, 48, '#f4a261')
-    cv.drawLine(0, 0, 0, 200, skia.Paint(AntiAlias=True, StrokeWidth=8, Color4f=col('#a0743f')))
 
 def price_tag(cv):
+    _stick(cv, 8); cv.translate(0, -GRIP*0.8)
     card(cv, (-90, -60, 90, 0), '#ffe066', 8, 'card', 285, 0.6)
     draw_text(cv, '3 OPINIE', 0, -18, 'block2', 34, '#3a3a3a')
 
@@ -213,7 +234,7 @@ def halo(cv, glow=1.0):
     cv.restore()
 
 def smile_mask(cv, crack=0.0):
-    cv.drawLine(0, 0, 0, 240, skia.Paint(AntiAlias=True, StrokeWidth=8, Color4f=col('#a0743f')))
+    _stick(cv, 8, -GRIP + 20); cv.translate(0, -GRIP + 20)
     cv.drawCircle(0, -70, 70, skia.Paint(AntiAlias=True, Color4f=col('#fff1c1')))
     cv.drawCircle(0, -70, 70, skia.Paint(AntiAlias=True, Style=skia.Paint.kStroke_Style, StrokeWidth=5, Color4f=col('#c9a227')))
     ink = skia.Paint(AntiAlias=True, Color4f=col('#222222'))
@@ -257,7 +278,7 @@ def trumpet(cv):
     cv.drawOval(skia.Rect(-70, -380, 70, -340), skia.Paint(AntiAlias=True, Color4f=col('#b08a2e')))
 
 def tear(cv):
-    cv.drawLine(0, 0, 0, 240, skia.Paint(AntiAlias=True, StrokeWidth=8, Color4f=col('#a0743f')))
+    _stick(cv, 8); cv.translate(0, -GRIP + 10)
     cv.drawPath(poly_path([(0, -170), (40, -70), (30, -30), (0, -10), (-30, -30), (-40, -70)], True, True), skia.Paint(AntiAlias=True, Color4f=col('#74c0fc')))
 
 def confetti(cv, t, t0, n=160, area=(-1100, 1100), seed=4):

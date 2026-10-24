@@ -154,6 +154,7 @@ if __name__ == '__main__':
             lw = F['lead'].get(k); cw = F['back'].get(k)
             lead_ok = lw is not None and (lw['conf'] >= -0.9 or (cw is None and lw['conf'] >= -1.5))
             choir_ok = cw is not None
+            if choir_ok and lw is not None and abs(cw['t0'] - lw['t0']) > 0.6: choir_ok = False   # chór w innym miejscu = pomyłka (np. "po" z "Pu-ste")
             if not lead_ok and not choir_ok:
                 # słowo śpiewane, ale nierozpoznane pewnie (np. angielskie "case", "cringe"): pozycja z pierwszego,
                 # wymuszonego dopasowania bez pomijania (a21), sylaby po równo; śpiewa ten sam głos co sąsiedzi
@@ -166,7 +167,8 @@ if __name__ == '__main__':
             if cc: disp = cc[0]['sung'].capitalize() if w['w'][0].isupper() else cc[0]['sung']
             main = lw if lead_ok else cw
             ent = dict(w=disp, singers=(['lead'] if lead_ok else []) + (['choir'] if choir_ok else []), paren=w['paren'],
-                       t0=min(x['t0'] for x in (lw if lead_ok else None, cw) if x), t1=max(x['t1'] for x in (lw if lead_ok else None, cw) if x),
+                       t0=min(x['t0'] for x in (lw if lead_ok else None, cw if choir_ok else None) if x),
+                       t1=max(x['t1'] for x in (lw if lead_ok else None, cw if choir_ok else None) if x),
                        syl=main['syl'], src=main['src'])
             ent['open'] = mouth_open(disp, main['syl'])
             if lead_ok and choir_ok: ent['syl_choir'] = cw['syl']; ent['open_choir'] = mouth_open(disp, cw['syl'])
@@ -217,7 +219,8 @@ if __name__ == '__main__':
         if act[i] and not cov[i]:
             j = i
             while j < len(t) and act[j] and not cov[j]: j += 1
-            if (j - i) >= 25: wordless.append(dict(t0=round(t[i], 2), t1=round(t[j-1], 2), peak_db=round(float(e[i:j].max()), 1)))
+            # tylko wyraźny śpiew chóru (szczyt > maks - 11 dB); cichsze odcinki to przesłuch wokalu prowadzącego / pogłos
+            if (j - i) >= 25 and e[i:j].max() > e.max() - 11: wordless.append(dict(t0=round(t[i], 2), t1=round(t[j-1], 2), peak_db=round(float(e[i:j].max()), 1)))
             i = j
         else: i += 1
     # zdarzenia (początki fraz) we wokalizach: przyrosty obwiedni stemu chórków

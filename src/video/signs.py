@@ -72,7 +72,7 @@ class Sign:
         self.cut_in = kw.pop('cut_in', None)    # wers zaczyna się na cięciu: tablica po prostu wisi już w nowym ujęciu (nie wjeżdża w poprzednim)
         self.kw = kw
         self.tokens = _tokens(key)
-        fname = {'board': 'block2', 'playboard': 'block2', 'marquee': 'marquee', 'curtain': 'script', 'bubble': 'hand', 'marker': 'hand', 'neon': 'script', 'placard': 'hand'}[kind]
+        fname = {'board': 'block2', 'riser': 'bubbly', 'playboard': 'bubbly', 'marquee': 'marquee', 'curtain': 'script', 'bubble': 'hand', 'marker': 'brush', 'neon': 'script', 'placard': 'hand'}[kind]
         self.fname = kw.get('font', fname)
         self.rows = _fit_lines(self.tokens, self.fname, size, maxw)
         self.w = max(text_width(' '.join(t for t, _ in r), self.fname, size) for r in self.rows) + size*1.4
@@ -126,6 +126,11 @@ class Sign:
             cv.save(); cv.translate(self.x, self.y)
             _draw_tokens(cv, self.rows, t, self.fname, self.size, '#f7e9c6', 0, 0, self.size*1.12, stroke=('#1a1430', max(3, self.size*0.09)),
                          glow=(1.0, 0.8, 0.45))
+            cv.restore()
+        elif k == 'riser':         # podświetlone litery na froncie podestu chóru (front i tak zasłania korpusy chórzystów)
+            cv.save(); cv.translate(self.x, self.y)
+            _draw_tokens(cv, self.rows, t, self.fname, self.size, '#fff1c9', 0, 0, self.size*1.1, stroke=('#2a0d40', max(3, self.size*0.09)),
+                         glow=(1.0, 0.75, 0.95))
             cv.restore()
         elif k == 'neon':          # neon na ścianie dekoracji
             cv.save(); cv.translate(self.x, self.y)
