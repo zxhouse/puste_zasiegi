@@ -401,3 +401,14 @@ Przejrzałem jej arkusze i stopklatki i na tej podstawie zrobiłem poprawki v2 p
 * Poprawka: w serwisie profil z sekcją „Rekomendacje” (trzy rekomendacje na słowa „sprzedaje / się / trzy”); na scenie metka
   „CENA: 3 rekomendacje” i trzy kartki-rekomendacje na patykach („Wizjoner!”, „Szacun!”, „Polecam!”) zamiast metki „3 OPINIE” i gwiazdek.
 * Sprawdzenie: klatki 104,9 i 107,5 s.
+
+#### 7.4.10 Usta zamykały się za wcześnie na trzymanych nutach
+* Uwaga (w trakcie renderu v4): przy długich frazach typu „eeeee” pacynki za szybko zamykają usta.
+* Przyczyna: koniec sylaby brany z dopasowania modelem mowy (MFA), który kończy samogłoskę tam, gdzie kończyłaby się w mowie –
+  w śpiewie głos trwa dalej. Pomiar: z 54 trzymanych nut Henia (głos ≥ 0,4 s po szczycie sylaby) 20 miało usta otwarte przez
+  mniej niż 95% czasu dźwięku, np. „gi” w finale (197,5 s) – usta zamknięte, a głos trwa jeszcze 3,7 s; „gest” 125,0 s – 1,8 s.
+* Poprawka (`engine.py`): koniec otwarcia = koniec dźwięku w stemie (poziom nie niżej niż 9 dB pod szczytem sylaby i nad bramką,
+  najdalej 40 ms przed następną sylabą); na długiej nucie szczęka lekko przymyka się w pierwszych 0,4 s i dalej trzyma; ta sama
+  sylaba z dwóch źródeł (końcowe „HEJ” chóru) łączona w jedną.
+* Sprawdzenie: test „trzymane nuty” w `src/verify_sync.py` – Henio: średnio 85,5% → 95,4% czasu dźwięku z otwartymi ustami
+  (przed poprawką liczone na tych samych danych), chór 96,9% → 98,5%; wynik na pliku – sekcja 5.

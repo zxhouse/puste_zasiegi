@@ -125,7 +125,7 @@ def _curve(sylls, n_frames):
         for f in range(f0, f1 + 1):
             t = f/FPS
             rise = smoothstep((t - on)/max(pk - on, 0.03))
-            hold = 1.0 - 0.15*smoothstep((t - pk)/max(off - pk, 0.05))          # długa nuta: lekkie przymknięcie
+            hold = 1.0 - 0.15*smoothstep((t - pk)/max(min(off - pk, 0.4), 0.05))   # długa nuta: lekkie przymknięcie, potem trzyma
             fall = smoothstep((off - t)/min(0.08, max((off - pk)*0.5, 0.03)))
             v = s['open']*rise*hold*fall
             if v > m[f]: m[f] = v; r[f] = s['round']
@@ -145,9 +145,26 @@ def _curve(sylls, n_frames):
             if fb < len(m): m[fb] = max(m[fb], 0.85*b['open']); r[fb] = b['round']
         if 0 <= fd < len(m): m[fd] = min(m[fd], depth)
     return m, r
+def _extend_held(S, DB, drop=9.0, gate=32.0):
+    """Trzymane nuty ('eeee', 'gii...'): koniec otwarcia = koniec dźwięku w stemie wokalu, a nie koniec samogłoski z dopasowania
+    mowy. Sylaba trwa, dopóki poziom stemu jest nie niżej niż `drop` dB pod jej szczytem i nad bramką (max - `gate` dB),
+    najdalej do 40 ms przed następną sylabą."""
+    S.sort(key=lambda d: d['on']); top = float(DB.max())
+    for k in range(len(S) - 1, 0, -1):          # ta sama sylaba z dwóch źródeł (np. końcowe 'HEJ'): jedna, dłuższa
+        if S[k]['on'] - S[k-1]['on'] < 0.05:
+            S[k-1]['off'] = max(S[k-1]['off'], S[k]['off']); S[k-1]['open'] = max(S[k-1]['open'], S[k]['open']); del S[k]
+    for k, s in enumerate(S):
+        nxt = S[k+1]['on'] if k + 1 < len(S) else s['off'] + 4.0
+        i0, i1 = int(s['on']*100), int(max(min(s['off'], nxt), s['on'] + 0.03)*100)
+        pk = float(DB[i0:i1 + 1].max()) if i1 < len(DB) else top
+        j = int(s['off']*100); lim = min(int((nxt - 0.04)*100), len(DB) - 1)
+        while j < lim and DB[j] > max(pk - drop, top - gate): j += 1
+        if j/100 > s['off']: s['off_al'] = s['off']; s['off'] = j/100
+    return S
 LEAD_SYLS = _syl_list('lead')
 for f in AL['choir']['finale']:                          # okrzyki Henia w finale ("hej" 201,5 s i "HEJ" 209,8 s)
     LEAD_SYLS.append(dict(on=f['t_on'] - 0.02, pk=f['t_on'] + 0.05, off=f['t_off'], open=1.0, round=0.0, labial=False, spoken=False))
+_extend_held(LEAD_SYLS, LEAD_DB)
 LEAD_ON = np.array(sorted(s['on'] for s in LEAD_SYLS))
 LEAD_MOUTH, LEAD_ROUND = _curve(LEAD_SYLS, N_FRAMES)
 def _frame_lookup(arr, t):
@@ -158,7 +175,7 @@ def lead_mouth(t):
     return _frame_lookup(LEAD_MOUTH, t)
 def lead_round(t):
     return _frame_lookup(LEAD_ROUND, t)
-CHOIR_SYLS = _syl_list('choir') + _choir_extra()
+CHOIR_SYLS = _extend_held(_syl_list('choir') + _choir_extra(), BACK_DB)
 CHOIR_MOUTH, CHOIR_ROUND = _curve(CHOIR_SYLS, N_FRAMES)
 def choir_mouth(t, member=0):
     """Chór: wspólny czas (śpiewają razem), amplituda lekko różna między lalkami."""

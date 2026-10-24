@@ -9,6 +9,10 @@ lm, cm, ws = R['lead_mouth'], R['choir_mouth'], R['word_starts_in_vocal']
 sg, cuts, acc, fl = R['signs'], R['cuts'], R['accents'], R['flashes']
 weak = [p for p in sg['placement'] if p['visibility'] < 0.95 or p['overlap'] > 0.02]
 fr = R.get('framing'); tf = sg.get('text_fits_box')
+hn = R.get('held_notes'); held = ''
+if hn: held = f"""* Trzymane nuty (głos trwa ≥ 0,4 s po szczycie sylaby; koniec głosu z obwiedni stemu): Henio {hn['lead']['held_notes']} nut – usta otwarte
+  średnio przez **{hn['lead']['mean_open_fraction']*100:.1f}%** czasu dźwięku, chór {hn['choir']['held_notes']} nut – {hn['choir']['mean_open_fraction']*100:.1f}%.
+"""
 XP = json.load(open(os.path.join(ROOT, 'checks/exposure.json'))) if os.path.exists(os.path.join(ROOT, 'checks/exposure.json')) else None
 n_stills = len(os.listdir(os.path.join(ROOT, 'checks/stills'))) if os.path.exists(os.path.join(ROOT, 'checks/stills')) else 0
 extra = ''
@@ -50,7 +54,7 @@ Wyniki: `checks/verify_file.json`, `checks/verify_sync.json`, `checks/sheets/` (
 * Napisy (co 2. klatka ujęć sceny, {sg['sign_frames_checked']} sprawdzeń): największe nachodzenie napisu na postać **{sg['max_overlap_fraction_with_character']*100:.1f}%**
   powierzchni napisu ({sg['at']}; prostokąty: głowa, korpus, dłoń z rzeczywistym obrysem trzymanego rekwizytu), najmniejsza widoczność napisu w kadrze {sg['min_visible_fraction']*100:.0f}% ({sg['min_visible_at']});
   {len(sg['placement']) - len(weak)} z {len(sg['placement'])} napisów w pełni widocznych i bez kolizji przez cały czas trwania.
-{extra}* Chór: liczebność w refrenach nie spada; w układzie grupowym {R['choir']['overlapping_pairs']} par nachodzących na siebie.
+{held}{extra}* Chór: liczebność w refrenach nie spada; w układzie grupowym {R['choir']['overlapping_pairs']} par nachodzących na siebie.
 
 """
 p = os.path.join(ROOT, 'report.md'); s = open(p).read()

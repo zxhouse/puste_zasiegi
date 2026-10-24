@@ -46,6 +46,23 @@ cm = np.array([E.choir_mouth(t, 0)/0.88 for t in ts])
 cpk, clines, cs, ch_ = mouth_check(cm, 'choir')
 R['choir_mouth'] = dict(lyric_syllables=cs, syllables_with_own_opening=ch_, lines=clines,
                         wordless_segments=len(E.AL['choir']['wordless']), hej=[h['t_on'] for h in E.AL['choir']['hej']])
+# trzymane nuty: przez cały czas dźwięku w stemie (od szczytu sylaby do końca głosu, najdalej do następnej sylaby) usta otwarte
+def held_check(S, DB, curve, k_amp=1.0):
+    S = sorted(S, key=lambda d: d['on']); top = float(DB.max()); n = 0; frac = []; bad = []
+    for k, s in enumerate(S):
+        nxt = S[k+1]['on'] if k + 1 < len(S) else s['off'] + 4
+        i0 = int(s['on']*100); pk = float(DB[i0:int(min(s.get('off_al', s['off']), nxt)*100) + 1].max())
+        j = int(min(s.get('off_al', s['off']), nxt - 0.04)*100); lim = min(int((nxt - 0.04)*100), len(DB) - 1)
+        while j < lim and DB[j] > max(pk - 9, top - 32): j += 1
+        a, b = max(s['pk'], s['on'] + 0.05), min(j/100, nxt - 0.04)
+        if b - a < 0.4: continue                                  # trzymana nuta = głos trwa >= 0,4 s po szczycie sylaby
+        fr = [curve[f]*k_amp >= 0.3*s['open'] for f in range(int(math.ceil(a*FPS)), int(b*FPS - 2))]
+        if not fr: continue
+        n += 1; frac.append(np.mean(fr))
+        if np.mean(fr) < 0.95: bad.append((round(s['on'], 2), round(b - a, 2), round(float(np.mean(fr)), 2)))
+    return dict(held_notes=n, mean_open_fraction=round(float(np.mean(frac)), 3) if frac else None,
+                notes_open_less_than_95pct=len(bad), worst=sorted(bad, key=lambda x: x[2])[:8])
+R['held_notes'] = dict(lead=held_check(E.LEAD_SYLS, E.LEAD_DB, mouth), choir=held_check(E.CHOIR_SYLS, E.BACK_DB, cm))
 # początki słów tam, gdzie gra stem wokalu (poziom w [t, t+150 ms] w górnych 20 dB stemu)
 def stem_db(name):
     import soundfile as sf, librosa
