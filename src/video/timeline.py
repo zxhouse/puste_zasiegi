@@ -549,8 +549,8 @@ def apron(cv, t):
     fill(cv, r, Material('#3a2340', 'felt', 0.9, light=1.1, dark=0.75, seed=9))
     cv.drawRect(skia.Rect(-1300, 0, 1300, 16), skia.Paint(Color4f=P.col('#c99a3a')))
     from gfx import draw_text
-    draw_text(cv, 'Puste zasięgi', 0, 200, 'script', 92, '#c99a3a')
-    for sx in (-1, 1): star(cv, sx*420, 168, 30, '#c99a3a')
+    draw_text(cv, 'Puste zasięgi', 0, 360, 'script', 80, '#c99a3a')
+    for sx in (-1, 1): star(cv, sx*380, 332, 26, '#c99a3a')
 
 # ================================================================== UJĘCIA
 def C_(x, y, d, roll=0.0): return Cam(float(x), float(y), float(d), 1700.0, roll)
