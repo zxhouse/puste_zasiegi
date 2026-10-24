@@ -64,7 +64,7 @@
     "syllables_with_opening": 10
    }
   ],
-  "corr_mouth_vs_vocal_envelope": 0.548,
+  "corr_mouth_vs_vocal_envelope": 0.597,
   "mouth_open_when_vocal_silent_pct": 2.81
  },
  "choir_mouth": {
@@ -224,6 +224,20 @@
    182.43,
    185.66
   ]
+ },
+ "held_notes": {
+  "lead": {
+   "held_notes": 41,
+   "mean_open_fraction": 1.0,
+   "notes_open_less_than_95pct": 0,
+   "worst": []
+  },
+  "choir": {
+   "held_notes": 37,
+   "mean_open_fraction": 1.0,
+   "notes_open_less_than_95pct": 0,
+   "worst": []
+  }
  },
  "word_starts_in_vocal": {
   "lead": {
@@ -890,7 +904,7 @@
     ],
     "kind": "board",
     "visibility": 1.0,
-    "overlap": 0.007
+    "overlap": 0.013
    },
    {
     "line": [
