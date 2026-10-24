@@ -1,6 +1,6 @@
 # Raport: teledysk „Puste zasięgi” (Paweł Kuraś)
 
-> Stan: **wersja v4** (`final/music-video.mp4`). Poprzednie wersje: `archive/v1/`, `archive/v2/`, `archive/v3/`. Wyniki sprawdzeń poniżej dotyczą v4.
+> Stan: **wersja v5** (`final/music-video.mp4`). Poprzednie wersje: `archive/v1/` … `archive/v4/`. Wyniki sprawdzeń poniżej dotyczą v5.
 > Nie słuchałem ani nie oglądałem filmu – wszystko niżej to pomiary liczbowe i obejrzane pojedyncze klatki / arkusze klatek.
 
 ## 1. Co powstało
@@ -14,7 +14,7 @@
 | `src/` | cały kod: analiza (`a01…a12`; v3: `a20…a25` – modele mowy, dopasowanie, fuzja), renderer (`src/video/`), render równoległy, montaż, weryfikacja |
 | `checks/` | arkusze klatek, stopklatki, wyniki weryfikacji (`verify_file.json`, `verify_sync.json`, `exposure.json`) |
 | `fonts/` | czcionki OFL użyte w obrazie i w klonie + pełny tekst licencji |
-| `archive/` | poprzednie wersje filmu: `v1/`, `v2/`, `v3/` (nic nie jest kasowane; w każdej `NOTES.md` z uwagami do tej wersji) |
+| `archive/` | poprzednie wersje filmu: `v1/` … `v4/` (nic nie jest kasowane; w każdej `NOTES.md` z uwagami do tej wersji) |
 | `analysis/asr/` | surowe wyniki modeli mowy: transkrypcje Omnilingual (stem prowadzący i chórki), Whisper, Parakeet, Silero VAD, dopasowania CTC i MFA |
 
 Wymagane narzędzia (wszystkie darmowe, z menedżerów pakietów): `ffmpeg`, Python (`numpy`, `scipy`, `librosa`, `soundfile`, `skia-python`, `pocketsphinx`, `matplotlib`, `onnxruntime`, `sherpa-onnx`, `faster-whisper`, `silero-vad`), Montreal Forced Aligner (conda-forge, przez micromamba), `espeak-ng` + `mbrola-pl1` (apt), Node + Playwright/Chromium (preinstalowane). Modele mowy (pobierane do `tools/models/`, poza repozytorium): Omnilingual ASR CTC 1B i Parakeet TDT v3 (wydania sherpa-onnx), `polish_mfa` (wydania mfa-models, CC BY 4.0), Whisper small CT2 (npm). Żadnych gotowych nagrań ani grafik z internetu – cały obraz jest generowany kodem.
@@ -230,8 +230,8 @@ Wyniki: `checks/verify_file.json`, `checks/verify_sync.json`, `checks/sheets/` (
   to za naturalne dla ujęcia tłumu.
 * **Napis przy postaci**: w 67,8 s dłoń Henia w szerokim geście wchodzi pod tablicę „Puste zasięgi, wielkie zasięgi” (19% pola
   tablicy w teście prostokątów) – na klatce wygląda to jak wskazanie napisu, więc zostawiłem.
-* **Kompresja**: 3200 kb/s, żeby zmieścić się w 100 MB na GitHubie. Głębia ostrości lepiej wyglądałaby w wyższej
-  przepływności – kawałki CRF 14 są w `build/v4/chunks` (`python3 src/assemble.py build/v4/chunks <plik> --crf 16`).
+* **Kompresja**: v5 trwa 256 s (dłuższe napisy końcowe), więc obraz ma średnio 2800 kb/s (dwa przebiegi; proste napisy zużywają mało, scena dostaje tyle co w v4), żeby zmieścić się w 100 MB na GitHubie. Głębia ostrości lepiej wyglądałaby w wyższej
+  przepływności – kawałki CRF 14 są w `build/v5/chunks` (`python3 src/assemble.py build/v5/chunks <plik> --crf 16`).
 * **Rekomendacje i komentarze w serwisie** (v4) są wymyślone dla żartu (np. rekomendacja od własnego „konta firmowego”); postaci
   fikcyjne, jak cała reszta.
 * **Klon LinkedIna**: zgodnie z prośbą odtwarza wygląd serwisu 1:1, w stopce jest linijka „LinkedIn Corporation © 2026” jak
@@ -430,3 +430,67 @@ Przejrzałem jej arkusze i stopklatki i na tej podstawie zrobiłem poprawki v2 p
   (koralowe, serce), Wnikliwe (żółte, żarówka), Zabawne (turkusowe, roześmiana buzia). Te same pliki są w klonie
   (`linkedin_clone/assets/r_*.svg`, liczniki reakcji pod wpisami) i na tekturowych krążkach, które trzyma chór.
 * Sprawdzenie: zrzut klonu (liczniki pod wpisem Henia) i klatka 64,5 s (chór z reakcjami).
+
+### 7.5 v5 – poprawki po uwagach autora do v4
+
+#### 7.5.1 Tekstury (kurtyna i wszystkie inne)
+* Przyczyna: tekstury 512² z dużymi, miękkimi plamami szumu; bez mipmap (z daleka migotały i rozmywały się w kompresji);
+  kurtyna rysowana z 9 płaskich pasów z liniowym gradientem – widać było szwy i „plamy” zamiast aksamitu.
+* Poprawka (`textures.py`, `stage.py`): filc, tektura i aksamit 1024² generowane wektorowo – filc 4× więcej włókien w dwóch grubościach,
+  tektura z włóknami papieru, aksamit z gęstym meszkiem i smugami wzdłuż fałd; mipmapy przy próbkowaniu. Kurtyna jednym kształtem
+  z profilem fałd (głęboki cień w zagłębieniu, wąski połysk na grzbiecie), falistym dołem i pionowym spadkiem światła.
+* Sprawdzenie: klatki 5,5 s (kurtyna) i 46,9 s.
+
+#### 7.5.2 Wkładanie garnituru
+* Przyczyna: marynarka zjeżdżała na sznurkach wprost na Henia – zasłaniała usta, sznurki szły przez twarz, a zmiana kostiumu była 0,85 s później.
+* Poprawka (`timeline.py`): marynarka zjeżdża na wieszaku **obok** Henia; na „Wkładam” sięga po nią, na „garnitur” lalkarski obrót,
+  marynarka przelatuje **za** nim na barki (nigdy przed twarzą), krótki „puf” filcowego kurzu, pusty wieszak odjeżdża w górę;
+  na „choć” Henio poprawia klapy.
+* Sprawdzenie: 6 klatek 17,3–18,6 s.
+
+#### 7.5.3 Biuro (0:32)
+* Przyczyna: chórzyści stali za czterema osobnymi ściankami z przerwami, a lalki były rysowane **przed** ściankami (warstwa dekoracji
+  była pod nimi) – widać było całe korpusy jak na „tyczkach”.
+* Poprawka (`stage.py`, `timeline.py`): ciągły rząd ścianek boksów jako rekwizyt **przed** lalkami (aluminiowa listwa, tyły monitorów,
+  roślinka, tabliczki z imionami), tablica korkowa na ścianie; chórzystów widać od piersi w górę.
+* Sprawdzenie: arkusz ujęć 29,9–39,6 s.
+
+#### 7.5.4 Pauzy w tekstach
+* Poprawka (`signs.py`): myślniki (pauzy „—”) z tekstu piosenki nie są wyświetlane – na tablicach, w dymkach, w polu wiadomości i kredą
+  pod sceną. Przy okazji: „wyskok” słowa w chwili zaśpiewania zmniejszony do 6% i liczony od lewej krawędzi słowa, więc nie zjada spacji
+  (np. „„Zprzyjemnością” → „„Z przyjemnością”).
+
+#### 7.5.5 Tekst w ramkach
+* Przyczyna: tablica portalu (marquee) nie miała limitu szerokości – dłuższe wersy („I każdy zna tu swoją rolę”, „Puste zasięgi, puste
+  zasięgi”) wychodziły poza ramkę; „RESTRUKTURYZACJA” była szersza niż ramka stempla; podobnie „3 rekomendacje” na metce i zwój
+  „#wdzięczność”.
+* Poprawka: marquee łamie wers na 1–2 linijki i zmniejsza krój tak, by zmieścić się w polu 980×150; `draw_text(..., maxw=)` – każdy
+  napis na rekwizycie i dekoracji ma swoją maksymalną szerokość (karty wpisów, plansze, baner, zwój, flipchart, karton „Robię swoje.”,
+  rekomendacje, metka, kalendarz, sztaluga, konferencja, raj, tytuł); ramka stempla liczona z szerokości napisu.
+* Sprawdzenie: test tekstu w polu (sekcja 5) i klatki 46,9 / 60,5 / 97,4 s.
+
+#### 7.5.6 Rekwizyt prezesa (1:37)
+* Przyczyna: pieczątka była trzymana za klocek, z rączką i gałką sterczącymi nad dłonią – wyglądała jak nieokreślona bryła.
+* Poprawka (`props.py`): pięść na toczonej rączce, gałka nad pięścią, pod nią klocek i czerwona guma – pieczątka wisi pionowo jak prawdziwa.
+
+#### 7.5.7 Scena 1:47 (raj, „wdzięczność”)
+* Przyczyna: w jednym kadrze były flipchart Kasi, trzy kartki-rekomendacje, chórzysta z metką ceny, Grażyna ze zwojem i tablica wersu.
+* Poprawka: po przebitce do rekomendacji raj jest pusty – tylko Grażyna ze zwojem „#wdzięczność”, potem Henio i aureola; flipchart
+  i Kasia schodzą na cięciu do serwisu; kartki-rekomendacje i metka usunięte (wątek opowiada przebitka do serwisu).
+
+#### 7.5.8 Kamera od 2:49
+* Analiza (ruch kadru liczony klatka po klatce + arkusze 2 kl./s): sama scena nie miała skoków, ale (1) w outro strona przewijała się
+  o 1500 px w dół i w 0,55 s wracała do góry, (2) film w poście przeskakiwał w połowie przebitki z kadru poprzedniego na następny,
+  (3) refren 3 to była seria prawie identycznych planów tłumu z „pływającym” kadrem.
+* Poprawka: outro – spokojne przewinięcie o 330 px (film zostaje w kadrze) i jeden płynny wjazd z powrotem w film; film w poście –
+  kamera sceny płynnie przejeżdża z kadru poprzedniego do następnego (wszystkie przebitki); refren 3 – każde ujęcie ma jeden czytelny
+  ruch: najazd żurawia, przejazd wzdłuż pierwszego rzędu, dwójka Henio–Tadek, powolny najazd na Henia („pod spodem cisza”), plan ogólny,
+  odjazd w górę.
+* Sprawdzenie: arkusze ujęć 167,8–212 s.
+
+#### 7.5.9 Napisy końcowe
+* Poprawka (`credits.py`): przewijane napisy (ok. 43 s, film trwa teraz 256 s; dźwięk – cały MP3 bez zmian, po nim cisza):
+  muzyka, kompozycja, tekst i wstępna wersja – Paweł Kuraś; ostateczna aranżacja chóralno-wokalna – Suno V6; pomysł, kierownictwo
+  artystyczne, decyzje i uwagi – Paweł Kuraś; realizacja (scenariusz, lalki, scenografia, animacja, kamera, montaż, klon serwisu,
+  weryfikacja) – Claude Opus 5.5 w Claude Code (sesja w chmurze, tryb automatyczny, rozszerzone rozumowanie); lista narzędzi
+  z opisem, co robiło; fonty OFL; informacja, że postaci i serwis są fikcyjne.

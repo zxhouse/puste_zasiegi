@@ -44,6 +44,11 @@ def full_on(rect, sy):
 def shot_bounds(kind):
     for s in T.SHOTS:
         if s[2] == 'feed' and s[3]['kind'] == kind: return s[0], s[1]
+def _glide(pc, nc, t, a, b):
+    """Film w poście: kamera sceny płynnie przejeżdża z kadru poprzedniego ujęcia do kadru następnego (zamiast przeskoku
+    w połowie przebitki) - widz widzi ciągły ruch, a krańce zgadzają się z sąsiednimi ujęciami."""
+    u = smoothstep((t - a - 0.4)/max(b - a - 0.8, 0.1))
+    return pc.lerp(nc, u)
 def neighbour_cams(t0, t1):
     nxt = next(s for s in T.SHOTS if s[0] >= t1 - 1e-6 and s[2] == 'stage')
     prev = next((s for s in reversed(T.SHOTS) if s[1] <= t0 + 1e-6 and s[2] == 'stage'), nxt)
@@ -66,7 +71,7 @@ def _def():
     K['henio_post'] = dict(states=[(a, 'hp_c0'), (27.9, 'hp_c1'), (28.5, 'hp_c2'), (29.1, 'hp_c3')],
                            view=[(a, full_on(vid, 0)), (a + 0.72, (0, 960, 545, 1840)), (b - 0.75, (0, 975, 560, 1740)), (b, full_on(vid, 0))],
                            reacts=lambda t, a=a, b=b, pc=locals().get('pc'), nc=locals().get('nc'), mcu=locals().get('mcu'): 3 + 1479*smoothstep((t - a)/2.6)**0.6, ncomments=lambda t, a=a, b=b, pc=locals().get('pc'), nc=locals().get('nc'), mcu=locals().get('mcu'): sum(t >= x for x in (27.9, 28.5, 29.1)),
-                           chat=(1, 4), video_cam=lambda t, a=a, b=b, pc=locals().get('pc'), nc=locals().get('nc'), mcu=locals().get('mcu'): pc if t < (a + b)/2 else nc)
+                           chat=(1, 4), video_cam=lambda t, a=a, b=b, pc=locals().get('pc'), nc=locals().get('nc'), mcu=locals().get('mcu'): _glide(pc, nc, t, a, b))
     a, b = shot_bounds('to_grazyna'); pc, nc = neighbour_cams(a, b)
     gi = R('grz', 'grazynaImg')
     K['to_grazyna'] = dict(states=[(a, 'grz')],
@@ -79,7 +84,7 @@ def _def():
                           view=[(a, (0, 925, 610, 1380)), (T.lt(T.CH2, 3), (0, 925, 625, 1300)), (T.lt(T.CH2, 3) + 1.0, (170, 920, 640, 1180)), (b, (170, 915, 650, 1120))],
                           reacts=lambda t, a=a, b=b, pc=locals().get('pc'), nc=locals().get('nc'), mcu=locals().get('mcu'): 1482 + 8*smoothstep((t - a)/6), views=lambda t, a=a, b=b, pc=locals().get('pc'), nc=locals().get('nc'), mcu=locals().get('mcu'): 98120 + (1254302 - 98120)*smoothstep((t - a - 0.1)/3.0)**0.7,
                           ncomments=lambda t, a=a, b=b, pc=locals().get('pc'), nc=locals().get('nc'), mcu=locals().get('mcu'): 0, comment=[(T.CH2, 2, a, T.lt(T.CH2, 3)), (T.CH2, 3, T.lt(T.CH2, 3), b)],
-                          video_cam=lambda t, a=a, b=b, pc=locals().get('pc'), nc=locals().get('nc'), mcu=locals().get('mcu'): pc if t < (a + b)/2 else nc)
+                          video_cam=lambda t, a=a, b=b, pc=locals().get('pc'), nc=locals().get('nc'), mcu=locals().get('mcu'): _glide(pc, nc, t, a, b))
     a, b = shot_bounds('simple_post'); pc, nc = neighbour_cams(a, b)
     vid2 = R('simple1', 'video')
     K['simple_post'] = dict(states=[(a, 'simple0'), (165.4, 'simple1')],
@@ -89,16 +94,16 @@ def _def():
     a, b = shot_bounds('outro'); pc, nc = neighbour_cams(a, b)
     mcu = Cam(0.0, -320.0, 1150.0, 1700.0)
     K['outro'] = dict(states=[(a, 'outro')],
-                      view=[(a, full_on(vid, 0)), (a + 0.75, (0, 960, 545, 1880)), (191.3, (0, 960, 545, 1880)), (192.9, (1500, 960, 540, 1920)),
-                            (193.45, (0, 960, 540, 1920)), (b, full_on(vid, 0))],
+                      view=[(a, full_on(vid, 0)), (a + 0.8, (0, 960, 545, 1880)), (191.0, (0, 960, 545, 1880)), (192.9, (330, 960, 540, 1920)),
+                            (b, full_on(vid, 0))],     # 'miłego scrollowania': spokojne przewinięcie w dół (film zostaje w kadrze) i powrót wjazdem w film
                       reacts=lambda t, a=a, b=b, pc=locals().get('pc'), nc=locals().get('nc'), mcu=locals().get('mcu'): 1497, ncomments=lambda t, a=a, b=b, pc=locals().get('pc'), nc=locals().get('nc'), mcu=locals().get('mcu'): 0, comment=[(T.OUT, 0, a, b)],
-                      cursor=[(191.0, (1250, 820)), (192.9, (1250, 700)), (193.45, (1180, 620))],
-                      video_cam=lambda t, a=a, b=b, pc=locals().get('pc'), nc=locals().get('nc'), mcu=locals().get('mcu'): pc if t < a + 0.6 else (mcu if t < 193.0 else nc))
+                      cursor=[(191.0, (1250, 820)), (192.9, (1250, 700)), (193.6, (1180, 620))],
+                      video_cam=lambda t, a=a, b=b, pc=locals().get('pc'), nc=locals().get('nc'), mcu=locals().get('mcu'): _glide(pc, nc, t, a, b))
     a, b = shot_bounds('stats'); pc, nc = neighbour_cams(a, b)
     K['stats'] = dict(states=[(a, 'stats0'), (205.4, 'stats1')],
                       view=[(a, full_on(vid, 0)), (a + 0.7, (0, 935, 600, 1460)), (b - 0.65, (0, 935, 610, 1380)), (b, full_on(vid, 0))],
                       reacts=lambda t, a=a, b=b, pc=locals().get('pc'), nc=locals().get('nc'), mcu=locals().get('mcu'): 4, views=lambda t, a=a, b=b, pc=locals().get('pc'), nc=locals().get('nc'), mcu=locals().get('mcu'): 1254302 + 40*(t - a), ncomments=lambda t, a=a, b=b, pc=locals().get('pc'), nc=locals().get('nc'), mcu=locals().get('mcu'): 1 if t >= 205.4 else 0,
-                      video_cam=lambda t, a=a, b=b, pc=locals().get('pc'), nc=locals().get('nc'), mcu=locals().get('mcu'): pc if t < (a + b)/2 else nc)
+                      video_cam=lambda t, a=a, b=b, pc=locals().get('pc'), nc=locals().get('nc'), mcu=locals().get('mcu'): _glide(pc, nc, t, a, b))
     # 'A w komentarzu: „Ogromny szacun"': zdjęcie z konferencji we wpisie prezesa = zatrzymany kadr poprzedniego ujęcia,
     # odjazd do komentarzy - pojawia się komentarz Mirka, tekst 'Ogromny szacun!' wpisuje się razem ze śpiewem
     a, b = shot_bounds('szacun'); pc, nc = neighbour_cams(a, b)

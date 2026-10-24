@@ -18,35 +18,46 @@ def tile_noise(n, scale, seed):
     spec = np.fft.fft2(a)*np.exp(-(f*n/scale)**2)
     b = np.real(np.fft.ifft2(spec)); return b/(b.std() + 1e-9)
 
-@functools.lru_cache(None)
-def felt(seed=1, n=512):
-    """Filc: drobne splątane włókna + niskoczęstotliwościowa niejednorodność. Wartości ~1.0 (do mnożenia)."""
+def _fibres(n, count, seed, lmin, lmax, ang_range=(0, np.pi)):
+    """Pole krótkich, lekko krętych włókien (bezszwowe), wektorowo: count odcinków po ~1,5 próbki na jednostkę długości."""
     rng = np.random.default_rng(seed)
-    img = np.zeros((n, n))
-    # włókna: krótkie odcinki o losowych kierunkach (zawijane okresowo)
-    for _ in range(9000):
-        x, y = rng.uniform(0, n, 2); ang = rng.uniform(0, np.pi); L = rng.uniform(4, 16)
-        ts = np.linspace(0, L, int(L*1.5))
-        xs = (x + np.cos(ang)*ts + rng.normal(0, 0.6, len(ts)).cumsum()*0.3).astype(int) % n
-        ys = (y + np.sin(ang)*ts + rng.normal(0, 0.6, len(ts)).cumsum()*0.3).astype(int) % n
-        img[ys, xs] += rng.uniform(0.4, 1.0)*rng.choice([-1, 1])
-    img = nd.gaussian_filter(img, 0.7, mode='wrap')
-    img = img/(img.std() + 1e-9)*0.045 + tile_noise(n, 9, seed+1)*0.03 + tile_noise(n, 60, seed+2)*0.02
-    return _to_image(243*(1 + img))       # ~0.95 średnio: lekkie przyciemnienie + faktura włókien
+    img = np.zeros(n*n)
+    L = rng.uniform(lmin, lmax, count); ang = rng.uniform(*ang_range, count)
+    x0 = rng.uniform(0, n, count); y0 = rng.uniform(0, n, count); w = rng.uniform(0.4, 1.0, count)*rng.choice([-1, 1], count)
+    k = int(lmax*1.5) + 1; u = np.linspace(0, 1, k)[None, :]
+    wob = rng.normal(0, 0.35, (count, k)).cumsum(1)
+    xs = (x0[:, None] + np.cos(ang)[:, None]*L[:, None]*u - np.sin(ang)[:, None]*wob).astype(int) % n
+    ys = (y0[:, None] + np.sin(ang)[:, None]*L[:, None]*u + np.cos(ang)[:, None]*wob).astype(int) % n
+    np.add.at(img, (ys*n + xs).ravel(), np.repeat(w, k))
+    return img.reshape(n, n)
+def _mip(img): return img.withDefaultMipmaps()
+@functools.lru_cache(None)
+def felt(seed=1, n=1024):
+    """Filc (v5: 1024², 4x więcej włókien, dwie warstwy grubości, mipmapy - ostry z bliska, bez migotania z daleka).
+    Wartości ~0.95 (do mnożenia)."""
+    img = nd.gaussian_filter(_fibres(n, 42000, seed, 5, 18), 0.6, mode='wrap')
+    img = img/(img.std() + 1e-9)
+    fine = nd.gaussian_filter(_fibres(n, 60000, seed + 7, 2, 6), 0.5, mode='wrap'); fine /= fine.std() + 1e-9
+    img = img*0.04 + fine*0.022 + tile_noise(n, 14, seed + 1)*0.025 + tile_noise(n, 90, seed + 2)*0.02
+    return _mip(_to_image(243*(1 + img)))
 
 @functools.lru_cache(None)
-def cardboard(seed=3, n=512):
-    rng = np.random.default_rng(seed)
-    g = tile_noise(n, 70, seed)*0.04 + tile_noise(n, 12, seed+1)*0.025
-    # delikatne pionowe prążki (karton falisty prześwitujący)
+def cardboard(seed=3, n=1024):
+    """Tektura (v5: 1024², drobne włókna papieru + plamki, falisty karton prześwitujący, mipmapy)."""
+    g = tile_noise(n, 140, seed)*0.035 + tile_noise(n, 24, seed+1)*0.02 + tile_noise(n, 3, seed+3)*0.012
+    fib = nd.gaussian_filter(_fibres(n, 30000, seed + 5, 3, 10), 0.5, mode='wrap'); g += fib/(fib.std() + 1e-9)*0.012
     x = np.arange(n)[None, :]
-    g += 0.02*np.sin(2*np.pi*x/n*48)
-    return _to_image(240*(1 + g))
+    g += 0.016*np.sin(2*np.pi*x/n*96)
+    return _mip(_to_image(240*(1 + g)))
 
 @functools.lru_cache(None)
-def velvet(seed=5, n=512):
-    g = tile_noise(n, 30, seed)*0.05 + tile_noise(n, 5, seed+1)*0.03
-    return _to_image(238*(1 + g))
+def velvet(seed=5, n=1024):
+    """Aksamit (v5): gęsty, drobny meszek (pionowe włoski) + delikatne smugi wzdłuż fałd zamiast plam; mipmapy."""
+    pile = nd.gaussian_filter(_fibres(n, 90000, seed, 2, 5, (np.pi/2 - 0.35, np.pi/2 + 0.35)), 0.45, mode='wrap'); pile /= pile.std() + 1e-9
+    rng = np.random.default_rng(seed + 9)
+    streak = nd.gaussian_filter(rng.standard_normal((n, n)), (n/10, 1.5), mode='wrap'); streak /= streak.std() + 1e-9
+    g = pile*0.035 + streak*0.03 + tile_noise(n, 3, seed + 1)*0.012 + tile_noise(n, 60, seed + 2)*0.012
+    return _mip(_to_image(238*(1 + g)))
 
 @functools.lru_cache(None)
 def grain_frames(k=12, w=960, h=540, seed=11):
@@ -62,4 +73,4 @@ def grain_frames(k=12, w=960, h=540, seed=11):
 
 def shader_of(img, scale=1.0, dx=0, dy=0):
     m = skia.Matrix.Scale(scale, scale); m.postTranslate(dx, dy)
-    return img.makeShader(skia.TileMode.kRepeat, skia.TileMode.kRepeat, skia.SamplingOptions(skia.FilterMode.kLinear), m)
+    return img.makeShader(skia.TileMode.kRepeat, skia.TileMode.kRepeat, skia.SamplingOptions(skia.FilterMode.kLinear, skia.MipmapMode.kLinear), m)

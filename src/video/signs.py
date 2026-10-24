@@ -33,6 +33,7 @@ def _tokens(key):
     for tok in txt:
         core = re.sub(r"[^A-Za-zĄĆĘŁŃÓŚŹŻąćęłńóśźż]", '', tok)
         if not core:
+            if tok.strip('—–-') == '': continue          # pauzy (myślniki) z tekstu nie są wyświetlane
             if out: out[-1] = (out[-1][0] + ' ' + tok, out[-1][1])
             else: out.append((tok, ws[0][1]))
             continue
@@ -60,7 +61,7 @@ def _fit_lines(tokens, fname, size, maxw, max_rows=3):
         s *= 0.93
     return _best_split(tokens, min(max_rows, len(tokens)), fname, s)[0], s
 
-POP = 0.10       # słowo 'wyskakuje' o 10% w chwili zaśpiewania
+POP = 0.06       # słowo 'wyskakuje' o 6% w chwili zaśpiewania (mniej - nie 'zjada' spacji)
 def _block(rows, fname, size, line_h):
     """Pozycje linii bazowych (względem środka bloku) i dokładny obrys bloku tekstu (z ogonkami i kreskami nad literami)."""
     f = font(fname, size)
@@ -89,7 +90,7 @@ def _draw_tokens(cv, rows, t, fname, size, color, cx, cy, line_h, glow=None, str
             if a > 0.01:
                 s = 1.0 + (POP*(1 - smoothstep((t - t0)/0.16)) if pop else 0)
                 ym = y - size*0.33
-                cv.save(); cv.translate(x + w/2, ym); cv.scale(s, s); cv.translate(-(x + w/2), -ym)
+                cv.save(); cv.translate(x, ym); cv.scale(s, s); cv.translate(-x, -ym)      # od lewej krawędzi słowa: nie zjada spacji przed nim
                 if glow: light_pool(cv, x + w/2, y - size*0.3, w*0.7, size*0.9, glow, 0.22*a)
                 draw_text(cv, tk, x, y, fname, size, color, 'left', stroke=stroke, alpha=a)
                 cv.restore()
@@ -123,9 +124,14 @@ class Sign:
         """Łamanie wersu i wymiary pola: z rzeczywistego obrysu tekstu + marginesy + zapas na powiększenie słowa."""
         if tokens is not None: self.tokens = tokens
         if maxw is not None: self.maxw = maxw
-        self.rows, self.size = _fit_lines(self.tokens, self.fname, size, self.maxw)
+        if self.kind == 'marquee':          # tablica portalu ma stałe pole: 1-2 linijki w 980 x 150 jednostek
+            self.maxw = min(self.maxw, 980.0)
+            self.rows, self.size = _fit_lines(self.tokens, self.fname, size, self.maxw, max_rows=2)
+            while len(self.rows)*self.size*1.08 > 150: self.size *= 0.95; self.rows, self.size = _fit_lines(self.tokens, self.fname, self.size, self.maxw, max_rows=2)
+        else:
+            self.rows, self.size = _fit_lines(self.tokens, self.fname, size, self.maxw)
         s = self.size
-        self.line_h = s*(1.16 if self.kind in BOXED else 1.12)
+        self.line_h = s*(1.16 if self.kind in BOXED else (1.08 if self.kind == 'marquee' else 1.12))
         self.base, bw, bh, wmax = _block(self.rows, self.fname, s, self.line_h)
         if self.kind in BOXED:
             padx = (0.62 if self.kind == 'bubble' else 0.5)*s + POP/2*wmax + 4
@@ -223,8 +229,8 @@ class Sign:
             cv.restore()
         elif k == 'marquee':       # neon/żarówki na tablicy portalu (tablica jest częścią portalu)
             cv.save(); cv.translate(self.x, self.y)
-            _draw_tokens(cv, self.rows, t, self.fname, self.size, self.kw.get('ink', '#ffe08a'), 0, 0, self.size*1.1,
-                         glow=(1.0, 0.75, 0.35), stroke=('#ff8a3d', 3))
+            _draw_tokens(cv, self.rows, t, self.fname, self.size, self.kw.get('ink', '#ffe08a'), 0, 0, self.line_h,
+                         glow=(1.0, 0.75, 0.35), stroke=('#ff8a3d', 3), base=self.base)
             cv.restore()
         elif k == 'curtain':       # malowane złotem na kurtynie
             cv.save(); cv.translate(self.x, self.y)

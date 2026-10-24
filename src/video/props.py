@@ -50,10 +50,10 @@ def linkedin_card(cv, text, w=520, h=230, author='Henio Kawka', smile=True, colo
     cv.translate(side*(w/2 - 40), -GRIP)
     path = card(cv, (-w/2, -h, w/2, 0), color, 16, 'card', 210, 0.75)
     cv.drawCircle(-w/2 + 46, -h + 46, 26, skia.Paint(AntiAlias=True, Color4f=col('#0a66c2')))
-    draw_text(cv, author, -w/2 + 86, -h + 44, 'ui_b', 26, '#191919', 'left')
+    draw_text(cv, author, -w/2 + 86, -h + 44, 'ui_b', 26, '#191919', 'left', maxw=w - 110)
     draw_text(cv, '1 godz. • 🌐'.replace('🌐', ''), -w/2 + 86, -h + 70, 'ui', 18, '#666666', 'left')
     words = text.split(); n = max(1, int(round(len(words)*reveal)))
-    draw_text(cv, ' '.join(words[:n]), -w/2 + 24, -h + 130, 'ui_b', 34, '#191919', 'left')
+    draw_text(cv, ' '.join(words[:n]), -w/2 + 24, -h + 130, 'ui_b', 34, '#191919', 'left', maxw=w - 48)
     cv.drawLine(-w/2 + 20, -48, w/2 - 20, -48, skia.Paint(AntiAlias=True, StrokeWidth=2, Color4f=col('#dddddd')))
     for i, c in enumerate(['#378fe9', '#44712e', '#df704d']):
         cv.drawCircle(-w/2 + 34 + i*22, -24, 12, skia.Paint(AntiAlias=True, Color4f=col(c)))
@@ -65,7 +65,7 @@ def placard(cv, text, w=None, size=46, fname='hand', color='#fff8e1', ink='#2b2b
         _stick(cv, 10); cv.translate(0, -GRIP)
     if side: cv.translate(side*(w/2 - 30), 0)
     card(cv, (-w/2, -h, w/2, 0), color, 12, 'card', 211, 0.7, wobble=2)
-    draw_text(cv, text, 0, -h/2 + size*0.35, fname, size, ink)
+    draw_text(cv, text, 0, -h/2 + size*0.35, fname, size, ink, maxw=w - 40)
 
 def bubble(cv, text, w=None, size=40, fname='hand', tail=(-1, 1), color='#ffffff', ink='#222222', words=None):
     """Dymek komiksowy z tektury. words: liczba widocznych słów (pojawianie słowo po słowie)."""
@@ -97,7 +97,7 @@ def banner(cv, text, w=900, color='#d62839', ink='#ffd166'):
     for i in range(12):    # proporczyki
         x = -w/2 + 30 + i*(w - 60)/11
         cv.drawPath(poly_path([(x - 26, 0), (x + 26, 0), (x, 46)], True, False), skia.Paint(AntiAlias=True, Color4f=col(['#ffd166', '#06d6a0', '#118ab2'][i % 3])))
-    draw_text(cv, text, 0, -45, 'block', 110, ink, stroke=('#7a1020', 8))
+    draw_text(cv, text, 0, -45, 'block', 110, ink, stroke=('#7a1020', 8), maxw=w - 80)
 
 def flash_bulb(cv, a):
     if a > 0.01: light_pool(cv, 0, 0, 500, 400, (1, 1, 1), 0.9*a)
@@ -151,7 +151,7 @@ def scroll(cv, length, text='#wdzięczność'):
     for i in range(n):
         y = 46 + i*52
         cv.drawLine(-110, y - 22, 110, y - 22, skia.Paint(AntiAlias=True, StrokeWidth=2, Color4f=col('#e0d4bd')))
-        draw_text(cv, text, 0, y, 'script', 34, '#d63384')
+        draw_text(cv, text, 0, y, 'script', 34, '#d63384', maxw=220)
 
 def box_of_stuff(cv):
     card(cv, (-110, -110, 110, 0), '#c8a165', 6, 'card', 240, 0.6)
@@ -161,17 +161,23 @@ def box_of_stuff(cv):
     fur_fringe(cv, [(-80, -190), (-60, -215), (-40, -190)], col('#52b788'), 30, 1.2, 5, 0.6, 5)
 
 def stamp(cv, down=0.0):
-    card(cv, (-90, -60, 90, 0), '#6b4226', 10, 'card', 250, 0.6)
-    card(cv, (-30, -180, 30, -60), '#8b5a2b', 10, 'card', 251, 0.6)
-    cv.drawCircle(0, -200, 40, skia.Paint(AntiAlias=True, Color4f=col('#3a2416')))
-    card(cv, (-100, 0, 100, 24), '#c1121f', 4, 'card', 252, 0.6)
+    """Pieczątka trzymana jak prawdziwa: pięść na toczonej rączce, gałka nad pięścią, pod nią drewniany klocek
+    i czerwona guma z (lustrzanym) napisem - pieczątka zwisa pionowo pod dłonią."""
+    cv.drawCircle(0, -46, 30, skia.Paint(AntiAlias=True, Color4f=col('#3a2416')))                       # gałka
+    cv.drawCircle(-9, -55, 9, skia.Paint(AntiAlias=True, Color4f=skia.Color4f(1, 1, 1, 0.25)))
+    hp = skia.Path(); hp.addRRect(skia.RRect.MakeRectXY(skia.Rect(-17, -30, 17, 96), 12, 12))
+    fill(cv, hp, Material('#8b5a2b', 'card', 0.8, light=1.2, dark=0.75, seed=251))                        # rączka
+    card(cv, (-36, 86, 36, 104), '#5b3820', 4, 'card', 253, 0.6)                                          # kołnierz
+    card(cv, (-112, 100, 112, 158), '#6b4226', 8, 'card', 250, 0.6)                                        # klocek
+    card(cv, (-118, 156, 118, 178), '#c1121f', 4, 'card', 252, 0.6)                                        # guma
 
 def stamp_mark(cv, a):
     if a <= 0.01: return
     cv.save(); cv.rotate(-12)
     p = skia.Paint(AntiAlias=True, Style=skia.Paint.kStroke_Style, StrokeWidth=8, Color4f=col('#c1121f', a))
-    cv.drawRRect(skia.RRect.MakeRectXY(skia.Rect(-330, -60, 330, 30), 10, 10), p)
-    draw_text(cv, 'RESTRUKTURYZACJA', 0, 4, 'block', 64, '#c1121f', alpha=a)
+    tw = text_width('RESTRUKTURYZACJA', 'block', 60)
+    cv.drawRRect(skia.RRect.MakeRectXY(skia.Rect(-tw/2 - 34, -66, tw/2 + 34, 34), 12, 12), p)
+    draw_text(cv, 'RESTRUKTURYZACJA', 0, 4, 'block', 60, '#c1121f', alpha=a)
     cv.restore()
 
 def cobble(cv, k=0):
@@ -195,7 +201,7 @@ def flipchart(cv, page=0):
     lp = skia.Paint(AntiAlias=True, StrokeWidth=12, Color4f=col('#555555'))
     cv.drawLine(-160, 0, -120, -560, lp); cv.drawLine(160, 0, 120, -560, lp)
     card(cv, (-200, -620, 200, -200), '#ffffff', 6, 'card', 270, 0.6)
-    draw_text(cv, 'MOJE ŻYCIE:', 0, -555, 'hand', 44, '#1b2f5e'); draw_text(cv, 'CASE STUDY', 0, -505, 'block', 50, '#e0563b')
+    draw_text(cv, 'MOJE ŻYCIE:', 0, -555, 'hand', 44, '#1b2f5e', maxw=340); draw_text(cv, 'CASE STUDY', 0, -505, 'block', 50, '#e0563b', maxw=340)
     cx, cy, r = 0, -340, 105
     vals = [0.45, 0.25, 0.2, 0.1]; cols = ['#e0563b', '#1b2f5e', '#f2b48a', '#9ad9b5']; a = -90
     for v, c in zip(vals, cols):
@@ -252,7 +258,7 @@ def marker_sign(cv, text, reveal=1.0, w=520, h=260):
     cv.drawLine(0, -h, 0, -1500, skia.Paint(AntiAlias=True, StrokeWidth=2.5, Color4f=col('#dddddd')))
     card(cv, (-w/2, -h, w/2, 0), '#c9a26b', 4, 'card', 300, 0.55, wobble=3)
     words = text.split(); n = int(math.floor(len(words)*reveal + 1e-6))
-    draw_text(cv, ' '.join(words[:n]), 0, -h/2 + 22, 'hand', 70, '#1a1a1a')
+    draw_text(cv, ' '.join(words[:n]), 0, -h/2 + 22, 'hand', 70, '#1a1a1a', maxw=w - 60)
 
 def ornament(cv, k=0, t=0.0):
     c = ['#ffd166', '#ef476f', '#06d6a0', '#118ab2'][k % 4]
@@ -336,7 +342,7 @@ def rec_card(cv, k=0):
     cv.drawRRect(skia.RRect.MakeRectXY(skia.Rect(-50, -126, 70, -112), 6, 6), skia.Paint(AntiAlias=True, Color4f=col('#3c3c3c')))
     cv.drawRRect(skia.RRect.MakeRectXY(skia.Rect(-50, -104, 30, -94), 5, 5), skia.Paint(AntiAlias=True, Color4f=col('#b8b8b8')))
     draw_text(cv, '„', -96, -38, 'ui_b', 64, '#0a66c2')
-    draw_text(cv, ['Wizjoner!', 'Szacun!', 'Polecam!'][k % 3], 8, -36, 'ui_b', 30, '#222222')
+    draw_text(cv, ['Wizjoner!', 'Szacun!', 'Polecam!'][k % 3], 14, -36, 'ui_b', 30, '#222222', maxw=150)
 
 def rec_tag(cv):
     """Metka 'na sprzedaż': cena = 3 rekomendacje (z ikonką serwisu)."""
@@ -345,5 +351,5 @@ def rec_tag(cv):
     fill(cv, pth, Material('#ffe066', 'card', 0.8, light=1.08, dark=0.9, seed=285))
     cv.drawPath(pth, skia.Paint(AntiAlias=True, Style=skia.Paint.kStroke_Style, StrokeWidth=3.5, Color4f=col('#b8901c')))
     cv.drawCircle(96, -43, 9, skia.Paint(AntiAlias=True, Color4f=col('#7a5c12')))
-    draw_text(cv, 'CENA:', -14, -54, 'block2', 22, '#3a3a3a')
-    draw_text(cv, '3 rekomendacje', -14, -18, 'ui_b', 26, '#0a66c2')
+    draw_text(cv, 'CENA:', -16, -54, 'block2', 22, '#3a3a3a')
+    draw_text(cv, '3 rekomendacje', -16, -18, 'ui_b', 26, '#0a66c2', maxw=196)

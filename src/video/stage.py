@@ -102,16 +102,24 @@ def curtain(cv, t, open_amt=0.0, sway=0.0, color='#8e1424', tint=None):
         cv.save()
         xs = np.linspace(inner, outer, nf*8 + 1)
         # obrys z falą na dole
-        for k in range(nf):
-            a = inner + (outer - inner)*k/nf; b = inner + (outer - inner)*(k + 1)/nf
-            if abs(b - a) < 1: continue
-            sw = math.sin(t*1.3 + k*0.9 + sgn)*sway*6
-            rect = skia.Rect(min(a, b) + sw*0.3, top, max(a, b) + sw*0.3, bot + 12*math.sin(k*1.7 + t))
-            g = skia.GradientShader.MakeLinear([skia.Point(min(a, b), 0), skia.Point(max(a, b), 0)],
-                                               [shade(base, 0.45).toColor(), shade(base, 1.18).toColor(), base.toColor(), shade(base, 0.5).toColor()], [0, 0.35, 0.6, 1])
-            p = skia.Paint(AntiAlias=True); p.setShader(g)
-            cv.drawRect(rect, p)
-            tp = Material(base, 'velvet', 1.2, seed=5).tex_paint(); cv.drawRect(rect, tp)
+        # fałdy: profil cosinusowy (głęboki cień w zagłębieniu, miękki grzbiet, wąski połysk aksamitu na grzbiecie),
+        # szerokość fałdy maleje przy zsuwaniu; dół falisty; całość jednym kształtem (bez pasów i szwów)
+        fw = width/nf
+        prof = [(0.0, 0.34), (0.12, 0.55), (0.3, 0.92), (0.42, 1.12), (0.47, 1.3), (0.52, 1.12), (0.66, 0.9), (0.84, 0.6), (1.0, 0.34)]
+        sw = math.sin(t*1.3 + sgn)*sway*4
+        x0_, x1_ = sorted([inner, outer])
+        body = skia.Path(); body.moveTo(x0_, top)
+        body.lineTo(x1_, top)
+        for xx in np.linspace(x1_, x0_, 4*nf + 1):
+            body.lineTo(xx + sw, bot + 12*math.sin((xx - inner)/fw*math.pi*2 + t*0.7))
+        body.close()
+        g = skia.GradientShader.MakeLinear([skia.Point(inner + sw, 0), skia.Point(inner + sgn*fw + sw, 0)],
+                                           [shade(base, k_).toColor() for _, k_ in prof], [u for u, _ in prof], skia.TileMode.kRepeat)
+        p = skia.Paint(AntiAlias=True); p.setShader(g); cv.drawPath(body, p)
+        tp = Material(base, 'velvet', 0.9, seed=5).tex_paint(); cv.drawPath(body, tp)
+        # pionowy spadek światła (góra jaśniej, dół w półcieniu) - kurtyna ma wysokość, nie jest płaską planszą
+        vg = skia.GradientShader.MakeLinear([skia.Point(0, top), skia.Point(0, bot)], [skia.Color4f(1, 1, 1, 1).toColor(), skia.Color4f(0.78, 0.74, 0.76, 1).toColor()])
+        vp = skia.Paint(AntiAlias=True); vp.setShader(vg); vp.setBlendMode(skia.BlendMode.kMultiply); cv.drawPath(body, vp)
         # złote frędzle na dole
         fr = skia.Paint(AntiAlias=True, Color4f=col('#d8a83c'), StrokeWidth=4)
         x0, x1 = sorted([inner, outer])
@@ -161,7 +169,7 @@ def set_kitchen_back(c):
     # kalendarz
     card(c, (980, -900, 1240, -600), '#ffffff', 8, 'card', 25, 0.6)
     c.drawRect(skia.Rect(980, -900, 1240, -830), skia.Paint(Color4f=col('#d64545')))
-    draw_text(c, 'PONIEDZIAŁEK', 1110, -853, 'block2', 30, '#ffffff')
+    draw_text(c, 'PONIEDZIAŁEK', 1110, -853, 'block2', 30, '#ffffff', maxw=230)
     draw_text(c, '7:30', 1110, -680, 'block', 110, '#333333')
 
 def set_kitchen_mid(c):
@@ -174,7 +182,7 @@ def set_kitchen_mid(c):
     lp = skia.Paint(AntiAlias=True, StrokeWidth=14, Color4f=col('#7a5232'))
     c.drawLine(-980, 40, -880, -560, lp); c.drawLine(-620, 40, -720, -560, lp)
     card(c, (-1020, -620, -580, -290), '#fbfaf5', 10, 'card', 34, 0.6, wobble=3)
-    draw_text(c, 'WIELKI PLAN', -800, -560, 'hand', 44, '#1f3b73')
+    draw_text(c, 'WIELKI PLAN', -800, -560, 'hand', 44, '#1f3b73', maxw=400)
     pp = skia.Paint(AntiAlias=True, Style=skia.Paint.kStroke_Style, StrokeWidth=8, Color4f=col('#2e8b57'), StrokeCap=skia.Paint.kRound_Cap)
     path = skia.Path(); path.moveTo(-990, -330); path.lineTo(-900, -380); path.lineTo(-830, -360); path.lineTo(-730, -470); path.lineTo(-640, -520)
     c.drawPath(path, pp)
@@ -193,11 +201,29 @@ def set_office_back(c):
     draw_text(c, 'SYNERGIA CORP.', 0, -380, 'block', 120, '#8fa4b6')
 
 def set_office_mid(c):
-    # ścianki boksów open space (przed chórem w okienkach)
-    for i in range(4):
-        x = -900 + i*480
-        card(c, (x, -250, x + 360, 60), '#6f8597', 14, 'felt', 50 + i, 0.55)
-        c.drawRect(skia.Rect(x, -250, x + 360, -232), skia.Paint(Color4f=col('#4a5866')))
+    # v5: ścianki boksów są rekwizytem przed lalkami (cubicles w timeline.py) - tu tylko tablica korkowa i wieszak
+    card(c, (-1180, -620, -900, -420), '#c9a46a', 8, 'card', 55, 0.6)
+    for i, cc in enumerate(['#ffd166', '#90e0ef', '#f4a3c4', '#b7e4c7']):
+        card(c, (-1160 + (i % 2)*130, -600 + (i//2)*90, -1060 + (i % 2)*130, -530 + (i//2)*90), cc, 2, 'card', 56 + i, 0.5)
+
+def cubicles(c):
+    """Open space: ciągły rząd ścianek boksów z filcu (bez przerw - lalki chóru stoją za nimi do piersi), na górze aluminiowa
+    listwa; za ściankami tyły monitorów, roślinka, kubki, tabliczki z nazwiskami."""
+    for i in range(5):
+        x0 = -1300 + i*520
+        card(c, (x0 + 6, -250, x0 + 514, 70), '#71879a', 10, 'felt', 50 + i, 0.5)
+        for k in range(1, 4): c.drawLine(x0 + 6 + k*127, -236, x0 + 6 + k*127, 70, skia.Paint(AntiAlias=True, StrokeWidth=3, Color4f=col('#5f7385')))
+        c.drawRRect(skia.RRect.MakeRectXY(skia.Rect(x0 + 2, -262, x0 + 518, -244), 6, 6), skia.Paint(AntiAlias=True, Color4f=col('#c8ced4')))
+    for x in (-1060, -560, 560, 1060):                      # tyły monitorów nad ściankami
+        card(c, (x - 95, -330, x + 95, -250), '#2b2f36', 6, 'card', 57, 0.5)
+    card(c, (-260, -330, -200, -262), '#d9d4cc', 8, 'card', 58, 0.5)
+    for k in range(5):
+        cv_a = -math.pi/2 + (k - 2)*0.4
+        c.save(); c.translate(-230 + math.cos(cv_a)*30, -330 + math.sin(cv_a)*30); c.rotate(math.degrees(cv_a) + 90)
+        c.drawOval(skia.Rect(-10, -30, 10, 0), skia.Paint(AntiAlias=True, Color4f=col('#3f7d3a'))); c.restore()
+    for i, (x, name) in enumerate([(-820, 'Waldek'), (-330, 'Zenek'), (330, 'Bartek'), (820, 'Darek')]):
+        card(c, (x - 70, -200, x + 70, -160), '#e9e4d8', 4, 'card', 59 + i, 0.5)
+        draw_text(c, name, x, -171, 'ui_b', 24, '#3a4652', maxw=120)
 
 def set_conf_back(c):
     wall(c, '#14213d', None)
@@ -207,14 +233,14 @@ def set_conf_back(c):
             draw_text(c, 'SYNERGIA', x, y, 'block', 44, '#fca311' if (i + j) % 2 == 0 else '#e5e5e5')
             draw_text(c, '2026', x, y + 42, 'block2', 30, '#e5e5e5' if (i + j) % 2 == 0 else '#fca311')
     card(c, (-700, -1130, 700, -930), '#fca311', 20, 'card', 61, 0.6)
-    draw_text(c, 'KONFERENCJA LIDERÓW', 0, -1050, 'block', 76, '#14213d')
-    draw_text(c, 'SYNERGII I WIZJI 2026', 0, -965, 'block2', 58, '#14213d')
+    draw_text(c, 'KONFERENCJA LIDERÓW', 0, -1050, 'block', 76, '#14213d', maxw=1340)
+    draw_text(c, 'SYNERGII I WIZJI 2026', 0, -965, 'block2', 58, '#14213d', maxw=1340)
 
 def set_conf_mid(c):
     for sx in (-1, 1):
         x = sx*1180
         card(c, (x - 170, -900, x + 170, 60), '#e5e5e5', 10, 'card', 70 + (sx > 0), 0.6)
-        draw_text(c, 'LIDERZY', x, -760, 'block', 64, '#14213d'); draw_text(c, 'JUTRA', x, -690, 'block', 64, '#fca311')
+        draw_text(c, 'LIDERZY', x, -760, 'block', 64, '#14213d', maxw=300); draw_text(c, 'JUTRA', x, -690, 'block', 64, '#fca311', maxw=300)
         c.drawCircle(x, -450, 110, skia.Paint(AntiAlias=True, Color4f=col('#fca311')))
         pts = [(x + (80 if k % 2 == 0 else 36)*math.cos(-math.pi/2 + k*math.pi/5), -450 + (80 if k % 2 == 0 else 36)*math.sin(-math.pi/2 + k*math.pi/5)) for k in range(10)]
         c.drawPath(poly_path(pts, True, False), skia.Paint(AntiAlias=True, Color4f=col('#14213d')))
@@ -243,7 +269,7 @@ def set_studio_g_back(c):
         card(c, (x, -860 - hh, x + 70, -860), ['#ff6fb5', '#6c5ce7', '#00b894', '#fdcb6e', '#e17055'][i % 5], 6, 'card', 92 + i, 0.6)
     draw_text(c, '#wdzięczność', -620, -820, 'script', 120, '#ff3c8e', shadow=(0, 0, 0.0))
     card(c, (-1200, -560, -880, -260), '#fff8e7', 10, 'card', 99, 0.6)
-    draw_text(c, 'TOP 1%', -1040, -440, 'block', 60, '#c99a3a'); draw_text(c, 'GŁOSÓW', -1040, -380, 'block2', 40, '#c99a3a')
+    draw_text(c, 'TOP 1%', -1040, -440, 'block', 60, '#c99a3a', maxw=280); draw_text(c, 'GŁOSÓW', -1040, -380, 'block2', 40, '#c99a3a', maxw=280)
 
 def set_studio_g_mid(c):
     # ring light na statywie
@@ -283,7 +309,7 @@ def set_heaven_back(c):
     for sx in (-1, 1):
         card(c, (sx*700 - 90, -900, sx*700 + 90, 200), '#e9c46a', 10, 'card', 111, 0.6)
     card(c, (-790, -1000, 790, -880), '#e9c46a', 16, 'card', 112, 0.6)
-    draw_text(c, 'KORPORACYJNY RAJ', 0, -915, 'sign', 76, '#7a5c12')
+    draw_text(c, 'KORPORACYJNY RAJ', 0, -915, 'sign', 76, '#7a5c12', maxw=1500)
 
 def set_wood_back(c):
     c.drawRect(skia.Rect(-1800, -1400, 1800, 600), skia.Paint(Color4f=col('#2a1a10')))

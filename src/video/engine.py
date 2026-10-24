@@ -3,7 +3,7 @@ import json, os, math, numpy as np
 ROOT = os.environ.get('PZ_ROOT') or os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 W, H, FPS = 1920, 1080, 30
 SONG_DUR = 212.04
-TAIL = 4.0
+TAIL = 44.0          # napisy końcowe (v5: długie, przewijane - credits.duration() = ok. 43 s)
 N_FRAMES = int(math.ceil(SONG_DUR*FPS)) + int(TAIL*FPS)
 
 def _j(p): return json.load(open(os.path.join(ROOT, p), encoding='utf-8'))

@@ -18,7 +18,11 @@ def typeface(name): return skia.Typeface.MakeFromFile(os.path.join(ROOT, FONTS[n
 def font(name, size):
     f = skia.Font(typeface(name), size); f.setEdging(skia.Font.Edging.kAntiAlias); f.setSubpixel(True); return f
 def text_width(text, fname, size): return font(fname, size).measureText(text)
-def draw_text(cv, text, x, y, fname, size, color, align='center', shadow=None, stroke=None, alpha=1.0):
+def draw_text(cv, text, x, y, fname, size, color, align='center', shadow=None, stroke=None, alpha=1.0, maxw=None):
+    """maxw: najszerszy dopuszczalny napis (z obrysem) - większy jest proporcjonalnie zmniejszany, linia bazowa zostaje."""
+    if maxw:
+        w0 = font(fname, size).measureText(text) + (stroke[1] if stroke else 0)
+        if w0 > maxw: size = size*maxw/w0
     f = font(fname, size); w = f.measureText(text)
     x0 = x - w/2 if align == 'center' else (x - w if align == 'right' else x)
     if shadow:

@@ -75,7 +75,7 @@ CHOIR_Y, CHOIR_D = -400.0, 140.0
 # ------------------------------------------------------------------ HENIO
 H = HENIO
 H.costume(0, jacket='#7fa3c6', lapels=False, tie=None, shirt='#f1efe8', buttons=None)      # piżama/sweter rano
-H.costume(wt(V1, 1, 1) + 0.85, jacket='#6f7480', lapels=True, tie='#c0392b', buttons='#2f3238')           # garnitur zjechał z góry
+H.costume(wt(V1, 1, 1) + 0.24, jacket='#6f7480', lapels=True, tie='#c0392b', buttons='#2f3238')           # garnitur zjechał z góry
 H.costume(wt(BR, 0, 2) + 0.1, tie=None)                                                                   # bridge: zdejmuje krawat
 # intro na przedscenie
 H.on(3.0, le(INTRO, 0) + 0.05, 'rise', 'sink', 0.6, 0.45)
@@ -97,9 +97,13 @@ gest(H, wt(V1, 0, 1) - 0.1, 'holdup_R', gaze=(0.5, -0.3), lid=0.3, brow=0.4)   #
 gest(H, wt(V1, 0, 2) - 0.1, 'mug', gaze=(-0.8, -0.1), lid=0.25, turn=-0.4)  # 'wielki plan' - na sztalugę
 H.key(wt(V1, 0, 2), hL=(-330.0, -260.0))
 H.key(wt(V1, 0, 3) + 0.4, hL=(-320.0, -250.0), turn=-0.3)
-# 'Wkładam garnitur' - marynarka zjeżdża, Henio się wciska
-gest(H, lt(V1, 1), 'up', gaze=(0.0, -0.8), turn=0.0, lid=0.2, brow=0.6)
-gest(H, wt(V1, 1, 2), 'hips', gaze=(0.2, 0.2), lid=0.3, brow=-0.2)
+# 'Wkładam garnitur' (v5): marynarka zjeżdża na wieszaku obok Henia (nigdy przed twarzą); Henio sięga po nią na 'Wkładam',
+# na 'garnitur' lalkarski obrót w miejscu (przysiad + obrót), marynarka 'wskakuje' na niego, pusty wieszak odjeżdża w górę
+gest(H, lt(V1, 1) - 0.15, 'present_R', gaze=(0.9, -0.2), turn=0.35, lid=0.2, brow=0.7)
+H.key(wt(V1, 1, 0) + 0.3, hR=(300.0, -230.0))
+gest(H, wt(V1, 1, 1) - 0.02, 'hips', gaze=(0.0, 0.1), turn=-0.9, lid=0.3, brow=0.2)
+H.key(wt(V1, 1, 1) + 0.3, turn=0.0)
+gest(H, wt(V1, 1, 2), 'chest', gaze=(0.2, 0.2), lid=0.3, brow=-0.2)   # 'choć' - poprawia klapy
 gest(H, wt(V1, 1, 4), 'shrug', gaze=(0.0, 0.1), lean=-6.0)   # 'luźny stan'
 H.key(wt(V1, 1, 5), lean=6.0); H.key(le(V1, 1), lean=0.0)
 # 'Piszę o synergiach' - laptop
@@ -256,7 +260,7 @@ gest(p, wt(V1B, 3, 5) + 0.05, 'chest', smile=0.9, lid=0.55, gaze=(0.9, 0.1))    
 p.key(wt(V1B, 3, 7), tilt=-12.0); p.key(wt(V1B, 3, 7) + 0.5, tilt=0.0)
 p.on(lt(V2, 4) - 0.3, lt(V2B, 0) - 0.5, 'right', 'sink', 0.6, 0.45)               # stempel 'restrukturyzacja'
 p.key(lt(V2, 4) - 1.0, x=640.0)
-p.hold(lt(V2, 4) - 0.3, lt(V2B, 0) - 0.7, 'R', lambda cv, t: P.stamp(cv))
+p.hold(lt(V2, 4) - 0.3, lt(V2B, 0) - 0.7, 'R', lambda cv, t: P.stamp(cv), grip=True)
 gest(p, lt(V2, 4), 'hold_R', gaze=(-0.8, 0.2), turn=-0.5, brow=-0.6, lid=0.4)
 gest(p, wt(V2, 4, 5), 'holdup_R', gaze=(-0.8, 0.4), brow=-0.8)
 gest(p, wt(V2, 4, 8) - 0.12, 'hold_R', gaze=(-0.8, 0.6))                         # 'bruk' - stempel w dół
@@ -298,7 +302,7 @@ m.on(bar_at_or_before(REPRISE) + 0.4, 212.5, 'rise', 'none', 0.35); gest(m, FINA
 
 # ------------------------------------------------------------------ KASIA ('case study')
 k_ = KASIA
-k_.on(lt(V2B, 0) + 0.3, lt(PRE2, 0), 'rise', 'none', 0.45)
+k_.on(lt(V2B, 0) + 0.3, lt(V2B, 1), 'rise', 'none', 0.45)      # v5: raj po przebitce tylko Grażyna, potem Henio
 k_.key(0, x=-400.0, depth=0.0, y=-30.0)
 gest(k_, lt(V2B, 0) - 0.4, 'present_L', smile=1.0, brow=0.8, gaze=(-0.7, -0.2), turn=-0.3, lid=0.1)
 gest(k_, wt(V2B, 0, 4), 'present_L', gaze=(0.0, 0.0), turn=0.0)
@@ -350,15 +354,6 @@ for i, r in enumerate(CHOIR):
     r.hold(lt(CHOIRI, 0) - 0.4, le(CHOIRI, 0) + 0.8, 'R', lambda cv, t, k=i: P.cobble(cv, k), grip=True)
     gest(r, lt(CHOIRI, 0) - 0.35, 'holdup_R', brow=-0.9, lid=0.0, gaze=(0.0, 0.0), turn=0.0)
     r.key(le(CHOIRI, 0) + 0.31, x=float(CHOIR_X[i])*1.05, y=-40.0, depth=40.0, scale=0.95)
-    if i == 2:
-        r.on(lt(V2B, 1) - 0.45, lt(PRE2, 0), 'rise', 'none', 0.45)
-        r.key(lt(V2B, 1) - 0.5, x=150.0, y=-30.0, depth=0.0, scale=1.05)
-        r.key(lt(PRE2, 0) - 0.03, x=150.0, y=-30.0, depth=0.0, scale=1.05)
-        r.hold(lt(V2B, 1) - 0.45, lt(PRE2, 0), 'L', lambda cv, t: P.rec_tag(cv), grip=True)
-        gest(r, lt(V2B, 1) - 0.45, 'hold_L', smile=1.0, brow=0.8, lid=0.0, gaze=(0.0, 0.0), turn=0.0)
-        gest(r, wt(V2B, 1, 3), 'holdup_R', smile=1.0, gaze=(0.3, -0.7))
-        gest(r, lt(V2B, 2), 'hold_L', smile=0.6, gaze=(0.8, 0.0))
-        gest(r, lt(V2B, 3), 'up', smile=1.0, gaze=(0.5, -0.8))
     # przedrefren 2 (panowie) + refren 2 (wszyscy) w studiu w drewnie -> show
     if i in (2, 3):
         px_ = -480.0 if i == 2 else 480.0; tg = 0.3 if i == 2 else -0.3
@@ -425,18 +420,34 @@ def stage_props(t):
     if lt(V1, 2) - 0.6 <= t <= lt(V1, 3) + 0.3:
         a = min(smoothstep((t - (lt(V1, 2) - 0.6))/0.4), smoothstep((lt(V1, 3) + 0.3 - t)/0.3))
         pr.append((-15.0, lambda cv, t, a=a: (cv.translate(-80, 60*(1 - a)), P.laptop(cv, 0.8, t))))
-    JON = wt(V1, 1, 1) + 0.85
-    if lt(V1, 1) - 0.4 <= t <= JON + 0.95:
-        if t < JON: y = -1500 + (1500 - 230)*smoothstep((t - (lt(V1, 1) - 0.4))/1.5)
-        else: y = -230 - 1400*smoothstep((t - JON)/0.9)
-        empty = t >= JON
-        def jacket(cv, t, y=y, empty=empty):
-            cv.translate(-80, y)
+    if lt(V1, 1) - 0.9 <= t <= JON + 1.0:
+        hx = HENIO.g('x', t)
+        if t < JT0:                                   # zjazd na wieszaku obok Henia
+            x = hx + 330; y = -1500 + (1500 - 400)*smoothstep((t - (lt(V1, 1) - 0.9))/1.1); k = 1.0; empty = False
+        elif t < JON:                                 # 'wskakuje' na Henia (łuk, lekkie zmniejszenie = nakłada się na barki)
+            u = smoothstep((t - JT0)/(JON - JT0))
+            x = hx + 330*(1 - u); y = -400 + 190*u; k = 1.0 - 0.1*u; empty = False
+        else:                                         # pusty wieszak odjeżdża w górę
+            x = hx + 330; y = -400 - 1300*smoothstep((t - JON)/0.9); k = 1.0; empty = True
+        def jacket(cv, t, x=x, y=y, k=k, empty=empty):
+            cv.translate(x, y); cv.scale(k, k)
+            sk = __import__('skia')
             if empty:
-                p_ = __import__('skia').Paint(AntiAlias=True, StrokeWidth=7, Color4f=P.col('#8b5a2b')); cv.drawLine(-110, 0, 0, -40, p_); cv.drawLine(110, 0, 0, -40, p_); cv.drawLine(-110, 0, 110, 0, p_)
-                p2 = __import__('skia').Paint(AntiAlias=True, StrokeWidth=3, Color4f=P.col('#dddddd')); cv.drawLine(-60, -1400, -60, -20, p2); cv.drawLine(60, -1400, 60, -20, p2)
+                p_ = sk.Paint(AntiAlias=True, StrokeWidth=7, Color4f=P.col('#8b5a2b')); cv.drawLine(-110, 0, 0, -40, p_); cv.drawLine(110, 0, 0, -40, p_); cv.drawLine(-110, 0, 110, 0, p_)
+                p2 = sk.Paint(AntiAlias=True, StrokeWidth=3, Color4f=P.col('#dddddd')); cv.drawLine(-60, -1400, -60, -20, p2); cv.drawLine(60, -1400, 60, -20, p2)
             else: P.hanger_jacket(cv)
-        pr.append((-5.0, jacket))
+        pr.append((6.0, jacket))          # za Heniem: przelatuje za jego plecami na barki, nigdy przed twarzą
+    if JON - 0.04 <= t <= JON + 0.45:                 # 'puf' filcowego kurzu przy zmianie
+        u = (t - JON + 0.04)/0.49
+        def puff(cv, t, u=u):
+            sk = __import__('skia'); rng = np.random.default_rng(7)
+            cv.translate(HENIO.g('x', t), -140)
+            for i in range(14):
+                a = rng.uniform(0, 2*math.pi); r0 = rng.uniform(120, 190)
+                rr = r0 + 160*u; s_ = 34*(1 - u) + 10
+                p_ = sk.Paint(AntiAlias=True, Color4f=sk.Color4f(1, 0.97, 0.9, 0.75*(1 - u)))
+                cv.drawCircle(math.cos(a)*rr, math.sin(a)*rr*0.7, s_, p_)
+        pr.append((-30.0, puff))
     # biuro: baner AWANS + chmurka nad głową Henia
     if wt(V1B, 0, 2) - 0.5 <= t <= lt(V1B, 2):
         y = -640 - 1400*(1 - smoothstep((t - (wt(V1B, 0, 2) - 0.5))/0.8))
@@ -448,6 +459,8 @@ def stage_props(t):
     for name, dy in sets_at(t):
         if name == 'show':
             pr.append((125.0, lambda cv, t, dy=dy: (cv.translate(0, dy*0.6), riser(cv, t))))
+        if name == 'office':          # ścianki boksów przed chórem (lalki widać od piersi w górę, bez 'tyczek')
+            pr.append((160.0, lambda cv, t, dy=dy: (cv.translate(0, dy*0.7), S.cubicles(cv))))
     # refren 1: balon-serce u chórzystki (pęka na 'pęka'), iskry na 'błyszczy'
     if lt(CH1, 0) - 0.5 <= t <= wt(CH1, 1, 5) + 1.0:
         pp = smoothstep((t - wt(CH1, 1, 5))/0.7) if t > wt(CH1, 1, 5) else 0.0
@@ -475,16 +488,8 @@ def stage_props(t):
         a = smoothstep((t - wt(V2, 4, 8))/0.08)
         pr.append((300.0, lambda cv, t, a=a: (cv.translate(180, -620), P.stamp_mark(cv, a))))
     # raj: flipchart Kasi, gwiazdki 'trzy opinie', aureola
-    if lt(V2B, 0) - 0.02 <= t <= lt(PRE2, 0):
+    if lt(V2B, 0) - 0.02 <= t <= lt(V2B, 1):
         pr.append((40.0, lambda cv, t: (cv.translate(-130, 40), P.flipchart(cv))))
-    if wt(V2B, 1, 3) - 0.2 <= t <= lt(PRE2, 0):
-        def stars(cv, t):
-            for i in range(3):
-                t0 = wt(V2B, 1, 3) + i*0.2
-                if t < t0: continue
-                a = smoothstep((t - t0)/0.15)
-                cv.save(); cv.translate(-60 + i*170, -470 - 40*a); cv.scale(0.8*a, 0.8*a); P.rec_card(cv, i); cv.restore()
-        pr.append((-5.0, stars))
     if wt(V2B, 3, 2) - 0.6 <= t <= lt(PRE2, 0):
         y = -1500 + (1500 - 520)*smoothstep((t - (wt(V2B, 3, 2) - 0.6))/0.9)
         pr.append((-4.0, lambda cv, t, y=y: (cv.translate(600, y + 30*math.sin(t*2)), P.halo(cv, 1.0))))
@@ -597,13 +602,13 @@ def _subj_geom(r, t):
     return x, top, y, d, 2*ch.head_h*s, ch.head_w*1.15*s, ch.torso_h*s
 
 # ------------------------------------------------------------------ rekwizyty sceny ważne dla kadru (POI): okno czasu, prostokąt w świecie, głębokość
-JON = wt(V1, 1, 1) + 0.85
+JON = wt(V1, 1, 1) + 0.24; JT0 = wt(V1, 1, 1) - 0.06      # marynarka: start 'wskoku' i chwila zmiany kostiumu
 PANEL_POS = [(-400, -548), (-140, -560), (120, -548), (380, -560), (640, -548)]   # 'pięć scenek z życia': rząd jak storyboard nad Grażyną
 SCROLL_X, SCROLL_Y = 900.0, -930.0
 RING_X = -800.0
 POI = {
     'easel': ((12.4, 29.9), (-1030, -630, -570, -280), S.D_MID),
-    'jacket': ((lt(V1, 1) - 0.4, JON + 0.95), (-240, -300, 80, 20), -5.0),
+    'jacket': ((lt(V1, 1) - 0.4, JON + 0.3), (100, -460, 400, -160), -5.0),
     'laptop': ((lt(V1, 2) - 0.6, lt(V1, 3) + 0.3), (-272, -170, 110, 0), -15.0),
     'banner': ((wt(V1B, 0, 2) - 0.5, lt(V1B, 2)), (-505, -860, 505, -590), 260.0),
     'cloud': ((wt(V1B, 0, 4) - 0.3, lt(V1B, 2)), (0, -670, 290, -480), -8.0),
@@ -611,8 +616,7 @@ POI = {
                                                  max(p[0] for p in PANEL_POS) + 115, max(p[1] for p in PANEL_POS) + 10), 60.0),
     'scroll': ((wt(V2, 2, 8) - 0.2, lt(V2, 3)), (SCROLL_X - 155, S.OPEN_T, SCROLL_X + 155, SCROLL_Y + 560), 100.0),
     'stamp_mark': ((wt(V2, 4, 8) - 0.05, lt(V2B, 0)), (-230, -755, 580, -520), 300.0),
-    'flipchart': ((lt(V2B, 0) - 0.02, lt(PRE2, 0)), (-335, -590, 75, 40), 40.0),
-    'recs_cards': ((wt(V2B, 1, 3) - 0.2, lt(PRE2, 0)), (-160, -715, 380, -560), -5.0),
+    'flipchart': ((lt(V2B, 0) - 0.02, lt(V2B, 1)), (-335, -590, 75, 40), 40.0),
     'ringlight': ((lt(V2, 0) + 0.1, lt(V2, 3)), (RING_X - 150, -560, RING_X + 150, -280), 60.0),
     'halo': ((wt(V2B, 3, 2) - 0.6, lt(PRE2, 0)), (390, -630, 810, -410), -4.0),
     'robie': ((lt(BR, 1) - 0.4, le(BR, 4) + 0.6), (235, -375, 705, -160), -110.0),
@@ -786,7 +790,7 @@ SHOTS = [
     # zwrotka 2b: korporacyjny raj (flipchart 'case study', rekomendacje w serwisie, aureola)
     (lt(V2B, 0), lt(V2B, 1), 'stage', [(0, F('MS', 'K', poi=['flipchart'])), (1, F('MS', 'K', poi=['flipchart'], dx=0.03))]),
     (lt(V2B, 1), lt(V2B, 2), 'feed', dict(kind='recs')),
-    (lt(V2B, 2), lt(V2B, 3), 'stage', [(0, F('MS', 'G', poi=['recs_cards'])), (1, F('MS', 'G', poi=['recs_cards'], dx=0.03))]),
+    (lt(V2B, 2), lt(V2B, 3), 'stage', [(0, F('MLS', 'G')), (1, F('MS', 'G', dx=0.02))]),
     (lt(V2B, 3), lt(PRE2, 0), 'stage', [(0, F('MLS', ['H', 'G'], w=1.15, poi=['halo'])), (1, C_(150, -520, 2500))]),
     # przedrefren 2: studio podcastowe ('studio w drewnie') - na słowach 'studio w drewnie' odjazd na całą dekorację
     (lt(PRE2, 0), lt(PRE2, 1), 'stage', [(0, F('LS', ['c2', 'H', 'c3'], w=1.08)), (1, F('MLS', ['c2', 'H', 'c3'], w=1.04))]),
@@ -807,12 +811,14 @@ SHOTS = [
     (lt(BR, 4), le(BR, 4) + 0.05, 'stage', [(0, F('MS', 'H', poi=['robie', 'trumpet'])), (1, F('MS', 'H', poi=['robie', 'trumpet']))]),
     (le(BR, 4) + 0.05, lt(CH3, 0), 'feed', dict(kind='simple_post')),
     # refren 3: majestatyczny
-    (lt(CH3, 0), lt(CH3, 1), 'stage', [(0, C_(0, -580, 3800)), (1, C_(0, -470, 2900))]),
-    (lt(CH3, 1), lt(CH3, 2), 'stage', [(0, F('LS', ['K', 'G', 'T', 'H', 'M', 'P'], w=1.04)), (1, F('LS', ['G', 'T', 'H', 'M'], w=1.06))]),
-    (lt(CH3, 2), lt(CH3, 3), 'stage', [(0, F('MLS', ['G', 'T', 'H', 'M'], w=1.04)), (1, F('MS', ['G', 'T', 'H', 'M'], w=1.03))]),
-    (lt(CH3, 3), lt(CH3, 4), 'stage', [(0, F('LS', ['H', 'C'], w=1.06)), (1, F('LS', ['H', 'C'], w=1.02))]),
-    (lt(CH3, 4), lt(CH3, 5), 'stage', [(0, F('WS', ['H', 'C', 'G', 'P', 'K', 'M', 'T'], w=1.05)), (1, F('LS', ['H', 'C', 'G', 'P', 'K', 'M', 'T'], w=1.02))]),
-    (lt(CH3, 5), lt(OUT, 0), 'stage', [(0, F('LS', ['H', 'T', 'M'], w=1.3)), (0.5, F('LS', ['H', 'T', 'M', 'G', 'P'], w=1.15)), (1, C_(0, -660, 3050))]),
+    # refren 3 (v5): każde ujęcie ma jeden czytelny ruch - najazd żurawia, przejazd wzdłuż pierwszego rzędu, dwójka Henio-Tadek,
+    # powolny najazd na Henia ('pod spodem cisza'), plan ogólny całego zespołu, odjazd w górę na koniec
+    (lt(CH3, 0), lt(CH3, 1), 'stage', [(0, C_(0, -560, 3300)), (1, C_(0, -470, 2750))]),
+    (lt(CH3, 1), lt(CH3, 2), 'stage', [(0, F('MLS', ['K', 'G', 'T'], w=1.05, heads=False)), (1, F('MLS', ['H', 'M', 'P'], w=1.05, heads=False))]),
+    (lt(CH3, 2), lt(CH3, 3), 'stage', [(0, F('MS', ['T', 'H'], w=1.12, heads=False)), (1, F('MS', ['T', 'H'], w=1.08, heads=False))]),
+    (lt(CH3, 3), lt(CH3, 4), 'stage', [(0, F('MS', 'H', heads=False)), (1, F('MCU', 'H', heads=False))]),
+    (lt(CH3, 4), lt(CH3, 5), 'stage', [(0, C_(0, -470, 2650)), (1, C_(0, -450, 2500))]),
+    (lt(CH3, 5), lt(OUT, 0), 'stage', [(0, F('LS', ['G', 'T', 'H', 'M', 'P'], w=1.05, heads=False)), (0.45, F('LS', ['G', 'T', 'H', 'M', 'P'], w=1.04, heads=False)), (1, C_(0, -640, 3050))]),
     (lt(OUT, 0), bar_at_or_before(lt(OUT, 1)), 'feed', dict(kind='outro')),
     (bar_at_or_before(lt(OUT, 1)), bar_at_or_after(202.3), 'stage', [(0, C_(0, -470, 2900)), (0.25, C_(0, -450, 2650)), (1, C_(150, -660, 3150))]),
     (bar_at_or_after(202.3), bar_at_or_before(REPRISE), 'feed', dict(kind='stats')),
@@ -947,7 +953,7 @@ def obstacles_at(t):
     """Rekwizyty sceniczne, których napis nie może zasłonić: (prostokąt w świecie, głębokość)."""
     ob = []
     for n, ((a, b), rect, d) in POI.items():
-        if a <= t <= b and n not in ('jacket',): ob.append((rect, d))
+        if a <= t <= b: ob.append((rect, d))
     return ob
 
 _SAMPLE_CACHE = {}
@@ -1164,8 +1170,7 @@ def _layout_signs():
             SIGNS.append(best[1]); SIGN_REPORT.append((key, best[1].kind, round(best[2], 2), round(best[3], 3)))
     # powtórka 'Pus-te za-się-gi! HEJ!' na końcu
     rep = Sign((OUT, 1), 'marquee', 0.0, -935.0, S.D_PORTAL, 90, t_in=REPRISE - 0.3, t_out=E.SONG_DUR + 1)
-    rep.tokens = [('Puste', REPRISE), ('zasięgi!', REPRISE + 0.46), ('HEJ!', FINAL_HEJ)]
-    rep.rows = [rep.tokens]; SIGNS.append(rep)
+    rep.layout(90, 980, tokens=[('Puste', REPRISE), ('zasięgi!', REPRISE + 0.46), ('HEJ!', FINAL_HEJ)]); SIGNS.append(rep)
     _resize_signs()
 def _resize_signs():
     """Wielkość tekstu po kadrowaniu z napisem: jeśli kamera musiała się oddalić, napis rośnie (od postaci w bok)."""
@@ -1253,7 +1258,7 @@ def stage_scene(t, cam=None, signs=True):
         if marq:
             for sg in marq: sg.draw(cv, t)
         else:
-            draw_text(cv, 'PUSTE ZASIĘGI', 0, -910, 'marquee', 70, '#e8b85a', stroke=('#6b3a12', 3), alpha=0.75)
+            draw_text(cv, 'PUSTE ZASIĘGI', 0, -910, 'marquee', 70, '#e8b85a', stroke=('#6b3a12', 3), alpha=0.75, maxw=760)
             for sx in (-1, 1): star(cv, sx*400, -935, 26, '#e8b85a')
     portal = portal_at(t); portal['marquee'] = marquee
     sc = dict(mode='stage', cam=cam or cam_at(t), sets=sets_at(t), curtain=CURTAIN(t), curtain_sway=0.4,
