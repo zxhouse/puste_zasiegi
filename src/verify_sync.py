@@ -49,6 +49,15 @@ bev = E.BACK_EV[:, 0]
 d = [min(abs(i/FPS - bev)) for i in co]
 R['choir_mouth'] = dict(openings=len(co), backing_events=len(bev), median_dist_to_event_ms=round(float(np.median(d))*1000, 1),
                         pct_within_100ms=round(float(np.mean(np.array(d) < 0.1)*100), 1))
+# wersy śpiewane tylko przez chór: otwarcia ust chóru vs sylaby z wyrównania
+R['choir_mouth']['choir_lines'] = []
+for L in E.AL['lines']:
+    if L['singer'] != 'choir': continue
+    syl = [s for w in L['words'] for s in w['syl']]
+    a = int(math.ceil((syl[0]['t_on'] - 0.0125)*FPS - 1e-6)); b = int(math.floor((syl[-1]['t_off'])*FPS))
+    hit = sum(any(int((s['t_on'] - 0.06)*FPS) <= i <= int(s['t_off']*FPS) + 1 for i in co) for s in syl)
+    R['choir_mouth']['choir_lines'].append(dict(t0=round(L['t0'], 2), text=L['text'], syllables=len(syl),
+                                                openings=sum(a <= i <= b for i in co), syllables_with_opening=hit))
 # ---------------------------------------------------------------- akcenty ruchu vs prawdziwe uderzenia
 acc = np.array([E.kick(t, decay=0.14) + E.snare(t, decay=0.12) for t in ts])
 pk = [i for i in range(1, N - 1) if acc[i] > 0.35 and acc[i] >= acc[i-1] and acc[i] > acc[i+1]]

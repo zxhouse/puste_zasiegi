@@ -69,6 +69,7 @@ class Sign:
         L = LINES[key]
         self.t0 = (t_in if t_in is not None else L['t0'] - 0.35)
         self.t1 = (t_out if t_out is not None else L['t1'] + 0.55)
+        self.cut_in = kw.pop('cut_in', None)    # wers zaczyna się na cięciu: tablica po prostu wisi już w nowym ujęciu (nie wjeżdża w poprzednim)
         self.kw = kw
         self.tokens = _tokens(key)
         fname = {'board': 'block2', 'playboard': 'block2', 'marquee': 'marquee', 'curtain': 'script', 'bubble': 'hand', 'marker': 'hand', 'neon': 'script', 'placard': 'hand'}[kind]
@@ -76,13 +77,14 @@ class Sign:
         self.rows = _fit_lines(self.tokens, self.fname, size, maxw)
         self.w = max(text_width(' '.join(t for t, _ in r), self.fname, size) for r in self.rows) + size*1.4
         self.h = len(self.rows)*size*1.25 + size*0.9
-    def active(self, t): return self.t0 - 0.4 <= t < self.t1
+    def active(self, t): return (self.t0 - 0.4 if self.cut_in is None else self.cut_in) <= t < self.t1
     def rect(self):
         return (self.x - self.w/2, self.y - self.h/2, self.x + self.w/2, self.y + self.h/2)
     def draw(self, cv, t):
         if not self.active(t): return
         k = self.kind
-        fin = smoothstep((t - (self.t0 - 0.35))/0.35); fout = smoothstep((self.t1 - t)/0.3) if t < self.t1 else 0.0
+        fin = smoothstep((t - (self.t0 - 0.35))/0.35) if self.cut_in is None else 1.0
+        fout = smoothstep((self.t1 - t)/0.3) if t < self.t1 else 0.0
         vis = min(fin, fout)
         if vis <= 0.001: return
         if k == 'board':           # tablica z tektury na sznurkach, wjeżdża z góry

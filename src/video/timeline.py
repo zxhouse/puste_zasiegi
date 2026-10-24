@@ -788,11 +788,14 @@ def _layout_signs():
         # napis znika najpóźniej przy najbliższym cięciu po końcu wersu (nie przechodzi do innego ujęcia)
         cut = min([s[0] for s in SHOTS if s[0] >= L['t1'] - 0.05] + [L['t1'] + 0.55])
         t_out = min(L['t1'] + 0.55, cut)
+        # ...i nie pojawia się w ujęciu przed cięciem, jeśli pierwsze słowo pada dopiero po cięciu
+        cin = [s[0] for s in SHOTS if L['t0'] - 0.75 < s[0] <= L['t0'] + 0.05]
+        cut_in = max(cin) if cin else None
         ts = np.linspace(L['t0'], min(L['t1'], cut - 0.01), 7)
         best = None
         for kind, x, y, d, size, kw in _candidates(key, (L['t0'] + L['t1'])/2):
             kw = dict(kw); maxw = kw.pop('maxw', 1500)
-            sg = Sign(key, kind, x, y, d, size, maxw=maxw, t_out=t_out, **kw)
+            sg = Sign(key, kind, x, y, d, size, maxw=maxw, t_out=t_out, cut_in=cut_in, **kw)
             sg.tokens += _extra_tokens(key); sg.rows = __import__('signs')._fit_lines(sg.tokens, sg.fname, sg.size, sg.maxw)
             if kind == 'board' and cam_at((L['t0'] + L['t1'])/2) is not None:
                 cm = cam_at((L['t0'] + L['t1'])/2); top_world = cm.y + (0.035*E.H - E.H/2)/cm.scale(d)
