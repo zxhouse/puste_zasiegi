@@ -10,6 +10,11 @@ sg, cuts, acc, fl = R['signs'], R['cuts'], R['accents'], R['flashes']
 weak = [p for p in sg['placement'] if p['visibility'] < 0.95 or p['overlap'] > 0.02]
 fr = R.get('framing'); tf = sg.get('text_fits_box')
 hn = R.get('held_notes'); held = ''
+pe = R.get('phrase_ends')
+if pe: held += f"""* Końce fraz (v7): koniec otwarcia ust vs koniec głosu w stemie (próg 12 dB pod szczytem sylaby) – Henio {pe['lead_12.0dB']['phrase_ends']} końców fraz:
+  za wcześnie > 2 klatki: **{pe['lead_12.0dB']['closes_early_gt_2frames']}**, za późno > 2 klatki: **{pe['lead_12.0dB']['closes_late_gt_2frames']}**; chór {pe['choir_12.0dB']['phrase_ends']}: {pe['choir_12.0dB']['closes_early_gt_2frames']} / {pe['choir_12.0dB']['closes_late_gt_2frames']}.
+  Czułość na definicję końca głosu: przy progu 9 dB Henio ma {pe['lead_9.0dB']['closes_late_gt_2frames']} końców 'za późno', przy 15 dB {pe['lead_15.0dB']['closes_early_gt_2frames']} 'za wcześnie' (mediana różnicy {pe['lead_9.0dB']['median_abs_ms']} / {pe['lead_15.0dB']['median_abs_ms']} ms).
+"""
 if hn: held = f"""* Trzymane nuty (głos trwa ≥ 0,4 s po szczycie sylaby; koniec głosu z obwiedni stemu): Henio {hn['lead']['held_notes']} nut – usta otwarte
   średnio przez **{hn['lead']['mean_open_fraction']*100:.1f}%** czasu dźwięku, chór {hn['choir']['held_notes']} nut – {hn['choir']['mean_open_fraction']*100:.1f}%.
 """

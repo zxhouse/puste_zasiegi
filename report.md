@@ -1,6 +1,6 @@
 # Raport: teledysk „Puste zasięgi” (Paweł Kuraś)
 
-> Stan: **wersja v6** (`final/music-video.mp4`). Poprzednie wersje: `archive/v1/` … `archive/v5/`. Wyniki sprawdzeń poniżej dotyczą v6.
+> Stan: **wersja v7** (`final/music-video.mp4`). Poprzednie wersje: `archive/v1/` … `archive/v6/`. Wyniki sprawdzeń poniżej dotyczą v7.
 > Nie słuchałem ani nie oglądałem filmu – wszystko niżej to pomiary liczbowe i obejrzane pojedyncze klatki / arkusze klatek.
 
 ## 1. Co powstało
@@ -14,7 +14,7 @@
 | `src/` | cały kod: analiza (`a01…a12`; v3: `a20…a25` – modele mowy, dopasowanie, fuzja), renderer (`src/video/`), render równoległy, montaż, weryfikacja |
 | `checks/` | arkusze klatek, stopklatki, wyniki weryfikacji (`verify_file.json`, `verify_sync.json`, `exposure.json`) |
 | `fonts/` | czcionki OFL użyte w obrazie i w klonie + pełny tekst licencji |
-| `archive/` | poprzednie wersje filmu: `v1/` … `v5/` (nic nie jest kasowane; w każdej `NOTES.md` z uwagami do tej wersji) |
+| `archive/` | poprzednie wersje filmu: `v1/` … `v6/` (nic nie jest kasowane; w każdej `NOTES.md` z uwagami do tej wersji) |
 | `analysis/asr/` | surowe wyniki modeli mowy: transkrypcje Omnilingual (stem prowadzący i chórki), Whisper, Parakeet, Silero VAD, dopasowania CTC i MFA |
 
 Wymagane narzędzia (wszystkie darmowe, z menedżerów pakietów): `ffmpeg`, Python (`numpy`, `scipy`, `librosa`, `soundfile`, `skia-python`, `pocketsphinx`, `matplotlib`, `onnxruntime`, `sherpa-onnx`, `faster-whisper`, `silero-vad`), Montreal Forced Aligner (conda-forge, przez micromamba), `espeak-ng` + `mbrola-pl1` (apt), Node + Playwright/Chromium (preinstalowane). Modele mowy (pobierane do `tools/models/`, poza repozytorium): Omnilingual ASR CTC 1B i Parakeet TDT v3 (wydania sherpa-onnx), `polish_mfa` (wydania mfa-models, CC BY 4.0), Whisper small CT2 (npm). Żadnych gotowych nagrań ani grafik z internetu – cały obraz jest generowany kodem.
@@ -229,8 +229,8 @@ Wyniki: `checks/verify_file.json`, `checks/verify_sync.json`, `checks/sheets/` (
   to za naturalne dla ujęcia tłumu.
 * **Napis przy postaci**: w 67,8 s dłoń Henia w szerokim geście wchodzi pod tablicę „Puste zasięgi, wielkie zasięgi” (19% pola
   tablicy w teście prostokątów) – na klatce wygląda to jak wskazanie napisu, więc zostawiłem.
-* **Kompresja**: v6 trwa 236 s (napisy końcowe), obraz ma średnio 3000 kb/s (dwa przebiegi; proste napisy zużywają mało, scena dostaje tyle co w v4), żeby zmieścić się w 100 MB na GitHubie. Głębia ostrości lepiej wyglądałaby w wyższej
-  przepływności – kawałki CRF 14 są w `build/v6/chunks` (`python3 src/assemble.py build/v6/chunks <plik> --crf 16`).
+* **Kompresja**: v7 trwa 236 s (napisy końcowe), obraz ma średnio 3000 kb/s (dwa przebiegi; proste napisy zużywają mało, scena dostaje tyle co w v4), żeby zmieścić się w 100 MB na GitHubie. Głębia ostrości lepiej wyglądałaby w wyższej
+  przepływności – kawałki CRF 14 są w `build/v7/chunks` (`python3 src/assemble.py build/v7/chunks <plik> --crf 16`).
 * **Rekomendacje i komentarze w serwisie** (v4) są wymyślone dla żartu (np. rekomendacja od własnego „konta firmowego”); postaci
   fikcyjne, jak cała reszta.
 * **Klon LinkedIna**: zgodnie z prośbą odtwarza wygląd serwisu 1:1, w stopce jest linijka „LinkedIn Corporation © 2026” jak
@@ -535,3 +535,23 @@ Przejrzałem jej arkusze i stopklatki i na tej podstawie zrobiłem poprawki v2 p
 #### 7.6.8 Przejście do napisów końcowych
 * Poprawka: po ostatnim „HEJ!” kurtyna się zasuwa, obraz tylko lekko przygasa, napisy przewijają się na zasuniętej kurtynie (ten sam kadr)
   2× szybciej (ok. 23 s zamiast 43 s); pod koniec wyciemnienie do czerni.
+
+### 7.7 v7 – poprawki po uwagach autora do v6
+
+#### 7.7.1 „Fanfar ani łez” bez rekwizytów
+* Trąbka i łza wysuwające się zza krawędzi przedscenia usunięte (także z kadrowania); Henio na „fanfar” kładzie rękę na sercu,
+  na „łez” lekko przechyla głowę – spokojnie, zgodnie z sensem frazy.
+
+#### 7.7.2 Końce otwarć ust przy dłuższych frazach
+* Analiza (`src/verify_sync.py`, pole `phrase_ends`): dla każdej sylaby, po której w nagraniu jest przerwa, porównałem chwilę zamknięcia
+  ust (krzywa spada poniżej 35% otwarcia tej sylaby) z końcem głosu w stemie (ostatnia chwila przed następną sylabą, w której poziom
+  jest nie niżej niż 12 dB pod szczytem sylaby i nad bramką).
+* Wynik w v6: Henio – na 85 końców fraz 12 za wcześnie o > 1 klatkę (np. „zasię-gi” 77,5 s: głos do 79,9 s, usta zamknięte w 78,3 s;
+  „scrollowania” 192,2 s; „wielkie” 66,0 s) i 51 za późno o > 2 klatki; chór – 3 za wcześnie, 30 za późno (wokalizy nawet o 1,2 s).
+  Przyczyna: v4/v6 szukały pierwszego spadku głośności (vibrato długiej nuty chwilowo przygasa – otwarcie się urywało), a końce,
+  które przypadały przed końcem z dopasowania mowy, w ogóle nie były skracane (zwłaszcza wokalizy chóru, kończone na końcu segmentu).
+* Poprawka (`engine.py`): koniec każdego otwarcia = koniec głosu w stemie, w obie strony, szukany od końca (przygaśnięcia w środku nuty nie
+  ucinają otwarcia, pogłos pod progiem go nie przedłuża); najdalej 40 ms przed następną sylabą, najkrócej 60 ms po jej szczycie.
+* Wynik: 0 końców fraz za wcześnie i 0 za późno o > 2 klatki (Henio i chór; liczby na pliku – sekcja 5). Czułość: definicja „końca głosu”
+  zależy od progu – przy 9 dB część końców wychodzi lekko za późno, przy 15 dB lekko za wcześnie (typowo 0,1–0,2 s); 12 dB to środek.
+  Pierwsze otwarcie każdej sylaby bez zmian (484/484).

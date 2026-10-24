@@ -1,0 +1,37 @@
+{
+ "v4": {
+  "stage_frames": 1737,
+  "mean_luma": 85.8,
+  "clip_pct_mean": 0.12,
+  "clip_pct_p95": 0.31,
+  "clip_pct_max": 53.44,
+  "frames_clip_over_5pct": 1,
+  "frames_clip_over_1pct": 1,
+  "p99_luma_median": 227.6,
+  "worst": [
+   163.9,
+   90.0,
+   89.9,
+   89.8,
+   89.7
+  ]
+ },
+ "v3_same_measure": {
+  "stage_frames": 1820,
+  "mean_luma": 99.4,
+  "clip_pct_mean": 13.95,
+  "clip_pct_p95": 43.96,
+  "clip_pct_max": 59.86,
+  "frames_clip_over_5pct": 1307,
+  "frames_clip_over_1pct": 1812,
+  "p99_luma_median": 252.4,
+  "worst": [
+   163.9,
+   84.8,
+   84.9,
+   84.7,
+   85.0
+  ]
+ },
+ "note": "ujęcia sceny i pod sceną; przebitki do serwisu pominięte (biała strona serwisu jest celowo jasna i bez obróbki); v3 liczone tą samą miarą na pliku z archive/v3, z podziałem na ujęcia z kodu v3"
+}

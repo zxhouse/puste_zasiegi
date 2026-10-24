@@ -208,9 +208,9 @@ gest(H, wt(BR, 2, 5), 'rest', gaze=(0.0, 0.0), brow=0.0)
 gest(H, lt(BR, 3), 'present_R', gaze=(0.6, -0.1), lid=0.25, smile=0.25)             # pokazuje 'Robię swoje.'
 gest(H, wt(BR, 3, 6), 'chest', gaze=(0.0, 0.0), smile=0.35)
 gest(H, lt(BR, 4), 'rest', gaze=(0.4, 0.4), smile=0.0)
-gest(H, wt(BR, 4, 3) - 0.25, 'push_down', gaze=(0.7, 0.6), brow=-0.2)              # 'fanfar' - spycha trąbkę
+gest(H, wt(BR, 4, 3) - 0.2, 'chest', gaze=(0.0, 0.1), brow=0.2, lid=0.35, smile=0.15)      # v7: 'fanfar ani łez' - bez rekwizytów, spokojnie, ręka na sercu
 gest(H, wt(BR, 4, 4) + 0.1, 'rest', gaze=(0.0, 0.2))
-gest(H, wt(BR, 4, 5) - 0.25, 'push_down', gaze=(0.7, 0.6))                         # 'łez' - spycha łzę
+H.key(wt(BR, 4, 5) - 0.1, tilt=-6.0); H.key(wt(BR, 4, 5) + 0.5, tilt=0.0)
 gest(H, le(BR, 4) + 0.2, 'rest', gaze=(0.0, 0.0), smile=0.3, jitter=1.0)
 # refren 3 (zespół)
 H.on(lt(CH3, 0) - 0.87, FIN_HEJ + 1.0, 'rise', 'sink', 0.6, 0.5)
@@ -541,10 +541,6 @@ def stage_props(t):
         front.append((-112.0, ornaments))
         fog = 1 - smoothstep((t - wt(BR, 2, 5))/1.6)
         if fog > 0.01: front.append((-115.0, lambda cv, t, fog=fog: haze(cv, t, fog)))
-        tr_up = smoothstep((t - (wt(BR, 4, 3) - 0.85))/0.5) * (1 - smoothstep((t - wt(BR, 4, 3))/0.5))
-        if tr_up > 0.001: front.append((-108.0, lambda cv, t, a=tr_up: (cv.translate(330, 420 - 520*a), P.trumpet(cv))))
-        te_up = smoothstep((t - (wt(BR, 4, 5) - 0.3))/0.4) * (1 - smoothstep((t - wt(BR, 4, 5))/0.45))
-        if te_up > 0.001: front.append((-108.0, lambda cv, t, a=te_up: (cv.translate(330, 300 - 420*a), P.tear(cv))))
     # przedscenie (fartuch) gdy lalka stoi przed kurtyną
     if 2.5 <= t <= 11.0 or lt(BR, 0) - 1.1 <= t <= le(BR, 4) + 1.1:
         front.append((-100.0, apron))
@@ -660,7 +656,6 @@ POI = {
     'ringlight': ((lt(V2, 0) + 0.1, lt(V2, 3)), (RING_X - 150, -560, RING_X + 150, -280), 60.0),
     'halo': ((wt(V2B, 3, 2) - 0.6, lt(PRE2, 0)), (390, -630, 810, -410), -4.0),
     'robie': ((lt(BR, 1) - 0.4, le(BR, 4) + 0.6), (235, -375, 705, -160), -110.0),
-    'trumpet': ((wt(BR, 4, 3) - 0.85, wt(BR, 4, 5) + 0.45), (255, -490, 405, -60), -108.0),
 }
 def poi_box(name, win):
     (a, b), rect, d = POI[name]
@@ -848,7 +843,7 @@ SHOTS = [
     (lt(BR, 1), lt(BR, 2), 'stage', [(0, F('MS', 'H', poi=['robie'])), (1, F('MS', 'H', poi=['robie'], dx=0.02))]),
     (lt(BR, 2), lt(BR, 3), 'stage', [(0, F('MLS', 'H', poi=['robie'])), (1, F('MS', 'H', poi=['robie']))]),
     (lt(BR, 3), lt(BR, 4), 'stage', [(0, F('MS', 'H', poi=['robie'])), (1, F('MS', 'H', poi=['robie'], dx=-0.02))]),
-    (lt(BR, 4), le(BR, 4) + 0.05, 'stage', [(0, F('MS', 'H', poi=['robie', 'trumpet'])), (1, F('MS', 'H', poi=['robie', 'trumpet']))]),
+    (lt(BR, 4), le(BR, 4) + 0.05, 'stage', [(0, F('MS', 'H', poi=['robie'])), (1, F('MS', 'H', poi=['robie'], dx=-0.02))]),
     (le(BR, 4) + 0.05, lt(CH3, 0), 'feed', dict(kind='simple_post')),
     # refren 3: majestatyczny
     # refren 3 (v5): każde ujęcie ma jeden czytelny ruch - najazd żurawia, przejazd wzdłuż pierwszego rzędu, dwójka Henio-Tadek,

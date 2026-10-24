@@ -62,6 +62,24 @@ def held_check(S, DB, curve, k_amp=1.0):
         if np.mean(fr) < 0.95: bad.append((round(s['on'], 2), round(b - a, 2), round(float(np.mean(fr)), 2)))
     return dict(held_notes=n, mean_open_fraction=round(float(np.mean(frac)), 3) if frac else None,
                 notes_open_less_than_95pct=len(bad), worst=sorted(bad, key=lambda x: x[2])[:8])
+def end_check(S, DB, curve, drop=12.0, gate=34.0):
+    """Koniec otwarcia vs koniec głosu (ostatnia chwila przed następną sylabą, gdy stem >= szczyt - drop i nad bramką);
+    liczone tylko tam, gdzie po głosie jest przerwa > 80 ms (inaczej zamknięcie to dołek między sylabami)."""
+    S = sorted(S, key=lambda d: d['on']); top = float(DB.max()); d = []
+    for k, s in enumerate(S):
+        nxt = S[k+1]['on'] if k + 1 < len(S) else s['off'] + 3
+        i0 = int(s['on']*100); pk = float(DB[i0:int(max(min(s['off'], nxt), s['on'] + 0.05)*100) + 1].max())
+        seg = DB[i0:min(int(nxt*100) - 1, len(DB) - 1)]; ab = np.nonzero(seg > max(pk - drop, top - gate))[0]
+        ve = (i0 + (ab[-1] if len(ab) else 0) + 1)/100
+        if nxt - ve <= 0.08: continue
+        f = int(round(max(s['pk'], s['on'] + 0.03)*FPS))
+        while f < len(curve) - 1 and curve[f] > 0.35*s['open']: f += 1
+        d.append(ve - f/FPS)
+    d = np.array(d)
+    return dict(phrase_ends=len(d), closes_early_gt_2frames=int(np.sum(d > 2/FPS)), closes_late_gt_2frames=int(np.sum(d < -2/FPS)),
+                median_abs_ms=round(float(np.median(np.abs(d)))*1000, 1))
+R['phrase_ends'] = {f'{nm}_{dr}dB': end_check(S_, DB_, cv_, dr, gt) for nm, S_, DB_, cv_ in (('lead', E.LEAD_SYLS, E.LEAD_DB, mouth), ('choir', E.CHOIR_SYLS, E.BACK_DB, cm))
+                    for dr, gt in ((12.0, 34.0), (9.0, 30.0), (15.0, 38.0))}
 R['held_notes'] = dict(lead=held_check(E.LEAD_SYLS, E.LEAD_DB, mouth), choir=held_check(E.CHOIR_SYLS, E.BACK_DB, cm))
 # początki słów tam, gdzie gra stem wokalu (poziom w [t, t+150 ms] w górnych 20 dB stemu)
 def stem_db(name):

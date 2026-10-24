@@ -145,21 +145,26 @@ def _curve(sylls, n_frames):
             if fb < len(m): m[fb] = max(m[fb], 0.85*b['open']); r[fb] = b['round']
         if 0 <= fd < len(m): m[fd] = min(m[fd], depth)
     return m, r
-def _extend_held(S, DB, drop=9.0, gate=32.0):
-    """Trzymane nuty ('eeee', 'gii...'): koniec otwarcia = koniec dźwięku w stemie wokalu, a nie koniec samogłoski z dopasowania
-    mowy. Sylaba trwa, dopóki poziom stemu jest nie niżej niż `drop` dB pod jej szczytem i nad bramką (max - `gate` dB),
-    najdalej do 40 ms przed następną sylabą."""
+def _extend_held(S, DB, drop=12.0, gate=34.0):
+    """Koniec otwarcia = koniec głosu w stemie (v7, w obie strony): ostatnia chwila przed następną sylabą, w której poziom stemu
+    (RMS co 10 ms) jest nie niżej niż `drop` dB pod szczytem tej sylaby i nad bramką (max - `gate` dB). Szukane od końca, więc
+    chwilowe przygaśnięcia długiej nuty (vibrato, oddech w środku) nie ucinają otwarcia; pogłos poniżej progu go nie przedłuża.
+    Najdalej 40 ms przed następną sylabą, najkrócej 60 ms po szczycie sylaby."""
     S.sort(key=lambda d: d['on']); top = float(DB.max())
     for k in range(len(S) - 1, 0, -1):          # ta sama sylaba z dwóch źródeł (np. końcowe 'HEJ'): jedna, dłuższa
         if S[k]['on'] - S[k-1]['on'] < 0.05:
             S[k-1]['off'] = max(S[k-1]['off'], S[k]['off']); S[k-1]['open'] = max(S[k-1]['open'], S[k]['open']); del S[k]
     for k, s in enumerate(S):
         nxt = S[k+1]['on'] if k + 1 < len(S) else s['off'] + 4.0
-        i0, i1 = int(s['on']*100), int(max(min(s['off'], nxt), s['on'] + 0.03)*100)
-        pk = float(DB[i0:i1 + 1].max()) if i1 < len(DB) else top
-        j = int(s['off']*100); lim = min(int((nxt - 0.04)*100), len(DB) - 1)
-        while j < lim and DB[j] > max(pk - drop, top - gate): j += 1
-        if j/100 > s['off']: s['off_al'] = s['off']; s['off'] = j/100
+        i0 = int(s['on']*100); i1 = int(max(min(s['off'], nxt), s['on'] + 0.05)*100)
+        if i0 >= len(DB): continue
+        pk = float(DB[i0:i1 + 1].max())
+        lim = min(int((nxt - 0.04)*100), len(DB) - 1)
+        seg = DB[i0:lim]
+        above = np.nonzero(seg > max(pk - drop, top - gate))[0]
+        end = (i0 + above[-1] + 1)/100 if len(above) else s['off']
+        end = min(max(end, max(s['pk'], s['on']) + 0.06), nxt - 0.04)
+        if abs(end - s['off']) > 0.005: s['off_al'] = s.get('off_al', s['off']); s['off'] = end
     return S
 LEAD_SYLS = _syl_list('lead')
 for f in AL['choir']['finale']:                          # okrzyki Henia w finale ("hej" 201,5 s i "HEJ" 209,8 s)
