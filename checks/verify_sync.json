@@ -331,8 +331,8 @@
   "pct_within_2_frames": 100.0
  },
  "flashes": {
-  "flash_peaks": 10,
-  "median_dist_to_snare_or_cue_ms": 10.6,
+  "flash_peaks": 9,
+  "median_dist_to_snare_or_cue_ms": 11.2,
   "pct_within_2_frames": 100.0
  },
  "cuts": {
@@ -621,7 +621,7 @@
    },
    {
     "t": 131.48,
-    "to": "stage",
+    "to": "under",
     "dist_line_ms": 0,
     "dist_downbeat_ms": 585,
     "ok": true
@@ -763,7 +763,7 @@
  },
  "camera_static_shots": [],
  "signs": {
-  "sign_frames_checked": 1866,
+  "sign_frames_checked": 1817,
   "max_overlap_fraction_with_character": 0.198,
   "at": [
    67.8,
@@ -775,17 +775,17 @@
   ],
   "min_visible_fraction": 0.978,
   "min_visible_at": [
-   55.8,
+   163.87,
    [
-    3,
-    2
+    10,
+    4
    ]
   ],
   "text_fits_box": {
    "signs": 30,
    "all_fit": true,
-   "min_margin_x_px": 16.8,
-   "min_margin_y_px": 13.2
+   "min_margin_x_px": 18.3,
+   "min_margin_y_px": 14.7
   },
   "boxed_sign_frames_inside_stage_opening_pct": 100.0,
   "placement": [
@@ -904,7 +904,7 @@
     ],
     "kind": "board",
     "visibility": 1.0,
-    "overlap": 0.009
+    "overlap": 0.014
    },
    {
     "line": [
@@ -1062,15 +1062,6 @@
    {
     "line": [
      9,
-     1
-    ],
-    "kind": "riser",
-    "visibility": 1.0,
-    "overlap": 0.0
-   },
-   {
-    "line": [
-     9,
      4
     ],
     "kind": "playboard",
@@ -1197,7 +1188,7 @@
   ]
  },
  "framing": {
-  "stage_frames_checked": 1705,
+  "stage_frames_checked": 1672,
   "frames_with_head_cut_by_edge": 119,
   "head_cut_at": [
    100.2,
@@ -1290,13 +1281,6 @@
     [
      "Chór 4",
      "Chór 3"
-    ]
-   ],
-   [
-    131.48,
-    "include",
-    [
-     "Chór 5"
     ]
    ]
   ]
@@ -1681,15 +1665,15 @@
    ],
    [
     128.0,
-    6
+    0
    ],
    [
     128.5,
-    8
+    0
    ],
    [
     129.0,
-    8
+    6
    ],
    [
     129.5,

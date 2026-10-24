@@ -6,8 +6,8 @@
   "pix_fmt": "yuv420p",
   "size": "1920x1080",
   "r_frame_rate": "30/1",
-  "nb_read_frames": 7682,
-  "duration": 256.066667
+  "nb_read_frames": 7082,
+  "duration": 236.066667
  },
  "audio": {
   "codec": "aac",
@@ -17,8 +17,8 @@
   "bit_rate": "314118"
  },
  "format": {
-  "duration": 256.066667,
-  "size_MB": 98.16,
+  "duration": 236.066667,
+  "size_MB": 96.94,
   "tags": {
    "major_brand": "isom",
    "minor_version": "512",
@@ -30,7 +30,7 @@
    "comment": "Teledysk: Paweł Kuraś"
   }
  },
- "expected_frames": 7682,
+ "expected_frames": 7082,
  "audio_offset": [
   {
    "at_s": 5.0,
