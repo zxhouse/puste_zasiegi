@@ -763,8 +763,8 @@
  },
  "camera_static_shots": [],
  "signs": {
-  "sign_frames_checked": 1914,
-  "max_overlap_fraction_with_character": 0.1941,
+  "sign_frames_checked": 1866,
+  "max_overlap_fraction_with_character": 0.198,
   "at": [
    67.8,
    [
@@ -775,17 +775,17 @@
   ],
   "min_visible_fraction": 0.978,
   "min_visible_at": [
-   163.87,
+   55.8,
    [
-    10,
-    4
+    3,
+    2
    ]
   ],
   "text_fits_box": {
-   "signs": 29,
+   "signs": 30,
    "all_fit": true,
    "min_margin_x_px": 16.8,
-   "min_margin_y_px": 13.7
+   "min_margin_y_px": 13.2
   },
   "boxed_sign_frames_inside_stage_opening_pct": 100.0,
   "placement": [
@@ -805,7 +805,7 @@
     ],
     "kind": "board",
     "visibility": 1.0,
-    "overlap": 0.009
+    "overlap": 0.0
    },
    {
     "line": [
@@ -832,7 +832,7 @@
     ],
     "kind": "board",
     "visibility": 1.0,
-    "overlap": 0.004
+    "overlap": 0.005
    },
    {
     "line": [
@@ -850,7 +850,7 @@
     ],
     "kind": "board",
     "visibility": 1.0,
-    "overlap": 0.057
+    "overlap": 0.058
    },
    {
     "line": [
@@ -904,7 +904,7 @@
     ],
     "kind": "board",
     "visibility": 1.0,
-    "overlap": 0.013
+    "overlap": 0.009
    },
    {
     "line": [
@@ -1003,7 +1003,7 @@
     ],
     "kind": "board",
     "visibility": 1.0,
-    "overlap": 0.056
+    "overlap": 0.0
    },
    {
     "line": [
@@ -1012,7 +1012,7 @@
     ],
     "kind": "board",
     "visibility": 1.0,
-    "overlap": 0.151
+    "overlap": 0.0
    },
    {
     "line": [
@@ -1163,16 +1163,16 @@
      11,
      3
     ],
-    "kind": "playboard",
+    "kind": "board",
     "visibility": 1.0,
-    "overlap": 0.0
+    "overlap": 0.022
    },
    {
     "line": [
      11,
      4
     ],
-    "kind": "playboard",
+    "kind": "marquee",
     "visibility": 1.0,
     "overlap": 0.0
    },
@@ -1198,38 +1198,38 @@
  },
  "framing": {
   "stage_frames_checked": 1705,
-  "frames_with_head_cut_by_edge": 39,
+  "frames_with_head_cut_by_edge": 119,
   "head_cut_at": [
-   171.7,
-   171.8,
-   171.9,
-   172.0,
-   172.1,
-   172.2,
-   172.3,
-   172.4,
-   172.5,
-   172.6,
-   172.7,
-   172.8,
-   172.9,
-   173.0,
-   173.1,
-   173.2,
-   173.3,
-   173.4,
-   176.8,
-   176.9,
-   183.7,
-   183.8,
-   184.2,
-   184.3,
-   184.4,
-   184.5,
-   184.6,
-   184.7,
-   184.8,
-   184.9
+   100.2,
+   100.3,
+   100.4,
+   100.5,
+   100.6,
+   100.7,
+   100.8,
+   100.9,
+   101.0,
+   101.1,
+   101.2,
+   101.3,
+   101.4,
+   101.5,
+   101.6,
+   101.7,
+   101.8,
+   101.9,
+   102.0,
+   102.1,
+   102.2,
+   102.3,
+   102.4,
+   102.5,
+   102.6,
+   102.7,
+   102.8,
+   171.0,
+   171.1,
+   171.2
   ],
   "frames_with_framed_subject_not_visible": 4,
   "subject_missing_at": [
@@ -1238,7 +1238,7 @@
    113.3,
    147.9
   ],
-  "poi_samples": 359,
+  "poi_samples": 323,
   "poi_samples_less_than_90pct_visible": 0,
   "poi_out_at": [],
   "heads_adjustments": [
@@ -1271,21 +1271,6 @@
     ]
    ],
    [
-    99.72,
-    "include",
-    [
-     "Chór 3"
-    ]
-   ],
-   [
-    99.72,
-    "include",
-    [
-     "Henio Kawka",
-     "Chór 3"
-    ]
-   ],
-   [
     116.07,
     "include",
     [
@@ -1312,47 +1297,6 @@
     "include",
     [
      "Chór 5"
-    ]
-   ],
-   [
-    170.91,
-    "shift",
-    -0.069
-   ],
-   [
-    170.91,
-    "include",
-    [
-     "Kasia Kejs"
-    ]
-   ],
-   [
-    177.38,
-    "include",
-    [
-     "Kasia Kejs"
-    ]
-   ],
-   [
-    177.38,
-    "include",
-    [
-     "Kasia Kejs"
-    ]
-   ],
-   [
-    183.81,
-    "include",
-    [
-     "Grażyna Gratka",
-     "Prezes Bogumił Łaskawiec"
-    ]
-   ],
-   [
-    183.81,
-    "include",
-    [
-     "Kasia Kejs"
     ]
    ]
   ]

@@ -172,14 +172,14 @@ podrygi pojawiają się w refrenach (reakcje na patykach w górę na „raz” t
   rekompresji, końcowe kodowanie H.264 yuv420p (dwa przebiegi, ≤ 100 MB dla GitHuba) + AAC 320 kb/s z całego MP3 (bez filtrów i cięć).
   Każda wersja renderowana z zamrożonej kopii kodu (`build/vN/src`).
 
-## 5. Jak sprawdziłem wersję v4
+## 5. Jak sprawdziłem wersję v5
 Skrypty: `src/verify.py` (plik) i `src/verify_sync.py` (synchronizacja liczona z tych samych funkcji, z których renderowane są klatki).
 Wyniki: `checks/verify_file.json`, `checks/verify_sync.json`, `checks/sheets/` (arkusze co 4 s), `checks/stills/` (45 stopklatek).
 
 **Plik** (`final/music-video.mp4`)
 * Pełne dekodowanie `ffmpeg -f null`: **0 błędów**.
-* Obraz: H.264 High, yuv420p, 1920x1080, 30/1 kl./s, **6482 klatek = oczekiwane 6482**, 216.067 s.
-* Dźwięk: AAC 48000 Hz, 2 kanały, 212.0 s; plik 95.03 MB.
+* Obraz: H.264 High, yuv420p, 1920x1080, 30/1 kl./s, **7682 klatek = oczekiwane 7682**, 256.067 s.
+* Dźwięk: AAC 48000 Hz, 2 kanały, 212.0 s; plik 98.16 MB.
 * Metadane: tytuł „Puste zasięgi”, artist/composer „Paweł Kuraś”, komentarz „Teledysk: Paweł Kuraś”; autor także w napisach końcowych.
 * **Przesunięcie dźwięku względem MP3: 0, 0, 0, 0, 0, 0, 0, 0 próbek** w 8 miejscach (5, 30, 61, 100, 140, 170, 200, 210 s),
   korelacja 0.9996–0.9999; na końcu 512 próbek ciszy z dopełnienia ramki AAC; SNR 36.09 dB (strata AAC).
@@ -194,22 +194,21 @@ Wyniki: `checks/verify_file.json`, `checks/verify_sync.json`, `checks/sheets/` (
 * Akcenty ruchu: 183 szczytów, **100.0% w ±1 klatce od uderzenia stopy/werbla** (mediana 8.8 ms);
   błyski: 10, 100.0% w ±2 klatkach od werbla lub „hej”.
 * Cięcia: **60/60 na początku wersu (lub zdania w kwestii mówionej) albo na „raz” taktu**. Ujęcia bez ruchu kamery: 0.
-* Napisy (co 2. klatka ujęć sceny, 1914 sprawdzeń): największe nachodzenie napisu na postać **19.4%**
-  powierzchni napisu ([67.8, [4, 2], 'Henio Kawka']; prostokąty: głowa, korpus, dłoń z rzeczywistym obrysem trzymanego rekwizytu), najmniejsza widoczność napisu w kadrze 98% ([163.87, [10, 4]]);
-  41 z 45 napisów w pełni widocznych i bez kolizji przez cały czas trwania.
+* Napisy (co 2. klatka ujęć sceny, 1866 sprawdzeń): największe nachodzenie napisu na postać **19.8%**
+  powierzchni napisu ([67.8, [4, 2], 'Henio Kawka']; prostokąty: głowa, korpus, dłoń z rzeczywistym obrysem trzymanego rekwizytu), najmniejsza widoczność napisu w kadrze 98% ([55.8, [3, 2]]);
+  42 z 45 napisów w pełni widocznych i bez kolizji przez cały czas trwania.
 * Trzymane nuty (głos trwa ≥ 0,4 s po szczycie sylaby; koniec głosu z obwiedni stemu): Henio 41 nut – usta otwarte
   średnio przez **100.0%** czasu dźwięku, chór 37 nut – 100.0%.
-* Tekst w polu tablic i dymków (29 napisów): **wszystkie mieszczą się** razem z powiększeniem
-  słowa w chwili zaśpiewania; najmniejszy zapas 16.8 px w poziomie i 13.7 px w pionie (obrys glifów z polskimi znakami).
+* Tekst w polu tablic i dymków (30 napisów): **wszystkie mieszczą się** razem z powiększeniem
+  słowa w chwili zaśpiewania; najmniejszy zapas 16.8 px w poziomie i 13.2 px w pionie (obrys glifów z polskimi znakami).
 * Tablice i dymki w otworze sceny (nie za portalem): 100.0% sprawdzonych klatek.
-* Kadr (co 3. klatka ujęć sceny, 1705 klatek): głowa lalki pierwszego planu ucięta krawędzią w **39 klatkach**
-  (2.3%; prawie wyłącznie tłum w refrenie 3, 171.7–184.9 s; lalki w trakcie
+* Kadr (co 3. klatka ujęć sceny, 1705 klatek): głowa lalki pierwszego planu ucięta krawędzią w **119 klatkach**
+  (7.0%; prawie wyłącznie tłum w refrenie 3, 100.2–171.2 s; lalki w trakcie
   wynurzania/wejścia nie są liczone); kadrowana postać niewidoczna: 4 klatek (97.1, 99.7, 113.3, 147.9 s – wynurzanie na cięciu);
-  ważne rekwizyty ujęcia (scenki z życia, zwój, baner, flipchart, „Robię swoje.”…) widoczne w ≥ 90%: 359/359 próbek.
+  ważne rekwizyty ujęcia (scenki z życia, zwój, baner, flipchart, „Robię swoje.”…) widoczne w ≥ 90%: 323/323 próbek.
 * Ekspozycja (`src/verify_exposure.py`, `checks/exposure.json`; ujęcia sceny, 10 kl./s): przepalone piksele (kanał ≥ 250) średnio
-  **0.12%** (v3: 13.95%), 95. percentyl 0.3% (v3: 43.96%), najgorsza klatka 53.27%
+  **0.11%** (v3: 13.95%), 95. percentyl 0.3% (v3: 43.96%), najgorsza klatka 53.15%
   (v3: 59.86%); klatek z > 5% przepaleń: 1 z 1737 (v3: 1307 z 1820).
-  (jedyna próbka > 5% – 163,9 s – wypada na cięciu do białej strony serwisu; klatka sceny przed cięciem jest bez przepaleń).
 * Chór: liczebność w refrenach nie spada; w układzie grupowym 0 par nachodzących na siebie.
 
 ## 6. Niepewności i rzeczy do decyzji
