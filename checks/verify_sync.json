@@ -69,10 +69,19 @@
   "vocal_active_frames_with_mouth_open_pct": 74.88
  },
  "choir_mouth": {
-  "openings": 266,
+  "openings": 263,
   "backing_events": 250,
   "median_dist_to_event_ms": 36.7,
-  "pct_within_100ms": 93.6
+  "pct_within_100ms": 92.8,
+  "choir_lines": [
+   {
+    "t0": 99.9,
+    "text": "(Wywalili na bruk!)",
+    "syllables": 6,
+    "openings": 6,
+    "syllables_with_opening": 6
+   }
+  ]
  },
  "accents": {
   "accent_peaks": 183,
@@ -506,16 +515,9 @@
  },
  "camera_static_shots": [],
  "signs": {
-  "sign_frames_checked": 2276,
-  "max_overlap_fraction_with_character_in_front": 0.2085,
-  "at": [
-   148.13,
-   [
-    10,
-    0
-   ],
-   "Chór 3"
-  ],
+  "sign_frames_checked": 1893,
+  "max_overlap_fraction_with_character_in_front": 0.0,
+  "at": null,
   "placement": [
    {
     "line": [
