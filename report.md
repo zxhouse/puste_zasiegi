@@ -1,6 +1,6 @@
 # Raport: teledysk „Puste zasięgi” (Paweł Kuraś)
 
-> Stan: **wersja v2** (`final/music-video.mp4`). Poprzednia wersja: `archive/v1/`. Wyniki sprawdzeń poniżej dotyczą v2.
+> Stan: **wersja v3** (`final/music-video.mp4`). Poprzednie wersje: `archive/v1/`, `archive/v2/`. Wyniki sprawdzeń poniżej dotyczą v3.
 > Nie słuchałem ani nie oglądałem filmu – wszystko niżej to pomiary liczbowe i obejrzane pojedyncze klatki / arkusze klatek.
 
 ## 1. Co powstało
@@ -239,3 +239,63 @@ Przejrzałem jej arkusze i stopklatki i na tej podstawie zrobiłem poprawki v2 p
 * Wyciemnienie obrazu od 210,6 s przed napisami końcowymi.
 * Ziarno zmienia się co 2 klatki i jest słabsze (0,12 zamiast 0,16) – spokojniejsze i lepiej znosi kompresję.
 * Kodowanie dwuprzebiegowe 3200 kb/s – plik mieści się w limicie 100 MB na GitHubie.
+
+### 7.3 v3 – poprawki po uwagach autora do v2
+
+#### 7.3.1 Synchronizacja z dźwiękiem
+* Uwaga: „synchronizacja z audio leży”.
+* Przyczyna (sprawdzona transkrypcją Omnilingual i porównaniem narzędzi, 2.4): dopasowanie v2 było zrobione bez modelu rozpoznawania
+  mowy; w zwrotce 2b wszystkie wersy były przesunięte o jeden (−2,7 … −3,4 s), wtrącenie „Wywalili na bruk!” było 2,9 s za późno,
+  „Mocne zasięgi” w refrenie 1 o 0,9 s za późno; 14 słów różniło się o > 0,5 s, a 41 w ogóle nie dało się znaleźć w ±1,5 s.
+  Chór otwierał usta na każde zdarzenie w stemie chórków (także na przesłuch Henia), a Henio śpiewał partie, które w nagraniu
+  śpiewa tylko chór („trochę jak męka”); „hej” w refrenach 1–2 było tam, gdzie go nie ma.
+* Poprawka: pięć narzędzi (Omnilingual CTC, MFA, Whisper, Parakeet, Silero VAD), wymuszone dopasowanie osobno na stemach Henia i chóru,
+  fuzja z fonemów MFA; podział partii Henio / chór / razem; wariant tekstu sprawdzany akustycznie; „hej” tylko tam, gdzie jest w stemie.
+* Sprawdzenie: zgodność z MFA 89% słów w ±100 ms, z Parakeetem 0 słów > 0,5 s (tabela w 2.4); liczby ust w sekcji 5.
+
+#### 7.3.2 Tabliczki trzymane na drążkach
+* Uwaga: „muppety nie trzymają tabliczek poprawnie – po to mają tyczki”.
+* Przyczyna: drążek szedł od dłoni w dół, tabliczka siedziała tuż nad dłonią i była rysowana na wierzchu dłoni.
+* Poprawka: tabliczka nad dłonią, drążek przez zaciśniętą pięść (palce i kciuk na drążku), rysowanie: rekwizyt → pięść; bruk = kamienie
+  w garści. Sprawdzenie: zbliżenia klatek z maskami, wachlarzami, tabliczkami „3 OPINIE”, „Ogromny szacun!”, „Cieszę się z nowej drogi!”.
+
+#### 7.3.3 „Widać, że postaci nie mają nóg”
+* Przyczyny: (1) Henio do 99,7 s „dziedziczył” y = −40 z późniejszej sceny (pierwszy klucz y był dopiero w raju), więc spód korpusu
+  wypadał równo z krawędzią sceny; (2) dla lalek dalej od krawędzi kamera z góry odsłaniała spód korpusu przez paralaksę;
+  (3) plany średnie pokazywały pod lalką pas sceny i pustą ścianę.
+* Poprawka: bazowe y = 0 od początku dla wszystkich ról; korpus sięga 320 jednostek pod krawędź; nowa kamera – w planach do pasa dół
+  kadru nad krawędzią sceny. Sprawdzenie: arkusze środków wszystkich 53 ujęć sceny.
+
+#### 7.3.4 Animacje, ekspresja śpiewu i taniec
+* Uwaga: „animacje kuleją”, ruchy „bardziej ekspresyjne w śpiewie i tańcu”.
+* Przyczyna: pozy przechodziły płynnie przez cały odstęp między kluczami (wrażenie pływania), ruch głowy nie zależał od śpiewu.
+* Poprawka: ruch lalkarski (trzymanie pozy, szybki ruch z przestrzałem 8%); kiwnięcia na akcentowanych sylabach, długie nuty (głowa
+  w górę, przymknięte oczy), brwi z głośnością; taniec w refrenach (krok co 2 bity, sprężynowanie na stopie).
+
+#### 7.3.5 Praca kamery
+* Uwaga: „praca kamery do poważnej analizy i poprawy”.
+* Analiza v2: wszystkie 53 ujęcia sceny miały ręcznie wpisane pozycje kamery, niezależne od tego, gdzie stoją postacie; 23 z nich
+  w jakiejś fazie pokazywały cały portal (płasko, postaci małe), plany średnie odsłaniały krawędź sceny pod lalkami.
+* Poprawka: kadrowanie względem postaci (rozdział 4), skład grupy stały w ujęciu, przejścia między planami w obrębie ujęcia.
+* Sprawdzenie: arkusze środków ujęć; ruch kadru między klatkami w ujęciach: najwyżej 44 px/klatkę (zamierzone przejście z Henia na chór),
+  pozostałe ≤ 36 px/klatkę.
+
+#### 7.3.6 Wygląd: przestrzeń, cienie
+* Uwaga: „wszystko płaskie”, „popracować nad cieniem”.
+* Poprawka: bryła głów i korpusów, cienie sylwetek na dekoracji, cień dekoracji na ścianie, głębia ostrości zależna od kamery,
+  gradacja (rozdział 4). Sprawdzenie: klatki porównawcze (kuchnia, konferencja, chór, raj, bridge, refren 3).
+
+#### 7.3.7 Usta: półotwarcia
+* Uwaga: „nie tylko pełne otwarcia, ale też półotwarcia gęby”.
+* Poprawka: otwarcie każdej sylaby z samogłoski, głośności, długości i akcentu (0,22–1,0), dołki między sylabami zamiast pełnego
+  zamknięcia (pełne tylko przed m/b/p i w przerwach), zaokrąglenie dla o/u. Sprawdzenie: ciąg 16 klatek „wielkie zasięgi” (68,0 s) –
+  szerokie „wiel”, domknięcie, półotwarte „kie”; liczby w sekcji 5.
+
+#### 7.3.8 Fonty w świecie lalek
+* Poprawka: siedem stylizowanych krojów OFL z Google Fonts (lista w rozdziale 4, pliki i licencje w `fonts/`); świat serwisu bez zmian.
+
+#### 7.3.9 Napisy w nowych kadrach
+* Problem (wyszedł po zmianie kamery): w ciaśniejszych kadrach 38 z 47 napisów wypadało częściowo lub całkiem poza kadr.
+* Poprawka: kolizje liczone osobno dla głowy, korpusu i dłoni z rekwizytem; kandydaci zakotwiczeni w kadrze ujęcia; litery na froncie
+  podestu chóru; napis oceniany przez cały czas trwania (także po cięciu) i bez kolizji z innymi napisami; napis gaśnie, gdy zaczyna się
+  następny wers. Wynik: 39 z 47 napisów w pełni widocznych i bez kolizji, pozostałe ≥ 81% widoczności (szczegóły w sekcji 5).
