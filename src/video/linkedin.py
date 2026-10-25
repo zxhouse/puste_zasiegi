@@ -64,8 +64,11 @@ def _def():
     a, b = shot_bounds('open')
     vid = R('main', 'video')
     K['open'] = dict(states=[(0, 'main_play'), (2.29, 'main')],
-                     view=[(0.0, (0, 960, 540, 1920)), (2.29, (0, 935, 560, 1680)), (3.27, full_on(vid, 0))],
-                     cursor=[(0.3, (1560, 930)), (1.2, (1200, 760)), (2.05, (vid[0] + vid[2]/2 + 6, vid[1] + vid[3]/2 + 8)), (3.3, (vid[0] + vid[2]/2 + 6, vid[1] + vid[3]/2 + 8))],
+                     # v8.1: strona stoi do kliknięcia, potem jeden płynny najazd na okienko filmu, pełny kadr 0,1 s przed cięciem
+                     # (wcześniej dwa odcinki z zatrzymaniem w chwili kliknięcia i najazd niedokończony przed cięciem)
+                     view=[(0.0, (0, 960, 540, 1920)), (2.29, (0, 960, 540, 1920)), (b - 0.1, full_on(vid, 0))],
+                     cursor=[(0.3, (1560, 930)), (1.2, (1200, 760)), (2.05, (vid[0] + vid[2]/2 + 6, vid[1] + vid[3]/2 + 8)),
+                             (2.35, (vid[0] + vid[2]/2 + 6, vid[1] + vid[3]/2 + 8)), (2.9, (vid[0] + vid[2] + 60, vid[1] + vid[3] + 40))],
                      clicks=[2.29], freeze_until=2.29, video_cam=lambda t, a=a, b=b, pc=locals().get('pc'), nc=locals().get('nc'), mcu=locals().get('mcu'): neighbour_cams(a, b)[1])
     a, b = shot_bounds('henio_post'); pc, nc = neighbour_cams(a, b)
     K['henio_post'] = dict(states=[(a, 'hp_c0'), (27.9, 'hp_c1'), (28.5, 'hp_c2'), (29.1, 'hp_c3')],
@@ -173,7 +176,7 @@ def render_feed(cv, t, sc):
     # widoczny fragment strony (bez liczenia sceny dla filmu poza kadrem)
     vis_y0 = sy + cy - (E.H/2)/z; vis_y1 = sy + cy + (E.H/2)/z
     if vr and vr[2] > 0 and vr[1] < vis_y1 and vr[1] + vr[3] > vis_y0:
-        tv = min(t, D['freeze_until']) if 'freeze_until' in D else t
+        tv = t if t >= D.get('freeze_until', -1.0) else 0.0      # v8.1: przed kliknięciem 'play' film stoi (pierwsza klatka), po kliknięciu gra na żywo
         im = _stage_img(tv, D['video_cam'](t))
         cv.drawImageRect(im, skia.Rect(vr[0], vr[1] - sy, vr[0] + vr[2], vr[1] - sy + vr[3]), skia.SamplingOptions(skia.FilterMode.kLinear, skia.MipmapMode.kLinear))
         if sc['kind'] == 'open' and t < 2.29:

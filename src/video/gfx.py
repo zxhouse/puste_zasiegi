@@ -75,9 +75,10 @@ def beam(cv, x0, y0, x1, y1, w0, w1, color=(1.0, 0.95, 0.8), alpha=0.18):
     cv.drawPath(poly_path(pts, True, False), p)
 
 def bulb(cv, x, y, r, on, color=(1.0, 0.85, 0.5)):
+    k = min(max(on, 0.0), 1.0)      # v8.1: jasność płynnie (wcześniej przełączana skokowo przy 0,5 - żarówki 'mrugały')
+    lerp = lambda a, b: skia.Color4f(*[a[i] + (b[i] - a[i])*k for i in range(3)], 1).toColor()
     g = skia.GradientShader.MakeRadial(skia.Point(x - r*0.3, y - r*0.3), r*1.3,
-                                       [skia.Color4f(1, 1, 0.95, 1).toColor() if on > 0.5 else skia.Color4f(0.55, 0.5, 0.42, 1).toColor(),
-                                        skia.Color4f(*color, 1).toColor() if on > 0.5 else skia.Color4f(0.3, 0.27, 0.22, 1).toColor()], [0, 1])
+                                       [lerp((0.55, 0.5, 0.42), (1, 1, 0.95)), lerp((0.3, 0.27, 0.22), color)], [0, 1])
     p = skia.Paint(AntiAlias=True); p.setShader(g); cv.drawCircle(x, y, r, p)
     if on > 0.05:
         light_pool(cv, x, y, r*4.5, r*4.5, color, 0.35*on)

@@ -1,6 +1,6 @@
 # Raport: teledysk „Puste zasięgi” (Paweł Kuraś)
 
-> Stan: **wersja v8.1** (`final/music-video.mp4`). Poprzednie wersje: `archive/v1/` … `archive/v8/`. Wyniki sprawdzeń poniżej dotyczą v8.1.
+> Stan: **wersja v8.2** (`final/music-video.mp4`). Poprzednie wersje: `archive/v1/` … `archive/v8.1/`. Wyniki sprawdzeń poniżej dotyczą v8.2.
 > Nie słuchałem ani nie oglądałem filmu – wszystko niżej to pomiary liczbowe i obejrzane pojedyncze klatki / arkusze klatek.
 
 ## 1. Co powstało
@@ -14,7 +14,7 @@
 | `src/` | cały kod: analiza (`a01…a12`; v3: `a20…a25` – modele mowy, dopasowanie, fuzja), renderer (`src/video/`), render równoległy, montaż, weryfikacja |
 | `checks/` | arkusze klatek, stopklatki, wyniki weryfikacji (`verify_file.json`, `verify_sync.json`, `exposure.json`) |
 | `fonts/` | czcionki OFL użyte w obrazie i w klonie + pełny tekst licencji |
-| `archive/` | poprzednie wersje filmu: `v1/` … `v8/` (nic nie jest kasowane; w każdej `NOTES.md` z uwagami do tej wersji) |
+| `archive/` | poprzednie wersje filmu: `v1/` … `v8.1/` (nic nie jest kasowane; w każdej `NOTES.md` z uwagami do tej wersji) |
 | `analysis/asr/` | surowe wyniki modeli mowy: transkrypcje Omnilingual (stem prowadzący i chórki), Whisper, Parakeet, Silero VAD, dopasowania CTC i MFA |
 
 Wymagane narzędzia (wszystkie darmowe, z menedżerów pakietów): `ffmpeg`, Python (`numpy`, `scipy`, `librosa`, `soundfile`, `skia-python`, `pocketsphinx`, `matplotlib`, `onnxruntime`, `sherpa-onnx`, `faster-whisper`, `silero-vad`), Montreal Forced Aligner (conda-forge, przez micromamba), `espeak-ng` + `mbrola-pl1` (apt), Node + Playwright/Chromium (preinstalowane). Modele mowy (pobierane do `tools/models/`, poza repozytorium): Omnilingual ASR CTC 1B i Parakeet TDT v3 (wydania sherpa-onnx), `polish_mfa` (wydania mfa-models, CC BY 4.0), Whisper small CT2 (npm). Żadnych gotowych nagrań ani grafik z internetu – cały obraz jest generowany kodem.
@@ -174,14 +174,14 @@ podrygi pojawiają się w refrenach (reakcje na patykach w górę na „raz” t
   rekompresji, końcowe kodowanie H.264 yuv420p (dwa przebiegi, ≤ 100 MB dla GitHuba) + AAC 320 kb/s z całego MP3 (bez filtrów i cięć).
   Każda wersja renderowana z zamrożonej kopii kodu (`build/vN/src`).
 
-## 5. Jak sprawdziłem wersję v8.1
+## 5. Jak sprawdziłem wersję v8.2
 Skrypty: `src/verify.py` (plik) i `src/verify_sync.py` (synchronizacja liczona z tych samych funkcji, z których renderowane są klatki).
 Wyniki: `checks/verify_file.json`, `checks/verify_sync.json`, `checks/sheets/` (arkusze co 4 s), `checks/stills/` (45 stopklatek).
 
 **Plik** (`final/music-video.mp4`)
 * Pełne dekodowanie `ffmpeg -f null`: **0 błędów**.
 * Obraz: H.264 High, yuv420p, 1920x1080, 30/1 kl./s, **7082 klatek = oczekiwane 7082**, 236.067 s.
-* Dźwięk: AAC 48000 Hz, 2 kanały, 212.0 s; plik 96.97 MB.
+* Dźwięk: AAC 48000 Hz, 2 kanały, 212.0 s; plik 96.93 MB.
 * Metadane: tytuł „Puste zasięgi”, artist/composer „Paweł Kuraś”, komentarz „Teledysk: Paweł Kuraś”; autor także w napisach końcowych.
 * **Przesunięcie dźwięku względem MP3: 0, 0, 0, 0, 0, 0, 0, 0 próbek** w 8 miejscach (5, 30, 61, 100, 140, 170, 200, 210 s),
   korelacja 0.9996–0.9999; na końcu 512 próbek ciszy z dopełnienia ramki AAC; SNR 36.09 dB (strata AAC).
@@ -209,7 +209,7 @@ Wyniki: `checks/verify_file.json`, `checks/verify_sync.json`, `checks/sheets/` (
   wynurzania/wejścia nie są liczone); kadrowana postać niewidoczna: 4 klatek (97.1, 99.7, 113.3, 147.9 s – wynurzanie na cięciu);
   ważne rekwizyty ujęcia (scenki z życia, zwój, baner, flipchart, „Robię swoje.”…) widoczne w ≥ 90%: 304/304 próbek.
 * Ekspozycja (`src/verify_exposure.py`, `checks/exposure.json`; ujęcia sceny, 10 kl./s): przepalone piksele (kanał ≥ 250) średnio
-  **0.12%** (v3: 13.95%), 95. percentyl 0.3% (v3: 43.96%), najgorsza klatka 53.12%
+  **0.12%** (v3: 13.95%), 95. percentyl 0.3% (v3: 43.96%), najgorsza klatka 53.29%
   (v3: 59.86%); klatek z > 5% przepaleń: 1 z 1737 (v3: 1307 z 1820).
 * Chór: liczebność w refrenach nie spada; w układzie grupowym 0 par nachodzących na siebie.
 
@@ -619,3 +619,24 @@ Przejrzałem jej arkusze i stopklatki i na tej podstawie zrobiłem poprawki v2 p
 * `music-video-hq.mp4`: te same klatki, H.264 High yuv420p, dwa przebiegi, ok. 12,8 Mb/s obrazu (ponad 4× więcej niż wersja na
   GitHuba), dźwięk AAC 320 kb/s z całego MP3. Nie ma jej w repozytorium (GitHub odrzuca pliki > 100 MB), przekazana bezpośrednio.
   Wersja w repozytorium (`final/music-video.mp4`, ≤ 100 MB) zostaje.
+
+### 7.10 v8.2 – migotanie z prawej strony w 1:39, początek filmu
+
+#### 7.10.1 Żarówki portalu
+* Przyczyna znaleziona na mapie drgań obrazu (druga różnica jasności klatek, 97,1–99,7 s). Lalki „drżą”, bo śpiewają i zjeżdżają,
+  a poza nimi jedyne silne źródło to żarówki portalu przy prawej krawędzi kadru. Środek każdej żarówki przełączał się skokowo
+  między „zapalona” i „zgaszona” (próg 0,5), a fala przebiegała co 2 uderzenia przez co trzecią żarówkę. W planie ogólnym widać
+  tylko pionowy pasek tych żarówek przy krawędzi, więc wyglądało to jak migotanie.
+* Teraz jasność zmienia się płynnie (`gfx.bulb`), fala jest 4 razy wolniejsza i łagodniejsza (72–100% jasności zamiast 35–100%).
+  To samo dotyczy żarówek na podeście chóru, które wcześniej przełączały się co uderzenie.
+
+#### 7.10.2 Początek: przejście do okienka filmu w serwisie
+* Trzy usterki:
+  * najazd był złożony z dwóch odcinków, każdy wygładzony na końcach, więc kamera zatrzymywała się w chwili kliknięcia i ruszała
+    od nowa;
+  * pełny kadr filmu miał nastąpić 0,02 s po cięciu, więc cięcie wypadało w środku najazdu;
+  * odwrócony warunek: film w poście grał przed kliknięciem „play”, a po kliknięciu stał (sama kurtyna, bez Henia), po czym
+    cięcie pokazywało nagle Henia.
+* Teraz strona stoi, kursor klika „play” (2,29 s) i odjeżdża z okienka, a film zaczyna grać: Henio wyskakuje zza krawędzi. Kamera
+  jednym płynnym ruchem najeżdża na okienko i osiąga pełny kadr 0,1 s przed cięciem, więc cięcie na scenę wypada na tym samym
+  obrazie.

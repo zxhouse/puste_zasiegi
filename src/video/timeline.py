@@ -575,7 +575,7 @@ def riser(cv, t):
     card(cv, (-1100, CHOIR_Y + 4, 1100, 60), '#4a1f6e', 14, 'card', 81, 0.6)
     on = 0.5 + 0.5*math.cos(2*math.pi*E.beat_pos(t)/2)
     for k, x in enumerate(np.linspace(-1060, 1060, 30)):
-        bulb(cv, x, CHOIR_Y + 34, 10, 1.0 if (k + int(E.beat_pos(t))) % 2 == 0 else 0.3)
+        bulb(cv, x, CHOIR_Y + 34, 10, 0.7 + 0.3*math.cos(math.pi*(k + E.beat_pos(t)/2)))     # v8.1: płynnie, bez mrugania co bit
     for k in range(5):
         y = CHOIR_Y + 80 + k*70
         cv.drawLine(-1100, y, 1100, y, __import__('skia').Paint(AntiAlias=True, StrokeWidth=3, Color4f=P.col('#2c0f45')))

@@ -67,7 +67,7 @@ def portal(cv, t, chase=0.0, bulbs_on=1.0, marquee_text=None):
     for x in np.linspace(OPEN_L + 40, OPEN_R - 40, 22): pts.append((x, OPEN_T - 50))
     for y in np.linspace(OPEN_T + 60, 400, 9): pts.append((OPEN_L - 55, y)); pts.append((OPEN_R + 55, y))
     for i, (x, y) in enumerate(pts):
-        on = bulbs_on*(0.35 + 0.65*(0.5 + 0.5*math.cos(2*math.pi*(i/3.0 - chase))))
+        on = bulbs_on*(0.72 + 0.28*(0.5 + 0.5*math.cos(2*math.pi*(i/9.0 - chase*0.25))))     # v8.1: łagodna, wolna fala zamiast mrugania co bit
         bulb(cv, x, y, 13, on)
     if marquee_text is not None:
         marquee_text(cv)
