@@ -1,6 +1,6 @@
 # Raport: teledysk „Puste zasięgi” (Paweł Kuraś)
 
-> Stan: **wersja v8** (`final/music-video.mp4`). Poprzednie wersje: `archive/v1/` … `archive/v7/`. Wyniki sprawdzeń poniżej dotyczą v8.
+> Stan: **wersja v8.1** (`final/music-video.mp4`). Poprzednie wersje: `archive/v1/` … `archive/v8/`. Wyniki sprawdzeń poniżej dotyczą v8.1.
 > Nie słuchałem ani nie oglądałem filmu – wszystko niżej to pomiary liczbowe i obejrzane pojedyncze klatki / arkusze klatek.
 
 ## 1. Co powstało
@@ -14,7 +14,7 @@
 | `src/` | cały kod: analiza (`a01…a12`; v3: `a20…a25` – modele mowy, dopasowanie, fuzja), renderer (`src/video/`), render równoległy, montaż, weryfikacja |
 | `checks/` | arkusze klatek, stopklatki, wyniki weryfikacji (`verify_file.json`, `verify_sync.json`, `exposure.json`) |
 | `fonts/` | czcionki OFL użyte w obrazie i w klonie + pełny tekst licencji |
-| `archive/` | poprzednie wersje filmu: `v1/` … `v7/` (nic nie jest kasowane; w każdej `NOTES.md` z uwagami do tej wersji) |
+| `archive/` | poprzednie wersje filmu: `v1/` … `v8/` (nic nie jest kasowane; w każdej `NOTES.md` z uwagami do tej wersji) |
 | `analysis/asr/` | surowe wyniki modeli mowy: transkrypcje Omnilingual (stem prowadzący i chórki), Whisper, Parakeet, Silero VAD, dopasowania CTC i MFA |
 
 Wymagane narzędzia (wszystkie darmowe, z menedżerów pakietów): `ffmpeg`, Python (`numpy`, `scipy`, `librosa`, `soundfile`, `skia-python`, `pocketsphinx`, `matplotlib`, `onnxruntime`, `sherpa-onnx`, `faster-whisper`, `silero-vad`), Montreal Forced Aligner (conda-forge, przez micromamba), `espeak-ng` + `mbrola-pl1` (apt), Node + Playwright/Chromium (preinstalowane). Modele mowy (pobierane do `tools/models/`, poza repozytorium): Omnilingual ASR CTC 1B i Parakeet TDT v3 (wydania sherpa-onnx), `polish_mfa` (wydania mfa-models, CC BY 4.0), Whisper small CT2 (npm). Żadnych gotowych nagrań ani grafik z internetu – cały obraz jest generowany kodem.
@@ -174,7 +174,7 @@ podrygi pojawiają się w refrenach (reakcje na patykach w górę na „raz” t
   rekompresji, końcowe kodowanie H.264 yuv420p (dwa przebiegi, ≤ 100 MB dla GitHuba) + AAC 320 kb/s z całego MP3 (bez filtrów i cięć).
   Każda wersja renderowana z zamrożonej kopii kodu (`build/vN/src`).
 
-## 5. Jak sprawdziłem wersję v8
+## 5. Jak sprawdziłem wersję v8.1
 Skrypty: `src/verify.py` (plik) i `src/verify_sync.py` (synchronizacja liczona z tych samych funkcji, z których renderowane są klatki).
 Wyniki: `checks/verify_file.json`, `checks/verify_sync.json`, `checks/sheets/` (arkusze co 4 s), `checks/stills/` (45 stopklatek).
 
@@ -209,7 +209,7 @@ Wyniki: `checks/verify_file.json`, `checks/verify_sync.json`, `checks/sheets/` (
   wynurzania/wejścia nie są liczone); kadrowana postać niewidoczna: 4 klatek (97.1, 99.7, 113.3, 147.9 s – wynurzanie na cięciu);
   ważne rekwizyty ujęcia (scenki z życia, zwój, baner, flipchart, „Robię swoje.”…) widoczne w ≥ 90%: 304/304 próbek.
 * Ekspozycja (`src/verify_exposure.py`, `checks/exposure.json`; ujęcia sceny, 10 kl./s): przepalone piksele (kanał ≥ 250) średnio
-  **0.12%** (v3: 13.95%), 95. percentyl 0.3% (v3: 43.96%), najgorsza klatka 53.29%
+  **0.12%** (v3: 13.95%), 95. percentyl 0.3% (v3: 43.96%), najgorsza klatka 53.12%
   (v3: 59.86%); klatek z > 5% przepaleń: 1 z 1737 (v3: 1307 z 1820).
 * Chór: liczebność w refrenach nie spada; w układzie grupowym 0 par nachodzących na siebie.
 
@@ -599,3 +599,23 @@ Przejrzałem jej arkusze i stopklatki i na tej podstawie zrobiłem poprawki v2 p
   sceny do końca wersu.
 * Grażyna stoi przy tym z lewej strony obok Henia, kadry ustawione są w rzędzie na prawo od niej, a napis wersu wisi nad postaciami.
   Kamera obejmuje cały rząd razem z zapasem nad kadrami.
+
+### 7.9 v8.1 – migotanie w 1:39 i wersja wysokiej jakości
+
+#### 7.9.1 Rekwizyty znikające z dłoni (migotanie)
+* Przyczyna w 1:39: chór trzymał kostki bruku tylko do 99,5 s, a chował się pod krawędź do 99,7 s. Kostki znikały więc z uniesionych
+  dłoni w jednej klatce, a pięści w tej samej klatce zmieniały się w otwarte dłonie. Na ośmiu lalkach naraz wyglądało to jak migotanie.
+  Teraz kostki są trzymane do końca chowania i zjeżdżają razem z lalkami.
+* Przejrzałem cały film pod tym kątem: rekwizyt kończy się w trakcie ujęcia, nie na cięciu, a dłoń jest wtedy nad krawędzią sceny.
+  Tak samo znikały cztery inne rekwizyty: tablica-wpis Henia (25,6 s), wpis Grażyny (86,4 s), młotek Prezesa (99,0 s) i zwój
+  #wdzięczność (113,0 s).
+* Poprawka (`timeline.lower_prop`, `roles.py`): przez ostatnie 0,5 s dłoń płynnie schodzi pod krawędź, a drążek rekwizytu zsuwa się
+  jeszcze przez pięść. Wysokie tablice znikają więc pod sceną w całości, zanim przestają być trzymane. Na klatkach sprawdziłem,
+  że w ostatniej klatce trzymania nic już nie wystaje nad krawędź.
+* Zmiana dotyczy tylko kadrów 20–30 s i 80–120 s (porównałem kamerę co 3 klatki i rozmieszczenie wszystkich 45 napisów ze stanem
+  v8). Ponownie wyrenderowałem tylko te 5 z 24 kawałków, reszta jest identyczna z v8.
+
+#### 7.9.2 Wersja wysokiej jakości
+* `music-video-hq.mp4`: te same klatki, H.264 High yuv420p, dwa przebiegi, ok. 12,8 Mb/s obrazu (ponad 4× więcej niż wersja na
+  GitHuba), dźwięk AAC 320 kb/s z całego MP3. Nie ma jej w repozytorium (GitHub odrzuca pliki > 100 MB), przekazana bezpośrednio.
+  Wersja w repozytorium (`final/music-video.mp4`, ≤ 100 MB) zostaje.

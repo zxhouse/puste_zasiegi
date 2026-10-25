@@ -952,7 +952,7 @@
     ],
     "kind": "board",
     "visibility": 1.0,
-    "overlap": 0.004
+    "overlap": 0.0
    },
    {
     "line": [

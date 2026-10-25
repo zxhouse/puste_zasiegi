@@ -4,15 +4,15 @@
   "mean_luma": 81.9,
   "clip_pct_mean": 0.12,
   "clip_pct_p95": 0.3,
-  "clip_pct_max": 53.29,
+  "clip_pct_max": 53.12,
   "frames_clip_over_5pct": 1,
   "frames_clip_over_1pct": 1,
   "p99_luma_median": 227.6,
   "worst": [
    163.9,
    109.0,
-   108.9,
    109.1,
+   108.9,
    108.8
   ]
  },

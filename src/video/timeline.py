@@ -366,7 +366,7 @@ for i, r in enumerate(CHOIR):
     # wtrącenie 'Wywalili na bruk!' (cały chór na drodze, z kostkami bruku)
     r.on(lt(CHOIRI, 0) + 0.22, lt(V2B, 0) - 0.28, 'rise', 'sink', 0.24, 0.45)      # wyskakują na cięciu, z okrzykiem
     r.key(lt(CHOIRI, 0) - 0.4, x=float(CHOIR_X[i])*1.05, y=-40.0, depth=40.0, scale=0.95)
-    r.hold(lt(CHOIRI, 0) - 0.4, le(CHOIRI, 0) + 0.8, 'R', lambda cv, t, k=i: P.cobble(cv, k), grip=True)
+    r.hold(lt(CHOIRI, 0) - 0.4, lt(V2B, 0) + 0.3, 'R', lambda cv, t, k=i: P.cobble(cv, k), grip=True)   # v8: kostki zjeżdżają w dół razem z lalką (wcześniej znikały w ręce w trakcie chowania - migotanie w 1:39)
     gest(r, lt(CHOIRI, 0) - 0.35, 'holdup_R', brow=-0.9, lid=0.0, gaze=(0.0, 0.0), turn=0.0)
     r.key(le(CHOIRI, 0) + 0.31, x=float(CHOIR_X[i])*1.05, y=-40.0, depth=40.0, scale=0.95)
     # przedrefren 2 (panowie) + refren 2 (wszyscy) w studiu w drewnie -> show
@@ -417,6 +417,24 @@ for i, r in enumerate(CHOIR):
     gest(r, REPRISE, 'hold_R'); gest(r, FINAL_HEJ - 0.08, 'up', brow=1.0)
 
 for r in ROLES: r.build()
+
+# v8: rekwizyt kończący się w środku ujęcia (nie na cięciu) nie znika już z uniesionej dłoni w jednej klatce - przez ostatnie
+# 0,5 s dłoń płynnie zjeżdża z nim pod krawędź sceny (tablica Henia 25,6 s, wpis Grażyny 86,4 s, młotek Prezesa 99,0 s,
+# zwój Grażyny 113,0 s; kostki bruku chóru trzymane do końca chowania - patrz wyżej)
+def lower_prop(r, side, t_end, dur=0.5, drop=900.0):
+    """Dłoń schodzi pod krawędź tak nisko, jak sięga ramię, a rekwizyt (drążek) zsuwa się jeszcze przez pięść o drop -
+    wysokie tablice znikają pod krawędzią w całości, zanim rekwizyt przestaje być trzymany."""
+    t0 = t_end - dur; p0 = tuple(float(v) for v in r.g('h' + side, t0))
+    r.k['h' + side] = [kv for kv in r.k['h' + side] if not (t0 < kv[0] <= t_end + 0.05)]
+    glide(r, side, t0, t_end, p0, stow(r.ch, side))
+    n = 8
+    for k in range(n + 1): r.key(t0 + dur*k/n, **{'drop' + side: drop*smoothstep(k/n)**1.4})
+    r.key(t_end + 0.05, **{'drop' + side: 0.0})
+for r_, side_, te_ in ((HENIO, 'R', 25.65), (GRAZ, 'L', 86.41), (PREZ, 'R', 99.02), (GRAZ, 'R', 112.97)):
+    ends = [h[1] for h in r_.holds if h[2] == side_ and abs(h[1] - te_) < 0.03]
+    assert ends, (r_.ch.name, te_)
+    lower_prop(r_, side_, ends[0])
+for r in (HENIO, GRAZ, PREZ): r.build()
 
 # ================================================================== DEKORACJE, KURTYNA
 SETS = [(0.0, 'kitchen', False), (29.9, 'office', True), (lt(V1B, 2), 'conf', False), (lt(PRE1, 0), 'show', False),

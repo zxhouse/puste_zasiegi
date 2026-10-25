@@ -159,7 +159,8 @@ class Role:
         grips = {'L': False, 'R': False}
         for hi, (a, b, side, fn, grip) in enumerate(self.holds):
             if a <= t <= b:
-                props[side].append((lambda cv, fn=fn, t=t: fn(cv, t), grip, (self, hi))); grips[side] = grips[side] or grip
+                drop = self.g('drop' + side, t) if ('drop' + side) in self.k else 0.0     # v8: drążek zsuwany w dół przez pięść
+                props[side].append((lambda cv, fn=fn, t=t, drop=drop: (cv.translate(0, drop) if drop else None, fn(cv, t)), grip, (self, hi))); grips[side] = grips[side] or grip
         rnd = E.lead_round(t) if self.mouth == 'lead' else (E.choir_round(t) if self.mouth == 'choir' else 0.0)
         pose = dict(mouth=mo, round=rnd, smile=self.g('smile', t), turn=turn, tilt=tilt, nod=nod, lean=lean, bob=bob, gaze=(gx, gy), blink=blink,
                     lid=min(self.g('lid', t) + lid_add, 0.85), brow=self.g('brow', t) + brow_add, hands={'L': tuple(hL), 'R': tuple(hR)}, props=props, grip=grips)
