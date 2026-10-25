@@ -5,7 +5,7 @@
   "total_openings_in_lines": 484,
   "lines_exact": 53,
   "lines_total": 53,
-  "half_openings_pct": 62.6,
+  "half_openings_pct": 63.2,
   "worst_lines": [
    {
     "t0": 3.25,
@@ -64,8 +64,8 @@
     "syllables_with_opening": 10
    }
   ],
-  "corr_mouth_vs_vocal_envelope": 0.597,
-  "mouth_open_when_vocal_silent_pct": 2.81
+  "corr_mouth_vs_vocal_envelope": 0.452,
+  "mouth_open_when_vocal_silent_pct": 25.58
  },
  "choir_mouth": {
   "lyric_syllables": 140,
@@ -225,18 +225,138 @@
    185.66
   ]
  },
+ "phrase_ends": {
+  "lead_12.0dB": {
+   "phrase_ends": 89,
+   "closes_early_gt_2frames": 0,
+   "closes_late_gt_2frames": 0,
+   "median_abs_ms": 20.0
+  },
+  "lead_9.0dB": {
+   "phrase_ends": 114,
+   "closes_early_gt_2frames": 0,
+   "closes_late_gt_2frames": 26,
+   "median_abs_ms": 20.0
+  },
+  "lead_15.0dB": {
+   "phrase_ends": 61,
+   "closes_early_gt_2frames": 20,
+   "closes_late_gt_2frames": 0,
+   "median_abs_ms": 43.3
+  },
+  "choir_12.0dB": {
+   "phrase_ends": 36,
+   "closes_early_gt_2frames": 0,
+   "closes_late_gt_2frames": 1,
+   "median_abs_ms": 23.3
+  },
+  "choir_9.0dB": {
+   "phrase_ends": 42,
+   "closes_early_gt_2frames": 0,
+   "closes_late_gt_2frames": 16,
+   "median_abs_ms": 46.7
+  },
+  "choir_15.0dB": {
+   "phrase_ends": 26,
+   "closes_early_gt_2frames": 21,
+   "closes_late_gt_2frames": 0,
+   "median_abs_ms": 110.0
+  }
+ },
  "held_notes": {
   "lead": {
    "held_notes": 41,
-   "mean_open_fraction": 1.0,
-   "notes_open_less_than_95pct": 0,
-   "worst": []
+   "mean_open_fraction": 0.827,
+   "notes_open_less_than_95pct": 20,
+   "worst": [
+    [
+     209.77,
+     1.75,
+     0.31
+    ],
+    [
+     34.11,
+     0.7,
+     0.33
+    ],
+    [
+     152.96,
+     0.6,
+     0.33
+    ],
+    [
+     35.54,
+     0.63,
+     0.44
+    ],
+    [
+     94.31,
+     0.66,
+     0.53
+    ],
+    [
+     155.75,
+     0.47,
+     0.55
+    ],
+    [
+     53.73,
+     0.49,
+     0.58
+    ],
+    [
+     112.35,
+     0.52,
+     0.62
+    ]
+   ]
   },
   "choir": {
    "held_notes": 37,
-   "mean_open_fraction": 1.0,
-   "notes_open_less_than_95pct": 0,
-   "worst": []
+   "mean_open_fraction": 0.751,
+   "notes_open_less_than_95pct": 25,
+   "worst": [
+    [
+     209.76,
+     1.93,
+     0.38
+    ],
+    [
+     114.85,
+     0.4,
+     0.44
+    ],
+    [
+     51.87,
+     0.59,
+     0.47
+    ],
+    [
+     67.66,
+     0.74,
+     0.47
+    ],
+    [
+     186.27,
+     1.59,
+     0.47
+    ],
+    [
+     48.28,
+     0.46,
+     0.5
+    ],
+    [
+     170.49,
+     0.63,
+     0.5
+    ],
+    [
+     183.04,
+     1.53,
+     0.51
+    ]
+   ]
   }
  },
  "word_starts_in_vocal": {
@@ -773,12 +893,12 @@
    ],
    "Henio Kawka"
   ],
-  "min_visible_fraction": 0.978,
+  "min_visible_fraction": 0.981,
   "min_visible_at": [
-   163.87,
+   90.07,
    [
-    10,
-    4
+    5,
+    2
    ]
   ],
   "text_fits_box": {
@@ -1229,7 +1349,7 @@
    113.3,
    147.9
   ],
-  "poi_samples": 323,
+  "poi_samples": 304,
   "poi_samples_less_than_90pct_visible": 0,
   "poi_out_at": [],
   "heads_adjustments": [

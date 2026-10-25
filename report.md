@@ -172,7 +172,7 @@ podrygi pojawiają się w refrenach (reakcje na patykach w górę na „raz” t
   rekompresji, końcowe kodowanie H.264 yuv420p (dwa przebiegi, ≤ 100 MB dla GitHuba) + AAC 320 kb/s z całego MP3 (bez filtrów i cięć).
   Każda wersja renderowana z zamrożonej kopii kodu (`build/vN/src`).
 
-## 5. Jak sprawdziłem wersję v6
+## 5. Jak sprawdziłem wersję v7
 Skrypty: `src/verify.py` (plik) i `src/verify_sync.py` (synchronizacja liczona z tych samych funkcji, z których renderowane są klatki).
 Wyniki: `checks/verify_file.json`, `checks/verify_sync.json`, `checks/sheets/` (arkusze co 4 s), `checks/stills/` (45 stopklatek).
 
@@ -186,7 +186,7 @@ Wyniki: `checks/verify_file.json`, `checks/verify_sync.json`, `checks/sheets/` (
 
 **Synchronizacja**
 * Usta Henia: **484 z 484 sylab ma własny szczyt otwarcia**, 53/53 wersów
-  dokładnie „sylaba = szczyt”; 62.6% szczytów to półotwarcia (< 0,7); usta otwarte w ciszy wokalu: 2.81% takich klatek.
+  dokładnie „sylaba = szczyt”; 63.2% szczytów to półotwarcia (< 0,7); usta otwarte w ciszy wokalu: 25.58% takich klatek.
 * Usta chóru: **140 z 140 sylab** tekstu śpiewanego przez chór ma własny szczyt; 12 wokaliz bez słów; „hej” w 182.43, 185.66 s.
 * Początki słów tam, gdzie gra stem: Henio 99.2% z 265 (wyjątki: „kochani” 5.28 s, „fanfar” 162.17 s),
   chór 100.0% z 75.
@@ -195,19 +195,19 @@ Wyniki: `checks/verify_file.json`, `checks/verify_sync.json`, `checks/sheets/` (
   błyski: 9, 100.0% w ±2 klatkach od werbla lub „hej”.
 * Cięcia: **60/60 na początku wersu (lub zdania w kwestii mówionej) albo na „raz” taktu**. Ujęcia bez ruchu kamery: 0.
 * Napisy (co 2. klatka ujęć sceny, 1817 sprawdzeń): największe nachodzenie napisu na postać **19.8%**
-  powierzchni napisu ([67.8, [4, 2], 'Henio Kawka']; prostokąty: głowa, korpus, dłoń z rzeczywistym obrysem trzymanego rekwizytu), najmniejsza widoczność napisu w kadrze 98% ([163.87, [10, 4]]);
+  powierzchni napisu ([67.8, [4, 2], 'Henio Kawka']; prostokąty: głowa, korpus, dłoń z rzeczywistym obrysem trzymanego rekwizytu), najmniejsza widoczność napisu w kadrze 98% ([90.07, [5, 2]]);
   41 z 44 napisów w pełni widocznych i bez kolizji przez cały czas trwania.
 * Trzymane nuty (głos trwa ≥ 0,4 s po szczycie sylaby; koniec głosu z obwiedni stemu): Henio 41 nut – usta otwarte
-  średnio przez **100.0%** czasu dźwięku, chór 37 nut – 100.0%.
+  średnio przez **82.7%** czasu dźwięku, chór 37 nut – 75.1%.
 * Tekst w polu tablic i dymków (30 napisów): **wszystkie mieszczą się** razem z powiększeniem
   słowa w chwili zaśpiewania; najmniejszy zapas 18.3 px w poziomie i 14.7 px w pionie (obrys glifów z polskimi znakami).
 * Tablice i dymki w otworze sceny (nie za portalem): 100.0% sprawdzonych klatek.
 * Kadr (co 3. klatka ujęć sceny, 1672 klatek): głowa lalki pierwszego planu ucięta krawędzią w **119 klatkach**
   (7.1%; prawie wyłącznie tłum w refrenie 3, 100.2–171.2 s; lalki w trakcie
   wynurzania/wejścia nie są liczone); kadrowana postać niewidoczna: 4 klatek (97.1, 99.7, 113.3, 147.9 s – wynurzanie na cięciu);
-  ważne rekwizyty ujęcia (scenki z życia, zwój, baner, flipchart, „Robię swoje.”…) widoczne w ≥ 90%: 323/323 próbek.
+  ważne rekwizyty ujęcia (scenki z życia, zwój, baner, flipchart, „Robię swoje.”…) widoczne w ≥ 90%: 304/304 próbek.
 * Ekspozycja (`src/verify_exposure.py`, `checks/exposure.json`; ujęcia sceny, 10 kl./s): przepalone piksele (kanał ≥ 250) średnio
-  **0.12%** (v3: 13.95%), 95. percentyl 0.31% (v3: 43.96%), najgorsza klatka 53.44%
+  **0.12%** (v3: 13.95%), 95. percentyl 0.3% (v3: 43.96%), najgorsza klatka 53.28%
   (v3: 59.86%); klatek z > 5% przepaleń: 1 z 1737 (v3: 1307 z 1820).
 * Chór: liczebność w refrenach nie spada; w układzie grupowym 0 par nachodzących na siebie.
 

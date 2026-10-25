@@ -1,10 +1,10 @@
 {
  "v4": {
   "stage_frames": 1737,
-  "mean_luma": 85.8,
+  "mean_luma": 86.0,
   "clip_pct_mean": 0.12,
-  "clip_pct_p95": 0.31,
-  "clip_pct_max": 53.44,
+  "clip_pct_p95": 0.3,
+  "clip_pct_max": 53.28,
   "frames_clip_over_5pct": 1,
   "frames_clip_over_1pct": 1,
   "p99_luma_median": 227.6,
