@@ -202,20 +202,32 @@ def _idx(S, t):
 
 # ---------------------------------------------------------------- kamera z perspektywą warstw
 class Cam:
-    __slots__ = ('x', 'y', 'd', 'f', 'roll')
-    def __init__(self, x=0.0, y=-260.0, d=2000.0, f=1700.0, roll=0.0):
-        self.x, self.y, self.d, self.f, self.roll = x, y, d, f, roll
+    __slots__ = ('x', 'y', 'd', 'f', 'roll', 'yaw')
+    def __init__(self, x=0.0, y=-260.0, d=2000.0, f=1700.0, roll=0.0, yaw=0.0):
+        self.x, self.y, self.d, self.f, self.roll, self.yaw = x, y, d, f, roll, yaw
     def lerp(self, o, a):
-        return Cam(self.x + (o.x - self.x)*a, self.y + (o.y - self.y)*a, self.d*(o.d/self.d)**a, self.f + (o.f - self.f)*a, self.roll + (o.roll - self.roll)*a)
+        return Cam(self.x + (o.x - self.x)*a, self.y + (o.y - self.y)*a, self.d*(o.d/self.d)**a, self.f + (o.f - self.f)*a,
+                   self.roll + (o.roll - self.roll)*a, self.yaw + (o.yaw - self.yaw)*a)
     def scale(self, depth=0.0): return self.f/(self.d + depth)
+    def _homo(self, depth):
+        """v8: kamera na orbicie wokół punktu (x, y) na płaszczyźnie sceny, obrócona o yaw (stopnie) - każda warstwa jest
+        płaszczyzną, więc jej obraz to homografia (dokładna perspektywa, przy yaw=0 zwykłe skalowanie)."""
+        a = math.radians(self.yaw); c, s = math.cos(a), math.sin(a); f = self.f; n = self.d + depth
+        return [f*c/n, 0.0, f*(-c*self.x - s*depth)/n,
+                0.0, f/n, -f*self.y/n,
+                s/n, 0.0, (-s*self.x + self.d + c*depth)/n]
     def apply(self, cv, depth=0.0):
         """Ustawia macierz kanwy dla warstwy na głębokości depth (+ za płaszczyzną sceny, - przed nią)."""
-        s = self.scale(depth)
         cv.translate(W/2, H/2)
         if self.roll: cv.rotate(self.roll)
-        cv.scale(s, s); cv.translate(-self.x, -self.y)
+        if abs(self.yaw) < 1e-6:
+            s = self.scale(depth); cv.scale(s, s); cv.translate(-self.x, -self.y)
+        else:
+            import skia
+            cv.concat(skia.Matrix.MakeAll(*self._homo(depth)))
     def to_screen(self, x, y, depth=0.0):
-        s = self.scale(depth); u, v = (x - self.x)*s, (y - self.y)*s
+        m = self._homo(depth); w = m[6]*x + m[8]
+        u, v = (m[0]*x + m[2])/w, (m[4]*y + m[5])/w
         if self.roll:
             a = math.radians(self.roll); u, v = u*math.cos(a) - v*math.sin(a), u*math.sin(a) + v*math.cos(a)
         return W/2 + u, H/2 + v

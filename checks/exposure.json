@@ -1,19 +1,19 @@
 {
  "v4": {
   "stage_frames": 1737,
-  "mean_luma": 86.0,
+  "mean_luma": 81.9,
   "clip_pct_mean": 0.12,
   "clip_pct_p95": 0.3,
-  "clip_pct_max": 53.28,
+  "clip_pct_max": 53.29,
   "frames_clip_over_5pct": 1,
   "frames_clip_over_1pct": 1,
   "p99_luma_median": 227.6,
   "worst": [
    163.9,
-   90.0,
-   89.9,
-   89.8,
-   89.7
+   109.0,
+   108.9,
+   109.1,
+   108.8
   ]
  },
  "v3_same_measure": {

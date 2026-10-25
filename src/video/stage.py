@@ -323,8 +323,7 @@ def set_wood_back(c):
             c.drawLine(x + 14, yy, x + 52, yy + rng.uniform(-30, 30), skia.Paint(AntiAlias=True, StrokeWidth=2, Color4f=skia.Color4f(0.3, 0.18, 0.08, 0.35)))
     card(c, (-1250, -980, -900, -880), '#3a0d0d', 14, 'card', 130, 0.5)
 
-# ------------------------------------------------------------------ studio podcastowe ('studio w drewnie'): beżowe zasłony w fałdy,
-# panel z drewnianych listew za prowadzącym, regały z roślinami / świecami / lampką / LED, lampy podłogowe z białym abażurem
+# ------------------------------------------------------------------ studio podcastowe (v4-v7: beżowe zasłony, regały; v8: wersja 'cyber-linkedinowa' niżej)
 def _drapes(c, x0, x1, y0, y1, base='#cdb48c', period=118):
     b = col(base)
     g = skia.GradientShader.MakeLinear([skia.Point(x0, 0), skia.Point(x0 + period, 0)],
@@ -370,36 +369,112 @@ def _shelf(c, x, w=260, y_top=-980, y_bot=-80):
     vp = skia.Paint(AntiAlias=True, Color4f=col('#4f8a3d'))
     for k in range(14):
         c.drawOval(skia.Rect(x - w/2 + 18 + 6*math.sin(k), ys[0] + 10 + k*30, x - w/2 + 40 + 6*math.sin(k), ys[0] + 34 + k*30), vp)
+def _glow_line(c, x0, y0, x1, y1, color, w=8, glow=26, alpha=0.55):
+    """Taśma LED: jasny rdzeń + rozmyta poświata."""
+    g = skia.Paint(AntiAlias=True, StrokeWidth=glow, Color4f=skia.Color4f(*color, alpha), StrokeCap=skia.Paint.kRound_Cap)
+    g.setMaskFilter(skia.MaskFilter.MakeBlur(skia.kNormal_BlurStyle, glow*0.8)); c.drawLine(x0, y0, x1, y1, g)
+    k = skia.Paint(AntiAlias=True, StrokeWidth=w, Color4f=skia.Color4f(*[0.55 + 0.45*v for v in color], 1), StrokeCap=skia.Paint.kRound_Cap)
+    c.drawLine(x0, y0, x1, y1, k)
+def _neon_text(c, text, x, y, fname, size, color, alpha=1.0):
+    r, g_, b = color
+    hex_ = '#%02x%02x%02x' % tuple(int(255*(0.65 + 0.35*v)) for v in color)
+    halo = skia.Paint(AntiAlias=True, Color4f=skia.Color4f(r, g_, b, 0.55*alpha))
+    halo.setMaskFilter(skia.MaskFilter.MakeBlur(skia.kNormal_BlurStyle, size*0.28))
+    w = text_width(text, fname, size); f = font(fname, size)
+    c.drawString(text, x - w/2, y, f, halo)
+    draw_text(c, text, x, y, fname, size, hex_, stroke=('#%02x%02x%02x' % tuple(int(255*v) for v in color), max(3, size*0.07)), alpha=alpha)
+def _foam(c, x0, x1, y0, y1, cell=86):
+    """Pianka akustyczna: kwadraty z ostrosłupami (cztery trójkąty w różnym cieniu)."""
+    base = col('#1b1d27')
+    for j, y in enumerate(np.arange(y0, y1, cell)):
+        for i, x in enumerate(np.arange(x0, x1, cell)):
+            cx_, cy_ = x + cell/2, y + cell/2; rot = (i + j) % 2
+            for k, (pa, pb, sh) in enumerate((((x, y), (x + cell, y), 1.22), ((x + cell, y), (x + cell, y + cell), 0.92 if rot else 1.05),
+                                             ((x + cell, y + cell), (x, y + cell), 0.62), ((x, y + cell), (x, y), 1.05 if rot else 0.92))):
+                c.drawPath(poly_path([pa, pb, (cx_, cy_)], True, False), skia.Paint(AntiAlias=True, Color4f=shade(base, sh)))
+            c.drawRect(skia.Rect(x, y, x + cell, y + cell), skia.Paint(AntiAlias=True, Style=skia.Paint.kStroke_Style, StrokeWidth=2.5, Color4f=col('#0b0c12')))
+def _wall_monitor(c, x, y, w, h, kind):
+    from reactions import draw as rdraw
+    card(c, (x - w/2 - 12, y - h/2 - 12, x + w/2 + 12, y + h/2 + 12), '#101114', 10, 'card', 501, 0.4)
+    g = skia.GradientShader.MakeLinear([skia.Point(0, y - h/2), skia.Point(0, y + h/2)], [col('#0f2747').toColor(), col('#081324').toColor()])
+    p = skia.Paint(AntiAlias=True); p.setShader(g); sr = skia.Rect(x - w/2, y - h/2, x + w/2, y + h/2); c.drawRect(sr, p)
+    light_pool(c, x, y, w*0.9, h*1.1, (0.35, 0.65, 1.0), 0.28)
+    c.save(); c.clipRect(sr)
+    gp = skia.Paint(AntiAlias=True, StrokeWidth=1.5, Color4f=skia.Color4f(0.5, 0.7, 1.0, 0.18))
+    for k in range(1, 4): c.drawLine(x - w/2, y - h/2 + k*h/4, x + w/2, y - h/2 + k*h/4, gp)
+    if kind == 'reach':
+        draw_text(c, 'ZASIĘGI', x - w/2 + 16, y - h/2 + 34, 'ui_b', 22, '#9cc8ff', align='left')
+        draw_text(c, '+312%', x + w/2 - 16, y - h/2 + 38, 'ui_b', 34, '#57e3ff', align='right')
+        pts = [(x - w/2 + 14 + i*(w - 28)/9, y + h/2 - 22 - (h - 80)*((i/9)**2.2) + 8*math.sin(i*1.7)) for i in range(10)]
+        area = skia.Path(); area.moveTo(pts[0][0], y + h/2)
+        for q in pts: area.lineTo(*q)
+        area.lineTo(pts[-1][0], y + h/2); area.close()
+        c.drawPath(area, skia.Paint(AntiAlias=True, Color4f=skia.Color4f(0.34, 0.89, 1.0, 0.18)))
+        c.drawPath(poly_path(pts, False, False), skia.Paint(AntiAlias=True, Style=skia.Paint.kStroke_Style, StrokeWidth=5, Color4f=col('#57e3ff'), StrokeJoin=skia.Paint.kRound_Join))
+    else:
+        draw_text(c, 'OBSERWUJĄCY', x - w/2 + 16, y - h/2 + 34, 'ui_b', 22, '#9cc8ff', align='left')
+        draw_text(c, '10 482', x - w/2 + 16, y - h/2 + 84, 'ui_b', 46, '#ffffff', align='left')
+        for i, kd in enumerate(('like', 'heart', 'clap', 'idea')):
+            rdraw(c, kd, x - w/2 + 36 + i*58, y + h/2 - 34, 22)
+        for i in range(6):
+            bh = 18 + 14*i + 6*math.sin(i*2.3)
+            c.drawRect(skia.Rect(x + w/2 - 120 + i*18, y + h/2 - 14 - bh, x + w/2 - 106 + i*18, y + h/2 - 14), skia.Paint(AntiAlias=True, Color4f=col('#ff5fd2' if i == 5 else '#3d8bff')))
+    c.restore()
 def set_podcast_back(c):
-    c.drawRect(skia.Rect(-1800, -1400, 1800, 600), skia.Paint(Color4f=col('#2b211b')))
-    _drapes(c, -1800, 1800, -1300, 600)
-    # panel z drewnianych listew za prowadzącym ('studio w drewnie')
-    card(c, (-330, -1060, 330, -60), '#2a1a10', 8, 'card', 151, 0.5)
+    """v8: 'podcast cyber-linkedinowy' (autoironia autora): ciemna ściana w piance akustycznej, panel z orzechowych listew
+    podświetlony od tyłu na niebiesko ('studio w drewnie'), taśmy LED magenta/cyjan, neon 'in' + 'podcast', ON AIR,
+    ekrany z wykresem zasięgów i licznikiem obserwujących."""
+    g = skia.GradientShader.MakeLinear([skia.Point(0, -1400), skia.Point(0, 600)], [col('#0b0c14').toColor(), col('#141626').toColor(), col('#07070b').toColor()], [0, 0.55, 1])
+    p = skia.Paint(); p.setShader(g); c.drawRect(skia.Rect(-1800, -1400, 1800, 600), p)
+    for (x0, x1) in ((-1800, -400), (400, 1800)): _foam(c, x0, x1, -1100, -60)
+    # panel z listew za prowadzącym, podświetlony od tyłu
+    card(c, (-330, -1060, 330, -60), '#05070d', 8, 'card', 151, 0.4)
+    bl = skia.Paint(AntiAlias=True, Color4f=skia.Color4f(0.04, 0.4, 0.76, 0.85)); bl.setMaskFilter(skia.MaskFilter.MakeBlur(skia.kNormal_BlurStyle, 40))
+    c.drawRect(skia.Rect(-300, -1000, 300, -120), bl)
     rng = np.random.default_rng(9)
     for i, x in enumerate(np.arange(-310, 300, 44)):
         k = 0.88 + rng.uniform(0, 0.24)
         r = skia.Path(); r.addRRect(skia.RRect.MakeRectXY(skia.Rect(x, -1040, x + 28, -80), 5, 5))
-        fill(c, r, Material(shade(col('#b07a45'), k), 'card', 0.6, light=1.18, dark=0.72, seed=152 + i % 5))
-    # neon 'podcast'
-    draw_text(c, 'podcast', -175, -650, 'script', 58, '#ffe3ef', stroke=('#ff5fa2', 5))
-    light_pool(c, -175, -668, 220, 90, (1.0, 0.45, 0.7), 0.35)
-    for sx in (-1, 1): _shelf(c, sx*560)
+        fill(c, r, Material(shade(col('#6b4426'), k), 'card', 0.6, light=1.18, dark=0.72, seed=152 + i % 5))
+        c.drawLine(x + 26, -1040, x + 26, -80, skia.Paint(AntiAlias=True, StrokeWidth=3, Color4f=skia.Color4f(0.4, 0.75, 1.0, 0.55)))
+    # taśmy LED: pionowe przy panelu, pozioma za stołem
+    for sx, colr in ((-1, (1.0, 0.25, 0.75)), (1, (0.2, 0.85, 1.0))):
+        _glow_line(c, sx*370, -1000, sx*370, -90, colr)
+        _glow_line(c, sx*1100, -1000, sx*1100, -90, colr, w=6, glow=20, alpha=0.4)
+    _glow_line(c, -1700, -112, 1700, -112, (0.25, 0.55, 1.0), w=6, glow=22, alpha=0.45)
+    # neon: 'in' w zaokrąglonym kwadracie + 'podcast'
+    nx, ny, ns = -150, -680, 96
+    for (sw, a_, bl_) in ((22, 0.5, 18), (7, 1.0, 0)):
+        pp = skia.Paint(AntiAlias=True, Style=skia.Paint.kStroke_Style, StrokeWidth=sw, Color4f=skia.Color4f(0.25, 0.6, 1.0, a_) if bl_ else col('#bfe0ff'))
+        if bl_: pp.setMaskFilter(skia.MaskFilter.MakeBlur(skia.kNormal_BlurStyle, bl_))
+        c.drawRRect(skia.RRect.MakeRectXY(skia.Rect(nx - ns/2, ny - ns/2, nx + ns/2, ny + ns/2), 18, 18), pp)
+    _neon_text(c, 'in', nx, ny + 26, 'ui_b', 70, (0.25, 0.6, 1.0))
+    _neon_text(c, 'podcast', 85, -660, 'script', 56, (1.0, 0.3, 0.8))
+    light_pool(c, -30, -680, 330, 120, (0.6, 0.45, 1.0), 0.35)
+    # ON AIR
+    card(c, (-900, -735, -660, -650), '#2a0608', 12, 'card', 502, 0.4)
+    light_pool(c, -780, -692, 200, 90, (1.0, 0.15, 0.15), 0.45)
+    _neon_text(c, 'ON AIR', -780, -676, 'ui_b', 44, (1.0, 0.2, 0.2))
+    # ekrany na ścianie
+    _wall_monitor(c, -780, -480, 300, 170, 'reach')
+    _wall_monitor(c, 780, -560, 300, 170, 'followers')
 def set_podcast_mid(c):
-    # lampy podłogowe z białym abażurem (świecą na zasłony) + duże rośliny w donicach
-    for sx in (-1, 1):
+    # rurowe lampy RGB na statywach (magenta / cyjan) + duże rośliny w donicach (podświetlone na zimno)
+    for sx, colr in ((-1, (1.0, 0.3, 0.8)), (1, (0.25, 0.85, 1.0))):
         x = sx*980
-        c.drawLine(x, -540, x, 60, skia.Paint(AntiAlias=True, StrokeWidth=10, Color4f=col('#3a3a3a')))
-        light_pool(c, x, -620, 420, 380, (1.0, 0.82, 0.55), 0.55)
-        sh = poly_path([(x - 120, -720), (x + 120, -720), (x + 140, -545), (x - 140, -545)], True, False)
-        g = skia.GradientShader.MakeLinear([skia.Point(0, -720), skia.Point(0, -545)], [col('#fff8ea').toColor(), col('#ffe2b0').toColor()])
-        p = skia.Paint(AntiAlias=True); p.setShader(g); c.drawPath(sh, p)
+        c.drawLine(x, -200, x, 60, skia.Paint(AntiAlias=True, StrokeWidth=10, Color4f=col('#26262c')))
+        for dx in (-50, 0, 50): c.drawLine(x, 40, x + dx, 70, skia.Paint(AntiAlias=True, StrokeWidth=8, Color4f=col('#26262c')))
+        light_pool(c, x, -480, 380, 460, colr, 0.42)
+        _glow_line(c, x, -760, x, -210, colr, w=26, glow=60, alpha=0.6)
         x2 = sx*1230
-        card(c, (x2 - 80, -170, x2 + 80, 60), '#cfcac2', 14, 'card', 181, 0.5)
-        leaf = skia.Paint(AntiAlias=True, Color4f=col('#2f6b34'))
+        card(c, (x2 - 80, -170, x2 + 80, 60), '#1f2026', 14, 'card', 181, 0.5)
+        leaf = skia.Paint(AntiAlias=True, Color4f=col('#1f5a3a'))
         for k in range(11):
             a = -math.pi/2 + (k - 5)*0.27; L_ = 230 + 60*((k*7) % 3)
             c.save(); c.translate(x2 + math.cos(a)*L_*0.55, -170 + math.sin(a)*L_*0.55); c.rotate(math.degrees(a) + 90)
-            c.drawOval(skia.Rect(-30, -L_*0.5, 30, 0), leaf); c.restore()
+            c.drawOval(skia.Rect(-30, -L_*0.5, 30, 0), leaf)
+            c.drawOval(skia.Rect(-30, -L_*0.5, 30, 0), skia.Paint(AntiAlias=True, Style=skia.Paint.kStroke_Style, StrokeWidth=3, Color4f=skia.Color4f(*colr, 0.5)))
+            c.restore()
 
 def set_under_back(c):
     c.drawRect(skia.Rect(-1800, -1400, 1800, 1600), skia.Paint(Color4f=col('#07070b')))
@@ -418,3 +493,27 @@ def draw_set_layer(cv, name, layer):
     fn = fns[0] if layer == 'back' else fns[1]
     if fn is None: return
     cv.drawPicture(cached((name, layer), fn))
+
+# ------------------------------------------------------------------ v8: widownia na pierwszym planie (jak w prawdziwym show)
+D_AUD = -560.0
+_AUD = None
+def audience(cv, t, energy=0.0):
+    """Ciemne sylwetki głów i ramion widzów przed sceną, rozmyte (bliżej kamery niż ostrość), z ciepłym konturem od
+    sceny. Leżą nisko, więc widać je tylko w planach ogólnych - dają najbliższą warstwę do paralaksy."""
+    global _AUD
+    if _AUD is None:
+        rng = np.random.default_rng(31); _AUD = []
+        for row, (y0, dx) in enumerate(((205.0, 0.0), (270.0, 85.0))):
+            for x in np.arange(-2600.0 + dx, 2601.0, 170.0):
+                _AUD.append((row, x + rng.uniform(-35, 35), y0 + rng.uniform(-18, 18), rng.uniform(0.85, 1.15), rng.uniform(0, 6.28)))
+    body = skia.Paint(AntiAlias=True, Color4f=col('#0a080d')); body.setMaskFilter(skia.MaskFilter.MakeBlur(skia.kNormal_BlurStyle, 9))
+    rim = skia.Paint(AntiAlias=True, Style=skia.Paint.kStroke_Style, StrokeWidth=7, Color4f=skia.Color4f(1.0, 0.78, 0.55, 0.30))
+    rim.setMaskFilter(skia.MaskFilter.MakeBlur(skia.kNormal_BlurStyle, 6))
+    for row, x, y, s, ph in sorted(_AUD, key=lambda a: a[0]):
+        bob = (6 + 10*energy)*math.sin(t*2.1 + ph) if energy > 0 else 3*math.sin(t*0.7 + ph)
+        x_, y_ = x + 4*math.sin(t*0.5 + ph), y - abs(bob)*energy - (0 if energy else bob*0.3)
+        p = skia.Path()
+        p.addOval(skia.Rect(x_ - 52*s, y_ - 66*s, x_ + 52*s, y_ + 60*s))                   # głowa
+        p.addRRect(skia.RRect.MakeRectXY(skia.Rect(x_ - 120*s, y_ + 50*s, x_ + 120*s, y_ + 400), 70*s, 70*s))   # ramiona
+        cv.drawPath(p, body)
+        cv.drawArc(skia.Rect(x_ - 50*s, y_ - 64*s, x_ + 50*s, y_ + 40*s), 200, 140, False, rim)

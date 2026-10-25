@@ -152,10 +152,39 @@ def comic_panel(cv, kind, w=220, h=170):
     card(cv, (-w/2, -h, w/2, 0), '#fffdf5', 6, 'card', 220, 0.6)
     cv.drawRect(skia.Rect(-w/2 + 10, -h + 10, w/2 - 10, -10), skia.Paint(AntiAlias=True, Style=skia.Paint.kStroke_Style, StrokeWidth=5, Color4f=col('#222222')))
     ink = skia.Paint(AntiAlias=True, Color4f=col('#222222'))
+    cv.save(); cv.clipRect(skia.Rect(-w/2 + 13, -h + 13, w/2 - 13, -13), doAntiAlias=True)        # v8: rysunek tylko w ramce kadru
+    _panel_art(cv, kind, w, h, ink)
+    cv.restore()
+    cv.drawRect(skia.Rect(-w/2 + 10, -h + 10, w/2 - 10, -10), skia.Paint(AntiAlias=True, Style=skia.Paint.kStroke_Style, StrokeWidth=5, Color4f=col('#222222')))
+
+STORY = ['Rozdział 1: jak poranna kawa', 'nauczyła mnie przywództwa.', 'Wstałam o 4:30. Medytacja.', 'Wdzięczność. Zimny prysznic.',
+         'Potem pies spojrzał na mnie', 'i zrozumiałam: synergia.', 'Wątek 2/27: o pokorze', 'i o tym, jak dźwignęłam', 'ten hantel - i siebie.',
+         'Nie byłoby tego bez Was.', 'Rozdział 3: medal, którego', 'nikt mi nie dał, ale', 'na który zasłużyłam.', 'A teraz najważniejsze:',
+         'dlaczego wschód słońca', 'to KPI duszy. Po pierwsze…', 'Po drugie… Po trzecie…', 'Wnioski (część 1/9):', '#wdzięczność #rozwój',
+         '#pokora #podróż #inspiracja', 'Ciąg dalszy w komentarzu…']
+def story_scroll(cv, length, k=0, w=170):
+    """Zwój z 'ogromną i długą opowieścią' rozwijający się pod kadrem: wałek u góry, papier z gęstym tekstem, zwinięty dół."""
+    if length <= 2: return
+    card(cv, (-w/2 - 8, -10, w/2 + 8, 12), '#c9945e', 10, 'card', 232 + k, 0.6)
+    paper = skia.Path(); paper.moveTo(-w/2, 6)
+    for j in range(13): paper.lineTo(-w/2 + 3*math.sin(j*1.1 + k), 6 + length*j/12)
+    paper.lineTo(w/2, 6 + length)
+    for j in range(12, -1, -1): paper.lineTo(w/2 + 3*math.sin(j*0.9 + k), 6 + length*j/12)
+    paper.close()
+    fill(cv, paper, Material('#fbf3e4', 'card', 0.8, light=1.04, dark=0.92, seed=233 + k))
+    cv.save(); cv.clipPath(paper, doAntiAlias=True)
+    n = int(length//24)
+    for i in range(n):
+        draw_text(cv, STORY[(i + k*4) % len(STORY)], -w/2 + 10, 30 + i*24, 'hand', 17, '#5a3d2b', 'left', maxw=w - 18)
+    cv.restore()
+    cv.drawOval(skia.Rect(-w/2 - 4, length - 4, w/2 + 4, length + 22), skia.Paint(AntiAlias=True, Color4f=col('#e8dcc4')))   # zwinięty dół
+    cv.drawOval(skia.Rect(-w/2 + 10, length + 2, w/2 - 10, length + 14), skia.Paint(AntiAlias=True, Color4f=col('#cbbd9f')))
+
+def _panel_art(cv, kind, w, h, ink):
     if kind == 0:   # wschód słońca
         cv.drawCircle(0, -40, 46, skia.Paint(AntiAlias=True, Color4f=col('#ffb703'))); cv.drawRect(skia.Rect(-w/2 + 12, -40, w/2 - 12, -12), skia.Paint(Color4f=col('#219ebc')))
     elif kind == 1:  # kawa
-        mug(cv, '#8d6e63')
+        cv.save(); cv.translate(-12, -24); cv.scale(0.85, 0.85); mug(cv, '#8d6e63'); cv.restore()
     elif kind == 2:  # siłownia (hantel)
         cv.drawRect(skia.Rect(-60, -92, 60, -80), ink); cv.drawRect(skia.Rect(-80, -112, -60, -60), ink); cv.drawRect(skia.Rect(60, -112, 80, -60), ink)
     elif kind == 3:  # pies
@@ -358,16 +387,22 @@ def desk_mic(cv):
     cv.drawCircle(0, -225, 60, skia.Paint(AntiAlias=True, Style=skia.Paint.kStroke_Style, StrokeWidth=6, Color4f=col('#3a3a3a')))
 
 def podcast_desk(cv, seats):
-    """Stół podcastowy z jasnego drewna (zasłania lalki do pasa) + mikrofony na ramionach przy każdym miejscu.
-    seats: lista (x, y_ust, strona_mikrofonu, skala) - mikrofon z boku ust, nie zasłania ruchu szczęki."""
+    """Stół podcastowy (v8: czarny połysk z taśmą RGB na krawędzi, plakietka show) - zasłania lalki do pasa - + mikrofony
+    na ramionach przy każdym miejscu. seats: lista (x, y_ust, strona_mikrofonu, skala) - mikrofon z boku ust."""
     top = -105
     body = skia.Path(); body.addRRect(skia.RRect.MakeRectXY(skia.Rect(-1080, top + 14, 1080, 120), 18, 18))
-    fill(cv, body, Material('#9b6a3f', 'card', 0.8, light=1.12, dark=0.78, seed=410))
-    for k in range(7):     # słoje
-        y = top + 34 + k*14
-        cv.drawLine(-1060, y, 1060, y + 4*math.sin(k), skia.Paint(AntiAlias=True, StrokeWidth=2, Color4f=skia.Color4f(0.3, 0.17, 0.07, 0.22)))
+    fill(cv, body, Material('#16171d', 'card', 0.5, light=1.2, dark=0.8, seed=410))
+    g = skia.GradientShader.MakeLinear([skia.Point(-1080, 0), skia.Point(1080, 0)], [col('#ff4fc8').toColor(), col('#3d7bff').toColor(), col('#38e1ff').toColor(), col('#3d7bff').toColor(), col('#ff4fc8').toColor()])
+    for (sw, bl, a) in ((26, 16, 0.55), (6, 0, 1.0)):
+        lp = skia.Paint(AntiAlias=True, StrokeWidth=sw); lp.setShader(g); lp.setAlphaf(a)
+        if bl: lp.setMaskFilter(skia.MaskFilter.MakeBlur(skia.kNormal_BlurStyle, bl))
+        cv.drawLine(-1060, top + 24, 1060, top + 24, lp)
     blat = skia.Path(); blat.addRRect(skia.RRect.MakeRectXY(skia.Rect(-1100, top - 10, 1100, top + 16), 10, 10))
-    fill(cv, blat, Material('#c38f5c', 'card', 0.8, light=1.15, dark=0.85, seed=411))
+    fill(cv, blat, Material('#22232b', 'card', 0.4, light=1.3, dark=0.85, seed=411))
+    cv.drawLine(-1090, top - 6, 1090, top - 6, skia.Paint(AntiAlias=True, StrokeWidth=3, Color4f=skia.Color4f(0.75, 0.85, 1.0, 0.45)))   # odblask
+    card(cv, (-150, top + 44, 150, top + 98), '#0b0c12', 10, 'card', 413, 0.3)
+    draw_text(cv, 'PUSTE ZASIĘGI', 0, top + 72, 'ui_b', 22, '#9cc8ff', maxw=270)
+    draw_text(cv, 'podcast #42', 0, top + 92, 'ui', 15, '#ff7fd8', maxw=270)
     arm = skia.Paint(AntiAlias=True, StrokeWidth=11, Color4f=col('#1c1c1e'), StrokeCap=skia.Paint.kRound_Cap)
     for (x, my, side, k) in seats:
         bx = x + side*250*k; mx = x + side*158*k; mcy = my + 62*k

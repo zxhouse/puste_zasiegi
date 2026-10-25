@@ -11,6 +11,20 @@ def round_glasses(color='#2b2b2b', r=22, dx=46, dy=-88):
         for sg in (-1, 1): cv.drawCircle(sg*dx, dy, r - 3, g)
     return f
 
+def square_glasses(color='#1c1c1c', w=40, h=37, dx=46, dy=-84, t=9):
+    """Okulary w grubych, kwadratowych oprawkach (v8, Henio): ciemne grube ramki, mostek, lekki odblask szkieł."""
+    def f(cv, ch):
+        fr = skia.Paint(AntiAlias=True, Style=skia.Paint.kStroke_Style, StrokeWidth=t, Color4f=col(color), StrokeJoin=skia.Paint.kRound_Join)
+        gl = skia.Paint(AntiAlias=True, Color4f=skia.Color4f(0.85, 0.92, 1.0, 0.16))
+        for sg in (-1, 1):
+            r = skia.RRect.MakeRectXY(skia.Rect(sg*dx - w, dy - h, sg*dx + w, dy + h), 8, 8)
+            cv.drawRRect(r, gl); cv.drawRRect(r, fr)
+            cv.drawLine(sg*dx - w*0.55, dy - h*0.55, sg*dx - w*0.1, dy - h*0.75, skia.Paint(AntiAlias=True, StrokeWidth=4, StrokeCap=skia.Paint.kRound_Cap, Color4f=skia.Color4f(1, 1, 1, 0.5)))
+            cv.drawLine(sg*(dx + w), dy - h*0.4, sg*(dx + w + 26), dy - h*0.55, fr)          # zauszniki
+        br = skia.Path(); br.moveTo(-dx + w, dy - 4); br.quadTo(0, dy - 16, dx - w, dy - 4)
+        cv.drawPath(br, fr)
+    return f
+
 def star_shades(cv, ch):        # okulary-gwiazdy Grażyny (na czubku głowy)
     p = skia.Paint(AntiAlias=True, Color4f=col('#ff4fa0'))
     for sg in (-1, 1):
@@ -33,7 +47,7 @@ HENIO = Character('Henio Kawka', '#d6b48c', head_w=128, head_h=104, head_n=2.9, 
                   jaw_drop=62, eye_r=33, eye_dx=46, eye_y=-84, lid=0.38, nose='#a04a3a', nose_r=(30, 34), nose_y=-26,
                   brows='#3a2f2a', brow_y=-128, brow_len=58, brow_w=19, hair='#3b2a20', hair_style='combover', hair_len=30,
                   torso_w=(96, 122), costume=dict(jacket='#6f7480', shirt='#f1efe8', tie='#c0392b', lapels=True, buttons='#2f3238'),
-                  extra=dict(stubble='#5a6170'), seed=11)
+                  extra=dict(stubble='#5a6170', glasses=square_glasses()), seed=11)
 
 GRAZYNA = Character('Grażyna Gratka', '#b9a3e3', head_w=108, head_h=112, head_n=2.2, mouth_w=0.8, mouth_smile=9, jaw_drop=54,
                     eye_r=29, eye_dx=40, eye_y=-86, lid=0.12, nose='#9a78d6', nose_r=(18, 15), nose_y=-26, brows='#5b2c6f',

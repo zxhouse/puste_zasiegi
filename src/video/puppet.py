@@ -269,6 +269,12 @@ class Character:
             infront = pose.get('arm_front', {}).get(side, True)
             if infront != front: continue
             (sx, sy), (ex, ey), (hx, hy) = self._arm_geom(pose, side)
+            plist0 = pose.get('props', {}).get(side, [])
+            if any(isinstance(pr, tuple) and pr[1] for pr in plist0):
+                # v8: chwyt drążka - łokieć poniżej i na zewnątrz dłoni, przedramię dochodzi do pięści od dołu (prosty nadgarstek,
+                # jak przy trzymaniu pochodni), zamiast podchodzić z boku i 'łamać' nadgarstek
+                sgn_ = -1 if side == 'L' else 1
+                ex, ey = hx + sgn_*min(70.0, abs(hx - sx)*0.5 + 20), max(hy + 110, (sy + hy)/2 + 40)
             cc = dict(self.costume); cc.update(pose.get('costume', {}))
             sleeve = col(cc.get('sleeve', cc.get('jacket', '#6d6f78')))
             # pręt (rod): od dłoni w dół, poza kadr (zasłonięty krawędzią sceny)
@@ -296,15 +302,17 @@ class Character:
                 if g: cv.save(); fn(cv); cv.restore()
             if gripping:
                 # 2) pięść zaciśnięta na drążku: zwinięte palce + kciuk z przodu, mankiet od strony ręki
-                cv.save(); cv.rotate((ang - 90)*0.35)
-                fist = skia.Path(); fist.addRRect(skia.RRect.MakeRectXY(skia.Rect(-24, -20, 24, 22), 17, 17))
+                # v8: pięść osiowo na pionowym drążku (bez obrotu): palce owinięte wokół drążka od przodu, kciuk na górze,
+                # mankiet rękawa pod pięścią
+                cuff = skia.Path(); cuff.addRRect(skia.RRect.MakeRectXY(skia.Rect(-25, 14, 25, 34), 9, 9))
+                fill(cv, cuff, Material(shade(sleeve, 0.85), 'felt', 0.7, seed=self.seed + 33)); soft_edge(cv, cuff, shade(sleeve, 0.45), 2, 0.35)
+                fist = skia.Path(); fist.addRRect(skia.RRect.MakeRectXY(skia.Rect(-26, -22, 26, 22), 15, 15))
                 fill(cv, fist, hm); soft_edge(cv, fist, shade(self.hand_c, 0.45), 3, 0.4)
-                kn = skia.Paint(AntiAlias=True, Style=skia.Paint.kStroke_Style, StrokeWidth=2.6, Color4f=shade(self.hand_c, 0.55), StrokeCap=skia.Paint.kRound_Cap)
-                for yy in (-8, 2, 12): cv.drawLine(-18 if side == 'R' else 6, yy, -6 if side == 'R' else 18, yy, kn)
+                kn = skia.Paint(AntiAlias=True, Style=skia.Paint.kStroke_Style, StrokeWidth=2.4, Color4f=shade(self.hand_c, 0.55), StrokeCap=skia.Paint.kRound_Cap)
+                for yy in (-9, 1, 11): cv.drawLine(-20, yy, 20, yy, kn)                      # zwinięte palce w poprzek drążka
                 sgn = -1 if side == 'R' else 1
-                th = skia.Path(); th.addRRect(skia.RRect.MakeRectXY(skia.Rect(-14 if sgn > 0 else -4, -24, 4 if sgn > 0 else 14, -8), 7, 7))
+                th = skia.Path(); th.addRRect(skia.RRect.MakeRectXY(skia.Rect(-6 - 12*(sgn < 0), -30, 6 + 12*(sgn > 0), -14), 8, 8))
                 fill(cv, th, Material(shade(self.hand_c, 1.06), 'felt', 0.55, seed=self.seed + 43)); soft_edge(cv, th, shade(self.hand_c, 0.45), 2, 0.35)
-                cv.restore()
             else:
                 cv.save(); cv.rotate(ang - 90)
                 hp = skia.Path(); hp.addRRect(skia.RRect.MakeRectXY(skia.Rect(-20, -4, 20, 34), 18, 18))

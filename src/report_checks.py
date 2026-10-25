@@ -26,7 +26,7 @@ if tf: extra += f"""* Tekst w polu tablic i dymków ({tf['signs']} napisów): **
 * Tablice i dymki w otworze sceny (nie za portalem): {sg['boxed_sign_frames_inside_stage_opening_pct']}% sprawdzonych klatek.
 """
 if fr: extra += f"""* Kadr (co 3. klatka ujęć sceny, {fr['stage_frames_checked']} klatek): głowa lalki pierwszego planu ucięta krawędzią w **{fr['frames_with_head_cut_by_edge']} klatkach**
-  ({fr['frames_with_head_cut_by_edge']/fr['stage_frames_checked']*100:.1f}%; prawie wyłącznie tłum w refrenie 3, {fr['head_cut_at'][0] if fr['head_cut_at'] else '–'}–{fr['head_cut_at'][-1] if fr['head_cut_at'] else '–'} s; lalki w trakcie
+  ({fr['frames_with_head_cut_by_edge']/fr['stage_frames_checked']*100:.1f}%; głównie druga postać na skraju planu dwóch postaci, np. Henio przy Kasi 100,2–102,8 s, oraz lalki z boku rzędu w refrenach; pierwsze próbki: {fr['head_cut_at'][0] if fr['head_cut_at'] else '–'}…{fr['head_cut_at'][-1] if fr['head_cut_at'] else '–'} s; lalki w trakcie
   wynurzania/wejścia nie są liczone); kadrowana postać niewidoczna: {fr['frames_with_framed_subject_not_visible']} klatek ({', '.join(f'{x:g}' for x in fr['subject_missing_at'])} s – wynurzanie na cięciu);
   ważne rekwizyty ujęcia (scenki z życia, zwój, baner, flipchart, „Robię swoje.”…) widoczne w ≥ 90%: {fr['poi_samples'] - fr['poi_samples_less_than_90pct_visible']}/{fr['poi_samples']} próbek.
 """

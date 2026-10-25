@@ -237,12 +237,12 @@ gest(g, lt(V1B, 2), 'holdup_L', smile=1.0, gaze=(0.0, 0.0), brow=0.9, lid=0.0, t
 gest(g, wt(V1B, 2, 3), 'hips', smile=1.0, turn=0.3)
 gest(g, lt(V1B, 3), 'hips', smile=0.6, gaze=(0.8, 0.0), turn=0.3)
 g.on(lt(V2, 1) - 0.4, lt(V2, 3), 'rise', 'none', 0.5, 0.45)                # jej studio
-g.key(lt(V2, 1) - 1.0, x=120.0)
+g.key(lt(V2, 1) - 1.0, x=120.0); g.key(lt(V2, 2) - 0.01, x=120.0); g.key(lt(V2, 2), x=-600.0)      # v8: przy 'pięciu scenkach' z boku, scenki i zwoje obok niej
 g.hold(lt(V2, 1) - 0.4, le(V2, 1) + 0.2, 'L', lambda cv, t: P.linkedin_card(cv, 'Z pokorą informuję…', 450, 200, 'Grażyna Gratka', side=-1), grip=True)
 gest(g, lt(V2, 1) - 0.4, 'holdup_L', smile=1.0, brow=0.7, lid=0.2, gaze=(-0.2, -0.2))
 gest(g, wt(V2, 1, 3), 'holdup_L', smile=1.0, lid=0.5, gaze=(0.3, -0.6))          # 'z pokorą' - przymknięte oczy
 gest(g, lt(V2, 2), 'present_L', smile=1.0, gaze=(-0.4, -0.6), brow=0.6)          # pokazuje kadry 'scenek'
-for i in range(5): g.key(wt(V2, 2, 2) + i*0.41, hL=(-250.0 + i*55, -440.0 - 25*(i % 2)))      # wskazuje kolejne kadry nad głową
+for i in range(5): g.key(wt(V2, 2, 2) + i*0.41, hR=(230.0 + i*35, -360.0 - 25*(i % 2)))      # wskazuje kolejne kadry obok siebie
 gest(g, wt(V2, 2, 7), 'wide', smile=1.0, brow=0.9)                               # 'długi wywód'
 g.on(lt(V2B, 2) - 0.5, lt(PRE2, 0), 'rise', 'none', 0.5)               # raj: wdzięczność, aureola
 g.key(lt(V2B, 2) - 1.0, x=600.0, y=-30.0)
@@ -488,9 +488,7 @@ def stage_props(t):
         pass                     # v6: balon-serce usunięty
     for (a_, b_) in [(wt(CH1, 1, 2), wt(CH1, 1, 2) + 1.4), (wt(CH2, 1, 2), wt(CH2, 1, 2) + 1.4), (wt(CH3, 1, 2), wt(CH3, 1, 2) + 1.4)]:
         if a_ - 0.1 <= t <= b_: pr.append((-6.0, lambda cv, t, a_=a_: sparkles(cv, t, a_)))
-    # studio Grażyny: ring light, kadry 'scenek', zwój 'wywodu'
-    if lt(V2, 0) + 0.1 <= t <= lt(V2, 3):
-        pr.append((60.0, lambda cv, t: ringlight(cv, t)))
+    # studio Grażyny: kadry 'scenek', pod każdym zwój 'wywodu' (v8: ring light usunięty)
     if wt(V2, 2, 2) - 0.1 <= t <= lt(V2, 3):
         def panels(cv, t):
             for i in range(5):
@@ -500,10 +498,11 @@ def stage_props(t):
                 px, py = PANEL_POS[i]
                 cv.save(); cv.translate(px, py + 120*(1 - a)); s = 0.6 + 0.4*a; cv.scale(s, s); cv.rotate((i - 2)*3)
                 P.comic_panel(cv, i); cv.restore()
+                # zwój z długą opowieścią rozwija się pod kadrem aż do krawędzi sceny ('i długi wywód o tym, że')
+                L_ = 500*smoothstep((t - t0 - 0.25)/(lt(V2, 3) - t0 - 0.3))**0.8
+                cv.save(); cv.translate(px, py + 8); P.story_scroll(cv, L_, i); cv.restore()
         pr.append((60.0, panels))
-    if wt(V2, 2, 8) - 0.2 <= t <= lt(V2, 3):
-        L_ = 700*smoothstep((t - (wt(V2, 2, 8) - 0.2))/1.0)
-        pr.append((100.0, lambda cv, t, L_=L_: (cv.translate(SCROLL_X, SCROLL_Y), P.scroll(cv, L_, 'i dlatego…'))))
+
     # droga: pieczątka RESTRUKTURYZACJA na tle po 'bruk'
     if wt(V2, 4, 8) - 0.05 <= t <= lt(V2B, 0) - 0.02:
         a = smoothstep((t - wt(V2, 4, 8))/0.08)
@@ -572,24 +571,6 @@ def sparkles(cv, t, t0):
         s = 10 + 18*a
         p_ = skia.Paint(AntiAlias=True, Color4f=skia.Color4f(1, 0.95, 0.7, a))
         cv.drawPath(P.poly_path([(x, y - s), (x + s*0.25, y - s*0.25), (x + s, y), (x + s*0.25, y + s*0.25), (x, y + s), (x - s*0.25, y + s*0.25), (x - s, y), (x - s*0.25, y - s*0.25)], True, False), p_)
-def ringlight(cv, t):
-    import skia
-    from gfx import light_pool
-    # v6: lampa pierścieniowa do selfie - świecąca obręcz LED, uchwyt z telefonem w środku (nagrywa Grażynę), statyw
-    lp = skia.Paint(AntiAlias=True, StrokeWidth=10, Color4f=P.col('#2b2b2f'), StrokeCap=skia.Paint.kRound_Cap)
-    cv.drawLine(RING_X, -300, RING_X, 40, lp)
-    for dx in (-90, 0, 90): cv.drawLine(RING_X, 30, RING_X + dx, 70, lp)
-    light_pool(cv, RING_X, -420, 260, 260, (1, 0.96, 0.88), 0.30)
-    cv.drawCircle(RING_X, -420, 122, skia.Paint(AntiAlias=True, Style=skia.Paint.kStroke_Style, StrokeWidth=34, Color4f=P.col('#3a3a40')))
-    g = skia.Paint(AntiAlias=True, Style=skia.Paint.kStroke_Style, StrokeWidth=24, Color4f=P.col('#fffaf0'))
-    cv.drawCircle(RING_X, -420, 122, g)
-    for k in range(36):                                   # diody
-        a = k*math.pi/18
-        cv.drawCircle(RING_X + 122*math.cos(a), -420 + 122*math.sin(a), 4, skia.Paint(AntiAlias=True, Color4f=P.col('#ffe9b8')))
-    cv.drawLine(RING_X, -300, RING_X, -420, skia.Paint(AntiAlias=True, StrokeWidth=8, Color4f=P.col('#2b2b2f')))
-    cv.drawRRect(skia.RRect.MakeRectXY(skia.Rect(RING_X - 34, -488, RING_X + 34, -352), 12, 12), skia.Paint(AntiAlias=True, Color4f=P.col('#1c1c1e')))   # telefon tyłem
-    for (dx, dy) in ((-14, -466), (6, -466), (-14, -446)): cv.drawCircle(RING_X + dx, dy, 7, skia.Paint(AntiAlias=True, Color4f=P.col('#3d4450')))
-    cv.drawCircle(RING_X + 14, -444, 5, skia.Paint(AntiAlias=True, Color4f=P.col('#ff3b30')))      # nagrywa
 def haze(cv, t, a):
     import skia
     g = skia.GradientShader.MakeLinear([skia.Point(0, -700), skia.Point(0, 400)], [skia.Color4f(1, 1, 1, 0).toColor(), skia.Color4f(0.9, 0.92, 1, 0.55*a).toColor()])
@@ -639,9 +620,7 @@ def _subj_geom(r, t):
 
 # ------------------------------------------------------------------ rekwizyty sceny ważne dla kadru (POI): okno czasu, prostokąt w świecie, głębokość
 JON = wt(V1, 1, 1) + 0.24; JT0 = wt(V1, 1, 1) - 0.06      # marynarka: start 'wskoku' i chwila zmiany kostiumu
-PANEL_POS = [(-400, -548), (-140, -560), (120, -548), (380, -560), (640, -548)]   # 'pięć scenek z życia': rząd jak storyboard nad Grażyną
-SCROLL_X, SCROLL_Y = 900.0, -930.0
-RING_X = -800.0
+PANEL_POS = [(-130, -545), (130, -557), (390, -545), (650, -557), (910, -545)]   # 'pięć scenek z życia': rząd jak storyboard obok Grażyny, pod każdym zwój
 POI = {
     'easel': ((12.4, 29.9), (-1030, -630, -570, -280), S.D_MID),
     'jacket': ((lt(V1, 1) - 0.4, JON + 0.3), (100, -460, 400, -160), -5.0),
@@ -649,11 +628,9 @@ POI = {
     'banner': ((wt(V1B, 0, 2) - 0.5, lt(V1B, 2)), (-505, -860, 505, -590), 260.0),
     'cloud': ((wt(V1B, 0, 4) - 0.3, lt(V1B, 2)), (0, -670, 290, -480), -8.0),
     'panels': ((wt(V2, 2, 2) - 0.1, lt(V2, 3)), (min(p[0] for p in PANEL_POS) - 115, min(p[1] for p in PANEL_POS) - 180,
-                                                 max(p[0] for p in PANEL_POS) + 115, max(p[1] for p in PANEL_POS) + 10), 60.0),
-    'scroll': ((wt(V2, 2, 8) - 0.2, lt(V2, 3)), (SCROLL_X - 155, S.OPEN_T, SCROLL_X + 155, SCROLL_Y + 560), 100.0),
+                                                 max(p[0] for p in PANEL_POS) + 115, -40), 60.0),
     'stamp_mark': ((wt(V2, 4, 8) - 0.05, lt(V2B, 0)), (-230, -755, 580, -520), 300.0),
     'flipchart': ((lt(V2B, 0) - 0.02, lt(V2B, 1)), (-335, -590, 75, 40), 40.0),
-    'ringlight': ((lt(V2, 0) + 0.1, lt(V2, 3)), (RING_X - 150, -560, RING_X + 150, -280), 60.0),
     'halo': ((wt(V2B, 3, 2) - 0.6, lt(PRE2, 0)), (390, -630, 810, -410), -4.0),
     'robie': ((lt(BR, 1) - 0.4, le(BR, 4) + 0.6), (235, -375, 705, -160), -110.0),
 }
@@ -769,7 +746,9 @@ def _is_static(s):
     _STATIC[s[0]] = st; return st
 def _shot_cam(t, s, extras=True):
     keys = s[3]
-    if not any(isinstance(k[1], dict) for k in keys): return E.shot_cam(t, s[0], s[1], keys, 0.3)
+    if not any(isinstance(k[1], dict) for k in keys):
+        c = E.shot_cam(t, s[0], s[1], keys, 0.3)
+        return Cam(c.x, c.y, c.d, c.f, c.roll, _op_yaw(s, E.ease((t - s[0])/max(s[1] - s[0], 1e-6), 0.3)))
     tau = E.ease((t - s[0])/max(s[1] - s[0], 1e-6), 0.45)
     cams = []
     for u, spec in keys:
@@ -780,7 +759,21 @@ def _shot_cam(t, s, extras=True):
     for (a, ca), (b, cb) in zip(cams[:-1], cams[1:]):
         if tau <= b: cam = ca.lerp(cb, (tau - a)/max(b - a, 1e-6)); break
     if extras and _is_static(s): cam = Cam(cam.x, cam.y, cam.d*(1 - 0.05*tau), cam.f, cam.roll)     # powolny najazd (5%)
-    return cam
+    return Cam(cam.x, cam.y, cam.d, cam.f, cam.roll, _op_yaw(s, tau))
+_OPIDX = {}
+def _op_yaw(s, tau):
+    """v8: jak w studiu z kilkoma kamerami - każde ujęcie z lekkiego boku (na zmianę z lewej i z prawej, 1,2-2,6 stopnia),
+    a w trakcie ujęcia kamera powoli objeżdża scenę po łuku (1,4-2,8 stopnia), przez co płaszczyzny dekoracji, lalek
+    i portalu przesuwają się względem siebie (paralaksa)."""
+    if not _OPIDX:
+        k = 0
+        for sh in SHOTS:
+            if sh[2] in ('stage', 'under'): _OPIDX[sh[0]] = k; k += 1
+    i = _OPIDX.get(s[0], 0)
+    side = 1.0 if i % 2 else -1.0
+    base = side*(1.2 + 1.4*((i*0.618) % 1.0))
+    arc = -side*(1.4 + 1.4*((i*0.381 + 0.3) % 1.0))
+    return base + arc*(tau - 0.5)
 
 SHOTS = [
     (0.0, lt(INTRO, 0), 'feed', dict(kind='open')),
@@ -817,7 +810,7 @@ SHOTS = [
     (lt(V2, 0), lt(V2, 1), 'feed', dict(kind='to_grazyna')),
     # zwrotka 2: studio Grażyny ('pięć scenek z życia' + zwój w kadrze) -> wpis Tadka -> droga, bruk
     (lt(V2, 1), lt(V2, 2), 'stage', [(0, F('MS', 'G')), (1, F('MS', 'G', dx=0.03))]),
-    (lt(V2, 2), lt(V2, 3), 'stage', [(0, F('MS', 'G', poi=['panels'])), (1, F('MS', 'G', poi=['panels', 'scroll']))]),
+    (lt(V2, 2), lt(V2, 3), 'stage', [(0, F('MLS', 'G', poi=['panels'], dy=-0.18)), (1, F('MLS', 'G', poi=['panels'], dx=0.02, dy=-0.18))]),
     (lt(V2, 3), lt(V2, 4), 'feed', dict(kind='tadek')),
     (lt(V2, 4), snap_bar(wt(V2, 4, 8)), 'stage', [(0, F('MLS', ['H', 'T', 'P'], w=1.1)), (1, F('MS', ['H', 'T', 'P'], w=1.08))]),
     (snap_bar(wt(V2, 4, 8)), lt(CHOIRI, 0), 'stage', [(0, F('MS', ['T', 'P'], w=1.15, poi=['stamp_mark'])), (1, F('MLS', ['T', 'P'], w=1.25, poi=['stamp_mark']))]),
@@ -880,8 +873,8 @@ def lights_at(t, actors):
     hen = next((a for a in actors if a.name == C.HENIO.name), None)
     sets = [n for n, _ in sets_at(t)]
     show = 'show' in sets
-    if 'podcast' in sets:     # studio podcastowe: ciepłe lampy, ciemniejsze brzegi
-        L.update(wash_col=(0.92, 0.82, 0.68), edge_col=(0.34, 0.27, 0.24), wash_r=1800)
+    if 'podcast' in sets:     # studio podcastowe (v8: 'cyber'): zimne światło, fioletowe brzegi
+        L.update(wash_col=(0.84, 0.88, 1.0), edge_col=(0.24, 0.18, 0.36), wash_r=1800)
     chorus = any(lt(s, 0) - 0.3 <= t <= le(s, 5) + 0.6 for s in (CH1, CH2, CH3))
     if t < 10.9:
         L.update(ambient=0.55, wash_col=(0.8, 0.55, 0.6), dim=0.0)
@@ -970,8 +963,8 @@ def actor_rect(a):
     if not rs: return (a.x, 0.0, a.x, 0.0)
     return (min(r[0] for r in rs), min(r[1] for r in rs), max(r[2] for r in rs), max(r[3] for r in rs))
 def project_rect(cam, r, depth):
-    (x0, y0), (x1, y1) = cam.to_screen(r[0], r[1], depth), cam.to_screen(r[2], r[3], depth)
-    return (min(x0, x1), min(y0, y1), max(x0, x1), max(y0, y1))
+    ps = [cam.to_screen(x, y, depth) for x in (r[0], r[2]) for y in (r[1], r[3])]       # v8: z perspektywą - cztery narożniki
+    return (min(p[0] for p in ps), min(p[1] for p in ps), max(p[0] for p in ps), max(p[1] for p in ps))
 def inter(a, b):
     w = min(a[2], b[2]) - max(a[0], b[0]); h = min(a[3], b[3]) - max(a[1], b[1])
     return max(w, 0)*max(h, 0)
@@ -1053,7 +1046,7 @@ def _set_candidates(key, t_mid):
 
 SIGN_PX = {'CU': 62, 'MCU': 62, 'MS': 60, 'MLS': 56, 'LS': 52, 'WS': 50}
 BOARD_LOOK = {'kitchen': ('#f3e5c2', '#2b1d14'), 'office': ('#e8eef4', '#1d2a44'), 'conf': ('#ffffff', '#14213d'), 'show': ('#f6e7c8', '#3a1450'),
-              'studio_g': ('#fff3f7', '#7a1f4c'), 'road': ('#f3e5c2', '#3b2414'), 'heaven': ('#ffffff', '#6b5212'), 'podcast': ('#efe2cc', '#3b2a1e')}
+              'studio_g': ('#fff3f7', '#7a1f4c'), 'road': ('#f3e5c2', '#3b2414'), 'heaven': ('#ffffff', '#6b5212'), 'podcast': ('#e8f1ff', '#14284a')}
 def _line_window(key, L):
     """Od kiedy do kiedy napis wersu wisi: znika najpóźniej na cięciu po końcu wersu / przy następnym wersie,
     nie wjeżdża w ujęciu przed cięciem, nie przechodzi do przebitek (serwis, pod sceną)."""
@@ -1297,8 +1290,13 @@ def stage_scene(t, cam=None, signs=True):
             for sx in (-1, 1): star(cv, sx*400, -935, 26, '#e8b85a')
     portal = portal_at(t); portal['marquee'] = marquee
     sc = dict(mode='stage', cam=cam or cam_at(t), sets=sets_at(t), curtain=CURTAIN(t), curtain_sway=0.4,
-              actors=actors, props=pr, front_props=front, curtain_props=cprops, lights=lights_at(t, actors), portal=portal)
+              actors=actors, props=pr, front_props=front, curtain_props=cprops, lights=lights_at(t, actors), portal=portal,
+              fg=[(S.D_AUD, lambda cv, t: S.audience(cv, t, _aud_energy(t)))])
     return sc
+def _aud_energy(t):
+    """Widownia kołysze się w refrenach (wg energii utworu), w zwrotkach siedzi prawie nieruchomo."""
+    in_ch = any(lt(c, 0) <= t <= le(c, 5) for c in (CH1, CH2, CH3))
+    return float(min(1.0, max(0.0, ENERGY_CAM(t)))) if in_ch else 0.0
 
 def scene_at(t):
     s = shot_at(t)

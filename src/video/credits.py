@@ -22,7 +22,7 @@ ITEMS = [
     ('role', ('Kamera, montaż, klon serwisu, weryfikacja', 'Claude Opus 5.5 (Anthropic)')),
     ('p', 'Claude Opus 5.5 pracował w Claude Code: sesja w chmurze (zdalny kontener),'),
     ('p', 'tryb automatyczny (samodzielne uruchamianie poleceń i programów), rozszerzone rozumowanie;'),
-    ('p', 'cały obraz powstał z kodu, bez gotowych grafik i nagrań; 6 wersji, każda poprawiana według uwag autora'), ('gap', 60),
+    ('p', 'cały obraz powstał z kodu, bez gotowych grafik i nagrań; 8 wersji, każda poprawiana według uwag autora'), ('gap', 60),
     ('h', 'NARZĘDZIA I CO ROBIŁY'),
     ('tool', ('Omnilingual ASR CTC 1B (Meta) · onnxruntime', 'rozpoznanie i dopasowanie tekstu do wokalu, słowo po słowie')),
     ('tool', ('Montreal Forced Aligner · polish_mfa', 'granice głosek i sylab - jedno otwarcie ust na sylabę')),

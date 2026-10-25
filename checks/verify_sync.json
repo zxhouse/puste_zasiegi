@@ -884,7 +884,7 @@
  "camera_static_shots": [],
  "signs": {
   "sign_frames_checked": 1817,
-  "max_overlap_fraction_with_character": 0.198,
+  "max_overlap_fraction_with_character": 0.1995,
   "at": [
    67.8,
    [
@@ -893,12 +893,12 @@
    ],
    "Henio Kawka"
   ],
-  "min_visible_fraction": 0.981,
+  "min_visible_fraction": 0.987,
   "min_visible_at": [
-   90.07,
+   151.07,
    [
-    5,
-    2
+    10,
+    0
    ]
   ],
   "text_fits_box": {
@@ -952,7 +952,7 @@
     ],
     "kind": "board",
     "visibility": 1.0,
-    "overlap": 0.005
+    "overlap": 0.004
    },
    {
     "line": [
@@ -961,7 +961,7 @@
     ],
     "kind": "board",
     "visibility": 1.0,
-    "overlap": 0.025
+    "overlap": 0.028
    },
    {
     "line": [
@@ -970,7 +970,7 @@
     ],
     "kind": "board",
     "visibility": 1.0,
-    "overlap": 0.058
+    "overlap": 0.059
    },
    {
     "line": [
@@ -1024,7 +1024,7 @@
     ],
     "kind": "board",
     "visibility": 1.0,
-    "overlap": 0.014
+    "overlap": 0.009
    },
    {
     "line": [
@@ -1087,7 +1087,7 @@
     ],
     "kind": "board",
     "visibility": 1.0,
-    "overlap": 0.0
+    "overlap": 0.027
    },
    {
     "line": [
@@ -1276,7 +1276,7 @@
     ],
     "kind": "board",
     "visibility": 1.0,
-    "overlap": 0.022
+    "overlap": 0.021
    },
    {
     "line": [
@@ -1309,7 +1309,7 @@
  },
  "framing": {
   "stage_frames_checked": 1672,
-  "frames_with_head_cut_by_edge": 119,
+  "frames_with_head_cut_by_edge": 120,
   "head_cut_at": [
    100.2,
    100.3,
@@ -1338,9 +1338,9 @@
    102.6,
    102.7,
    102.8,
-   171.0,
-   171.1,
-   171.2
+   126.9,
+   127.0,
+   171.0
   ],
   "frames_with_framed_subject_not_visible": 4,
   "subject_missing_at": [
@@ -1385,22 +1385,22 @@
     116.07,
     "include",
     [
-     "Chór 4"
+     "Chór 3"
     ]
    ],
    [
     116.07,
     "include",
     [
-     "Chór 4"
+     "Chór 3"
     ]
    ],
    [
     122.55,
     "include",
     [
-     "Chór 4",
-     "Chór 3"
+     "Chór 3",
+     "Chór 4"
     ]
    ]
   ]

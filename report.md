@@ -1,6 +1,6 @@
 # Raport: teledysk „Puste zasięgi” (Paweł Kuraś)
 
-> Stan: **wersja v7** (`final/music-video.mp4`). Poprzednie wersje: `archive/v1/` … `archive/v6/`. Wyniki sprawdzeń poniżej dotyczą v7.
+> Stan: **wersja v8** (`final/music-video.mp4`). Poprzednie wersje: `archive/v1/` … `archive/v7/`. Wyniki sprawdzeń poniżej dotyczą v8.
 > Nie słuchałem ani nie oglądałem filmu – wszystko niżej to pomiary liczbowe i obejrzane pojedyncze klatki / arkusze klatek.
 
 ## 1. Co powstało
@@ -14,7 +14,7 @@
 | `src/` | cały kod: analiza (`a01…a12`; v3: `a20…a25` – modele mowy, dopasowanie, fuzja), renderer (`src/video/`), render równoległy, montaż, weryfikacja |
 | `checks/` | arkusze klatek, stopklatki, wyniki weryfikacji (`verify_file.json`, `verify_sync.json`, `exposure.json`) |
 | `fonts/` | czcionki OFL użyte w obrazie i w klonie + pełny tekst licencji |
-| `archive/` | poprzednie wersje filmu: `v1/` … `v6/` (nic nie jest kasowane; w każdej `NOTES.md` z uwagami do tej wersji) |
+| `archive/` | poprzednie wersje filmu: `v1/` … `v7/` (nic nie jest kasowane; w każdej `NOTES.md` z uwagami do tej wersji) |
 | `analysis/asr/` | surowe wyniki modeli mowy: transkrypcje Omnilingual (stem prowadzący i chórki), Whisper, Parakeet, Silero VAD, dopasowania CTC i MFA |
 
 Wymagane narzędzia (wszystkie darmowe, z menedżerów pakietów): `ffmpeg`, Python (`numpy`, `scipy`, `librosa`, `soundfile`, `skia-python`, `pocketsphinx`, `matplotlib`, `onnxruntime`, `sherpa-onnx`, `faster-whisper`, `silero-vad`), Montreal Forced Aligner (conda-forge, przez micromamba), `espeak-ng` + `mbrola-pl1` (apt), Node + Playwright/Chromium (preinstalowane). Modele mowy (pobierane do `tools/models/`, poza repozytorium): Omnilingual ASR CTC 1B i Parakeet TDT v3 (wydania sherpa-onnx), `polish_mfa` (wydania mfa-models, CC BY 4.0), Whisper small CT2 (npm). Żadnych gotowych nagrań ani grafik z internetu – cały obraz jest generowany kodem.
@@ -164,22 +164,24 @@ podrygi pojawiają się w refrenach (reakcje na patykach w górę na „raz” t
   przechwytywane Playwrightem, w teledysku składane z przewijaniem, „kamerą” na ekranie, filmem ze sceny na żywo w ramce posta,
   licznikami rosnącymi klatka po klatce i pisaniem słowo po słowie (pole wiadomości zawija tekst jak przeglądarka). v4: komentarze pod
   wpisem prezesa (`?prezes=1`) i strona profilu z sekcją „Rekomendacje” (`?profile=1&recs=0…3`).
-* **Studio podcastowe** (v4, `stage.py`, `props.py`): beżowe zasłony w fałdy, panel z drewnianych listew za prowadzącym, neon
-  „podcast”, dwa regały (książki, świecąca lampka, świece, aparat, pomarańczowa tuba LED, rośliny, pnącze), lampy podłogowe z białym
-  abażurem, duże rośliny w donicach, stół z jasnego drewna z kubkami i mikrofony na ramionach – z boku ust, żeby nie zasłaniały ruchu
-  szczęki. Henio prowadzi, dwóch panów z chóru to goście z maskami uśmiechu.
+* **Studio podcastowe** (v4, od v8 „cyber-linkedinowe”, `stage.py`, `props.py`): pianka akustyczna, orzechowe listwy podświetlone
+  na niebiesko, taśmy i rurowe lampy RGB, neon „in” + „podcast”, ON AIR, ekrany z wykresem zasięgów i licznikiem obserwujących,
+  czarny stół z taśmą RGB, mikrofony na ramionach – z boku ust, żeby nie zasłaniały ruchu szczęki. Henio prowadzi, dwóch panów
+  z chóru to goście z maskami uśmiechu.
+* **Kamera pod kątem i paralaksa** (v8, `engine.py`, `timeline.py`): każde ujęcie lalkowe z lekkiego boku (na zmianę lewa/prawa)
+  z powolnym łukiem w trakcie ujęcia; warstwy dostają dokładną perspektywę; widownia na pierwszym planie w planach ogólnych.
 * **Render** (`src/render_all.py`, `src/assemble.py`): kawałki po 300 klatek, 4 procesy równolegle (x264 CRF 14), sklejenie bez
   rekompresji, końcowe kodowanie H.264 yuv420p (dwa przebiegi, ≤ 100 MB dla GitHuba) + AAC 320 kb/s z całego MP3 (bez filtrów i cięć).
   Każda wersja renderowana z zamrożonej kopii kodu (`build/vN/src`).
 
-## 5. Jak sprawdziłem wersję v7
+## 5. Jak sprawdziłem wersję v8
 Skrypty: `src/verify.py` (plik) i `src/verify_sync.py` (synchronizacja liczona z tych samych funkcji, z których renderowane są klatki).
 Wyniki: `checks/verify_file.json`, `checks/verify_sync.json`, `checks/sheets/` (arkusze co 4 s), `checks/stills/` (45 stopklatek).
 
 **Plik** (`final/music-video.mp4`)
 * Pełne dekodowanie `ffmpeg -f null`: **0 błędów**.
 * Obraz: H.264 High, yuv420p, 1920x1080, 30/1 kl./s, **7082 klatek = oczekiwane 7082**, 236.067 s.
-* Dźwięk: AAC 48000 Hz, 2 kanały, 212.0 s; plik 96.94 MB.
+* Dźwięk: AAC 48000 Hz, 2 kanały, 212.0 s; plik 96.97 MB.
 * Metadane: tytuł „Puste zasięgi”, artist/composer „Paweł Kuraś”, komentarz „Teledysk: Paweł Kuraś”; autor także w napisach końcowych.
 * **Przesunięcie dźwięku względem MP3: 0, 0, 0, 0, 0, 0, 0, 0 próbek** w 8 miejscach (5, 30, 61, 100, 140, 170, 200, 210 s),
   korelacja 0.9996–0.9999; na końcu 512 próbek ciszy z dopełnienia ramki AAC; SNR 36.09 dB (strata AAC).
@@ -194,20 +196,20 @@ Wyniki: `checks/verify_file.json`, `checks/verify_sync.json`, `checks/sheets/` (
 * Akcenty ruchu: 183 szczytów, **100.0% w ±1 klatce od uderzenia stopy/werbla** (mediana 8.8 ms);
   błyski: 9, 100.0% w ±2 klatkach od werbla lub „hej”.
 * Cięcia: **60/60 na początku wersu (lub zdania w kwestii mówionej) albo na „raz” taktu**. Ujęcia bez ruchu kamery: 0.
-* Napisy (co 2. klatka ujęć sceny, 1817 sprawdzeń): największe nachodzenie napisu na postać **19.8%**
-  powierzchni napisu ([67.8, [4, 2], 'Henio Kawka']; prostokąty: głowa, korpus, dłoń z rzeczywistym obrysem trzymanego rekwizytu), najmniejsza widoczność napisu w kadrze 98% ([90.07, [5, 2]]);
-  41 z 44 napisów w pełni widocznych i bez kolizji przez cały czas trwania.
+* Napisy (co 2. klatka ujęć sceny, 1817 sprawdzeń): największe nachodzenie napisu na postać **20.0%**
+  powierzchni napisu ([67.8, [4, 2], 'Henio Kawka']; prostokąty: głowa, korpus, dłoń z rzeczywistym obrysem trzymanego rekwizytu), najmniejsza widoczność napisu w kadrze 99% ([151.07, [10, 0]]);
+  40 z 44 napisów w pełni widocznych i bez kolizji przez cały czas trwania.
 * Trzymane nuty (głos trwa ≥ 0,4 s po szczycie sylaby; koniec głosu z obwiedni stemu): Henio 41 nut – usta otwarte
   średnio przez **82.7%** czasu dźwięku, chór 37 nut – 75.1%.
 * Tekst w polu tablic i dymków (30 napisów): **wszystkie mieszczą się** razem z powiększeniem
   słowa w chwili zaśpiewania; najmniejszy zapas 18.3 px w poziomie i 14.7 px w pionie (obrys glifów z polskimi znakami).
 * Tablice i dymki w otworze sceny (nie za portalem): 100.0% sprawdzonych klatek.
-* Kadr (co 3. klatka ujęć sceny, 1672 klatek): głowa lalki pierwszego planu ucięta krawędzią w **119 klatkach**
-  (7.1%; prawie wyłącznie tłum w refrenie 3, 100.2–171.2 s; lalki w trakcie
+* Kadr (co 3. klatka ujęć sceny, 1672 klatek): głowa lalki pierwszego planu ucięta krawędzią w **120 klatkach**
+  (7.2%; głównie druga postać na skraju planu dwóch postaci, np. Henio przy Kasi 100,2–102,8 s, oraz lalki z boku rzędu w refrenach; pierwsze próbki: 100.2…171.0 s; lalki w trakcie
   wynurzania/wejścia nie są liczone); kadrowana postać niewidoczna: 4 klatek (97.1, 99.7, 113.3, 147.9 s – wynurzanie na cięciu);
   ważne rekwizyty ujęcia (scenki z życia, zwój, baner, flipchart, „Robię swoje.”…) widoczne w ≥ 90%: 304/304 próbek.
 * Ekspozycja (`src/verify_exposure.py`, `checks/exposure.json`; ujęcia sceny, 10 kl./s): przepalone piksele (kanał ≥ 250) średnio
-  **0.12%** (v3: 13.95%), 95. percentyl 0.3% (v3: 43.96%), najgorsza klatka 53.28%
+  **0.12%** (v3: 13.95%), 95. percentyl 0.3% (v3: 43.96%), najgorsza klatka 53.29%
   (v3: 59.86%); klatek z > 5% przepaleń: 1 z 1737 (v3: 1307 z 1820).
 * Chór: liczebność w refrenach nie spada; w układzie grupowym 0 par nachodzących na siebie.
 
@@ -555,3 +557,45 @@ Przejrzałem jej arkusze i stopklatki i na tej podstawie zrobiłem poprawki v2 p
 * Wynik: 0 końców fraz za wcześnie i 0 za późno o > 2 klatki (Henio i chór; liczby na pliku – sekcja 5). Czułość: definicja „końca głosu”
   zależy od progu – przy 9 dB część końców wychodzi lekko za późno, przy 15 dB lekko za wcześnie (typowo 0,1–0,2 s); 12 dB to środek.
   Pierwsze otwarcie każdej sylaby bez zmian (484/484).
+
+### 7.8 v8 – poprawki po uwagach autora do v7
+
+#### 7.8.1 Trzymanie tabliczek
+* Pięść na tyczce nie obraca się już razem z przedramieniem (stąd „wygięty nadgarstek”). Jest pozioma, z mankietem rękawa, kostkami i kciukiem
+  na wierzchu, a łokieć przy chwycie leży niżej i na zewnątrz dłoni. Przedramię idzie więc od dołu do pięści, jak przy trzymaniu kija
+  (`puppet.py`).
+
+#### 7.8.2 Bez ring lighta
+* Lampa pierścieniowa ze smartfonem usunięta ze studia Grażyny razem z jej miejscem w kadrowaniu (`timeline.py`).
+
+#### 7.8.3 Kamera jak w prawdziwym show: lekki kąt i paralaksa
+* Kamera może się teraz obracać w poziomie (`engine.Cam.yaw`). Każda warstwa sceny jest płaską planszą, więc dostaje dokładną perspektywę
+  (homografię). Kamera krąży wokół punktu, w który celuje, dlatego kadr zostaje na postaci. Przy kącie 0 obraz jest taki sam jak dotąd.
+* Każde ujęcie lalkowe ma lekki kąt, na zmianę z lewej i z prawej (1,2–2,6°), jak przy kilku kamerach w studiu. W trakcie ujęcia kamera
+  powoli objeżdża scenę po łuku (1,4–2,8°): tło, dekoracje, lalki, portal i widownia przesuwają się względem siebie z różną prędkością.
+* Nowa najbliższa warstwa: widownia. To rozmyte sylwetki głów z ciepłym konturem od sceny, widoczne tylko w planach ogólnych. W refrenach
+  kołyszą się w rytm energii utworu.
+* Rzutowanie prostokątów do kontroli kadru i napisów liczy teraz cztery narożniki, bo przy perspektywie prostokąt nie zostaje prostokątem.
+
+#### 7.8.4 Studio „podcast cyber-linkedinowy”
+* Zamiast beżowych zasłon i regałów jest ciemna ściana w piance akustycznej. Panel z orzechowych listew („studio w drewnie”) jest
+  podświetlony od tyłu na niebiesko. Doszły pionowe i poziome taśmy LED magenta/cyjan, neon „in” w zaokrąglonym kwadracie z neonem
+  „podcast” i podświetlany napis ON AIR.
+* Na ścianie wiszą dwa ekrany. Jeden pokazuje wykres „ZASIĘGI +312%”, drugi licznik „OBSERWUJĄCY 10 482” z ikonami reakcji serwisu
+  i słupkami.
+* Po bokach stoją rurowe lampy RGB na statywach i rośliny z zimnym konturem. Stół jest czarny, z taśmą RGB na krawędzi i plakietką
+  „PUSTE ZASIĘGI · podcast #42”. Światło w tej dekoracji zmieniłem na zimne z fioletowymi brzegami, a tabliczki z tekstem na
+  jasnoniebieskie.
+
+#### 7.8.5 Okulary Henia
+* Grube, kwadratowe, czarne oprawki z mostkiem, zausznikami i odblaskiem na szkłach (`cast.square_glasses`), widoczne we wszystkich
+  ujęciach z Heniem.
+
+#### 7.8.6 „Pięć scenek” i zwoje
+* Rysunki w kadrach są przycięte do wewnętrznej ramki, a ramka jest rysowana na wierzchu, więc nic nie wychodzi poza kadr (wcześniej
+  kubek i inne ikony wystawały).
+* Pod każdym kadrem rozwija się osobny zwój: drewniany wałek, papier z falującą krawędzią i gęsto zapisana „opowieść” odręcznym krojem
+  („Rozdział 1: jak poranna kawa nauczyła mnie przywództwa…”, „Wątek 2/27…”, „Wnioski (część 1/9)”). Wszystkie zwoje rosną do krawędzi
+  sceny do końca wersu.
+* Grażyna stoi przy tym z lewej strony obok Henia, kadry ustawione są w rzędzie na prawo od niej, a napis wersu wisi nad postaciami.
+  Kamera obejmuje cały rząd razem z zapasem nad kadrami.
